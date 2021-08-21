@@ -1,0 +1,9 @@
+{
+    "parserOptions" : {
+        "ecmaVersion": 6,
+        "sourceType": "module"
+    },
+    "rules" : {
+        "semi": ["error", "always"] // Muestra errores de código o también errores de código
+    }
+}
