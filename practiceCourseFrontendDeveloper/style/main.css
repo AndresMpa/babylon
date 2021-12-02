@@ -1,5 +1,8 @@
 @import "./color.css";
 @import "./fonts.css";
 @import "./tags.css";
+@import "./edit.css";
 @import "./login.css";
 @import "./email.css";
+@import "./account.css";
+@import "./home.css";

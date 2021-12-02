@@ -73,7 +73,7 @@
 .secondary-button {
   background-color: var(--white);
   border-radius: 8px;
-  border: none;
+  border: 1px solid var(--hospital-green);
   color: var(--hospital-green);
   width: 100%;
   cursor: pointer;
@@ -101,7 +101,7 @@
   }
   .secondary-button {
     position: absolute;
-    bottom: 20px;
     width: inherit;
+    bottom: 20px;
   }
 }
