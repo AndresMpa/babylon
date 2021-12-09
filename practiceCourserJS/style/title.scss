@@ -1,0 +1,20 @@
+.title {
+  display: flex;
+  justify-content: center;
+
+  background-color: $background;
+  font-size: $lg;
+
+  .title--container {
+    display: flex;
+    margin: 1.5% 0px;
+    align-items: center;
+    justify-content: space-around;
+
+    color: $text-white;
+    .title--container__icon {
+      width: 30px;
+      padding-right: 10px;
+    }
+  }
+}

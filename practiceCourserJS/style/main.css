@@ -1,0 +1,36 @@
+@import url("http://fonts.googleapis.com/css?family=Nunito");
+* {
+  font-family: "Nunito";
+  color: #01040f;
+  padding: 0%;
+  margin: 0%;
+}
+
+ul,
+ol,
+li,
+a {
+  text-decoration: none;
+  list-style: none;
+  color: #01040f;
+}
+
+.title {
+  display: flex;
+  justify-content: center;
+  background-color: #0012ed;
+  font-size: 24px;
+}
+.title .title--container {
+  display: flex;
+  margin: 1.5% 0px;
+  align-items: center;
+  justify-content: space-around;
+  color: #ffffff;
+}
+.title .title--container .title--container__icon {
+  width: 30px;
+  padding-right: 10px;
+}
+
+/*# sourceMappingURL=main.css.map */
