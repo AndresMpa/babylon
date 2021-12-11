@@ -43,7 +43,6 @@ const getTotalPrice = (payment) => {
   let totalPrice = 0;
   payment.forEach((item) => {
     let avalibleDiscount = getDiscount(item[1]);
-    console.log(avalibleDiscount);
     totalPrice += priceWithDiscount(item[0], avalibleDiscount);
   });
   return totalPrice != NaN ? totalPrice : `One of your coupons is not valid`;
