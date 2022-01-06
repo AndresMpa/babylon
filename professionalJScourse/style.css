@@ -1,0 +1,50 @@
+* {
+  background-color: lavender;
+  padding: 0%;
+  margin: 0%;
+}
+header {
+  background-color: darkcyan;
+  color: white;
+
+  text-align: center;
+  padding: 1.5%;
+}
+header h1 {
+  font-family: "Times New Roman", Times, serif;
+  background-color: darkcyan;
+}
+header p {
+  background-color: darkcyan;
+  font-family: cursive;
+}
+main {
+  justify-content: center;
+  display: flex;
+
+  padding-top: 3.5%;
+  height: 350px;
+}
+hr {
+  border: 0.5px solid gray;
+  margin: 3.5% auto;
+  width: 80%;
+}
+
+.videoControl {
+  justify-content: center;
+  display: flex;
+}
+
+.videoControl button {
+  background-color: darkcyan;
+  border-radius: 50%;
+  margin: 0% 1.2%;
+  padding: 0.8%;
+  border: none;
+}
+
+.videoControl button i {
+  background-color: darkcyan;
+  color: white;
+}

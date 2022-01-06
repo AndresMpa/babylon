@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      crossorigin="anonymous"
+      href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+      integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+    />
+    <title>Media player</title>
+  </head>
+  <body>
+    <header>
+      <h1>Pro JS Media player</h1>
+      <p>An extensible media player.</p>
+    </header>
+    <main>
+      <video
+        src="https://ia800201.us.archive.org/12/items/BigBuckBunny_328/BigBuckBunny_512kb.mp4"
+      ></video>
+    </main>
+
+    <hr />
+    <div class="videoControl">
+      <button id="playStop">
+        <i class="fas fa-play"></i>
+      </button>
+      <button id="mute">
+        <i class="fas fa-volume-mute"></i>
+      </button>
+    </div>
+
+    <script type="module" src="./src/player.js"></script>
+    <!--<script src="./scr/scope.js"></script>-->
+    <!--<script src="./src/cloures.js"></script>-->
+  </body>
+</html>
