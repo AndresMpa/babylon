@@ -5,7 +5,6 @@
  * forma es más simple
  * */
 
-
 const counterMaker = (number) => {
   let count = number;
 
