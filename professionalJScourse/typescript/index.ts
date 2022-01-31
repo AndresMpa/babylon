@@ -1,9 +1,21 @@
+import hello from "./helloTs";
+import { dataType } from "./dataType";
+import * as tsFunction from "./functionOnTs";
+import * as interfaceData from './interfaces'
 
+//hello()
+//dataType();
+/*
+tsFunction.adder(2, 5);
 
-console.log("Hello TypeScript");
+const fourAdder: any = tsFunction.createAdder(4);
+console.log(fourAdder);
+const sixAdder: number = fourAdder(6);
+console.log(sixAdder);
 
-function adder(numberA: number, numberB: number) {
-  return numberA + numberB;
-}
+console.log(tsFunction.fullName("Andres", "Prieto"));
+console.log(tsFunction.fullName("Andres"));
+console.log(tsFunction.fullName());
+*/
 
-const result = adder(8, 8);
+//interfaceData.dataFromInterface()
