@@ -24,3 +24,9 @@ mute.onclick = () => {
     : (mute.innerHTML = `<i class="fas fa-volume-up"></i>`);
   player.volumeMute();
 };
+
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("/serviceWorker.js").catch((error) => {
+    console.error(error.message);
+  })
+}
