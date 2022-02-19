@@ -1,6 +1,7 @@
 import MediaPlayer from "./MediaPlayer";
 import AutoPlay from "./plugins/AutoPlay";
 import AutoPause from "./plugins/AutoPause";
+import AdsPlugin from "./plugins/Ads/AdsPlugin";
 
 // Video tag
 const video: HTMLElement = document.querySelector(".videoContainer video");
@@ -8,7 +9,7 @@ const videoControl: HTMLElement = document.querySelector(".videoControl");
 const principal: HTMLElement = document.querySelector(".principal");
 
 // Buttons
-//const videoLength: HTMLElement = document.querySelector("#videoLength");
+const videoLength: HTMLInputElement = document.querySelector("#videoLength");
 const playStop: HTMLElement = document.querySelector("#playStop");
 const mute: HTMLElement = document.querySelector("#mute");
 
@@ -16,7 +17,7 @@ const mute: HTMLElement = document.querySelector("#mute");
 
 const player = new MediaPlayer({
   element: video,
-  plugins: [new AutoPlay(), new AutoPause()],
+  plugins: [new AutoPlay(), new AutoPause(), new AdsPlugin()],
 });
 
 // Events
@@ -33,7 +34,7 @@ video.onclick = () => {
     ? (playStop.innerHTML = `<i class="fas fa-pause"></i>`)
     : (playStop.innerHTML = `<i class="fas fa-play"></i>`);
   player.playStop();
-}
+};
 
 playStop.onclick = () => {
   playStop.innerHTML === `<i class="fas fa-play"></i>`
@@ -49,14 +50,13 @@ mute.onclick = () => {
   player.volumeMute();
 };
 
-/*videoLength.onchange = (event) => {*/
-/*player.jump(event.target.valueAsNumber);*/
-/*videoLength.valueAsNumber = player.timeSec;*/
-/*};*/
+videoLength.onchange = (event: any) => {
+  player.jump(event.target.value);
+};
 
-/*setInterval(() => {*/
-/*videoLength.valueAsNumber = player.timeSec;*/
-/*}, 100);*/
+setInterval(() => {
+  videoLength.valueAsNumber = player.timeSec();
+}, 100);
 
 // Service worker
 

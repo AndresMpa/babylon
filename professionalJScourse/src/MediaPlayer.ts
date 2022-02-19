@@ -1,10 +1,10 @@
 class MediaPlayer {
   media: HTMLMediaElement;
-  plugins: Array<any>
+  plugins: Array<any>;
 
   constructor(config: any) {
-    this.media = config.element;
     this.plugins = config.plugins || [];
+    this.media = config.element;
 
     this.initPlugins();
   }
@@ -31,8 +31,8 @@ class MediaPlayer {
     });
   }
 
-  public timeSec() {
-    return this.media.currentTime;
+  timeSec() {
+    return (this.media.currentTime * 100) / this.media.duration;
   }
 
   play() {
@@ -60,7 +60,7 @@ class MediaPlayer {
   }
 
   jump(jumpTarget: number) {
-    this.media.currentTime = (this.media.duration * jumpTarget) / 100;
+    this.media.currentTime = (jumpTarget * this.media.duration) / 100;
   }
 }
 
