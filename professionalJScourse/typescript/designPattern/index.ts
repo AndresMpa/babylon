@@ -6,6 +6,7 @@
 /*console.log(`Instance A and B are equal? ${singletonInstanceA === singletonInstanceB}`);*/
 
 import { StateManager, StateMember } from "./Observer";
+import * as Validation from "./Decorator"
 
 const subscribe = document.querySelector("#subscribe");
 const unsubscribe = document.querySelector("#unsubscribe");
@@ -23,3 +24,9 @@ unsubscribe.addEventListener("click", (): any => {
 subscribe.addEventListener("click", (): any => {
   manager.subscribe(casualMember);
 });
+
+
+
+let field = new Validation.Field(document.querySelector("#state"));
+field = Validation.SpaceFieldDecorator(field);
+field = Validation.HastagFieldDecorator(field);

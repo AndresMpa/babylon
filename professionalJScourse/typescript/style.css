@@ -24,15 +24,29 @@ body {
   color: lightgray;
 }
 
-#state {
+.stateContainer {
+  flex-direction: column;
+  position: relative;
   display: flex;
 
   margin-left: auto;
-  padding: 8px;
   width: 30%;
+}
+
+#state {
+  padding: 8px;
 
   border-radius: 8px;
   border: none;
+}
+
+.validationMessage {
+  position: absolute;
+  bottom: -25px;
+  right: 5px;
+
+  display: block;
+  color: white;
 }
 
 .bannerContainer {
