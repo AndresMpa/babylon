@@ -2,17 +2,7 @@ const VERSION = "v1";
 
 const precache = async () => {
   const cache = await caches.open(VERSION);
-  return cache.addAll([
-    "/",
-    "/style.css",
-    "/index.html",
-    "/assent/js.png",
-    "/assent/ts.png",
-    "/assent/BigBuckBunny.mp4",
-    "/src/plugins/AutoPlay.js",
-    "/src/MediaPlayer.js",
-    "/src/player.js",
-  ]);
+  return cache.addAll([]);
 };
 
 const cachedResponse = async (request) => {
