@@ -18,8 +18,37 @@
       <h1>Pro JS Media player</h1>
       <p>An extensible media player.</p>
     </header>
-    <main>
-      <video src="./assent/BigBuckBunny.mp4"></video>
+
+    <main class="principal">
+      <article class="videoContainer">
+        <video src="./assent/BigBuckBunny.mp4"></video>
+        <div class="videoControl">
+          <button id="playStop">
+            <i class="fas fa-pause"></i>
+          </button>
+
+          <input type="range" name="videoLength" id="videoLength" />
+
+          <button id="mute">
+            <i class="fas fa-volume-up"></i>
+          </button>
+        </div>
+      </article>
+
+      <article class="optionVideo">
+        <figure>
+          <video src="./assent/water.mp4"></video>
+          <figcaption>Water on video</figcaption>
+        </figure>
+        <figure>
+          <video src="./assent/cinema.mp4"></video>
+          <figcaption>Movie theater</figcaption>
+        </figure>
+        <figure>
+          <video src="./assent/afternoon.mp4"></video>
+          <figcaption>Beautiful sunset</figcaption>
+        </figure>
+      </article>
     </main>
 
     <hr />
