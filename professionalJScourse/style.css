@@ -3,48 +3,124 @@
   padding: 0%;
   margin: 0%;
 }
-header {
-  background-color: darkcyan;
-  color: white;
 
-  text-align: center;
-  padding: 1.5%;
-}
-header h1 {
-  font-family: "Times New Roman", Times, serif;
-  background-color: darkcyan;
-}
-header p {
-  background-color: darkcyan;
-  font-family: cursive;
-}
-main {
-  justify-content: center;
-  display: flex;
-
-  padding-top: 3.5%;
-  height: 350px;
-}
 hr {
   border: 0.5px solid gray;
   margin: 3.5% auto;
   width: 80%;
 }
 
-.videoControl {
-  justify-content: center;
+.titleLabel {
+  background-color: darkcyan;
+  color: white;
+
+  text-align: left;
+  padding: 0.2% 0%;
+}
+
+.titleLabel h1 {
+  font-family: "Times New Roman", Times, serif;
+  background-color: darkcyan;
+}
+
+.titleLabel p {
+  background-color: darkcyan;
+  font-family: cursive;
+}
+
+.principal {
   display: flex;
 }
 
+.optionVideo {
+  width: 100%;
+
+  padding: 10px;
+}
+
+.optionVideo figure {
+  display: flex;
+
+  padding: 0.2em 0px;
+}
+
+.optionVideo figure figcaption {
+  padding: 0 0.5em;
+}
+
+.optionVideo figure video {
+  background-color: black;
+  height: 100px;
+  width: 25%;
+}
+
+.videoContainer {
+  justify-content: center;
+  flex-direction: column;
+  display: flex;
+
+  position: relative;
+
+  padding: 15px 10px 0;
+  height: 350px;
+  width: 100vw;
+}
+
+.videoContainer video {
+  background-color: black;
+}
+
+.videoControl {
+  justify-content: space-between;
+  display: flex;
+
+  position: absolute;
+  bottom: 0;
+
+  width: 97%;
+
+  padding: 0px 0px;
+  background: none;
+}
+
 .videoControl button {
-  background-color: darkcyan;
-  border-radius: 50%;
-  margin: 0% 1.2%;
   padding: 0.8%;
+
+  border-radius: 0px;
+  background: none;
   border: none;
 }
 
+.videoControl input[type="range"] {
+  background: none;
+  display: inline;
+  width: 90%;
+}
+
 .videoControl button i {
-  background-color: darkcyan;
+  background: none;
   color: white;
+}
+
+#commentBox {
+  width: 95%;
+  margin: 1.2% auto;
+}
+
+#comments p {
+  width: 98.5%;
+  margin: 1.2% auto;
+}
+
+@media screen and (max-width: 900px) {
+  .principal {
+    flex-direction: column;
+  }
+  .optionVideo {
+    padding: 0;
+  }
+
+  .videoContainer {
+    padding: 15px 0px;
+  }
 }
