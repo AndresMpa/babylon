@@ -1,12 +1,22 @@
 class MediaPlayer {
   media: HTMLMediaElement;
   plugins: Array<any>;
+  container: HTMLElement;
 
   constructor(config: any) {
     this.plugins = config.plugins || [];
     this.media = config.element;
 
+    this.initPlayer();
     this.initPlugins();
+  }
+
+  initPlayer() {
+    this.container = document.createElement("div");
+    this.container.classList.add("adsContainer");
+
+    this.media.parentNode.insertBefore(this.container, this.media);
+    //this.container.appendChild(this.media);
   }
 
   private initPlugins() {
@@ -33,6 +43,14 @@ class MediaPlayer {
 
   timeSec() {
     return (this.media.currentTime * 100) / this.media.duration;
+  }
+
+  currentAudio() {
+    return this.media.currentTime;
+  }
+
+  totalAudio() {
+    return this.media.duration;
   }
 
   play() {

@@ -6,6 +6,7 @@ import AdsPlugin from "./plugins/Ads/AdsPlugin";
 // Video tag
 const video: HTMLElement = document.querySelector(".videoContainer video");
 const videoControl: HTMLElement = document.querySelector(".videoControl");
+const timeFollower: HTMLElement = document.querySelector(".timeFollower");
 const principal: HTMLElement = document.querySelector(".principal");
 
 // Buttons
@@ -19,6 +20,11 @@ const player = new MediaPlayer({
   element: video,
   plugins: [new AutoPlay(), new AutoPause(), new AdsPlugin()],
 });
+
+// Utilities
+
+const parseMin = (seconds: number): any =>
+  Math.floor(seconds / 60) + ":" + ("0" + Math.floor(seconds % 60)).slice(-2);
 
 // Events
 principal.onmouseover = () => {
@@ -56,6 +62,7 @@ videoLength.onchange = (event: any) => {
 
 setInterval(() => {
   videoLength.valueAsNumber = player.timeSec();
+  timeFollower.innerText = `${parseMin(player.currentAudio())} / ${parseMin(player.totalAudio())}`
 }, 100);
 
 // Service worker
