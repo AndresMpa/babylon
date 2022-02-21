@@ -1,0 +1,17 @@
+{
+  "name": "webpackcourse",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "AndresMpa <andresprieto2703@gmail.com>",
+  "license": "ISC",
+  "type": "module",
+  "devDependencies": {
+    "webpack": "^5.69.1",
+    "webpack-cli": "^4.9.2"
+  }
+}
