@@ -5,13 +5,16 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "example": "npx webpack --mode production --config ../webpack.config.js",
-    "build": "npx webpack --mode production --config webpack.config.js"
+    "build": "webpack --mode production --config webpack.config.js"
   },
   "keywords": [],
   "author": "AndresMpa <andresprieto2703@gmail.com>",
   "license": "ISC",
   "devDependencies": {
+    "@babel/core": "^7.17.5",
+    "@babel/plugin-transform-runtime": "^7.17.0",
+    "@babel/preset-env": "^7.16.11",
+    "babel-loader": "^8.2.3",
     "webpack": "^5.69.1",
     "webpack-cli": "^4.9.2"
   }
