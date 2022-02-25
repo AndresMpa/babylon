@@ -72,7 +72,6 @@ suguiere usar
 
 ```
 npm i css-minimizer-webpack-plugin terser-webpack-plugin -D
-
 ```
 
 ## Alias
