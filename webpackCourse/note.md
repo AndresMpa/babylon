@@ -61,3 +61,7 @@ It comes with webpack, such as Vue dynamic import it helps you to write less cod
 
 Webpack come with different development modes: "production", "development", etc... Also wthere are flags like watch
 made for help devs to see whats going on
+
+## Deploy
+
+The final propouse of using webpack is manage the creation of an application, using netlify we can see this process
