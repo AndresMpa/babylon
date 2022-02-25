@@ -1,7 +1,3 @@
-This project is an example taken from
-
-https://github.com/gndx/js-portfolio.git
-
 ## Webpack.config.js
 
 Este archivo sirve para extender las configuraciones de webpack de ese modo se pueden agregar
@@ -99,3 +95,18 @@ use devServer which is an interactive local server for webpack
 ```
 npm i webpack-dev-server -D
 ```
+
+## Analizer
+
+Analyzer are useful dev tools to see in a very efficient way what's going to with our project, it's as simple as an
+image but it's useful to optimize some issue we may find
+
+```
+npm i webpack-bundle-analyzer -D
+```
+
+### Note
+
+This project is an example taken from
+
+https://github.com/gndx/js-portfolio.git
