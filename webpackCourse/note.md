@@ -52,3 +52,7 @@ Los minimizer sirven para comprimir codigo esencialmente optimizan el codigo par
 suguiere usar
 
 npm i css-minimizer-webpack-plugin terser-webpack-plugin -D
+
+## Alias
+
+It comes with webpack, such as Vue dynamic import it helps you to write less code or simplify importing references
