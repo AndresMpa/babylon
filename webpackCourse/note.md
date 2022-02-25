@@ -63,7 +63,7 @@ npm i url-loader file-loader -D
 
 ## Minimizer
 
-Los minimizer sirven para comprimir codigo esencialmente optimizan el codigo para que funcione más rapido, webpack
+Minimizer compress code essentially to optimize, this way code works faster
 suguiere usar
 
 ```
@@ -104,6 +104,8 @@ image but it's useful to optimize some issue we may find
 ```
 npm i webpack-bundle-analyzer -D
 ```
+
+There's also an interesting feature call dev tools, it helps us to find source code, it's useful to debug our apps
 
 ### Note
 
