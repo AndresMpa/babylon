@@ -38,3 +38,10 @@ npm i stylus-loader -D
 Este plugin ayuda a mover archivos a carpetas para poder tener assent dentro de dist
 
 npm i copy-webpack-plugin -D
+
+## URL loader
+
+Las URL han de ser relativas para no depender de otros recursos de internet, para ello se han de establecer nuevos
+paths que sean relativos al nuevo dist, esto sirve tanto para imagenes como para fuentes
+
+npm install url-loader file-loader -D
