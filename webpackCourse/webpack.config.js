@@ -37,8 +37,6 @@ module.exports = {
         use: [
           MiniCssExtractPlugin.loader,
           "css-loader",
-          //"sass-loader",
-          "stylus-loader",
         ],
       },
       {
@@ -47,19 +45,6 @@ module.exports = {
       },
       {
         test: /\.(woff|woff2)$/,
-        /*
-        use: {
-          loader: "url-loader",
-          options: {
-            limit: 10000,
-            mimetype: "application/font-woff",
-            name: "[name].[contenthash].[ext]",
-            outputPath: "./assets/fonts/",
-            publicPath: "../assets/fonts/",
-            esModule: false,
-          },
-        },
-        */
         type: "asset/resource",
       },
     ],

@@ -65,3 +65,12 @@ made for help devs to see whats going on
 ## Deploy
 
 The final propouse of using webpack is manage the creation of an application, using netlify we can see this process
+
+## Dev Server
+
+It's common to want to use a server to see changes also to check how is the app going on local for that propouse we
+use devServer which is an interactive local server for webpack
+
+```
+npm i webpack-dev-server -D
+```
