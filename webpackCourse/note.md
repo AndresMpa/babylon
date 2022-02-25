@@ -7,6 +7,13 @@ https://github.com/gndx/js-portfolio.git
 Este archivo sirve para extender las configuraciones de webpack de ese modo se pueden agregar
 plugin entre otras cosas
 
+## CLI
+
+Webpack comes with a CLI call webpack once it is installed, so to use it you type "npx webpack"
+also you can use scripts inside package.json to make this easier
+
+npm i webpack webpack-cli -D 
+
 ## Babel
 
 ```
@@ -74,6 +81,10 @@ It comes with webpack, such as Vue dynamic import it helps you to write less cod
 
 Webpack come with different development modes: "production", "development", etc... Also wthere are flags like watch
 made for help devs to see whats going on
+
+## Environmental variables
+
+Those are variable created on a base file call .env are used to make easier deployment process
 
 ## Deploy
 
