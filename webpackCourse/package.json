@@ -5,9 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "node ./scripts/createEnv.js && webpack --mode production --config webpack.config.js",
+    "build": "webpack --mode production --config webpack.config.js",
     "dev": "webpack --mode development --config webpack.config.dev.js",
-    "dev:watch": "webpack --watch --mode development --config webpack.config.dev.js"
+    "dev:watch": "webpack --watch --mode development --config webpack.config.dev.js",
+    "build:server": "node ./scripts/createEnv.js && webpack --mode production --config webpack.config.js"
   },
   "keywords": [],
   "author": "AndresMpa <andresprieto2703@gmail.com>",
