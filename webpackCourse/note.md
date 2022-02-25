@@ -12,12 +12,14 @@ plugin entre otras cosas
 Webpack comes with a CLI call webpack once it is installed, so to use it you type "npx webpack"
 also you can use scripts inside package.json to make this easier
 
-npm i webpack webpack-cli -D 
+```
+npm i webpack webpack-cli -D
+```
 
 ## Babel
 
 ```
-npm install -D babel-loader @babel/core @babel/preset-env @babel/plugin-transform-runtime
+npm i babel-loader @babel/core @babel/preset-env @babel/plugin-transform-runtime -D
 ```
 
 - babel-loader nos permite usar babel con webpack
@@ -60,7 +62,7 @@ Las URL han de ser relativas para no depender de otros recursos de internet, par
 paths que sean relativos al nuevo dist, esto sirve tanto para imagenes como para fuentes
 
 ```
-npm install url-loader file-loader -D
+npm i url-loader file-loader -D
 ```
 
 ## Minimizer
