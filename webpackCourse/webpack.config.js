@@ -1,31 +1,32 @@
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const TerserPlugin = require('terser-webpack-plugin');
 const CopyPlugin = require("copy-webpack-plugin");
 const path = require("path");
 
 module.exports = {
-  entry: "./src/index.js",
+  entry: './src/index.js',
   output: {
-    path: path.resolve(__dirname, "dist"),
-    filename: "main.js",
+    path: path.resolve(__dirname, 'dist'),
+    filename: '[name].[contenthash].js',
     assetModuleFilename: 'assets/images/[hash][ext][query]'
   },
   resolve: {
-    extensions: [".js"],
+    extensions: ['.js']
   },
   module: {
     rules: [
       {
-        test: /\.m?js$/,
+        test: /\.s?css|.styl$/i,
         exclude: /node_modules/,
         use: {
-          loader: "babel-loader",
-        },
+          loader: 'babel-loader'
+        }
       },
       {
-        test: /\.s?css|.styl$/i,
-        use: [
-          MiniCssExtractPlugin.loader,
+        test: /\.css|.styl$/i,
+        use: [MiniCssExtractPlugin.loader,
           "css-loader",
           //"sass-loader",
           "stylus-loader",
@@ -33,7 +34,7 @@ module.exports = {
       },
       {
         test: /\.png/,
-        type: "asset/resource",
+        type: 'asset/resource'
       },
       {
         test: /\.(woff|woff2)$/,
@@ -42,29 +43,38 @@ module.exports = {
           options: {
             limit: 10000,
             mimetype: "application/font-woff",
-            name: "[name].[ext]",
+            name: "[name].[contenthash].[ext]",
             outputPath: "./assets/fonts/",
             publicPath: "./assets/fonts/",
             esModule: false,
           },
         }
       }
-    ],
+    ]
   },
   plugins: [
     new HtmlWebpackPlugin({
       inject: true,
-      template: "./public/index.html",
-      filename: "./index.html",
+      template: './public/index.html',
+      filename: './index.html'
     }),
-    new MiniCssExtractPlugin(),
+    new MiniCssExtractPlugin({
+      filename: 'assets/[name].[contenthash].css'
+    }),
     new CopyPlugin({
       patterns: [
         {
           from: path.resolve(__dirname, "src", "assets/images"),
-          to: "assets/images",
-        },
-      ],
-    }),
+          to: "assets/images"
+        }
+      ]
+    })
   ],
-};
+  optimization: {
+    minimize: true,
+    minimizer: [
+      new CssMinimizerPlugin(),
+      new TerserPlugin(),
+    ]
+  }
+}

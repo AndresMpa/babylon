@@ -45,3 +45,10 @@ Las URL han de ser relativas para no depender de otros recursos de internet, par
 paths que sean relativos al nuevo dist, esto sirve tanto para imagenes como para fuentes
 
 npm install url-loader file-loader -D
+
+## Minimizer
+
+Los minimizer sirven para comprimir codigo esencialmente optimizan el codigo para que funcione más rapido, webpack
+suguiere usar
+
+npm i css-minimizer-webpack-plugin terser-webpack-plugin -D
