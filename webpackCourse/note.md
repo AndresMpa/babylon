@@ -56,3 +56,8 @@ npm i css-minimizer-webpack-plugin terser-webpack-plugin -D
 ## Alias
 
 It comes with webpack, such as Vue dynamic import it helps you to write less code or simplify importing references
+
+## Modes
+
+Webpack come with different development modes: "production", "development", etc... Also wthere are flags like watch
+made for help devs to see whats going on
