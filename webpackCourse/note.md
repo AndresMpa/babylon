@@ -9,7 +9,9 @@ plugin entre otras cosas
 
 ## Babel
 
+```
 npm install -D babel-loader @babel/core @babel/preset-env @babel/plugin-transform-runtime
+```
 
 - babel-loader nos permite usar babel con webpack
 - @babel/core es babel en general
@@ -21,7 +23,9 @@ npm install -D babel-loader @babel/core @babel/preset-env @babel/plugin-transfor
 
 Ayuda a poder usar HTML en webpack, ya que este no esta por defecto
 
+```
 npm i html-webpack-plugin -D
+```
 
 ## CSS Webpack
 
@@ -29,29 +33,38 @@ Este plugin ayuda a que webpack pueda procesar directamente el CSS que se tiene,
 que cargar el CSS sobre HTML, pues se puede montar directamente sobre el archivo main.js que es el archivo que
 genera webpack al final
 
+```
 npm i mini-css-extract-plugin css-loader -D
 npm i node-sass sass-loader -D
 npm i stylus-loader -D
+```
 
 ## Copy webpack
 
 Este plugin ayuda a mover archivos a carpetas para poder tener assent dentro de dist
 
+```
 npm i copy-webpack-plugin -D
+```
 
 ## URL loader
 
 Las URL han de ser relativas para no depender de otros recursos de internet, para ello se han de establecer nuevos
 paths que sean relativos al nuevo dist, esto sirve tanto para imagenes como para fuentes
 
+```
 npm install url-loader file-loader -D
+```
 
 ## Minimizer
 
 Los minimizer sirven para comprimir codigo esencialmente optimizan el codigo para que funcione más rapido, webpack
 suguiere usar
 
+```
 npm i css-minimizer-webpack-plugin terser-webpack-plugin -D
+
+```
 
 ## Alias
 
