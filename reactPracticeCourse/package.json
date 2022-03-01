@@ -1,0 +1,20 @@
+{
+  "name": "yard-shop",
+  "version": "1.0.0",
+  "description": "This is a web site for a yard sale",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "react",
+    "javascript",
+    "e-commerce"
+  ],
+  "author": "AndresMpa <andresprieto2703@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  }
+}
