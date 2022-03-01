@@ -1,7 +1,7 @@
 ## Webpack.config.js
 
-Este archivo sirve para extender las configuraciones de webpack de ese modo se pueden agregar
-plugin entre otras cosas
+This file is used to extend default webpack config, creating our own config for each mode, also
+you can add plugins and some other features
 
 ## CLI
 
@@ -14,19 +14,21 @@ npm i webpack webpack-cli -D
 
 ## Babel
 
+Babel is mandatory base for all the projects, it helps you to make your JS file readable by all
+the JS standars, it have to be configurated on .babelrc
+
 ```
 npm i babel-loader @babel/core @babel/preset-env @babel/plugin-transform-runtime -D
 ```
 
-- babel-loader nos permite usar babel con webpack
-- @babel/core es babel en general
-- @babel/preset-env trae y te permite usar las ultimas características de JavaScript
-- @babel/plugin-transform-runtime te permite trabajar con todo el tema de asincronismo como ser async y await
-- Debes crear el archivo de configuración de babel el cual tiene como nombre .babelrc
+- babel-loader enable bable on webpack
+- @babel/core it babel core
+- @babel/preset-env extends JavaScript from last changes
+- @babel/plugin-transform-runtime enable async/await
 
 ## HTML Webpack
 
-Ayuda a poder usar HTML en webpack, ya que este no esta por defecto
+It enable HTML file for wabpack, it's necessary to make frontend apps
 
 ```
 npm i html-webpack-plugin -D
@@ -34,9 +36,8 @@ npm i html-webpack-plugin -D
 
 ## CSS Webpack
 
-Este plugin ayuda a que webpack pueda procesar directamente el CSS que se tiene, esto además hace que no se tenga
-que cargar el CSS sobre HTML, pues se puede montar directamente sobre el archivo main.js que es el archivo que
-genera webpack al final
+Webpack by default can't handle CSS, this plugin allows webpack to handle that file type,
+as a plus allow our index.js to import css files
 
 ```
 npm i mini-css-extract-plugin css-loader -D
@@ -46,7 +47,8 @@ npm i stylus-loader -D
 
 ## Copy webpack
 
-Este plugin ayuda a mover archivos a carpetas para poder tener assent dentro de dist
+Sometimes is necessary to copy files from our project's file system into our dist dir, this plugin
+allow you to copy those files from your file system into that dir
 
 ```
 npm i copy-webpack-plugin -D
@@ -54,8 +56,8 @@ npm i copy-webpack-plugin -D
 
 ## URL loader
 
-Las URL han de ser relativas para no depender de otros recursos de internet, para ello se han de establecer nuevos
-paths que sean relativos al nuevo dist, esto sirve tanto para imagenes como para fuentes
+URLs should be relative references to files inside our dist, it help our application to be
+independent from other resources, also it speeds up our apps when we use service workerss
 
 ```
 npm i url-loader file-loader -D
@@ -72,12 +74,13 @@ npm i css-minimizer-webpack-plugin terser-webpack-plugin -D
 
 ## Alias
 
-It comes with webpack, such as Vue dynamic import it helps you to write less code or simplify importing references
+It comes with webpack, such as Vue dynamic import it helps you to write less code or simplify
+importing references
 
 ## Modes
 
-Webpack come with different development modes: "production", "development", etc... Also wthere are flags like watch
-made for help devs to see whats going on
+Webpack come with different development modes: "production", "development", etc... Also wthere
+are flags like watch made for help devs to see whats going on
 
 ## Environmental variables
 
@@ -85,11 +88,13 @@ Those are variable created on a base file call .env are used to make easier depl
 
 ## Deploy
 
-The final propouse of using webpack is manage the creation of an application, using netlify we can see this process
+The final propouse of using webpack is manage the creation of an application, using netlify we
+can see this process
 
 ## Dev Server
 
-It's common to want to use a server to see changes also to check how is the app going on local for that propouse we
+It's common to want to use a server to see changes also to check how is the app going on local
+for that propouse we
 use devServer which is an interactive local server for webpack
 
 ```
@@ -98,14 +103,15 @@ npm i webpack-dev-server -D
 
 ## Analizer
 
-Analyzer are useful dev tools to see in a very efficient way what's going to with our project, it's as simple as an
-image but it's useful to optimize some issue we may find
+Analyzer are useful dev tools to see in a very efficient way what's going to with our project,
+it's as simple as an image but it's useful to optimize some issue we may find
 
 ```
 npm i webpack-bundle-analyzer -D
 ```
 
-There's also an interesting feature call dev tools, it helps us to find source code, it's useful to debug our apps
+There's also an interesting feature call dev tools, it helps us to find source code, it's useful
+to debug our apps
 
 ### Note
 
