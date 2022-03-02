@@ -1,8 +1,11 @@
 import React from "react";
-import "@style/main.scss";
+
+import Login from "../containers/login";
+
+import "@styles/main.scss";
 
 const App = () => {
-  return <h1>Hello React</h1>;
+  return <Login />;
 };
 
 export default App;

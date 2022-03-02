@@ -1,7 +1,3 @@
-$color: white;
-$bg: purple;
-
-body {
-  background-color: $bg;
-  color: $color;
-}
+@use 'fonts.scss';
+@use "color.scss";
+@use "login.scss";
