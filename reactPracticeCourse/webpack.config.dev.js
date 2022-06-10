@@ -8,6 +8,7 @@ module.exports = {
     clean: true,
     path: path.resolve(__dirname, "dist"),
     filename: "[name].[contenthash].js",
+    assetModuleFilename: "assets/images/[hash][ext][query]",
   },
   mode: "development",
   resolve: {
@@ -39,7 +40,11 @@ module.exports = {
 					"css-loader",
 					"sass-loader",
 				],
-			}
+			},
+      {
+        test: /\.([pn|sv]g|woff|woff2)$/,
+        type: "asset/resource",
+      }
     ],
   },
   plugins: [
