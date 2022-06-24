@@ -57,6 +57,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
+      favicon: "./src/assets/logos/favicon_yard_sale.svg",
       template: "./public/index.html",
       filename: "index.html",
     }),
