@@ -1,17 +1,24 @@
-import React from 'react';
+import React from "react";
 
-import ProductItem from '@components/ProductItem';
+import useGetProduct from "@hooks/useGetProduct";
 
-import '@styles/ProductList.scss';
+import ProductItem from "@components/ProductItem";
+
+import "@styles/ProductList.scss";
+
+const API = "https://api.escuelajs.co/api/v1/products";
 
 const ProductList = () => {
-	return (
-		<section className="main-container">
-			<div className="ProductList">
-				<ProductItem />
-			</div>
-		</section>
-	);
-}
+  const list = useGetProduct(API)
+  return (
+    <section className="main-container">
+      <div className="ProductList">
+        {list.map((product) => (
+          <ProductItem product={product} key={product.id} />
+        ))}
+      </div>
+    </section>
+  );
+};
 
 export default ProductList;
