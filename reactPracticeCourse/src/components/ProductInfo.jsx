@@ -1,6 +1,6 @@
 import React from "react";
 
-import "../styles/ProductInfo.scss";
+import "@styles/ProductInfo.scss";
 
 import add from "@icons/bt_add_to_cart.svg";
 
