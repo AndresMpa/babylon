@@ -3,9 +3,13 @@
 .Menu {
 	width: 100px;
 	height: auto;
-	border: 1px solid var(--very-light-pink);
 	border-radius: 6px;
 	padding: 20px 20px 0 20px;
+	border: 1px solid var(--very-light-pink);
+
+	position: absolute;
+	right: 50px;
+	top: 60px;
 }
 .Menu ul {
 	list-style: none;
