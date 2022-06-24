@@ -1,21 +1,26 @@
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const CopyPlugin = require("copy-webpack-plugin");
 const path = require("path");
 
 module.exports = {
   entry: "./src/index.js",
   output: {
     clean: true,
-    path: path.resolve(__dirname, "dist"),
+    publicPath: "/",
     filename: "[name].[contenthash].js",
+    path: path.resolve(__dirname, "dist"),
+    //assetModuleFilename: "assets/[hash][ext][query]",
   },
-  mode: "production",
+  mode: "development",
   resolve: {
     extensions: [".js", ".jsx"],
     alias: {
-      "@component": path.resolve(__dirname, "src/component/"),
+      "@components": path.resolve(__dirname, "src/components/"),
+      "@containers": path.resolve(__dirname, "src/containers/"),
+      "@pages": path.resolve(__dirname, "src/pages/"),
       "@styles": path.resolve(__dirname, "src/styles/"),
+      "@icons": path.resolve(__dirname, "src/assets/icons/"),
+      "@logos": path.resolve(__dirname, "src/assets/logos/"),
     },
   },
   module: {
@@ -33,18 +38,21 @@ module.exports = {
           loader: "html-loader",
         },
       },
-			{
-				test: /\.s[ac]ss$/i,
-				use: [
-					"style-loader",
-					"css-loader",
-					"sass-loader",
-				],
-			},
       {
-        test: /\.([pn|sv]g|woff|woff2)$/,
+        test: /\.(s[ac]ss|css)$/i,
+        use: ["style-loader", "css-loader", "sass-loader"],
+      },
+      {
+        test: /\.(eot|ttf|woff|woff2)$/,
         type: "asset/resource",
-      }
+      },
+      {
+        test: /\.(png|svg|jpe?g|gif)$/i,
+        loader: "file-loader",
+        options: {
+          name: "[contenthash].[ext]",
+        },
+      },
     ],
   },
   plugins: [
@@ -52,24 +60,15 @@ module.exports = {
       template: "./public/index.html",
       filename: "index.html",
     }),
-		new MiniCssExtractPlugin({
-			filename: '[name].css'
-		}),
-    new CopyPlugin({
-      patterns: [
-        {
-          from: path.resolve(__dirname, "src", "assets/logos"),
-          to: "assets/logos",
-        },
-        {
-          from: path.resolve(__dirname, "src", "assets/icons"),
-          to: "assets/icons",
-        },
-        {
-          from: path.resolve(__dirname, "src", "assets/fonts"),
-          to: "assets/fonts",
-        },
-      ],
+    new MiniCssExtractPlugin({
+      filename: "[name].css",
     }),
   ],
+  devServer: {
+    static: path.join(__dirname, "dist"),
+    historyApiFallback: true,
+    compress: true,
+    open: true,
+    port: 3080,
+  },
 };
