@@ -1,5 +1,8 @@
-import React, { useState, useLayoutEffect } from "react";
+import React, { useState, useContext, useLayoutEffect } from "react";
 
+import AppContext from "@context/AppContext";
+
+import MyOrder from "@containers/MyOrder";
 import Menu from "@components/Menu";
 
 import "@styles/Header.scss";
@@ -9,11 +12,9 @@ import logo from "@logos/logo_yard_sale.svg";
 import shoppingCart from "@icons/icon_shopping_cart.svg";
 
 const Header = () => {
-  const [toggle, setToogle] = useState(false);
-
-  const handleToggle = () => {
-    setToogle(!toggle);
-  };
+  const [toggleOrder, setToggleOrder] = useState(false);
+  const [toggle, setToggle] = useState(false);
+  const { state } = useContext(AppContext);
 
   useLayoutEffect(() => {
     window.addEventListener("resize", () => {
@@ -51,17 +52,21 @@ const Header = () => {
       </div>
       <div className="navbar-right">
         <ul>
-          <li className="navbar-email" onClick={handleToggle}>
+          <li className="navbar-email" onClick={() => setToggle(!toggle)}>
             platzi@example.com
           </li>
-          <li className="navbar-shopping-cart">
+          <li
+            className="navbar-shopping-cart"
+            onClick={() => setToggleOrder(!toggleOrder)}
+          >
             <img src={shoppingCart} alt="shopping cart" />
-            <div>2</div>
+            {state.cart.length > 0 ? <div>{state.cart.length}</div> : null}
           </li>
         </ul>
       </div>
 
-      {toggle ? <Menu /> : null}
+      {toggleOrder && <MyOrder />}
+      {toggle && <Menu />}
     </nav>
   );
 };
