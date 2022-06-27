@@ -8,12 +8,13 @@ const Login = () => {
   const form = useRef(null);
 
   const handleSubmit = (event) => {
-		event.preventDefault()
+    event.preventDefault();
     const formData = new FormData(form.current);
     const data = {
       username: formData.get("email"),
       password: formData.get("password"),
     };
+
     console.log(data);
   };
   return (
