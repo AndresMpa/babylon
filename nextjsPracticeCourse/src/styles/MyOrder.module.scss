@@ -11,7 +11,7 @@
 	bottom: 0;
 	border-radius: 6px;
 	border: 1px solid $very-light-pink;
-	z-index: 10;
+	height: 90vh;
 }
 .title-container {
 	display: flex;
@@ -24,6 +24,10 @@
 	font-size: $lg;
 	font-weight: bold;
 	margin-left: 14px;
+}
+.my-order-content {
+	max-height: 51.5vh;
+	overflow-y: auto;
 }
 .order {
 	display: grid;
