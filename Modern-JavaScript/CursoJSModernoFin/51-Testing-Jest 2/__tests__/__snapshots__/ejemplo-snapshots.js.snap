@@ -1,9 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`Testing al cliente Es Juan pablo 1`] = `
-Object {
-  "balance": 500,
-  "nombre": "Juan 2",
-  "tipo": "Premium",
-}
-`;
