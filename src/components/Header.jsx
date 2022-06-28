@@ -26,7 +26,7 @@ const Header = () => {
     <nav className={styles.header}>
       <Image className={styles.menu} layout="intrinsic" alt="menu" src={menu} />
       <div className={styles['navbar-left']}>
-        <Link href={"/"}>
+        <Link href={'/'}>
           <Image
             className={styles['nav-logo']}
             layout="intrinsic"
@@ -35,24 +35,24 @@ const Header = () => {
           />
         </Link>
         <ul>
-          <li>
-            <a href="/">All</a>
-          </li>
-          <li>
-            <a href="/">Clothes</a>
-          </li>
-          <li>
-            <a href="/">Electronics</a>
-          </li>
-          <li>
-            <a href="/">Furnitures</a>
-          </li>
-          <li>
-            <a href="/">Toys</a>
-          </li>
-          <li>
-            <a href="/">Others</a>
-          </li>
+          <Link href={'/'}>
+            <li>All</li>
+          </Link>
+          <Link href={'/'}>
+            <li>Clothes</li>
+          </Link>
+          <Link href={'/'}>
+            <li>Electronics</li>
+          </Link>
+          <Link href={'/'}>
+            <li>Furnitures</li>
+          </Link>
+          <Link href={'/'}>
+            <li>Toys</li>
+          </Link>
+          <Link href={'/'}>
+            <li>Others</li>
+          </Link>
         </ul>
       </div>
       <div className={styles['navbar-right']}>

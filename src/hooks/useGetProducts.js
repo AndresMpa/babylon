@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
-const useGetProducts = (API) => {
+const useGetProducts = () => {
+  const API = process.env.NEXT_PUBLIC_API
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
