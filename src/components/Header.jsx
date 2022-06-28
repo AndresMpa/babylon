@@ -35,24 +35,24 @@ const Header = () => {
           />
         </Link>
         <ul>
-          <Link href={'/'}>
-            <li>All</li>
-          </Link>
-          <Link href={'/'}>
-            <li>Clothes</li>
-          </Link>
-          <Link href={'/'}>
-            <li>Electronics</li>
-          </Link>
-          <Link href={'/'}>
-            <li>Furnitures</li>
-          </Link>
-          <Link href={'/'}>
-            <li>Toys</li>
-          </Link>
-          <Link href={'/'}>
-            <li>Others</li>
-          </Link>
+          <li>
+            <Link href={'/'}>All</Link>
+          </li>
+          <li>
+            <Link href={'/'}>Clothes</Link>
+          </li>
+          <li>
+            <Link href={'/'}>Electronics</Link>
+          </li>
+          <li>
+            <Link href={'/'}>Furnitures</Link>
+          </li>
+          <li>
+            <Link href={'/'}>Toys</Link>
+          </li>
+          <li>
+            <Link href={'/'}>Others</Link>
+          </li>
         </ul>
       </div>
       <div className={styles['navbar-right']}>

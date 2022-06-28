@@ -7,15 +7,15 @@ const Menu = () => {
   return (
     <div className={styles.Menu}>
       <ul>
-        <Link href={'/'}>
-          <li className={styles.title}>My orders</li>
-        </Link>
-        <Link href={'/'}>
-          <li>My account</li>
-        </Link>
-        <Link href={'/'}>
-          <li>Sign out</li>
-        </Link>
+        <li className={styles.title}>
+          <Link href={'/'}>My orders</Link>
+        </li>
+        <li>
+          <Link href={'/'}>My account</Link>
+        </li>
+        <li>
+          <Link href={'/'}>Sign out</Link>
+        </li>
       </ul>
     </div>
   );
