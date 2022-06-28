@@ -24,7 +24,7 @@ const Header = () => {
 
   return (
     <nav className={styles.header}>
-      <Image className={styles.menu} layout="intrinsic" alt="menu" src={menu} />
+      <img className={styles.menu} layout="intrinsic" alt="menu" src={menu.src} />
       <div className={styles['navbar-left']}>
         <Link href={'/'}>
           <Image
