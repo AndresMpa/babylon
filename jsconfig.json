@@ -8,6 +8,7 @@
       "@templates/*": ["templates/*"],
       "@context/*": ["context/*"],
       "@hooks/*": ["hooks/*"],
+      "@util/*": ["util/*"],
       "@styles/*": ["styles/*"],
       "@assets/*": ["assets/*"],
       "@icons/*": ["assets/icons/*"],

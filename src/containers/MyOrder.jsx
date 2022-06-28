@@ -8,17 +8,12 @@ import OrderItem from '@components/OrderItem';
 
 import arrow from '@icons/flechita.svg';
 
+import { sumTotal } from "@util/cart.js"
+
 import styles from '@styles/MyOrder.module.scss';
 
 const MyOrder = () => {
   const { state } = useContext(AppContext);
-
-  const sumTotal = () => {
-    const reducer = (accumalator, currentValue) =>
-      accumalator + currentValue.price;
-    const sum = state.cart.reduce(reducer, 0);
-    return sum;
-  };
 
   return (
     <aside className={styles.MyOrder}>
@@ -35,7 +30,7 @@ const MyOrder = () => {
         <p>
           <span>Total</span>
         </p>
-        <p>${sumTotal()}</p>
+        <p>${sumTotal(state.cart)}</p>
       </div>
       <Link href={'/checkout'}>
         <button className={styles['primary-button']}>Checkout</button>
