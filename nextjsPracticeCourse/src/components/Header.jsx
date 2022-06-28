@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 import AppContext from '@context/AppContext';
 import MyOrder from '@containers/MyOrder';
@@ -23,9 +24,16 @@ const Header = () => {
 
   return (
     <nav className={styles.header}>
-      <Image src={menu} alt="menu" className={styles.menu} />
+      <Image className={styles.menu} layout="intrinsic" alt="menu" src={menu} />
       <div className={styles['navbar-left']}>
-        <Image src={logo} alt="logo" className={styles['nav-logo']} />
+        <Link href={"/"}>
+          <Image
+            className={styles['nav-logo']}
+            layout="intrinsic"
+            src={logo}
+            alt="logo"
+          />
+        </Link>
         <ul>
           <li>
             <a href="/">All</a>
@@ -52,8 +60,11 @@ const Header = () => {
           <li className={styles['navbar-email']} onClick={handleToggle}>
             platzi@example.com
           </li>
-          <li className={styles['navbar-shopping-cart']} onClick={() => setToggleOrders(!toggleOrders)}>
-            <Image src={shoppingCart} alt="Shopping cart" />
+          <li
+            className={styles['navbar-shopping-cart']}
+            onClick={() => setToggleOrders(!toggleOrders)}
+          >
+            <Image alt="Shopping cart" src={shoppingCart} />
             {state.cart.length > 0 ? <div>{state.cart.length}</div> : null}
           </li>
         </ul>

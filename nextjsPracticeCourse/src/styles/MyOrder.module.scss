@@ -11,6 +11,7 @@
 	bottom: 0;
 	border-radius: 6px;
 	border: 1px solid $very-light-pink;
+	z-index: 10;
 }
 .title-container {
 	display: flex;
@@ -22,6 +23,7 @@
 .title {
 	font-size: $lg;
 	font-weight: bold;
+	margin-left: 14px;
 }
 .order {
 	display: grid;

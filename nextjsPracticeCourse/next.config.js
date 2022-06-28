@@ -1,7 +1,10 @@
 module.exports = {
   reactStrictMode: true,
+  images: {
+    domains: ['api.lorem.space', 'images.pexels.com', 'placeimg.com'],
+  },
   /*  env: {*/
-  /*customKey: 'customValue',*/
+  /*PlatziApi: 'https://api.escuelajs.co/api/v1/products',*/
   /*},*/
   /*basePath: '/build',*/
   /*compress: true,*/

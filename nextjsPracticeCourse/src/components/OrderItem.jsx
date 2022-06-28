@@ -14,14 +14,33 @@ const OrderItem = ({ product }) => {
     removeFromCart(product);
   };
 
+  const handleOnError = () => {
+    console.log(product);
+    setImgSrc(close);
+  };
+
   return (
     <div className={styles.OrderItem}>
       <figure>
-        <Image src={product.images[0]} alt={product.title} />
+        {product && (
+          <Image
+            onError={handleOnError}
+            src={product?.images[0]}
+            alt={product?.title}
+            layout="responsive"
+            height={35}
+            width={35}
+          />
+        )}
       </figure>
-      <p>{product.title}</p>
-      <p>${product.price}</p>
-      <Image src={close} alt="close" onClick={() => handleRemove(product)} />
+      <p>{product?.title}</p>
+      <p>${product?.price}</p>
+      <Image
+        className={(styles.pointer, styles['more-clickable-area'])}
+        onClick={() => handleRemove(product)}
+        src={close}
+        alt="close"
+      />
     </div>
   );
 };

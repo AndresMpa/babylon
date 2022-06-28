@@ -1,7 +1,8 @@
 import React, { useContext } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 
-import AppContext from '../context/AppContext';
+import AppContext from '@context/AppContext';
 
 import OrderItem from '@components/OrderItem';
 
@@ -13,7 +14,8 @@ const MyOrder = () => {
   const { state } = useContext(AppContext);
 
   const sumTotal = () => {
-    const reducer = (accumalator, currentValue) => accumalator + currentValue.price;
+    const reducer = (accumalator, currentValue) =>
+      accumalator + currentValue.price;
     const sum = state.cart.reduce(reducer, 0);
     return sum;
   };
@@ -34,7 +36,9 @@ const MyOrder = () => {
           </p>
           <p>${sumTotal()}</p>
         </div>
-        <button className={styles['primary-button']}>Checkout</button>
+        <Link href={'/checkout'}>
+          <button className={styles['primary-button']}>Checkout</button>
+        </Link>
       </div>
     </aside>
   );
