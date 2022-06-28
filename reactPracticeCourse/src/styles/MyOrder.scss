@@ -3,15 +3,16 @@
 .MyOrder {
   width: 360px;
   padding: 24px;
+  background-color: white;
+
+  border-radius: 6px;
+  border: 1px solid var(--very-light-pink);
   box-sizing: border-box;
   position: absolute;
   right: 0;
-  background-color: white;
   top: 60px;
   bottom: auto;
-  border-radius: 6px;
-  overflow-y: auto;
-  border: 1px solid var(--very-light-pink);
+  height: 85vh;
   animation: swipeLeft 0.26s ease;
   .title-container {
     display: flex;
@@ -24,6 +25,10 @@
     font-size: var(--lg);
     font-weight: bold;
     margin-bottom: 20px;
+  }
+  .my-order-content {
+    overflow-y: auto;
+    max-height: 45vh;
   }
   .order {
     display: grid;

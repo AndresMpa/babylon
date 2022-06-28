@@ -2,9 +2,13 @@
 
 nav {
 	display: flex;
-	justify-content: space-between;
-	padding: 0 24px;
+	background-color: white;
 	border-bottom: 1px solid var(--very-light-pink);
+	justify-content: space-between;
+  position: fixed;
+	padding: 0 2%;
+  width: 96%;
+  top: 0;
 }
 .menu {
 	display: none;
