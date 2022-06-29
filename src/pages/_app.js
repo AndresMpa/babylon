@@ -1,5 +1,7 @@
 import Head from 'next/head';
 
+import MainLayout from '@layout/MainLayout';
+
 import '@styles/globals.css';
 
 function MyApp({ Component, pageProps }) {
@@ -8,7 +10,9 @@ function MyApp({ Component, pageProps }) {
       <Head>
         <title>React shop</title>
       </Head>
-      <Component {...pageProps} />
+      <MainLayout>
+        <Component {...pageProps} />
+      </MainLayout>
     </>
   );
 }
