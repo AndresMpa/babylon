@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "export": "next build && next export",
     "start": "next start",
     "lint": "next lint",
     "lint:fix": "eslint src/ --fix"
@@ -15,6 +16,7 @@
     "eslint-plugin-jsx-a11y": "^6.6.0",
     "eslint-plugin-prettier": "^4.1.0",
     "next": "12.1.6",
+    "next-pwa": "^5.5.4",
     "prettier": "^2.7.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",

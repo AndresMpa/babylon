@@ -7,6 +7,8 @@ export default function Home() {
     <>
       <Head>
         <title>Yarn shop</title>
+        <meta charSet="UTF-8" />
+        <link rel="manifest" href="/manifest.json" />
       </Head>
       <ProductList />
     </>
