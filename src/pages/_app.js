@@ -1,3 +1,4 @@
+import { ProvideAuth } from 'hooks/useAuth';
 import Head from 'next/head';
 
 import MainLayout from '@layout/MainLayout';
@@ -10,9 +11,11 @@ function MyApp({ Component, pageProps }) {
       <Head>
         <title>React shop</title>
       </Head>
-      <MainLayout>
-        <Component {...pageProps} />
-      </MainLayout>
+      <ProvideAuth>
+        <MainLayout>
+          <Component {...pageProps} />
+        </MainLayout>
+      </ProvideAuth>
     </>
   );
 }
