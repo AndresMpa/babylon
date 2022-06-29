@@ -1,17 +1,51 @@
+import { useRouter } from 'next/router';
 import { useRef } from 'react';
+import Swal from 'sweetalert2';
+
+import { useAuth } from '@hooks/useAuth';
 
 import { LockClosedIcon } from '@heroicons/react/solid';
 
 export default function LoginPage() {
   const passwordRef = useRef(null);
   const emailRef = useRef(null);
+  const router = useRouter();
+  const auth = useAuth();
 
   const submitHandler = (event) => {
     event.preventDefault();
     const password = passwordRef.current.value;
     const email = emailRef.current.value;
 
-    console.log(email, password);
+    auth
+      .singIn(email, password)
+      .then(() => {
+        router.push('/dashboard');
+        Swal.fire({
+          title: 'Welcome',
+          icon: 'success',
+          confirmButtonText: 'Okay',
+        });
+      })
+      .catch((error) => {
+        if (error.response?.status === 401) {
+          Swal.mixin({
+            toast: true,
+            title: 'Error!',
+            text: `This user doesn't exist, it migth be an error on your user or password`,
+            icon: 'error',
+            confirmButtonText: 'Okay',
+          });
+        } else if (error.resquest) {
+          Swal.mixin({
+            toast: true,
+            title: 'Ups...',
+            text: 'Something went wrong, we are experimenting some toubles, try it later',
+            icon: 'error',
+            confirmButtonText: 'Okay',
+          });
+        }
+      });
   };
 
   return (
@@ -20,8 +54,8 @@ export default function LoginPage() {
         <div className="max-w-md w-full space-y-8">
           <div>
             <img
+              src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
               className="mx-auto h-12 w-auto"
-              src="https://tailwindui.com/img/logos/workflow-mark-indigo-600._"
               alt="Workflow"
             />
             <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">

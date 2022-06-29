@@ -1,4 +1,5 @@
 import React, { useState, useContext, createContext } from 'react';
+import endPoints from '@services/api';
 import Cookies from 'js-cookie';
 import axios from 'axios';
 
@@ -8,7 +9,20 @@ function useProvideAuth() {
   const [user, setUser] = useState(null);
 
   const singIn = async (email, password) => {
-    setUser('Login')
+    const options = {
+      headers: {
+        accept: '*/*',
+        'Content-Type': 'application/json',
+      },
+    };
+    const { data } = await axios.post(
+      endPoints.auth.login,
+      { email, password },
+      options
+    );
+    if (data.access_token) {
+      Cookies.set('token', data.access_token, { expires: 5 });
+    }
   };
 
   return {
