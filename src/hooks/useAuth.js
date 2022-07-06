@@ -15,13 +15,20 @@ function useProvideAuth() {
         'Content-Type': 'application/json',
       },
     };
-    const { data } = await axios.post(
+    const token = await axios.post(
       endPoints.auth.login,
       { email, password },
       options
     );
-    if (data.access_token) {
-      Cookies.set('token', data.access_token, { expires: 5 });
+
+    if (token.access_token) {
+      Cookies.set('token', token.access_token, { expires: 5 });
+
+      axios.defaults.headers.Authorization = `Bearer ${token.access_token}`;
+
+      const loggedUser = await axios.get(endPoints.auth.profile);
+      console.log(loggedUser);
+      setUser(loggedUser);
     }
   };
 
