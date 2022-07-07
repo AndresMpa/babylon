@@ -27,7 +27,6 @@ function useProvideAuth() {
       axios.defaults.headers.Authorization = `Bearer ${token.access_token}`;
 
       const loggedUser = await axios.get(endPoints.auth.profile);
-      console.log(loggedUser);
       setUser(loggedUser);
     }
   };
