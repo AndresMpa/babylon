@@ -20,7 +20,6 @@ function classNames(...classes) {
 
 export default function Header() {
   const auth = useAuth();
-  console.log(auth)
 
   const userData = {
     name: auth?.user?.name,
