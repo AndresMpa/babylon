@@ -1,3 +1,4 @@
+import { ProvidePaginator } from '@hooks/usePaginator';
 import { ProvideAuth } from 'hooks/useAuth';
 import Head from 'next/head';
 
@@ -12,9 +13,11 @@ function MyApp({ Component, pageProps }) {
         <title>React shop</title>
       </Head>
       <ProvideAuth>
-        <MainLayout>
-          <Component {...pageProps} />
-        </MainLayout>
+        <ProvidePaginator>
+          <MainLayout>
+            <Component {...pageProps} />
+          </MainLayout>
+        </ProvidePaginator>
       </ProvideAuth>
     </>
   );
