@@ -1,4 +1,4 @@
-import usePaginator from '@hooks/usePaginator';
+import { usePaginator } from '@hooks/usePaginator';
 
 import { arrayFromNumber } from 'util/index';
 
@@ -9,13 +9,14 @@ const status = [
   'bg-white border-gray-300 text-gray-500 hover:bg-gray-50 relative inline-flex items-center px-4 py-2 border text-sm font-medium',
 ];
 
-const avalibleConstrain = (item) =>
-  current - 2 < item && item < current + 4 ? true : false;
-
 export default function Pagination({ elements, limit }) {
+  const paginator = usePaginator();
+  console.log(paginator.current)
+
   const pivot = arrayFromNumber(elements, limit);
 
-  const paginator = usePaginator();
+  const avalibleConstrain = (item) =>
+    paginator.current - 2 < item && item < paginator.current + 4 ? true : false;
 
   return (
     <div className="bg-white px-4 py-3 flex items-center justify-between border-t border-gray-200 sm:px-6">

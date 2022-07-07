@@ -1,8 +1,10 @@
-import endPoints from '@services/api';
+import { usePaginator } from '@hooks/usePaginator';
 import useFetch from '@hooks/useFetch';
+import endPoints from '@services/api';
 
 import Pagination from '@common/Pagination';
 
+const LIMIT = 8;
 const PRODUCT_LIMIT = 0;
 const PRODUCT_OFFSET = 0;
 
@@ -11,9 +13,13 @@ export default function Dashboard() {
     endPoints.products.getProducts(PRODUCT_LIMIT, PRODUCT_OFFSET)
   );
 
+  let paginator = usePaginator();
+
+  const productsList = products.slice(paginator.current - 1, paginator.current + 8);
+
   return (
     <>
-      <Pagination elements={products} limit={8} />
+      <Pagination elements={products} limit={LIMIT} />
       <div className="flex flex-col">
         <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
           <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
@@ -55,7 +61,7 @@ export default function Dashboard() {
                   </tr>
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200">
-                  {products?.map((product) => (
+                  {productsList?.map((product) => (
                     <tr key={`Product-item-${product.id}`}>
                       <td className="px-6 py-4 whitespace-nowrap">
                         <div className="flex items-center">
