@@ -11,7 +11,6 @@ const status = [
 
 export default function Pagination({ elements, limit }) {
   const paginator = usePaginator();
-  console.log(paginator.current)
 
   const pivot = arrayFromNumber(elements, limit);
 
