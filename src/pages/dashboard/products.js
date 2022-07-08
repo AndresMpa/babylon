@@ -1,11 +1,27 @@
-import { useState } from 'react';
-import { PlusIcon } from '@heroicons/react/solid';
-import Modal from '@common/Modal';
-import FormProduct from '@components/FormProduct';
+import { useEffect, useState } from 'react';
+import endPoints from '@services/api';
+import axios from 'axios';
 
-export default function products() {
-  const [open, setOpen] = useState(false);
+import FormProduct from '@components/FormProduct';
+import Modal from '@common/Modal';
+
+import { PlusIcon } from '@heroicons/react/solid';
+
+export default function Products() {
   const [products, setProducts] = useState([]);
+  const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    async function getProducts() {
+      const response = await axios.get(endPoints.products.getProducts(0, 0));
+      setProducts(response.data);
+    }
+    try {
+      getProducts();
+    } catch (error) {
+      console.error(error);
+    }
+  }, []);
 
   return (
     <>
