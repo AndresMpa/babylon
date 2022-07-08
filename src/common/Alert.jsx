@@ -12,8 +12,8 @@ const Alert = ({ alert, handleClose }) => {
   return (
     <>
       {alert?.active && (
-        <div x-data className="bg-white p-5 w-full rounded mb-8">
-          <div className={`bg-${color} flex space-x-3`}>
+        <div x-data="true" className={`bg-${color} p-5 w-full rounded mb-8`}>
+          <div className="flex space-x-3">
             <div className="flex-1 leading-tight text-sm text-black font-medium">
               {alert.message}
             </div>
