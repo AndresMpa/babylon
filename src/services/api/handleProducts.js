@@ -25,7 +25,7 @@ export const updateProduct = async (id, body) => {
     },
   };
   const response = await axios.put(
-    endPoints.products.putProduct(),
+    endPoints.products.putProduct(id),
     body,
     config
   );
