@@ -8,6 +8,7 @@
       "@common/*": ["common/*"],
       "@layout/*": ["layout/*"],
       "@pages/*": ["pages/*"],
+      "@util/*": ["util/*"],
       "@styles/*": ["styles/*"],
       "@assets/*": ["assets/*"]
     }
