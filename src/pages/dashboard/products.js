@@ -1,13 +1,16 @@
 import { useEffect, useState } from 'react';
+import useAlert from '@hooks/useAlert';
 import endPoints from '@services/api';
 import axios from 'axios';
 
 import FormProduct from '@components/FormProduct';
+import Alert from '@common/Alert';
 import Modal from '@common/Modal';
 
 import { PlusIcon } from '@heroicons/react/solid';
 
 export default function Products() {
+  const { alert, setAlert, toggleAlert } = useAlert()
   const [products, setProducts] = useState([]);
   const [open, setOpen] = useState(false);
 
@@ -21,10 +24,11 @@ export default function Products() {
     } catch (error) {
       console.error(error);
     }
-  }, []);
+  }, [alert]);
 
   return (
     <>
+      <Alert alert={alert} handleClose={toggleAlert} />
       <div className="mb-8 lg:flex lg:items-center lg:justify-between">
         <div className="flex-1 min-w-0">
           <h2 className="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate">
@@ -143,7 +147,7 @@ export default function Products() {
       </div>
 
       <Modal open={open} setOpen={setOpen}>
-        <FormProduct></FormProduct>
+        <FormProduct setOpen={setOpen} setAlert={setAlert} />
       </Modal>
     </>
   );
