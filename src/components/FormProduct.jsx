@@ -1,5 +1,7 @@
+import addProduct from '@services/api/addProducts';
 import { productSchema } from 'util/index';
 import { useRef } from 'react';
+import Swal from 'sweetalert2';
 
 export default function FormProduct() {
   const formRef = useRef(null);
@@ -20,7 +22,18 @@ export default function FormProduct() {
     const validation = await productSchema().isValid(data);
 
     if (validation) {
-      console.log('Can be send');
+      addProduct(data);
+      Swal.fire({
+        icon: 'success',
+        title: 'Product added',
+        confirmButtonText: 'Okay',
+      });
+    } else {
+      Swal.fire({
+        title: 'Something went wrong',
+        confirmButtonText: 'Okay',
+        icon: 'error',
+      });
     }
   };
 
