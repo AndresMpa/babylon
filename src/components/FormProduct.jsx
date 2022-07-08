@@ -1,6 +1,31 @@
+import { productSchema } from 'util/index';
+import { useRef } from 'react';
+
 export default function FormProduct() {
+  const formRef = useRef(null);
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    const formData = new FormData(formRef.current);
+
+    const data = {
+      title: formData.get('title'),
+      price: parseInt(formData.get('price')),
+      description: formData.get('description'),
+      categoryId: parseInt(formData.get('category')),
+      images: [formData.get('images').name],
+    };
+
+    const validation = await productSchema().isValid(data);
+
+    if (validation) {
+      console.log('Can be send');
+    }
+  };
+
   return (
-    <form>
+    <form ref={formRef} onSubmit={handleSubmit}>
       <div className="overflow-hidden">
         <div className="px-4 py-5 bg-white sm:p-6">
           <div className="grid grid-cols-6 gap-6">
@@ -98,8 +123,8 @@ export default function FormProduct() {
                         <input
                           id="images"
                           name="images"
-                          type="file"
                           className="sr-only"
+                          type="file"
                         />
                       </label>
                       <p className="pl-1">or drag and drop</p>
