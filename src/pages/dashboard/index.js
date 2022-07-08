@@ -15,7 +15,10 @@ export default function Dashboard() {
 
   let paginator = usePaginator();
 
-  const productsList = products.slice(paginator.current - 1, paginator.current + 8);
+  const productsList = products.slice(
+    paginator.current - 1,
+    paginator.current + 8
+  );
 
   return (
     <>
