@@ -1,14 +1,21 @@
-import { addProduct } from '@services/api/handleProducts';
+import { addProduct, updateProduct } from '@services/api/handleProducts';
 import { productSchema } from 'util/index';
 import { useEffect, useRef } from 'react';
+import { useRouter } from 'next/router';
+import Swal from 'sweetalert2';
 
 export default function FormProduct({ setAlert, setOpen, product }) {
   const formRef = useRef(null);
+  const router = useRouter();
 
   useEffect(() => {
     const categoryTag = document.querySelector('#category');
     categoryTag.value = product?.category?.id;
   }, [product]);
+
+  const handleRedirection = () => {
+    router.push('/dashboard/products');
+  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -25,25 +32,46 @@ export default function FormProduct({ setAlert, setOpen, product }) {
 
     const validation = await productSchema().isValid(data);
 
-    if (validation) {
-      addProduct(data)
+    if (product) {
+      updateProduct(product.id, data)
         .then(() => {
-          setAlert({
-            message: 'Product added successfully',
-            autoClose: false,
-            type: 'success',
-            active: true,
+          Swal.fire({
+            title: `Great!`,
+            text: `Product ${product.id} updated`,
+            confirmButtonText: 'Okay',
+            icon: 'success',
           });
-          setOpen(false);
+          handleRedirection();
         })
-        .catch((error) => {
-          setAlert({
-            message: error.message,
-            autoClose: false,
-            type: 'error',
-            active: true,
+        .catch(() => {
+          Swal.fire({
+            title: `Oh oh...`,
+            text: `Something went wrong with product ${product.id}`,
+            confirmButtonText: 'Okay',
+            icon: 'error',
           });
         });
+    } else {
+      if (validation) {
+        addProduct(data)
+          .then(() => {
+            setAlert({
+              message: 'Product added successfully',
+              autoClose: false,
+              type: 'success',
+              active: true,
+            });
+            setOpen(false);
+          })
+          .catch((error) => {
+            setAlert({
+              message: error.message,
+              autoClose: false,
+              type: 'error',
+              active: true,
+            });
+          });
+      }
     }
   };
 
@@ -172,6 +200,13 @@ export default function FormProduct({ setAlert, setOpen, product }) {
             className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
           >
             Save
+          </button>
+          <button
+            type="button"
+            onClick={() => handleRedirection()}
+            className="inline-flex justify-center py-2 px-4 mx-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+          >
+            Cancel
           </button>
         </div>
       </div>

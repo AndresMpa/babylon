@@ -2,6 +2,7 @@ import { deleteProduct } from '@services/api/handleProducts';
 import { useEffect, useState } from 'react';
 import useAlert from '@hooks/useAlert';
 import endPoints from '@services/api';
+import Link from 'next/link';
 import axios from 'axios';
 
 import FormProduct from '@components/FormProduct';
@@ -142,12 +143,11 @@ export default function Products() {
                         $ {product.price}
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                        <a
-                          className="text-indigo-600 hover:text-indigo-900"
-                          href="#"
-                        >
-                          Edit
-                        </a>
+                        <Link href={`/dashboard/edit/${product.id}`}>
+                          <button className="text-indigo-600 hover:text-indigo-900">
+                            Edit
+                          </button>
+                        </Link>
                       </td>
 
                       <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
