@@ -26,7 +26,7 @@ export default function Edit() {
     if (router.isReady) {
       getProduct();
     }
-  }, [router?.isReady]);
+  }, [router?.isReady, router.query]);
 
   return <>{notFound ? <NotFound /> : <FormProduct product={product} />}</>;
 }
