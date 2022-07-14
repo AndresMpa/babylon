@@ -5,6 +5,7 @@ const {
   logError,
   errorHandler,
   boomErrorHandler,
+  sequelizeErrorHandler,
 } = require('./middlewares/error.handler');
 
 const PORT = process.env.PORT || 3000;
@@ -34,6 +35,7 @@ app.use(cors(origins));
 routerApi(app);
 
 app.use(logError);
+app.use(sequelizeErrorHandler);
 app.use(boomErrorHandler);
 app.use(errorHandler);
 
