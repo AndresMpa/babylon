@@ -34,6 +34,7 @@
   "dependencies": {
     "@hapi/boom": "^10.0.0",
     "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
     "express": "^4.18.1",
     "faker": "^5.5.3",
     "joi": "^17.6.0",
