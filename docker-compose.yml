@@ -3,8 +3,9 @@ version: '3.3'
 services:
   postgres:
     image: postgres:13
+    container_name: postgres
     environment:
-      - POSTGRES_DB=my_store
+      - POSTGRES_DB=store
       - POSTGRES_USER=admin
       - POSTGRES_PASSWORD=admin123
     ports:
@@ -14,6 +15,7 @@ services:
 
   pgadmin:
     image: dpage/pgadmin4
+    container_name: pgadmin
     environment:
       - PGADMIN_DEFAULT_EMAIL=admin@mail.com
       - PGADMIN_DEFAULT_PASSWORD=root
