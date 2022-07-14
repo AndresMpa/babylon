@@ -9,6 +9,7 @@ node_modules/
 
 # Other files and folders
 .settings/
+postgres_data/
 
 # Executables
 *.swf
