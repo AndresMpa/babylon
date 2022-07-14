@@ -11,3 +11,10 @@ and some other interesting things, so it's really useful
 Those both are the greatest ORM avalible on JS and TS, TypeORM
 is better for TS while Sequelize is more used on JS; still both
 of the make almost the same
+
+## Sequelize
+
+Using Sequelize you can parametrice almost everything so it helps
+you switch quicky from on RDMS to other if it is needed; also
+make easier connection process, in Sequelize connection are a
+driven by a singleton like pool connections on Postgres
