@@ -7,7 +7,7 @@ const config = {
   dbPassword:  process.env.DB_PASSWORD,
   dbHost:  process.env.DB_HOST,
   dbName:  process.env.DB_NAME,
-  dbPort:  process.env.DB_PORT,
+  dbPort:  process.env.MYSQL_PORT,
 }
 
 module.exports = { config };

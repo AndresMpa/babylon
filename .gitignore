@@ -10,6 +10,7 @@ node_modules/
 # Other files and folders
 .settings/
 postgres_data/
+mysql_data/
 
 # Executables
 *.swf
