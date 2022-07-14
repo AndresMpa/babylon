@@ -9,7 +9,7 @@ services:
       - POSTGRES_USER=${DB_USER}
       - POSTGRES_PASSWORD=${DB_PASSWORD}
     ports:
-      - ${POSTGRES_PORT}:${POSTGRES_PORT}
+      - ${DB_PORT}:${DB_PORT}
     volumes:
       - ./postgres_data:/var/lib/postgresql/data
 
@@ -17,21 +17,20 @@ services:
     image: dpage/pgadmin4
     container_name: pgadmin
     environment:
-      - PGADMIN_DEFAULT_EMAIL=${PGADMIN_EMAIL}
-      - PGADMIN_DEFAULT_PASSWORD=${PGADMIN_PASSWORD}
+      - PGADMIN_DEFAULT_EMAIL=admin@mail.com
+      - PGADMIN_DEFAULT_PASSWORD=root
     ports:
-      - ${PG_PORT}:${PG_REF_PORT}
+      - 5050:80
 
   mysql:
     image: mysql:5
     container_name: mysql
     environment:
-      - MYSQL_DATABASE=${DB_NAME}
-      - MYSQL_USER=${DB_USER}
-      - MYSQL_ROOT_PASSWORD=${DB_PASSWORD}
-      - MYSQL_PORT=${MYSQL_PORT}
+      - MYSQL_DATABASE=store
+      - MYSQL_ROOT_PASSWORD=admin123
+      - MYSQL_PORT=3306
     ports:
-      - ${MYSQL_PORT}:${MYSQL_PORT}
+      - 3306:3306
     volumes:
       - ./mysql_data:/var/lib/mysql
 
@@ -39,9 +38,7 @@ services:
     image: phpmyadmin/phpmyadmin
     container_name: pma
     environment:
-      - MYSQL_ROOT_PASSWORD=${DB_PASSWORD}
+      - MYSQL_ROOT_PASSWORD=admin123
       - PMA_HOST=mysql
     ports:
       - 8080:80
-
-
