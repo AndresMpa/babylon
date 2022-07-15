@@ -59,3 +59,10 @@ As you might remember, N:N relations come with a special table called
 join (or pivot) table, containing both IDs of those tables involved in
 the relation; this is really common on SQL, in Sequelize there's a
 method called belongsToMany() created to handle this process
+
+#### Virtual data
+
+In some cases we can use virtual datatypes to calculate things, this is
+not a good idea for those queries that are too big or those that may
+take too much time, it's useful for small quantities, like shopping carts
+and that stuff
