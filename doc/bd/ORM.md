@@ -51,4 +51,11 @@ of them uses the method over the other (Entity (1) -> (N) Weak Entity);
 in this case the method used for 1:N relations is hasMany(), but it
 also need of belongsTo() to make the relation on the weak Entity, in
 other words; Entity (1) uses hasMany() -> while (N) weak Entity uses
-belongsTo()
+belongsTo(). This relation can also use "include" statement
+
+### Many to Many relations
+
+As you might remember, N:N relations come with a special table called
+join (or pivot) table, containing both IDs of those tables involved in
+the relation; this is really common on SQL, in Sequelize there's a
+method called belongsToMany() created to handle this process
