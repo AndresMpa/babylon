@@ -21,3 +21,9 @@ sometimes it can get you into troubles
 This is a Singleton on 'pg' module, it helps postgres to connect faster
 to our DB also it's easier to use than Client, client starts a new connection
 everytime you use it, but Pool doesn't
+
+## pgadmin
+
+This is a service just like phpmyadmin, it's really useful to handle postgres
+from containers, but it's a really slow service, take your time, it'll take its
+time

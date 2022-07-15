@@ -18,3 +18,12 @@ Using Sequelize you can parametrice almost everything so it helps
 you switch quicky from on RDMS to other if it is needed; also
 make easier connection process, in Sequelize connection are a
 driven by a singleton like pool connections on Postgres
+
+## Migrations
+
+Migrations are like version controls on BD, those are large pieces
+of code that allow ORM to make changes on BD tables, they are really
+useful, sometimes Migrations can change critical information, that's
+why Sequelize suggests not to use sync() method, this method run
+Migrations when we start the service so it is okay for development mode,
+but it's a bad idea on production this is quite dangerous
