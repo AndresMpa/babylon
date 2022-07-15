@@ -43,3 +43,12 @@ other table (Primary key owner), while hasOne handle foreign keys. Onces
 the relation is on the RDMS, we can use "include", which is a parameter
 to tell sequelize to remember to bring us data from those relations on
 that table (include is an array passed on a json inside the queries)
+
+### One to Many relations
+
+CONSTRATINS, weak entities will recive the relation, it means that one
+of them uses the method over the other (Entity (1) -> (N) Weak Entity);
+in this case the method used for 1:N relations is hasMany(), but it
+also need of belongsTo() to make the relation on the weak Entity, in
+other words; Entity (1) uses hasMany() -> while (N) weak Entity uses
+belongsTo()
