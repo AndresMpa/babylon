@@ -11,7 +11,10 @@ class OrderService {
   }
 
   async find() {
-    return [];
+    const orders = await models.Order.findAll({
+      include: ['customer'],
+    });
+    return orders;
   }
 
   async findOne(id) {
@@ -23,6 +26,9 @@ class OrderService {
         },
       ],
     });
+    if (!order) {
+      throw boom.notFound('Order not found');
+    }
     return order;
   }
 

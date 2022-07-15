@@ -11,6 +11,15 @@ const {
 
 const service = new OrderService();
 
+router.get('/', async (req, res, next) => {
+  try {
+    const order = await service.find();
+    res.json(order);
+  } catch (error) {
+    next(error);
+  }
+});
+
 router.get(
   '/:id',
   validatorHandler(getOrderSchema, 'params'),
