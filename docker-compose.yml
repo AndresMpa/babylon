@@ -5,11 +5,11 @@ services:
     image: postgres:13
     container_name: postgres
     environment:
-      - POSTGRES_DB=${DB_NAME}
-      - POSTGRES_USER=${DB_USER}
-      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_DB=store
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin123
     ports:
-      - ${DB_PORT}:${DB_PORT}
+      - 5000:5432
     volumes:
       - ./postgres_data:/var/lib/postgresql/data
 
@@ -21,24 +21,3 @@ services:
       - PGADMIN_DEFAULT_PASSWORD=root
     ports:
       - 5050:80
-
-  mysql:
-    image: mysql:5
-    container_name: mysql
-    environment:
-      - MYSQL_DATABASE=store
-      - MYSQL_ROOT_PASSWORD=admin123
-      - MYSQL_PORT=3306
-    ports:
-      - 3306:3306
-    volumes:
-      - ./mysql_data:/var/lib/mysql
-
-  phpmyadmin:
-    image: phpmyadmin/phpmyadmin
-    container_name: pma
-    environment:
-      - MYSQL_ROOT_PASSWORD=admin123
-      - PMA_HOST=mysql
-    ports:
-      - 8080:80
