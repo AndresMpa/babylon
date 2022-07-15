@@ -6,20 +6,25 @@ const validatorHandler = require('./../middlewares/validator.handler');
 
 const {
   getProductSchema,
+  queryProductSchema,
   updateProductSchema,
   createProductSchema,
 } = require('./../schemas/product.schema');
 
 const service = new ProductsService();
 
-router.get('/', async (req, res, next) => {
-  try {
-    const products = await service.find();
-    res.json(products);
-  } catch (error) {
-    next(error);
+router.get(
+  '/',
+  validatorHandler(queryProductSchema, 'query'),
+  async (req, res, next) => {
+    try {
+      const products = await service.find(req.query);
+      res.json(products);
+    } catch (error) {
+      next(error);
+    }
   }
-});
+);
 
 router.get(
   '/:id',
