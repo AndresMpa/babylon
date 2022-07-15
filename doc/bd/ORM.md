@@ -27,3 +27,19 @@ useful, sometimes Migrations can change critical information, that's
 why Sequelize suggests not to use sync() method, this method run
 Migrations when we start the service so it is okay for development mode,
 but it's a bad idea on production this is quite dangerous
+
+## Relactions
+
+ORMs allows you to trigger relations between tables, in Sequelize this
+can be done really easy, there are some methods to do it, those create
+a link between code and RDMS, to trigger those relations while creating,
+searching or updating tables
+
+### One to One relations
+
+To handle this kind of relations we use 2 methods, belongsTo() & hasOne();
+belongsTo is used to make relations from the table invokes it to some
+other table (Primary key owner), while hasOne handle foreign keys. Onces
+the relation is on the RDMS, we can use "include", which is a parameter
+to tell sequelize to remember to bring us data from those relations on
+that table (include is an array passed on a json inside the queries)
