@@ -6,6 +6,7 @@ const productsRouter = require('./products.router');
 const ordersRouter = require('./orders.router');
 const usersRouter = require('./users.router');
 const baseRouter = require('./base.router');
+const authRouter = require('./auth.router');
 
 function routerApi(app) {
   // Over writting efault base path
@@ -17,6 +18,7 @@ function routerApi(app) {
   router.use('/products', productsRouter);
   router.use('/orders', ordersRouter);
   router.use('/users', usersRouter);
+  router.use('/auth', authRouter);
   router.use('/', baseRouter);
 }
 

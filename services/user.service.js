@@ -1,6 +1,6 @@
 const boom = require('@hapi/boom');
-const { decode, encode } = require('../auth');
 const { models } = require('../libs/sequelize');
+const { encode } = require('../utils/encryption');
 
 class UserService {
   constructor() {}
@@ -18,6 +18,13 @@ class UserService {
   async find() {
     const res = await models.User.findAll({
       include: ['customer'],
+    });
+    return res;
+  }
+
+  async findByEmail(email) {
+    const res = await models.User.findOne({
+      where: { email },
     });
     return res;
   }

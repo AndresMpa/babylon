@@ -31,6 +31,7 @@ const origins = {
 };
 
 app.use(cors(origins));
+require('./utils/auth')
 
 routerApi(app);
 

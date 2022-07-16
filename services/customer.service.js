@@ -1,6 +1,6 @@
 const boom = require('@hapi/boom');
-const { decode, encode } = require('../auth');
 const { models } = require('../libs/sequelize');
+const { encode } = require('../utils/encryption');
 
 class CustomerService {
   constructor() {}
@@ -32,7 +32,6 @@ class CustomerService {
     const newCustomer = await models.Customer.create(newData, {
       include: ['user'],
     });
-    console.log(newCustomer);
     delete newCustomer.user.dataValues.password;
     return newCustomer;
   }
