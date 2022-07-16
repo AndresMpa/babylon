@@ -11,6 +11,7 @@ node_modules/
 .settings/
 postgres_data/
 mysql_data/
+.env
 
 # Executables
 *.swf
