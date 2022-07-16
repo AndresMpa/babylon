@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const passport = require('passport');
+const { signToken } = require('./../utils/jwt');
 
 router.post(
   '/login',
@@ -8,7 +9,16 @@ router.post(
   }),
   async (req, res, next) => {
     try {
-      res.json(req.user);
+      const user = req.user;
+      const payload = {
+        sub: user.id,
+        role: user.role,
+      };
+      const token = signToken(payload);
+      res.json({
+        user,
+        token,
+      });
     } catch (error) {
       next(error);
     }
