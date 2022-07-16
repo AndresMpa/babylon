@@ -35,12 +35,60 @@ class AuthService {
     };
   }
 
-  async sendMail(email) {
+  async changePassword(token, newPassword) {
+    try {
+      const payload = jwt.verify(token, config.jwtSecret);
+      const user = await service.findOne(payload.sub);
+      if (user.recoveryToken !== token) {
+        throw boom.unauthorized();
+      }
+      const hash = await bcrypt.hash(newPassword, 10);
+      await service.update(user.id, { recoveryToken: null, password: hash });
+      return { message: 'password changed' };
+    } catch (error) {
+      throw boom.unauthorized();
+    }
+  }
+
+  async sendRecovery(email) {
     const user = await service.findByEmail(email);
     if (!user) {
       throw boom.unauthorized();
     }
 
+    const payload = { sub: user.id };
+
+    const token = jwt.sign(payload, config.jwtSecret, {
+      expiresIn: '15min',
+    });
+
+    const link = `https://myfrontend.com/recovery?token=${token}`;
+    console.log(token);
+
+    await service.update(user.id, { recoveryToken: token });
+
+    const mail = {
+      from: config.mailerEmail,
+      to: `${user.email}`,
+      subject: 'Recovery password',
+      html: `
+      <h3>Hey there, this mail is to recover your password</h3>
+
+      <br />
+
+      <p>Please enter this <a href="${link}">link</a></p>
+
+      <br />
+
+      <p>If there's any troubble click here ${link}</p>
+      `,
+    };
+
+    const response = await this.sendMail(mail);
+    return response;
+  }
+
+  async sendMail(infoMail) {
     const transporter = nodemailer.createTransport({
       host: 'smtp.gmail.com',
       secure: true,
@@ -51,14 +99,7 @@ class AuthService {
       },
     });
 
-    await transporter.sendMail({
-      from: config.mailerEmail,
-      to: `${user.email}`,
-      subject: 'Recovery password',
-      text: 'Hey there, this mail is to recover your password',
-      html: `<h1>Hey there, this mail is to recover your password</h1>`,
-    });
-
+    await transporter.sendMail(infoMail);
     return { message: 'Mail sent' };
   }
 }

@@ -20,8 +20,18 @@ router.post(
 router.post('/recovery', async (req, res, next) => {
   try {
     const { email } = req.body;
-    const mail = await service.sendMail(email);
+    const mail = await service.sendRecovery(email);
     res.json(mail);
+  } catch (error) {
+    next(error);
+  }
+});
+
+router.post('/change-password', async (req, res, next) => {
+  try {
+    const { token, newPassword } = req.body;
+    const user = await service.changePassword(token, newPassword);
+    res.json(user);
   } catch (error) {
     next(error);
   }
