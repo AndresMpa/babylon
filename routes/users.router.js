@@ -1,7 +1,5 @@
 const router = require('express').Router();
 
-const UserService = require('./../services/user.service');
-
 const validatorHandler = require('./../middlewares/validator.handler');
 const {
   updateUserSchema,
@@ -9,6 +7,7 @@ const {
   getUserSchema,
 } = require('./../schemas/user.schema');
 
+const UserService = require('./../services/user.service');
 const service = new UserService();
 
 router.get('/', async (req, res, next) => {

@@ -1,8 +1,5 @@
 const router = require('express').Router();
-
 const passport = require('passport');
-
-const CategoryService = require('./../services/category.service');
 
 const validatorHandler = require('./../middlewares/validator.handler');
 const { checkRoles } = require('./../middlewares/auth.handler');
@@ -13,6 +10,7 @@ const {
   updateCategorySchema,
 } = require('./../schemas/category.schema');
 
+const CategoryService = require('./../services/category.service');
 const service = new CategoryService();
 
 router.get('/', async (req, res, next) => {

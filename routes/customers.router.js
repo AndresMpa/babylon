@@ -1,7 +1,5 @@
 const router = require('express').Router();
 
-const CustomerService = require('../services/customer.service');
-
 const validationHandler = require('../middlewares/validator.handler');
 
 const {
@@ -10,6 +8,7 @@ const {
   updateCustomerSchema,
 } = require('../schemas/customer.schema');
 
+const CustomerService = require('../services/customer.service');
 const service = new CustomerService();
 
 router.get('/', async (req, res, next) => {

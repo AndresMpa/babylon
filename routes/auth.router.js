@@ -1,6 +1,6 @@
+const { signToken } = require('./../utils/jwt');
 const router = require('express').Router();
 const passport = require('passport');
-const { signToken } = require('./../utils/jwt');
 
 router.post(
   '/login',
