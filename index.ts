@@ -1,4 +1,10 @@
-import { arrayInstance } from "./structures/ArrayFromScratch";
+import HashTable from "./structures/HashTable";
 
-arrayInstance.push("Hola");
-console.log(arrayInstance.get(0));
+const hashTable: HashTable = new HashTable(50);
+
+hashTable.set("AndresMpa", 20);
+hashTable.get("AndresMpa")
+
+console.log(hashTable)
+
+
