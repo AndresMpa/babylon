@@ -1,4 +1,4 @@
-const { arrayInstance } = require("../structures/ArrayFromScratch");
+import { arrayInstance } from "../structures/ArrayFromScratch";
 
 const testSetUp = () => {
   arrayInstance.push("Hello");

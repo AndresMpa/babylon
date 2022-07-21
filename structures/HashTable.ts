@@ -19,7 +19,7 @@ class HashTable {
     this.data[address].push([key, value]);
     return this.data;
   }
-  get(key: string) {
+  get(key: string): any {
     const address = this.hashMethod(key);
     const currentBucket = this.data[address];
     if (currentBucket) {
@@ -31,6 +31,35 @@ class HashTable {
       }
     }
     return undefined;
+  }
+  getHashes(): Array<number> {
+    const avalibleHashes = [];
+    let index = 0;
+    for (index; index < this.data.length; index++) {
+      if (this.data[index]) {
+        avalibleHashes.push(index);
+      }
+    }
+    return avalibleHashes;
+  }
+  deleteByKey(key?: string) {
+    const address = this.hashMethod(key);
+    const currentBucket = this.data[address];
+    if (currentBucket) {
+      let item = 0;
+      for (item; item < currentBucket.length; item++) {
+        if (currentBucket[item][0] === key) {
+          let removed = currentBucket[item]
+          currentBucket[item] = [];
+          return removed
+        }
+      }
+    }
+  }
+  deleteByHash(hash?: string): any {
+    const removed = this.data[hash];
+    delete this.data[hash];
+    return removed ? removed : false;
   }
 }
 
