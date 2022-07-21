@@ -1,11 +1,4 @@
-class Node {
-  next: any;
-  value: any;
-  constructor(value: any) {
-    this.value = value;
-    this.next = null;
-  }
-}
+import Node from "./Node";
 
 class SinglyLinkedList {
   head: any;
