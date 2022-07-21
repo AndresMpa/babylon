@@ -36,7 +36,7 @@ class Queue {
     this.first = this.first.next;
     this.length--;
 
-    return this;
+    return this.first;
   }
 }
 
