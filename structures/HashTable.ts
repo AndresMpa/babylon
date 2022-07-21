@@ -3,7 +3,7 @@ class HashTable {
   constructor(size: number) {
     this.data = new Array(size);
   }
-  hashMethod(key: string) {
+  private hashMethod(key: string) {
     let hash = 0;
     let item = 0;
     for (item; item < key.length; item++) {
