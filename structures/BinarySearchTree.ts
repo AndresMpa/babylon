@@ -21,7 +21,6 @@ class BinarySearchTree {
     } else {
       let currentNode = this.root;
       while (true) {
-        console.log(value, currentNode.value)
         if (value < currentNode.value) {
           if (!currentNode.left) {
             currentNode.left = newNode;
@@ -32,6 +31,35 @@ class BinarySearchTree {
           if (!currentNode.right) {
             currentNode.right = newNode;
             return newNode;
+          }
+          currentNode = currentNode.right;
+        }
+      }
+    }
+  }
+  search(value: any, findNode: boolean = false): boolean {
+    let currentNode = this.root;
+    if (null === currentNode.value) {
+      return false;
+    } else if (value === currentNode.value) {
+      return findNode ? currentNode : true;
+    }
+    while (true) {
+      if (currentNode === null) {
+        return false;
+      } else {
+        if (value < currentNode.value) {
+          if (null === currentNode.value) {
+            return false;
+          } else if (value === currentNode.value) {
+            return findNode ? currentNode : true;
+          }
+          currentNode = currentNode.left;
+        } else {
+          if (null === currentNode.value) {
+            return false;
+          } else if (value === currentNode.value) {
+            return findNode ? currentNode : true;
           }
           currentNode = currentNode.right;
         }
