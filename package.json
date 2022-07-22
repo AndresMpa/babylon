@@ -1,0 +1,31 @@
+{
+  "name": "chat-api",
+  "version": "0.1.0",
+  "description": "A chat api telegram like",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AndresMpa/courses.git"
+  },
+  "keywords": [
+    "jest",
+    "express",
+    "javascript",
+    "node",
+    "chat",
+    "mongo",
+    "websockets"
+  ],
+  "author": "AndresMpa",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AndresMpa/courses/issues"
+  },
+  "homepage": "https://github.com/AndresMpa/courses#readme",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
+}
