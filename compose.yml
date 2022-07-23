@@ -4,8 +4,13 @@ services:
     restart: always
     container_name: mongoDb
     environment:
+      MONGO_INITDB_DATABASE: chatStore
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: example
+    ports:
+      - 5000:27017
+    volumes:
+      - ./mongo_data:/data/db
 
   mongo-express:
     image: mongo-express

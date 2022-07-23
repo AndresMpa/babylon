@@ -9,6 +9,7 @@ node_modules/
 
 # Other files and folders
 .settings/
+mongo_data/
 
 # Executables
 *.swf
