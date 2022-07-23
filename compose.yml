@@ -4,7 +4,7 @@ services:
     restart: always
     container_name: mongoDb
     environment:
-      MONGO_INITDB_DATABASE: chatStore
+      MONGO_INITDB_DATABASE: chat
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: mySecretPasswordYouSee
     ports:
