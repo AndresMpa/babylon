@@ -28,7 +28,9 @@
   "homepage": "https://github.com/AndresMpa/courses#readme",
   "dependencies": {
     "axios": "^0.27.2",
-    "express": "^4.18.1"
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "mongoose": "^6.4.6"
   },
   "devDependencies": {
     "eslint": "^8.20.0",
