@@ -29,24 +29,24 @@ a {
   color: var(--links);
 }
 
-main {
+.presentation {
   display: flex;
   flex-direction: column;
   align-content: center;
   justify-content: center;
 }
 
-section {
+.presentation--banner {
   padding-top: 15vh;
   text-align: center;
 }
 
-article {
+.presentation--banner__labels {
   padding: 5vh 0;
   margin-bottom: 5vh;
   background-color: var(--secondary);
 }
 
-figure {
+.presentation--banner__image {
   text-align: center;
 }
