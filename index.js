@@ -1,6 +1,9 @@
 const endpoint = require('./network/routes');
+const { config } = require('./config');
+const connect = require('./config/db');
 const express = require('express');
 
+connect();
 const app = express();
 
 // Middlewares
@@ -12,7 +15,7 @@ endpoint(app);
 app.use('/', express.static('./public'));
 
 //Node listen PORT
-const PORT = process.env.PORT || 3000;
+const PORT = config.port || 3000;
 app.listen(PORT, () => {
   console.log(`App running on port ${PORT}`);
 });

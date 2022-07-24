@@ -1,18 +1,35 @@
-const chat = [];
+const Model = require('./model');
 
 function addMessage(message) {
-  chat.push(message);
+  const messageInstance = new Model(message);
+  messageInstance.save();
 }
 
-function getMessage() {
-  return chat;
+async function getMessage(user) {
+  let currentFilter = {};
+  if (user) {
+    currentFilter = { user: user };
+  }
+  const messages = await Model.find(currentFilter);
+  return messages;
 }
 
-function editMessage() {}
+async function updateMessage(id, text) {
+  const foundMessage = await Model.findById(id);
+  foundMessage.content = text;
+  const newMessage = await foundMessage.save();
+  return newMessage;
+}
+
+async function removeMessage(id) {
+  return await Model.deleteOne({
+    _id: id,
+  });
+}
 
 module.exports = {
   add: addMessage,
   list: getMessage,
-  //edit
-  //delete
+  update: updateMessage,
+  remove: removeMessage,
 };
