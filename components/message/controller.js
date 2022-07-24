@@ -1,8 +1,8 @@
 const store = require('./store');
 
-function addMessage(user, content) {
+function addMessage(chat, user, content) {
   return new Promise((resolve, reject) => {
-    if (!user || !content) {
+    if (!chat || !user || !content) {
       reject('Something when wrong');
       return false;
     }
@@ -10,6 +10,7 @@ function addMessage(user, content) {
     const message = {
       date,
       user,
+      chat,
       content,
     };
     store.add(message);
