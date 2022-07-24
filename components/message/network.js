@@ -40,7 +40,7 @@ router.delete('/:id', (req, res) => {
   controller
     .deleteMessage(req.params.id)
     .then(() => {
-      success(req, res, `Message ${req.params.id}`, 200);
+      success(req, res, `Message ${req.params.id} deleted`, 200);
     })
     .catch((err) => {
       error(req, res, `Error deleting message ${err}`, 500);
