@@ -11,17 +11,14 @@ async function getMessage(user) {
     if (user) {
       currentFilter = { user: user };
     }
-    const messages = Model.find(currentFilter)
+    Model.find(currentFilter)
       .populate('user')
-      .exec((error, populate) => {
+      .exec((error, populated) => {
         if (error) {
           reject(error);
           return false;
         }
-        resolve(populate);
-      })
-      .catch((err) => {
-        reject(err);
+        resolve(populated);
       });
   });
 }
