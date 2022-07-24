@@ -1,26 +1,33 @@
 const store = require('./store');
 
-function addMessage(chat, user, content) {
+function listMessages(user) {
+  return new Promise((resolve, reject) => {
+    resolve(store.list(user));
+  });
+}
+
+function addMessage(chat, user, content, file) {
   return new Promise((resolve, reject) => {
     if (!chat || !user || !content) {
       reject('Something when wrong');
       return false;
     }
+
+    let fileUrl = '';
+    if (file) {
+      fileUrl = `http://localhost:3000/public/files/${file.filename}`;
+    }
+
     const date = new Date();
     const message = {
       date,
       user,
       chat,
       content,
+      file: fileUrl,
     };
     store.add(message);
     resolve(message);
-  });
-}
-
-function listMessages(user) {
-  return new Promise((resolve, reject) => {
-    resolve(store.list(user));
   });
 }
 

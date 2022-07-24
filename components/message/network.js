@@ -1,6 +1,12 @@
-const { success, error } = require('../../network/response.handler');
 const router = require('express').Router();
+const multer = require('multer');
+
+const { success, error } = require('../../network/response.handler');
 const controller = require('./controller');
+
+const upload = multer({
+  dest: 'public/files',
+});
 
 router.get('/', (req, res) => {
   const filterMessage = req.query.chat || null;
@@ -14,11 +20,11 @@ router.get('/', (req, res) => {
     });
 });
 
-router.post('/', (req, res) => {
+router.post('/', upload.single('file'), (req, res) => {
   controller
-    .addMessage(req.body.chat, req.body.user, req.body.message)
-    .then(() => {
-      success(req, res, 'Message received', 201);
+    .addMessage(req.body.chat, req.body.user, req.body.message, req.file)
+    .then((data) => {
+      success(req, res, data, 201);
     })
     .catch((err) => {
       error(req, res, `Error creating message ${err}`, 400);
