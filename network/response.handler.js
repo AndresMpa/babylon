@@ -6,7 +6,7 @@ const statusMessage = {
 };
 
 function success(req, res, data, status = 200) {
-  console.log(`[Request]: ${message}`);
+  console.log(`[Request]: ${data}`);
   const message = data || statusMessage[status];
 
   res.status(status).send({
@@ -15,7 +15,7 @@ function success(req, res, data, status = 200) {
 }
 
 function error(req, res, data, status = 500) {
-  console.error(`[ERROR: response.error]: ${message}`);
+  console.error(`[ERROR: response.error]: ${data}`);
   const message = data || statusMessage[status];
   res.status(status).send({
     error: message,
