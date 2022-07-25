@@ -1,0 +1,33 @@
+{
+  "name": "social-network",
+  "version": "1.0.0",
+  "description": "A simple social network using microservices",
+  "main": "index.js",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.19"
+  },
+  "scripts": {
+    "start": "nodemon ./api/index.js",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AndresMpa/courses.git"
+  },
+  "keywords": [
+    "express",
+    "microservices",
+    "backend",
+    "api"
+  ],
+  "author": "AndresMpa",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AndresMpa/courses/issues"
+  },
+  "homepage": "https://github.com/AndresMpa/courses#readme"
+}
