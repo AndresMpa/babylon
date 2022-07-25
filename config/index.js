@@ -8,6 +8,7 @@ const config = {
   appHost: process.env.APP_HOST,
   appRoute: process.env.APP_ROUTE,
   appFiles: process.env.APP_FILES,
+  appStatic: process.env.APP_STATIC,
 
   dbUser: process.env.DB_USER,
   dbPassword: process.env.DB_PASSWORD,
