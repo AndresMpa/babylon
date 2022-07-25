@@ -26,7 +26,7 @@ socket.connect(server);
 endpoint(app);
 
 // Static files
-app.use('/', express.static('./public'));
+app.use(`${config.appRoute}`, express.static(`./${config.appStatic}`));
 
 //Node listen PORT
 const PORT = config.port || 3000;
