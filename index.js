@@ -3,6 +3,7 @@ const socket = require('./config/socket');
 const { config } = require('./config');
 const connect = require('./config/db');
 const express = require('express');
+const cors = require('cors');
 
 //Express instance
 const app = express();
@@ -13,6 +14,7 @@ const server = require('http').Server(app);
 // Middlewares
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+app.use(cors());
 
 // MongoBD connection
 connect();
