@@ -1,4 +1,5 @@
 const socket = require('../../config/socket').socket;
+const { config } = require('../../config');
 const store = require('./store');
 
 function listMessages(user) {
@@ -16,7 +17,7 @@ function addMessage(chat, user, content, file) {
 
     let fileUrl = '';
     if (file) {
-      fileUrl = `http://localhost:3000/public/files/${file.filename}`;
+      fileUrl = `${config.appHost}:${config.port}/${config.appFiles}/${file.filename}`;
     }
 
     const date = new Date();
