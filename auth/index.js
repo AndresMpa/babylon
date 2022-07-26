@@ -11,14 +11,15 @@ function validate(token) {
 
 function getToken(auth) {
   if (!auth) {
-    throw new Error("There's no token");
+    throw new Error("There is no token");
   }
 
-  if (!auth.indexOf("Bearer ")) {
+  if (!auth.indexOf("Bearer ") === -1) {
     throw new Error("Invalid format");
   }
 
   let token = auth.replace("Bearer ", "");
+
   return token;
 }
 
@@ -27,17 +28,23 @@ function decodeHeader(request) {
   const token = getToken(authorization);
   const decoded = validate(token);
 
-  req.user = decoded;
+  request.user = decoded;
+
+  return request;
 }
 
 const check = {
   own: (req, owner) => {
     const decoded = decodeHeader(req);
-    console.log(decoded);
+
+    if (decoded.user.id !== owner) {
+      throw new Error("Not enough permission");
+    }
   },
 };
 
 module.exports = {
   validate,
+  check,
   sign,
 };

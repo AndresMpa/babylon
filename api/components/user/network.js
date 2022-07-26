@@ -1,9 +1,10 @@
 const { success, error } = require("../../../network/response");
 const router = require("express").Router();
+const { checkAuth } = require("./secure");
 const controller = require("./index");
 
 router.get("/", list);
-router.put("/", upsert);
+router.put("/", checkAuth("update"), upsert);
 router.post("/", upsert);
 router.get("/:id", findUser);
 router.delete("/:id", deleteUser);
