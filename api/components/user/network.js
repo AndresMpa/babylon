@@ -16,8 +16,8 @@ router.get("/", (req, res) => {
 router.post("/", (req, res) => {
   controller
     .upsert(req.body)
-    .then((list) => {
-      success(req, res, list, 200);
+    .then(() => {
+      success(req, res, "User created", 200);
     })
     .catch((err) => {
       error(req, res, err.message, 500);
@@ -27,8 +27,8 @@ router.post("/", (req, res) => {
 router.delete("/:id", (req, res) => {
   controller
     .remove(req.params.id)
-    .then((list) => {
-      success(req, res, list, 200);
+    .then((status) => {
+      success(req, res, status ? "User deleted" : "User doesn't exist", 200);
     })
     .catch((err) => {
       error(req, res, err.message, 500);
