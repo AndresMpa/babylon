@@ -26,7 +26,7 @@ module.exports = function (injectedStore) {
     if (data.id) {
       user.id = data.id;
     } else {
-      user.id = nanoid.nanoid();
+      user.id = nanoid();
     }
 
     if (data.password || data.username) {
