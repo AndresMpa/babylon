@@ -25,8 +25,9 @@ module.exports = function (injectedStore) {
     if (data.username) {
       authData.username = data.username;
     }
+
     if (data.password) {
-      authData.username = data.password;
+      authData.password = data.password;
     }
 
     return store.upsert(TABLE, authData);
