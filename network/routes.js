@@ -1,4 +1,5 @@
 const userComponent = require("../api/components/user/network");
+const authComponent = require("../api/components/auth/network");
 const swaggerDoc = require("../doc/swagger.json");
 const swaggerUi = require("swagger-ui-express");
 
@@ -9,6 +10,7 @@ function endpoint(app) {
 
   // Router paths
   router.use("/user", userComponent);
+  router.use("/auth", authComponent);
   router.use("/doc", swaggerUi.serve, swaggerUi.setup(swaggerDoc));
 }
 
