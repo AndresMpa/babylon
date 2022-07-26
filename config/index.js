@@ -7,4 +7,10 @@ module.exports = {
   jwt: {
     secret: process.env.JWT_SECRET || "defaultSecret",
   },
+  db: {
+    user: process.env.DB_USER || "admin",
+    password: process.env.DB_PASSWORD || "admin",
+    database: process.env.DB_NAME || "social-network",
+    host: process.env.DB_HOST || "127.0.0.1",
+  },
 };
