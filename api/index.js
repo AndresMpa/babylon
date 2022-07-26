@@ -1,4 +1,5 @@
 const endpoint = require("../network/routes");
+const errors = require("../network/error");
 const config = require("../config");
 const express = require("express");
 const cors = require("cors");
@@ -13,6 +14,9 @@ app.use(cors());
 
 // Paths
 endpoint(app);
+
+// Errors
+app.use(errors);
 
 //Node listen PORT
 const PORT = config.port || 3000;

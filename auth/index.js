@@ -1,3 +1,4 @@
+const errorGenerator = require("../utils/errorHandler");
 const config = require("../config");
 const jwt = require("jsonwebtoken");
 
@@ -11,11 +12,11 @@ function validate(token) {
 
 function getToken(auth) {
   if (!auth) {
-    throw new Error("There is no token");
+    throw errorGenerator("There is no token", 404);
   }
 
   if (!auth.indexOf("Bearer ") === -1) {
-    throw new Error("Invalid format");
+    throw errorGenerator("Invalid format", 403);
   }
 
   let token = auth.replace("Bearer ", "");
@@ -38,7 +39,7 @@ const check = {
     const decoded = decodeHeader(req);
 
     if (decoded.user.id !== owner) {
-      throw new Error("Not enough permission");
+      throw errorGenerator("Not enough permission", 401);
     }
   },
 };
