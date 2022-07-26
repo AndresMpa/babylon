@@ -2,7 +2,9 @@ const { success, error } = require("../../../network/response");
 const router = require("express").Router();
 const controller = require("./index");
 
-router.post("/login", function (req, res) {
+router.post("/login", login);
+
+function login(req, res) {
   controller
     .login(req.body.username, req.body.password)
     .then((token) => {
@@ -12,6 +14,6 @@ router.post("/login", function (req, res) {
       console.log(err);
       error(req, res, `Invalid information`, 400);
     });
-});
+}
 
 module.exports = router;

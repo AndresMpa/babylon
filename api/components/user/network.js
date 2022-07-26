@@ -2,7 +2,13 @@ const { success, error } = require("../../../network/response");
 const router = require("express").Router();
 const controller = require("./index");
 
-router.get("/", (req, res) => {
+router.get("/", list);
+router.put("/", upsert);
+router.post("/", upsert);
+router.get("/:id", findUser);
+router.delete("/:id", deleteUser);
+
+function list(req, res) {
   controller
     .list()
     .then((list) => {
@@ -11,9 +17,9 @@ router.get("/", (req, res) => {
     .catch((err) => {
       error(req, res, err.message, 500);
     });
-});
+}
 
-router.post("/", (req, res) => {
+function upsert(req, res) {
   controller
     .upsert(req.body)
     .then(() => {
@@ -22,9 +28,9 @@ router.post("/", (req, res) => {
     .catch((err) => {
       error(req, res, err.message, 500);
     });
-});
+}
 
-router.delete("/:id", (req, res) => {
+function deleteUser(req, res) {
   controller
     .remove(req.params.id)
     .then((status) => {
@@ -33,9 +39,9 @@ router.delete("/:id", (req, res) => {
     .catch((err) => {
       error(req, res, err.message, 500);
     });
-});
+}
 
-router.get("/:id", (req, res) => {
+function findUser(req, res) {
   controller
     .get(req.params.id)
     .then((user) => {
@@ -44,6 +50,6 @@ router.get("/:id", (req, res) => {
     .catch((err) => {
       error(req, res, err.message, 500);
     });
-});
+}
 
 module.exports = router;
