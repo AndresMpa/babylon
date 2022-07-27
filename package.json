@@ -21,7 +21,8 @@
     "jsonwebtoken": "^8.5.1",
     "mysql": "^2.18.1",
     "nanoid": "^3.0.0",
-    "swagger-ui-express": "^4.5.0"
+    "swagger-ui-express": "^4.5.0",
+    "vercel": "^19.1.2"
   },
   "devDependencies": {
     "nodemon": "^2.0.19",

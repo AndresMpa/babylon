@@ -15,6 +15,9 @@ app.use(cors());
 // Paths
 endpoint(app);
 
+// Static files
+app.use(`/`, express.static(`./public`));
+
 // Errors
 app.use(errors);
 
