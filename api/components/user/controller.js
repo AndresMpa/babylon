@@ -3,9 +3,13 @@ const auth = require("../auth");
 
 const TABLE = "user";
 
-module.exports = function (injectedStore) {
+module.exports = function (injectedStore, injectedCache) {
   let store = injectedStore;
+  let cache = injectedCache;
   if (!store) {
+    store = require("../../../store/dummy");
+  }
+  if (!cache) {
     store = require("../../../store/dummy");
   }
 

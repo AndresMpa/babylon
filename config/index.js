@@ -1,6 +1,7 @@
 require("dotenv").config();
 
 module.exports = {
+  remote: process.env.REMOTE || false,
   api: {
     port: process.env.API_PORT || 3000,
   },
