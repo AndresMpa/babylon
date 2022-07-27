@@ -1,5 +1,15 @@
 {
   "version": 2,
+  "env": {
+    "NODE_ENV": "production",
+    "DB_HOST": "remotemysql.com",
+    "DB_USER": "yBWqqBv05x",
+    "DB_PASSWORD": "qIPN9iFQtv",
+    "DB_NAME": "yBWqqBv05x",
+    "MS_DB_PORT": "3306",
+    "AUTH_JWT_SECRET": "data"
+  },
+
   "builds": [
     {
       "src": "api/index.js",
