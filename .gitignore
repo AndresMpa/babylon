@@ -9,6 +9,8 @@ node_modules/
 
 # Other files and folders
 .settings/
+mysql_data/
+redis_data/
 .env
 
 # Executables

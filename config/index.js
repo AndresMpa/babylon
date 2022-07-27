@@ -13,6 +13,10 @@ module.exports = {
     database: process.env.DB_NAME || "social-network",
     host: process.env.DB_HOST || "127.0.0.1",
   },
+  cache: {
+    host: process.env.DB_HOST || "127.0.0.1",
+    password: process.env.DB_PASSWORD || "admin",
+  },
   microservice: {
     db: {
       port: process.env.MS_DB_PORT || 3001,
@@ -20,6 +24,10 @@ module.exports = {
     },
     post: {
       port: process.env.MS_POST_PORT || 3002,
+    },
+    cache: {
+      port: process.env.MS_CACHE_PORT || 3003,
+      host: process.env.CACHE_HOST || "127.0.0.1",
     }
   },
 };
