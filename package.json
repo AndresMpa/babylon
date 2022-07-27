@@ -3,7 +3,13 @@
   "version": "1.0.0",
   "description": "A simple social network using microservices",
   "main": "index.js",
+  "scripts": {
+    "api": "nodemon ./api/index.js",
+    "bd": "nodemon ./mysql/index.js",
+    "test": "jest"
+  },
   "dependencies": {
+    "axios": "^0.27.2",
     "bcrypt": "^5.0.1",
     "cors": "^2.8.5",
     "dotenv": "^16.0.1",
@@ -15,10 +21,6 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.19"
-  },
-  "scripts": {
-    "start": "nodemon ./api/index.js",
-    "test": "jest"
   },
   "repository": {
     "type": "git",

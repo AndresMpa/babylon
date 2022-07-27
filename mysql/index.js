@@ -14,7 +14,7 @@ app.use(cors());
 // RUTAS
 app.use("/", router);
 
-const PORT = config.db.port;
+const PORT = config.microservice.db.port;
 app.listen(PORT, () => {
   console.log(`Batabase service running on port ${PORT}`);
 });
