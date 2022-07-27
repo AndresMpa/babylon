@@ -4,10 +4,13 @@
   "description": "A simple social network using microservices",
   "main": "index.js",
   "scripts": {
+    "test": "jest",
     "api": "nodemon ./api/index.js",
-    "post": "nodemon ./post/index.js",
     "bd": "nodemon ./mysql/index.js",
-    "test": "jest"
+    "post": "nodemon ./post/index.js",
+    "restart": "pm2 restart ecosystem.config.js",
+    "start": "npx pm2 start ecosystem.config.js --env development",
+    "production": "npx pm2 start ecosystem.config.js --env production"
   },
   "dependencies": {
     "axios": "^0.27.2",
@@ -21,15 +24,16 @@
     "swagger-ui-express": "^4.5.0"
   },
   "devDependencies": {
-    "nodemon": "^2.0.19"
+    "nodemon": "^2.0.19",
+    "pm2": "^5.2.0"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/AndresMpa/courses.git"
   },
   "keywords": [
-    "express",
     "microservices",
+    "express",
     "backend",
     "api"
   ],
