@@ -8,14 +8,13 @@ const statusMessage = {
 function success(req, res, data, status = 200) {
   console.log(`[Request]: ${data}`);
   const message = data || statusMessage[status];
-
   res.status(status).send({
     response: message,
   });
 }
 
 function error(req, res, data, status = 500) {
-  console.error(`[ERROR: response.error]: ${data}`);
+  console.error(`[RESPONSE ERROR]: ${data}`);
   const message = data || statusMessage[status];
   res.status(status).send({
     error: message,
