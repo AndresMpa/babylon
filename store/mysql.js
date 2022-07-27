@@ -36,12 +36,75 @@ handleDbConnection();
 
 function list(table) {
   return new Promise((resolve, reject) => {
-    connection.query(`SELECT * FROM ${table}`, (error, data) => {
-      return error ? reject(error) : resolve(data);
+    connection.query(`SELECT * FROM ${table}`, (error, result) => {
+      return error ? reject(error) : resolve(result);
     });
   });
 }
 
+function get(table, id) {
+  return new Promise((resolve, reject) => {
+    connection.query(
+      `SELECT * FROM ${table} WHERE id = '${id}'`,
+      (error, result) => {
+        return error ? reject(error) : resolve(result);
+      }
+    );
+  });
+}
+
+function insert(table, data) {
+  return new Promise((resolve, reject) => {
+    connection.query(`INSERT INTO ${table} SET ?`, data, (error, result) => {
+      return error ? reject(error) : resolve(result);
+    });
+  });
+}
+
+function update(table, data) {
+  return new Promise((resolve, reject) => {
+    connection.query(
+      `UPDATE ${table} SET ? WHERE id = ?`,
+      [data, data.id],
+      (error, result) => {
+        return error ? reject(error) : resolve(result);
+      }
+    );
+  });
+}
+
+function remove(table, id) {
+  return new Promise((resolve, reject) => {
+    connection.query(`DELETE FROM ${table} WHERE id = ?`, id, (error, result) => {
+      return error ? reject(error) : resolve(result);
+    });
+  });
+}
+
+function searchQuery(table, query) {
+  return new Promise((resolve, reject) => {
+    connection.query(
+      `SELECT * FROM ${table} WHERE ?`,
+      query,
+      (error, result) => {
+        return error ? reject(error) : resolve({ ...result[0] } || null);
+      }
+    );
+  });
+}
+
+function upsert(table, data) {
+  if (data && data.id) {
+    return update(table, data);
+  } else {
+    return insert(table, data);
+  }
+}
+
 module.exports = {
+  get,
   list,
+  upsert,
+  remove,
+  searchQuery,
 };
