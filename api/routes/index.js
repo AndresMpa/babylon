@@ -1,7 +1,7 @@
-const userComponent = require("../api/components/user/network");
-const authComponent = require("../api/components/auth/network");
-const postComponent = require("../api/components/post/network");
-const swaggerDoc = require("../doc/swagger.json");
+const userComponent = require("../components/user/network");
+const authComponent = require("../components/auth/network");
+const postComponent = require("../components/post/network");
+const swaggerDoc = require("../../doc/swagger.json");
 const swaggerUi = require("swagger-ui-express");
 
 const router = require("express").Router();

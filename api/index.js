@@ -1,5 +1,5 @@
-const endpoint = require("../network/routes");
 const errors = require("../network/error");
+const endpoint = require("./routes");
 const config = require("../config");
 const express = require("express");
 const cors = require("cors");
