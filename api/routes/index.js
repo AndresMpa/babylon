@@ -1,6 +1,5 @@
 const userComponent = require("../components/user/network");
 const authComponent = require("../components/auth/network");
-const postComponent = require("../components/post/network");
 const swaggerDoc = require("../../doc/swagger.json");
 const swaggerUi = require("swagger-ui-express");
 
@@ -12,7 +11,6 @@ function endpoint(app) {
   // Router paths
   router.use("/user", userComponent);
   router.use("/auth", authComponent);
-  router.use("/post", postComponent);
   router.use("/doc", swaggerUi.serve, swaggerUi.setup(swaggerDoc));
 }
 
