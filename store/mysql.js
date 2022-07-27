@@ -122,6 +122,7 @@ module.exports = {
   get,
   list,
   upsert,
+  insert,
   remove,
   searchQuery,
 };
