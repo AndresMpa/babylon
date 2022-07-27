@@ -13,8 +13,13 @@ module.exports = function (injectedStore, injectedCache) {
     store = require("../../../store/dummy");
   }
 
-  function list() {
-    return store.list(TABLE);
+  async function list() {
+    let users = await cache.list(TABLE);
+    if (!users) {
+      users = store.list(TABLE);
+      cache.upsert(TABLE, users);
+    }
+    return users;
   }
 
   function get(id) {
