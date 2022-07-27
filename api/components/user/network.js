@@ -1,4 +1,4 @@
-const { success  } = require("../../../network/response");
+const { success } = require("../../../network/response");
 const router = require("express").Router();
 const { checkAuth } = require("./secure");
 const controller = require("./index");
@@ -8,7 +8,8 @@ router.post("/", upsert);
 router.put("/", checkAuth("update"), upsert);
 router.get("/:id", findUser);
 router.delete("/:id", deleteUser);
-router.post("/follow/:id", follow);
+router.get("/following/:id", following);
+router.post("/follow/:id", checkAuth("follow"), follow);
 
 function list(req, res, next) {
   controller
@@ -50,7 +51,16 @@ function follow(req, res, next) {
   controller
     .follow(req.user.id, req.params.id)
     .then((data) => {
-      success(req, res, data, 201);
+      success(req, res, data, 200);
+    })
+    .catch(next);
+}
+
+function following(req, res, next) {
+  controller
+    .following(req.params.id)
+    .then((data) => {
+      success(req, res, data, 200);
     })
     .catch(next);
 }

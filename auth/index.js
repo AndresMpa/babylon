@@ -42,6 +42,9 @@ const check = {
       throw errorGenerator("Not enough permission", 401);
     }
   },
+  logged: (req) => {
+    return decodeHeader(req);
+  },
 };
 
 module.exports = {

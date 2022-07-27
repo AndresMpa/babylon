@@ -75,16 +75,27 @@ function update(table, data) {
 
 function remove(table, id) {
   return new Promise((resolve, reject) => {
-    connection.query(`DELETE FROM ${table} WHERE id = ?`, id, (error, result) => {
-      return error ? reject(error) : resolve(result);
-    });
+    connection.query(
+      `DELETE FROM ${table} WHERE id = ?`,
+      id,
+      (error, result) => {
+        return error ? reject(error) : resolve(result);
+      }
+    );
   });
 }
 
-function searchQuery(table, query) {
+function searchQuery(table, query, join) {
+  let joinQuery = "";
+  if (join) {
+    const key = Object.keys(join)[0];
+    const val = join[key];
+    joinQuery = `JOIN ${key} ON ${table}.${val} = ${key}.id`;
+  }
+
   return new Promise((resolve, reject) => {
     connection.query(
-      `SELECT * FROM ${table} WHERE ?`,
+      `SELECT * FROM ${table} ${joinQuery} WHERE ${table}.?`,
       query,
       (error, result) => {
         return error ? reject(error) : resolve({ ...result[0] } || null);
@@ -93,11 +104,17 @@ function searchQuery(table, query) {
   });
 }
 
-function upsert(table, data) {
-  if (data && data.id) {
-    return update(table, data);
-  } else {
+async function upsert(table, data) {
+  let row = [];
+
+  if (data.id) {
+    row = await get(table, data.id);
+  }
+
+  if (row.length === 0) {
     return insert(table, data);
+  } else {
+    return update(table, data);
   }
 }
 

@@ -44,7 +44,23 @@ module.exports = function (injectedStore) {
     return store.remove(TABLE, id);
   }
 
+  function follow(from, to) {
+    return store.upsert(`${TABLE}_follow`, {
+      user_from: from,
+      user_to: to,
+    });
+  }
+
+  async function following(user) {
+    const join = {};
+    join[TABLE] = "user_to";
+    const query = { user_from: user };
+    return await store.searchQuery(`${TABLE}_follow`, query, join);
+  }
+
   return {
+    following,
+    follow,
     remove,
     upsert,
     list,
