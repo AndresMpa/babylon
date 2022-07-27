@@ -1,4 +1,4 @@
-const { success, error } = require("../../../network/response");
+const { success  } = require("../../../network/response");
 const router = require("express").Router();
 const { checkAuth } = require("./secure");
 const controller = require("./index");
