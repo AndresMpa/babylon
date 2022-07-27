@@ -21,7 +21,7 @@ app.use(`/`, express.static(`./public`));
 // Errors
 app.use(errors);
 
-//Node listen PORT
+// Microservice runnig on PORT
 const PORT = config.port || 3000;
 app.listen(PORT, () => {
   console.log(`App running on port ${PORT}`);

@@ -18,6 +18,7 @@ app.use("/", router);
 // Errors
 app.use(errors);
 
+// Microservice runnig on PORT
 const PORT = config.microservice.db.port;
 app.listen(PORT, () => {
   console.log(`Batabase service running on port ${PORT}`);

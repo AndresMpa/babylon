@@ -16,9 +16,9 @@ app.use(cors());
 app.use("/api", router);
 
 // Errors
-//app.use(errors);
+app.use(errors);
 
-//Node listen PORT
+// Microservice runnig on PORT
 const PORT = config.microservice.post.port || 3002;
 app.listen(PORT, () => {
   console.log(`Post service running on port ${PORT}`);
