@@ -15,9 +15,11 @@ module.exports = {
   },
   microservice: {
     db: {
-      port: process.env.DB_PORT || 3001,
+      port: process.env.MS_DB_PORT || 3001,
       host: process.env.DB_HOST || "127.0.0.1",
     },
-
+    post: {
+      port: process.env.MS_POST_PORT || 3002,
+    }
   },
 };

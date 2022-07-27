@@ -1,3 +1,4 @@
+const errors = require("../network/error");
 const config = require("../config");
 const router = require("./routes");
 const express = require("express");
@@ -11,8 +12,11 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(cors());
 
-// RUTAS
+// Routes
 app.use("/", router);
+
+// Errors
+app.use(errors);
 
 const PORT = config.microservice.db.port;
 app.listen(PORT, () => {
