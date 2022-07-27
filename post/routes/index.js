@@ -1,6 +1,6 @@
-const { success } = require("../../../network/response");
+const { success } = require("../../network/response");
+const controller = require("../components/post");
 const router = require("express").Router();
-const controller = require("./index");
 
 router.get("/", list);
 

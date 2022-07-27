@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "api": "nodemon ./api/index.js",
+    "post": "nodemon ./post/index.js",
     "bd": "nodemon ./mysql/index.js",
     "test": "jest"
   },

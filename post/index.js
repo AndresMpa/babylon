@@ -13,7 +13,7 @@ app.use(express.json());
 app.use(cors());
 
 // Routes
-app.use("/", router);
+app.use("/api", router);
 
 // Errors
 //app.use(errors);
