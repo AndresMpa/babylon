@@ -18,7 +18,7 @@ function list(table) {
 
       let result = data || null;
       if (data) {
-        result = JSON.stringify(data);
+        result = JSON.parse(data);
       }
       resolve(result);
     });
