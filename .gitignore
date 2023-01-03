@@ -6,6 +6,7 @@ bin-release/
 node_modules/
 *lock.json
 */.next/
+mongo_data/
 
 # Other files and folders
 .settings/
