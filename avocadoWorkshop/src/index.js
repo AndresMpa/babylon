@@ -45,7 +45,7 @@ const getDetail = (attributes) => {
   stock.classList = "relative w-10/12";
   title.classList =
     "mt-2 text-1xl text-gray-900 sm:text-2xl";
-  description.classList = "max-h-20 overflow-y-auto";
+  description.classList = "max-h-28 overflow-y-auto";
 
   label.classList = "rounded-lg bg-green-500 text-white py-0.5 px-2 mt-5";
   close.classList =
