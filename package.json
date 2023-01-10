@@ -9,7 +9,8 @@
     "mongodb": "^4.13.0",
     "sails": "^1.5.3",
     "sails-hook-orm": "^4.0.0",
-    "sails-hook-sockets": "^2.0.0"
+    "sails-hook-sockets": "^2.0.0",
+    "sails-mongo": "^2.0.0"
   },
   "devDependencies": {
     "eslint": "5.16.0"

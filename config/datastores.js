@@ -51,6 +51,8 @@ module.exports.datastores = {
     // adapter: 'sails-mysql',
     // url: 'mysql://user:password@host:port/database',
 
+    adapter: 'sails-mongo',
+    url: 'mongodb://root:1234@localhost:27017/admin',
   },
 
 
