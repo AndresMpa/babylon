@@ -1,0 +1,34 @@
+{
+  "name": "hapi_course",
+  "description": "Here I'm writing the code that I'm doing from different courses, almost all of them are from JS but eventually I will update this",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon",
+    "lint": "standard",
+    "lint-fix": "standard --fix",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AndresMpa/courses.git"
+  },
+  "dependencies": {
+    "@hapi/hapi": "^21.1.0",
+    "@hapi/inert": "^7.0.0",
+    "hapi": "^18.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20",
+    "standard": "^17.0.0"
+  },
+  "keywords": [
+    "hapi"
+  ],
+  "author": "AndresMpa",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AndresMpa/courses/issues"
+  },
+  "homepage": "https://github.com/AndresMpa/courses#readme"
+}
