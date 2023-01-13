@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon",
+    "start": "nodemon --ext js,hbs",
     "lint": "standard",
     "lint-fix": "standard --fix",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -16,6 +16,8 @@
   "dependencies": {
     "@hapi/hapi": "^21.1.0",
     "@hapi/inert": "^7.0.0",
+    "@hapi/vision": "^7.0.0",
+    "handlebars": "^4.7.7",
     "hapi": "^18.1.0"
   },
   "devDependencies": {
