@@ -1,0 +1,41 @@
+<div class="container mt-4">
+  <div class="card mb-3">
+    <div class="card-header">
+      <h3>Ingrese</h3>
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col">
+          <form method="POST" action="">
+            <div class="form-group">
+              <label for="email">Correo</label>
+              <input
+                type="email"
+                class="form-control"
+                id="email"
+                name="email"
+                placeholder="Ingrese su correo"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="password">Contraseña</label>
+              <input
+                type="password"
+                class="form-control"
+                id="password"
+                name="password"
+                placeholder="Ingrese su contraseña"
+                pattern=".{6,}"
+                required
+              />
+            </div>
+            <div class="text-center mt-5">
+              <button type="submit" class="btn btn-primary">Ingresar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
