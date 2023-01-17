@@ -5,8 +5,8 @@ function home(req, h) {
 }
 
 function register(req, h) {
-  return h.view("index", {
-    title: "Home",
+  return h.view("register", {
+    title: "Register",
   });
 }
 
