@@ -3,6 +3,7 @@
   "description": "Here I'm writing the code that I'm doing from different courses, almost all of them are from JS but eventually I will update this",
   "version": "1.0.0",
   "main": "index.js",
+  "type": "commonjs",
   "scripts": {
     "start": "nodemon --ext js,hbs",
     "lint": "standard",
