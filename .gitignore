@@ -6,6 +6,7 @@ bin-release/
 node_modules/
 *lock.json
 */.next/
+credentials.json
 
 # Other files and folders
 .settings/
