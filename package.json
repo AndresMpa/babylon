@@ -19,7 +19,8 @@
     "@hapi/inert": "^7.0.0",
     "@hapi/vision": "^7.0.0",
     "handlebars": "^4.7.7",
-    "hapi": "^18.1.0"
+    "hapi": "^18.1.0",
+    "joi": "^17.7.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.20",
