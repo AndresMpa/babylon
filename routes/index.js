@@ -20,6 +20,11 @@ module.exports = [
     handler: siteController.login,
   },
   {
+    method: "GET",
+    path: "/logout",
+    handler: userController.logout,
+  },
+  {
     method: "POST",
     path: "/create-user",
     options: {
