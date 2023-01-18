@@ -13,6 +13,20 @@ async function createUser(req, h) {
   }
 }
 
+async function validateCredentials(req, h) {
+  let result;
+
+  try {
+    result = await users.validateCredentials(req.payload);
+  } catch (error) {
+    console.error(error);
+    return h.response("No user found using those credentials").code(404);
+  }
+
+  return result;
+}
+
 module.exports = {
   createUser: createUser,
+  validateCredentials: validateCredentials,
 };
