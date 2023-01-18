@@ -48,4 +48,12 @@ async function init() {
   console.log(`Server running on: ${server.info.uri}`);
 }
 
+process.on("unhandledRejection", (error) => {
+  console.error("Unhandled rejection", error.message, error);
+});
+
+process.on("unhandledException", (error) => {
+  console.error("Unhandled exception", error.message, error);
+});
+
 init();
