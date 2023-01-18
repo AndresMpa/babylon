@@ -1,3 +1,5 @@
+const boom = require("@hapi/boom");
+
 const { users } = require("../models");
 
 async function createUser(req, h) {
@@ -36,8 +38,13 @@ async function closeSession(req, h) {
   return h.redirect("/login").unstate("user");
 }
 
+function failValidation(req, h, err) {
+  return boom.badRequest("Validation failed ", req.payload);
+}
+
 module.exports = {
   validateCredentials: validateCredentials,
+  failValidation: failValidation,
   createUser: createUser,
   logout: closeSession,
 };
