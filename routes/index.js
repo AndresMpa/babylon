@@ -5,8 +5,8 @@ const userController = require("../controller/userController.js");
 
 module.exports = [
   {
-    method: "GET",
     path: "/",
+    method: "GET",
     handler: siteController.home,
   },
   {
@@ -15,7 +15,13 @@ module.exports = [
     handler: siteController.register,
   },
   {
+    method: "GET",
+    path: "/login",
+    handler: siteController.login,
+  },
+  {
     method: "POST",
+    path: "/create-user",
     options: {
       validate: {
         payload: joi.object({
@@ -25,8 +31,20 @@ module.exports = [
         }),
       },
     },
-    path: "/create-user",
     handler: userController.createUser,
+  },
+  {
+    method: "POST",
+    path: "/validate-user",
+    options: {
+      validate: {
+        payload: joi.object({
+          email: joi.string().email().min(3).required(),
+          password: joi.string().min(6).required(),
+        }),
+      },
+    },
+    handler: userController.validateCredentials,
   },
   {
     method: "GET",
