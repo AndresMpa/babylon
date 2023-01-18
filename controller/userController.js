@@ -18,15 +18,26 @@ async function validateCredentials(req, h) {
 
   try {
     result = await users.validateCredentials(req.payload);
+    if (!result) {
+      return h.response("No user found using those credentials").code(401);
+    }
   } catch (error) {
     console.error(error);
-    return h.response("No user found using those credentials").code(404);
+    return h.response("Server error, please try again later").code(500);
   }
 
-  return result;
+  return h.redirect("/").state("user", {
+    name: result.name,
+    email: result.email,
+  });
+}
+
+async function closeSession(req, h) {
+  return h.redirect("/login").unstate("user");
 }
 
 module.exports = {
-  createUser: createUser,
   validateCredentials: validateCredentials,
+  createUser: createUser,
+  logout: closeSession,
 };
