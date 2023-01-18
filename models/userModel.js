@@ -17,6 +17,30 @@ class UserModel {
     return newUser.key;
   }
 
+  async validateCredentials(data) {
+    const userQuery = await this.collection
+      .orderByChild("email")
+      .equalTo(data.email)
+      .once("value");
+
+    const userFound = userQuery.val();
+
+    if (userFound) {
+      const userId = Object.keys(userFound)[0];
+
+      const passwordRigth = await bcrypt.compare(
+        data.password,
+        userFound[userId].password
+      );
+
+      const result = passwordRigth ? userFound[userId] : false;
+
+      return result;
+    } else {
+      return false;
+    }
+  }
+
   static async encrypt(password) {
     const saltRound = 10;
     const hashedPassword = await bcrypt.hash(password, saltRound);
