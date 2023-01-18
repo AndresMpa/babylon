@@ -30,22 +30,38 @@
                 /></a>
               </h1>
             </div>
-            <div class="col m-2 text-right">
-              <a
-                href="/login"
-                class="btn btn-primary btn-lg border border-white"
-                role="button"
-                aria-pressed="true">
-                Login
-              </a>
-              <a
-                href="/register"
-                class="btn btn-primary btn-lg border border-white ml-2"
-                role="button"
-                aria-pressed="true">
-                Registrarse
-              </a>
-            </div>
+
+            {{#if user}}
+              <div class="col m-2 text-right align-middle d-flex align-items-center justify-content-end">
+                <h3 class="m-0"><span class="badge badge-info">Hola {{ user.name }}</span></h3>
+                <a
+                  href="/logout"
+                  class="btn btn-primary btn-lg border border-white ml-2"
+                  role="button"
+                  aria-pressed="true">
+                  Cerrar sesión
+                </a>
+              </div>
+            {{else}}
+              <div class="col m-2 text-right">
+                <a
+                  href="/login"
+                  class="btn btn-primary btn-lg border border-white"
+                  role="button"
+                  aria-pressed="true">
+                  Login
+                </a>
+                <a
+                  href="/register"
+                  class="btn btn-primary btn-lg border border-white ml-2"
+                  role="button"
+                  aria-pressed="true">
+                  Registrarse
+                </a>
+              </div>
+            {{/if}}
+
+
           </div>
         </nav>
       </div>
