@@ -22,6 +22,13 @@ async function init() {
     await server.register(inert);
     await server.register(vision);
 
+    server.state("user", {
+      ttl: 1000 * 60 * 60 * 24 * 7,
+      isSecure: process.env.NODE_ENV === "prod",
+      encoding: "base64json",
+      path: "/",
+    });
+
     server.views({
       engines: { hbs: handlebars },
       relativeTo: __dirname,
