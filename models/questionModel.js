@@ -39,6 +39,28 @@ class QuestionModel {
 
     return answers;
   }
+
+  async setRightAnswer(questionId, answerId, user) {
+    const query = await this.collection.child(questionId).once("value");
+    const question = query.val();
+    const answers = question.answers;
+
+    if (!user.email === question.owner.email) {
+      return false;
+    }
+
+    let key;
+    for (key in answers) {
+      answers[key].correct = key === answerId;
+    }
+
+    const update = await this.collection
+      .child(questionId)
+      .child("answers")
+      .update(answers);
+
+    return update;
+  }
 }
 
 module.exports = QuestionModel;
