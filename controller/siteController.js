@@ -48,6 +48,26 @@ function ask(req, h) {
   });
 }
 
+async function viewQuestion(req, h) {
+  let data;
+
+  try {
+    data = await questions.getOne(req.params.id);
+    if (!data) {
+      return notFound(req, h);
+    }
+
+    return h.view("question", {
+      title: "Question details",
+      user: req.state.user,
+      key: req.params.id,
+      question: data,
+    });
+  } catch (error) {
+    console.error(error);
+  }
+}
+
 function notFound(req, h) {
   return h.view("404", {}, { layout: "errorLayout" }).code(404);
 }
@@ -63,10 +83,12 @@ function assetNotFound(req, h) {
 }
 
 module.exports = {
+  ask: ask,
+  home: home,
+  login: login,
+  register: register,
+  viewQuestion: viewQuestion,
+
   assetNotFound: assetNotFound,
   notFound: notFound,
-  register: register,
-  login: login,
-  home: home,
-  ask: ask,
 };
