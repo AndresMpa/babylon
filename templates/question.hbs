@@ -1,0 +1,60 @@
+<div class="container mt-4">
+  <div class="alert alert-primary" role="alert">
+    <h4 class="alert-heading">Pregunta de ejemplo</h4>
+    <p>Esta es una pregunta de ejemplo y así debe visualizarse</p>
+    <p class="mb-0">Creada por <strong>Adrian Estrada</strong></p>
+  </div>
+  <div class="alert alert-info" role="alert">
+    <p>Esta es una respuesta de ejemplo</p>
+    <hr />
+    <div class="container">
+      <div class="row">
+        <div class="col-sm">Creada por <strong>Adrian Estrada</strong></div>
+        <div class="col-sm text-right"></div>
+      </div>
+    </div>
+  </div>
+  <div class="alert alert-success" role="alert">
+    <p>Esta es una repuesta de ejemplo marcada como correcta</p>
+    <hr />
+    <div class="container">
+      <div class="row">
+        <div class="col-sm">Creada por <strong>Adrian Estrada</strong></div>
+        <div class="col-sm text-right">
+          <h3>
+            <span class="badge badge-success">Respuesta correcta</span>
+          </h3>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card mb-3">
+    <div class="card-header">
+      <h3>Responder</h3>
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col">
+          <form method="POST" action="">
+            <div class="form-group">
+              <label for="answer">Respuesta</label>
+              <textarea
+                class="form-control"
+                id="answer"
+                name="answer"
+                placeholder="Ingrese la respuesta"
+                required
+              ></textarea>
+              <input type="hidden" name="id" value="" />
+            </div>
+            <div class="text-center mt-5">
+              <button type="submit" class="btn btn-primary">
+                Enviar respuesta
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
