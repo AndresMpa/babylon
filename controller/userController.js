@@ -7,11 +7,16 @@ async function createUser(req, h) {
 
   try {
     result = await users.create(req.payload);
-
-    return h.response(`User ${result} created`).code(200);
+    return h.view("register", {
+      title: "Register",
+      success: "User created successfully",
+    });
   } catch (error) {
     console.error(error);
-    return h.response("Something went wrong").code(500);
+    return h.view("register", {
+      title: "Register",
+      error: "Something went wrong",
+    });
   }
 }
 
@@ -21,11 +26,17 @@ async function validateCredentials(req, h) {
   try {
     result = await users.validateCredentials(req.payload);
     if (!result) {
-      return h.response("No user found using those credentials").code(401);
+      return h.view("login", {
+        title: "Login",
+        success: "No user found using those credentials",
+      });
     }
   } catch (error) {
     console.error(error);
-    return h.response("Server error, please try again later").code(500);
+    return h.view("login", {
+      title: "Login",
+      success: "Server error, please try again later",
+    });
   }
 
   return h.redirect("/").state("user", {
@@ -39,7 +50,7 @@ async function closeSession(req, h) {
 }
 
 function failValidation(req, h, err) {
-  return boom.badRequest("Validation failed ", req.payload);
+  return boom.badRequest("Validation failed", req.payload);
 }
 
 module.exports = {
