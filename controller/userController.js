@@ -50,7 +50,15 @@ async function closeSession(req, h) {
 }
 
 function failValidation(req, h, err) {
-  return boom.badRequest("Validation failed", req.payload);
+  const templates = {
+    "/create-user": "register",
+    "/validate-user": "login",
+  };
+
+  return h.view(templates[req.path], {
+    title: "Validation error",
+    error: "Be sure to fill required field",
+  }).code(400).takeover();
 }
 
 module.exports = {
