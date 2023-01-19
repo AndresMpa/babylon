@@ -27,7 +27,12 @@ function login(req, h) {
   });
 }
 
+function notFound(req, h) {
+  return h.view("404", {}, { layout: "errorLayout" }).code(404);
+}
+
 module.exports = {
+  notFound: notFound,
   register: register,
   login: login,
   home: home,
