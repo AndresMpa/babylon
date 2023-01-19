@@ -25,6 +25,11 @@ module.exports = [
     path: "/ask",
     handler: siteController.ask,
   },
+  {
+    method: "GET",
+    path: "/question/{id}",
+    handler: siteController.viewQuestion,
+  },
 
   {
     method: "GET",
