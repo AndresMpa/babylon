@@ -1,4 +1,4 @@
-const handlebars = require("handlebars");
+const handlebars = require("./lib/helpers");
 const vision = require("@hapi/vision");
 const inert = require("@hapi/inert");
 const Hapi = require("@hapi/hapi");
@@ -7,6 +7,7 @@ const siteController = require("./controller/siteController.js");
 const routes = require("./routes");
 
 const path = require("path");
+
 
 const server = Hapi.server({
   port: process.env.PORT || 3000,
