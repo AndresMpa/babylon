@@ -2,6 +2,7 @@ const joi = require("joi");
 
 const siteController = require("../controller/siteController.js");
 const userController = require("../controller/userController.js");
+const questionController = require("../controller/questionController.js");
 
 module.exports = [
   {
@@ -19,6 +20,12 @@ module.exports = [
     path: "/login",
     handler: siteController.login,
   },
+  {
+    method: "GET",
+    path: "/ask",
+    handler: siteController.ask,
+  },
+
   {
     method: "GET",
     path: "/logout",
@@ -53,6 +60,21 @@ module.exports = [
     },
     handler: userController.validateCredentials,
   },
+  {
+    method: "POST",
+    path: "/create-question",
+    options: {
+      validate: {
+        payload: joi.object({
+          title: joi.string().required(),
+          description: joi.string().required(),
+        }),
+        failAction: userController.failValidation,
+      },
+    },
+    handler: questionController.createQuestion,
+  },
+
   {
     method: "GET",
     path: "/assets/{param*}",
