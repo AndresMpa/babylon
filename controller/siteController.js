@@ -31,7 +31,18 @@ function notFound(req, h) {
   return h.view("404", {}, { layout: "errorLayout" }).code(404);
 }
 
+function assetNotFound(req, h) {
+  const response = req.response;
+
+  if (response.isBoom && response.output.statusCode === 404) {
+    return h.view("404", {}, { layout: "errorLayout" }).code(404);
+  } else {
+    return h.continue
+  }
+}
+
 module.exports = {
+  assetNotFound: assetNotFound,
   notFound: notFound,
   register: register,
   login: login,
