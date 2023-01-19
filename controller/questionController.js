@@ -6,6 +6,7 @@ async function createQuestion(req, h) {
     return h.view("ask", {
       title: "Create questions",
       success: `Question created successfully`,
+      user: req.state.user,
     });
   } catch (error) {
     console.error(error);
