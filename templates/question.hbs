@@ -12,7 +12,15 @@
       <div class="container">
         <div class="row">
           <div class="col-sm">Creada por <strong>{{answer.user.name}}</strong></div>
-          <div class="col-sm text-right"></div>
+          <div class="col-sm text-right">
+            {{#with user}}
+              {{#ifEquals ../../question.owner.email ../../user.email}}
+                <a href="" class="btn btn-primary" role="button">
+                  Elegir respuesta
+                </a>
+              {{/ifEquals}}
+            {{/with}}
+          </div>
         </div>
       </div>
     </div>
