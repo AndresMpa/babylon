@@ -9,7 +9,7 @@ async function createUser(req, h) {
     result = await users.create(req.payload);
     return h.view("register", {
       title: "Register",
-      success: "User created successfully",
+      success: `User ${result.ID} created successfully`,
     });
   } catch (error) {
     console.error(error);
