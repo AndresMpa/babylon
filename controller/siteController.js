@@ -1,6 +1,16 @@
-function home(req, h) {
+const { questions } = require("../models");
+
+async function home(req, h) {
+  let data;
+  try {
+    data = await questions.getLast(10);
+  } catch (error) {
+    console.error(error);
+  }
+
   return h.view("index", {
     title: "Home",
+    questions: data,
     user: req.state.user,
   });
 }

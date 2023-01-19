@@ -16,6 +16,7 @@ async function createQuestion(req, h) {
         title: "Create questions",
         error:
           "Server got some troubles creating your question, please try again later",
+        user: req.state.user,
       })
       .code(500)
       .takeover();
