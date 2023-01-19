@@ -13,80 +13,26 @@
 <div class="container">
   <!-- Example row of columns -->
   <h2 class="mb-4">Últimas preguntas</h2>
-  <div class="card bg-white mb-3">
-    <div class="card-body">
-      <div class="row">
-        <div class="col-2 text-center">
-          <a href="#" class="text-dark">
-            <h3>2</h3>
-            Respuestas
-          </a>
-        </div>
-        <div class="col-10 d-flex align-items-stretch">
-          <h4 class="mt-3">
-            <a href="#" class="text-dark">Pregunta de ejemplo</a>
-          </h4>
-        </div>
-      </div>
-    </div>
-  </div>
-  <hr />
-
-  <div class="card bg-white mb-3">
-    <div class="card-body">
-      <div class="row">
-        <div class="col-2 text-center">
-          <a href="#" class="text-dark">
-            <h3>2</h3>
-            Respuestas
-          </a>
-        </div>
-        <div class="col-10 d-flex align-items-stretch">
-          <h4 class="mt-3">
-            <a href="#" class="text-dark">Pregunta de ejemplo</a>
-          </h4>
+  
+  {{#each questions as |question key|}}
+    <div class="card bg-white mb-3">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-2 text-center">
+            <a href="#" class="text-dark">
+              <h3>2</h3>
+              Respuestas
+            </a>
+          </div>
+          <div class="col-10 d-flex align-items-stretch">
+            <h4 class="mt-3">
+              <a href="#" class="text-dark">{{question.title}}</a>
+            </h4>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <hr />
-
-  <div class="card bg-white mb-3">
-    <div class="card-body">
-      <div class="row">
-        <div class="col-2 text-center">
-          <a href="#" class="text-dark">
-            <h3>2</h3>
-            Respuestas
-          </a>
-        </div>
-        <div class="col-10 d-flex align-items-stretch">
-          <h4 class="mt-3">
-            <a href="#" class="text-dark">Pregunta de ejemplo</a>
-          </h4>
-        </div>
-      </div>
-    </div>
-  </div>
-  <hr />
-
-  <div class="card bg-white mb-3">
-    <div class="card-body">
-      <div class="row">
-        <div class="col-2 text-center">
-          <a href="#" class="text-dark">
-            <h3>2</h3>
-            Respuestas
-          </a>
-        </div>
-        <div class="col-10 d-flex align-items-stretch">
-          <h4 class="mt-3">
-            <a href="#" class="text-dark">Pregunta de ejemplo</a>
-          </h4>
-        </div>
-      </div>
-    </div>
-  </div>
-  <hr />
+    <hr />
+  {{/each}}
 </div>
 <!-- /container -->
