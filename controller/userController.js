@@ -26,14 +26,14 @@ async function validateCredentials(req, h) {
     if (!result) {
       return h.view("login", {
         title: "Login",
-        success: "No user found using those credentials",
+        error: "No user found using those credentials",
       });
     }
   } catch (error) {
     console.error(error);
     return h.view("login", {
       title: "Login",
-      success: "Server error, please try again later",
+      error: "Server error, please try again later",
     });
   }
 
