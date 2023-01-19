@@ -37,6 +37,12 @@ module.exports = [
     handler: userController.logout,
   },
   {
+    method: "GET",
+    path: "/answer/{questionId}/{answerId}",
+    handler: questionController.setRightAnswer,
+  },
+
+  {
     method: "POST",
     path: "/create-user",
     options: {
