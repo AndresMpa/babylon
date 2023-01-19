@@ -4,10 +4,10 @@ const inert = require("@hapi/inert");
 const Hapi = require("@hapi/hapi");
 
 const siteController = require("./controller/siteController.js");
+const methods = require("./lib/methods");
 const routes = require("./routes");
 
 const path = require("path");
-
 
 const server = Hapi.server({
   port: process.env.PORT || 3000,
@@ -23,6 +23,7 @@ async function init() {
   try {
     await server.register(inert);
     await server.register(vision);
+    await server.method("setAnswerRight", methods.setRightAnswer);
 
     server.state("user", {
       ttl: 1000 * 60 * 60 * 24 * 7,
