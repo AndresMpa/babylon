@@ -3,6 +3,7 @@ const vision = require("@hapi/vision");
 const inert = require("@hapi/inert");
 const Hapi = require("@hapi/hapi");
 
+const siteController = require("./controller/siteController.js");
 const routes = require("./routes");
 
 const path = require("path");
@@ -36,6 +37,8 @@ async function init() {
       layout: true,
       layoutPath: "templates",
     });
+
+    server.ext("onPreResponse", siteController.assetNotFound);
 
     server.route(routes);
 
