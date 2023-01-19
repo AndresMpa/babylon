@@ -23,7 +23,8 @@ async function init() {
   try {
     await server.register(inert);
     await server.register(vision);
-    await server.method("setAnswerRight", methods.setRightAnswer);
+
+    await server.method("setRightAnswer", methods.setRightAnswer);
 
     server.state("user", {
       ttl: 1000 * 60 * 60 * 24 * 7,
