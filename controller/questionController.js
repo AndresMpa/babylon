@@ -1,11 +1,12 @@
 const { questions } = require("../models");
 
 async function createQuestion(req, h) {
-  let result;
-
   try {
-    result = await questions.createQuestion(req.payload, req.state.user);
-    return h.response(`Question ${result.ID} created successfully`);
+    await questions.create(req.payload, req.state.user);
+    return h.view("ask", {
+      title: "Create questions",
+      success: `Question created successfully`,
+    });
   } catch (error) {
     console.error(error);
 
