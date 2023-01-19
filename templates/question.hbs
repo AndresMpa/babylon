@@ -15,7 +15,7 @@
           <div class="col-sm text-right">
             {{#with user}}
               {{#ifEquals ../../question.owner.email ../../user.email}}
-                <a href="" class="btn btn-primary" role="button">
+                <a href="/answer/{{../../../key}}/{{key}}" class="btn btn-primary" role="button">
                   Elegir respuesta
                 </a>
               {{/ifEquals}}
