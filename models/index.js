@@ -1,6 +1,7 @@
 const firebase = require("firebase-admin");
 
 const UserModel = require("./userModel");
+const QuestionModel = require("./questionModel");
 
 const serviceAccount = require("../config/credentials.json");
 const config = require("../config");
@@ -14,4 +15,5 @@ const firebaseDatabase = firebase.database();
 
 module.exports = {
   users: new UserModel(firebaseDatabase),
+  questions: new QuestionModel(firebaseDatabase),
 };
