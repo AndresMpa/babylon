@@ -24,7 +24,8 @@
     "firebase-admin": "^11.4.1",
     "handlebars": "^4.7.7",
     "hapi": "^18.1.0",
-    "joi": "^17.7.0"
+    "joi": "^17.7.0",
+    "uuid": "^9.0.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.20",
