@@ -34,8 +34,6 @@ async function answerQuestion(req, h) {
 
   try {
     await questions.answer(req.payload, req.state.user);
-    console.log("Answer created", req.payload.id);
-
     return h.redirect(`/question/${req.payload.id}`);
   } catch (error) {
     console.error(error);
