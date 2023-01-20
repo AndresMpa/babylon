@@ -73,7 +73,7 @@ async function init() {
 
     await server.start();
   } catch (error) {
-    server.log("error", "Error on server initialization", error.message, error);
+    server.log("error", "On server initialization", error.message, error);
 
     process.exit(1);
   }
