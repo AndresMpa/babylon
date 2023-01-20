@@ -58,7 +58,7 @@ async function viewQuestion(req, h) {
       question: data,
     });
   } catch (error) {
-    console.error(error);
+    req.log(["error", "server"], "Fetching question details", error.message, error);
   }
 }
 

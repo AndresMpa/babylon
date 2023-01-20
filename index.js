@@ -2,6 +2,7 @@ const handlebars = require("./lib/helpers");
 const vision = require("@hapi/vision");
 const inert = require("@hapi/inert");
 const Hapi = require("@hapi/hapi");
+const laabr = require("laabr");
 
 const siteController = require("./controller/siteController.js");
 const methods = require("./lib/methods");
@@ -12,6 +13,7 @@ const path = require("path");
 const server = Hapi.server({
   port: process.env.PORT || 3000,
   host: "localhost",
+  debug: false,
   routes: {
     files: {
       relativeTo: path.join(__dirname, "public"),
@@ -24,12 +26,22 @@ async function init() {
     await server.register(inert);
     await server.register(vision);
 
+    // Loggers
+    await server.register({
+      plugin: laabr,
+      options: {
+        formats: { onPostStart: ":time :start :level :message" },
+        tokens: { start: () => "[start]" },
+        indent: 0,
+      },
+    });
+
     await server.method("setRightAnswer", methods.setRightAnswer);
     await server.method("getLast", methods.getLast, {
       cache: {
         expiresIn: 1000 * 60,
-        generateTimeout: 1000 * 2
-      }
+        generateTimeout: 1000 * 2,
+      },
     });
 
     server.state("user", {
@@ -53,19 +65,20 @@ async function init() {
 
     await server.start();
   } catch (error) {
-    console.error(error);
+    server.log("error", "Error on server initialization", error.message, error);
+
     process.exit(1);
   }
 
-  console.log(`Server running on: ${server.info.uri}`);
+  server.log("info", `Server running on: ${server.info.uri}`);
 }
 
 process.on("unhandledRejection", (error) => {
-  console.error("Unhandled rejection", error.message, error);
+  server.log("error", "Unhandled rejection", error.message, error);
 });
 
 process.on("unhandledException", (error) => {
-  console.error("Unhandled exception", error.message, error);
+  server.log("error", "Unhandled exception", error.message, error);
 });
 
 init();

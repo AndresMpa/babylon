@@ -10,7 +10,8 @@ async function createUser(req, h) {
       success: `User created successfully`,
     });
   } catch (error) {
-    console.error(error);
+    req.log(["error", "server"], "on createUser creating user", error.message, error);
+
     return h.view("register", {
       title: "Register",
       error: "Something went wrong",
@@ -24,13 +25,16 @@ async function validateCredentials(req, h) {
   try {
     result = await users.validateCredentials(req.payload);
     if (!result) {
+      req.log(["info", "error"], "on validateCredentials no credentials found");
+
       return h.view("login", {
         title: "Login",
         error: "No user found using those credentials",
       });
     }
   } catch (error) {
-    console.error(error);
+    req.log(["error", "server"], "on validateCredentials", error.message, error);
+
     return h.view("login", {
       title: "Login",
       error: "Server error, please try again later",
@@ -54,10 +58,13 @@ function failValidation(req, h, err) {
     "/create-question": "ask",
   };
 
-  return h.view(templates[req.path], {
-    title: "Validation error",
-    error: "Be sure to fill required field",
-  }).code(400).takeover();
+  return h
+    .view(templates[req.path], {
+      title: "Validation error",
+      error: "Be sure to fill required field",
+    })
+    .code(400)
+    .takeover();
 }
 
 module.exports = {

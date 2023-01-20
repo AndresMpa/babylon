@@ -21,7 +21,12 @@ async function createQuestion(req, h) {
         join(__dirname, "..", "public", "uploads", filename),
         req.payload.image,
         (error) => {
-          console.error(error);
+          req.log(
+            ["error", "creation"],
+            "on createQuestion something went wrong creating files",
+            error.message,
+            error
+          );
         }
       );
     }
@@ -34,7 +39,12 @@ async function createQuestion(req, h) {
       user: req.state.user,
     });
   } catch (error) {
-    console.error(error);
+    req.log(
+      ["error", "server"],
+      "on createQuestion no credentials found",
+      error.message,
+      error
+    );
 
     return h
       .view("ask", {
@@ -57,7 +67,12 @@ async function answerQuestion(req, h) {
     await questions.answer(req.payload, req.state.user);
     return h.redirect(`/question/${req.payload.id}`);
   } catch (error) {
-    console.error(error);
+    req.log(
+      ["error", "creation", "redirection"],
+      "on answerQuestion no credentials found",
+      error.message,
+      error
+    );
   }
 }
 
@@ -74,7 +89,12 @@ async function setRightAnswer(req, h) {
 
     return h.redirect(`/question/${req.params.questionId}`);
   } catch (error) {
-    console.error(error);
+    req.log(
+      ["error", "server"],
+      "on setRightAnswer no credentials found",
+      error.message,
+      error
+    );
   }
 }
 
