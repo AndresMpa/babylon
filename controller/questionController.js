@@ -11,10 +11,10 @@ async function createQuestion(req, h) {
   }
 
   try {
-    const imageContent = Buffer.from(req.payload.image);
-    let filename;
+    const containsImage = Buffer.isBuffer(req.payload.image);
+    let filename = "";
 
-    if (Buffer.isBuffer(imageContent)) {
+    if (containsImage) {
       filename = `${uuidv4()}.png`;
 
       await writeFile(
@@ -24,10 +24,13 @@ async function createQuestion(req, h) {
           req.log(
             ["error", "creation"],
             "on createQuestion something went wrong creating files",
-            error.message,
             error
           );
         }
+      );
+      req.log(
+        ["info", "creation"],
+        `on createQuestion: ${filename} created successfully`
       );
     }
 
