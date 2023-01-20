@@ -2,6 +2,15 @@
   <div class="alert alert-primary" role="alert">
     <h4 class="alert-heading">{{question.title}}</h4>
     <p>{{question.description}}</p>
+
+    {{#with question.filename}}
+      <p class="text-center">
+        {{this}}
+        <img src="/assets/uploads/{{this}}" alt="Question image" style="max-width:80%" />
+      </p>
+      <hr />
+    {{/with}}
+
     <p class="mb-0">Creada por <strong>{{question.owner.name}}</strong></p>
   </div>
 
