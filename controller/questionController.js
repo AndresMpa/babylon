@@ -1,4 +1,9 @@
+const { v4: uuidv4 } = require("uuid");
+
 const { questions } = require("../models");
+
+const { writeFile } = require("fs");
+const { join } = require("path");
 
 async function createQuestion(req, h) {
   if (!req.state.user) {
@@ -6,7 +11,23 @@ async function createQuestion(req, h) {
   }
 
   try {
-    await questions.create(req.payload, req.state.user);
+    const imageContent = Buffer.from(req.payload.image);
+    let filename;
+
+    if (Buffer.isBuffer(imageContent)) {
+      filename = `${uuidv4()}.png`;
+
+      await writeFile(
+        join(__dirname, "..", "public", "uploads", filename),
+        req.payload.image,
+        (error) => {
+          console.error(error);
+        }
+      );
+    }
+
+    await questions.create(req.payload, req.state.user, filename);
+
     return h.view("ask", {
       title: "Create questions",
       success: `Question created successfully`,
@@ -45,7 +66,7 @@ async function setRightAnswer(req, h) {
     return h.redirect("/login");
   }
   try {
-    const result = await req.server.methods.setRightAnswer(
+    await req.server.methods.setRightAnswer(
       req.params.questionId,
       req.params.answerId,
       req.state.user
