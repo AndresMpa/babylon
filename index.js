@@ -36,6 +36,14 @@ async function init() {
       },
     });
 
+    // Plugins
+    await server.register({
+      plugin: require("./lib/api"),
+      options: {
+        prefix: "api",
+      },
+    });
+
     await server.method("setRightAnswer", methods.setRightAnswer);
     await server.method("getLast", methods.getLast, {
       cache: {
