@@ -19,7 +19,7 @@
             </div>
           {{/with}}
 
-          <form method="POST" action="/create-question">
+          <form method="POST" action="/create-question" enctype="multipart/form-data">
             <div class="form-group">
               <label for="title">Título</label>
               <input
@@ -40,6 +40,10 @@
                 placeholder="Ingrese la descripción"
                 required
               ></textarea>
+            </div>
+            <div class="form-group">
+              <label for="image">Image(PNG only)</label>
+              <input id="image" type="file" name="image" accept="image/png" />
             </div>
             <div class="text-center mt-5">
               <button type="submit" class="btn btn-primary">
