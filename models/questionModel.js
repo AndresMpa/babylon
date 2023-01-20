@@ -5,9 +5,16 @@ class QuestionModel {
     this.collection = this.reference.child("questions");
   }
 
-  create(data, user) {
-    data = { ...data };
-    data.owner = user;
+  create(information, user, filename) {
+    const data = {
+      description: information.description,
+      title: information.title,
+      owner: user,
+    };
+
+    if (filename) {
+      data.filename = filename;
+    }
 
     const question = this.collection.push();
     question.set(data);
