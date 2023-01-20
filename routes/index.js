@@ -81,10 +81,15 @@ module.exports = [
     method: "POST",
     path: "/create-question",
     options: {
+      payload: {
+        multipart: true,
+        parse: true,
+      },
       validate: {
         payload: joi.object({
           title: joi.string().required(),
           description: joi.string().required(),
+          image: joi.any().optional(),
         }),
         failAction: userController.failValidation,
       },
