@@ -58,7 +58,12 @@ async function viewQuestion(req, h) {
       question: data,
     });
   } catch (error) {
-    req.log(["error", "server"], "Fetching question details", error.message, error);
+    req.log(
+      ["error", "server"],
+      "Fetching question details",
+      error.message,
+      error
+    );
   }
 }
 
@@ -69,7 +74,11 @@ function notFound(req, h) {
 function assetNotFound(req, h) {
   const response = req.response;
 
-  if (response.isBoom && response.output.statusCode === 404) {
+  if (
+    response.isBoom &&
+    !req.path.startsWith("/api") &&
+    response.output.statusCode === 404
+  ) {
     return h.view("404", {}, { layout: "errorLayout" }).code(404);
   } else {
     return h.continue;
