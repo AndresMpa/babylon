@@ -1,5 +1,6 @@
 //Hapi plugins
 const handlebars = require("./lib/helpers");
+const hapiDevError = require("hapi-dev-errors");
 const scooter = require("@hapi/scooter");
 const vision = require("@hapi/vision");
 const inert = require("@hapi/inert");
@@ -80,6 +81,14 @@ async function init() {
         generateNonces: false,
       },
     });
+
+    // Debug
+    await server.register({
+      plugin: hapiDevError,
+      options: {
+        showErrors: config.env === "production",
+      }
+    })
 
     // Server methods
     await server.method("setRightAnswer", methods.setRightAnswer);
