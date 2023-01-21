@@ -1,19 +1,29 @@
+//Hapi plugins
 const handlebars = require("./lib/helpers");
+const scooter = require("@hapi/scooter");
 const vision = require("@hapi/vision");
 const inert = require("@hapi/inert");
 const crumb = require("@hapi/crumb");
+const blankie = require("blankie");
 const Hapi = require("@hapi/hapi");
 const laabr = require("laabr");
 
-const config = require("./config")
+// Configuration files
+const config = require("./config");
 
+// Controllers
 const siteController = require("./controller/siteController.js");
+
+// Server methods
 const methods = require("./lib/methods");
 
+// Routes object
 const routes = require("./routes");
 
+// Other dependencies
 const path = require("path");
 
+// Server creation
 const server = Hapi.server({
   port: process.env.PORT || 3000,
   host: "localhost",
@@ -27,8 +37,8 @@ const server = Hapi.server({
 
 async function init() {
   try {
-    await server.register(inert);
-    await server.register(vision);
+    // HTML
+    await server.register([inert, vision]);
 
     // Loggers
     await server.register({
@@ -49,6 +59,7 @@ async function init() {
     });
 
     // OWASP
+    // SSRF - CRSF
     await server.register({
       plugin: crumb,
       options: {
@@ -57,7 +68,20 @@ async function init() {
         },
       },
     });
+    // XSS
+    await server.register(scooter);
+    await server.register({
+      plugin: blankie,
+      options: {
+        defaultSrc: `'self' 'unsafe-inline'`,
+        fontSrc: `'self' 'unsafe-inline' data:`,
+        styleSrc: `'self' 'unsafe-inline' https://maxcdn.bootstrapcdn.com`,
+        scriptSrc: `'self' 'unsafe-inline' 'unsafe-eval' https://cdnjs.cloudflare.com https://maxcdn.bootstrapcdn.com/ https://code.jquery.com/`,
+        generateNonces: false,
+      },
+    });
 
+    // Server methods
     await server.method("setRightAnswer", methods.setRightAnswer);
     await server.method("getLast", methods.getLast, {
       cache: {
@@ -66,6 +90,7 @@ async function init() {
       },
     });
 
+    // State global vars
     server.state("user", {
       ttl: 1000 * 60 * 60 * 24 * 7,
       isSecure: config.env === "production",
@@ -73,6 +98,7 @@ async function init() {
       path: "/",
     });
 
+    // Views
     server.views({
       engines: { hbs: handlebars },
       relativeTo: __dirname,
@@ -81,10 +107,13 @@ async function init() {
       layoutPath: "templates",
     });
 
+    // Hapi life cycle
     server.ext("onPreResponse", siteController.assetNotFound);
 
+    // Adding routes
     server.route(routes);
 
+    // Stating Hapi server
     await server.start();
   } catch (error) {
     server.log("error", "On server initialization", error.message, error);
@@ -92,9 +121,11 @@ async function init() {
     process.exit(1);
   }
 
+  // Server logger
   server.log("info", `Server running on: ${server.info.uri}`);
 }
 
+// Default node process error management
 process.on("unhandledRejection", (error) => {
   server.log("error", "Unhandled rejection", error.message, error);
 });
