@@ -1,11 +1,15 @@
 const handlebars = require("./lib/helpers");
 const vision = require("@hapi/vision");
 const inert = require("@hapi/inert");
+const crumb = require("@hapi/crumb");
 const Hapi = require("@hapi/hapi");
 const laabr = require("laabr");
 
+const config = require("./config")
+
 const siteController = require("./controller/siteController.js");
 const methods = require("./lib/methods");
+
 const routes = require("./routes");
 
 const path = require("path");
@@ -44,6 +48,16 @@ async function init() {
       },
     });
 
+    // OWASP
+    await server.register({
+      plugin: crumb,
+      options: {
+        cookieOptions: {
+          isSecure: config.env === "production",
+        },
+      },
+    });
+
     await server.method("setRightAnswer", methods.setRightAnswer);
     await server.method("getLast", methods.getLast, {
       cache: {
@@ -54,7 +68,7 @@ async function init() {
 
     server.state("user", {
       ttl: 1000 * 60 * 60 * 24 * 7,
-      isSecure: process.env.NODE_ENV === "prod",
+      isSecure: config.env === "production",
       encoding: "base64json",
       path: "/",
     });
