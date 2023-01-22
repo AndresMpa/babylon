@@ -25,4 +25,20 @@ export class ProductsController {
       payload,
     };
   }
+
+  @Put(':productId')
+  update(@Param('productId') productId: string, @Body() payload: any) {
+    return {
+      productId,
+      payload,
+    };
+  }
+
+  @Delete(':productId')
+  delete(@Param('productId') productId: string) {
+    return {
+      message: `Product ${productId} deleted`,
+      productId,
+    };
+  }
 }
