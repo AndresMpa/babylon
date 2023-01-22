@@ -28,8 +28,25 @@ export class ProductsController {
   }
 
   @Get('/:productId')
+  @HttpCode(HttpStatus.ACCEPTED)
   getDetails(@Param('productId') productId: string) {
     return `Product id: ${productId}`;
+  }
+
+  /*
+    Some cases It can be useful to get native express objects
+    in general it's better to use Nest itself, but in some cases
+    to use express can be easier, instead of using this option a
+    custom decorator could achieve this too
+  */
+  @Get('express/:productId')
+  getOneExpressLike(
+    @Res() response: Response,
+    @Param('productId') productId: string,
+  ) {
+    response.status(200).send({
+      message: `Express like response ${productId}`,
+    });
   }
 
   @Post()
