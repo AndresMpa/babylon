@@ -1,4 +1,11 @@
-import { Controller } from '@nestjs/common';
+import { Controller, Get, Param } from '@nestjs/common';
 
 @Controller('customers')
-export class CustomersController {}
+export class CustomersController {
+  @Get(':customerId')
+  getDetails(@Param('customerId') customerId: string) {
+    return {
+      message: `Customer id ${customerId}`,
+    };
+  }
+}

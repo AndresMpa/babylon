@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { AppService } from './app.service';
 import { AppController } from './app.controller';
 import { ProductsController } from './controllers/products/products.controller';
-import { CatergoriesController } from './controllers/catergories/catergories.controller';
+import { CatergoriesController } from './controllers/categories/categories.controller';
 import { OrdersController } from './controllers/orders/orders.controller';
 import { UsersController } from './controllers/users/users.controller';
 import { BrandsController } from './controllers/brands/brands.controller';

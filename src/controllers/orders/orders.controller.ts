@@ -2,12 +2,17 @@ import { Controller, Get, Param } from '@nestjs/common';
 
 @Controller('orders')
 export class OrdersController {
-  @Get()
-  getCustomerOrders() {
-    return '';
-  }
   @Get(':orderId')
-  getOrderDetails(@Param('orderId') orderId: string) {
-    return `Order id: ${orderId}`;
+  getDetails(@Param('orderId') orderId: string) {
+    return {
+      message: `Order id: ${orderId}`,
+    };
+  }
+
+  @Get('customer/:customerId')
+  getAll(@Param('customerId') customerId: string) {
+    return {
+      message: `Orders from ${customerId}`,
+    };
   }
 }

@@ -1,17 +1,28 @@
-import { Controller, Get, Param, Query } from '@nestjs/common';
+import { Controller, Get, Post, Param, Query, Body } from '@nestjs/common';
 
 @Controller('products')
 export class ProductsController {
   @Get()
-  getProducts(
+  getAll(
     @Query('limit') limit = 100,
     @Query('offset') offset = 0,
     @Query('brand') brand: string,
   ) {
-    return `Limit: ${limit}, Offset: ${offset}, Brand: ${brand}`;
+    return {
+      message: `Limit: ${limit}, Offset: ${offset}, Brand: ${brand}`,
+    };
   }
+
   @Get('/:productId')
-  getProduct(@Param('productId') productId: string) {
+  getDetails(@Param('productId') productId: string) {
     return `Product id: ${productId}`;
+  }
+
+  @Post()
+  create(@Body() payload: any): any {
+    return {
+      message: `Data created`,
+      payload,
+    };
   }
 }
