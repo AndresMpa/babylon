@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 
 import { Product } from '../../entities/product.entity';
 
@@ -21,7 +21,14 @@ export class ProductsService {
   }
 
   findOne(index: string) {
-    return this.products.find((item) => item.identifier === index);
+    const product = this.products.find((item) => item.identifier === index);
+    if (!product) {
+      throw new NotFoundException(
+        `There's no a product assigned to ${index} identifier`,
+      );
+    } else {
+      return product;
+    }
   }
 
   create(payload: any) {
@@ -49,5 +56,18 @@ export class ProductsService {
       };
       return this.products[index];
     }
+  }
+
+  remove(identifier: string) {
+    const index = this.products.findIndex(
+      (item) => item.identifier === identifier,
+    );
+    if (index === -1) {
+      throw new NotFoundException(
+        `There's no a product assigned to ${index} identifier`,
+      );
+    }
+    this.products.splice(index, 1);
+    return true;
   }
 }
