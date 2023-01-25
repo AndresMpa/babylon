@@ -12,7 +12,8 @@ Controllers can be identified easily, through @Controller decorators
 Services can be always use the @Injectable decorator
 
 Pipes also use the @Injectable decorator, whereas pipes use it in a different way to 
-inject code through requests
+inject code through requests; Pipes can be identified by the PipeTransform class they
+implements
 
 #### Some useful features
 
