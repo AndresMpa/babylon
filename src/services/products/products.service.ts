@@ -7,7 +7,7 @@ export class ProductsService {
   private counterIdentifier = 1;
   private products: Product[] = [
     {
-      identifier: '1',
+      identifier: 1,
       name: 'Pijama del niño de rayas',
       description: 'Una pijama comoda, calientita y rayada',
       price: 10_000,
@@ -20,7 +20,7 @@ export class ProductsService {
     return this.products;
   }
 
-  findOne(index: string) {
+  findOne(index: number) {
     const product = this.products.find((item) => item.identifier === index);
     if (!product) {
       throw new NotFoundException(
@@ -43,7 +43,7 @@ export class ProductsService {
     return newProduct;
   }
 
-  update(identifier: string, payload: any) {
+  update(identifier: number, payload: any) {
     const product = this.findOne(identifier);
 
     if (product) {
@@ -58,7 +58,7 @@ export class ProductsService {
     }
   }
 
-  remove(identifier: string) {
+  remove(identifier: number) {
     const index = this.products.findIndex(
       (item) => item.identifier === identifier,
     );
