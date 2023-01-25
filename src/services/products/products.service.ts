@@ -35,4 +35,19 @@ export class ProductsService {
 
     return newProduct;
   }
+
+  update(identifier: string, payload: any) {
+    const product = this.findOne(identifier);
+
+    if (product) {
+      const index = this.products.findIndex(
+        (item) => item.identifier === identifier,
+      );
+      this.products[index] = {
+        ...product,
+        ...payload,
+      };
+      return this.products[index];
+    }
+  }
 }
