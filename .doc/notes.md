@@ -11,10 +11,14 @@ Controllers can be identified easily, through @Controller decorators
 
 Services can be always use the @Injectable decorator
 
+Pipes also use the @Injectable decorator, whereas pipes use it in a different way to 
+inject code through requests
+
 #### Some useful features
 
-| Action                | Command                                  | Description                                                                                                                                                     |
-| --------------------- | ---------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Create a nest project | `npx nest new <PROJECT_NAME>`            | Creates a new Nest project                                                                                                                                      |
-| Create a controller   | `npx nest g co <DIRECTORY>/<CONTROLLER>` | Nest CLI supports alias like "g" for "generate", "co" for "controller", this command creates a controller on <DIR> directory using <CONTROLLER> controller name |
-| Create a service   | `npx nest g s <DIRECTORY>/<SERVICE>` | Nest CLI supports alias like "g" for "generate", "s" for "service", this command creates a service on <DIR> directory using <SERVICE> controller name |
+| Action                | Command                                  | Description                                                                                                                                                                                         |
+| --------------------- | ---------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Create a nest project | `npx nest new <PROJECT_NAME>`            | Creates a new Nest project                                                                                                                                                                          |
+| Create a controller   | `npx nest g co <DIRECTORY>/<CONTROLLER>` | Nest CLI supports alias like "g" for "generate", "co" for "controller", this command creates a controller on <DIRECTORY> directory using <CONTROLLER> controller name                                     |
+| Create a service      | `npx nest g s <DIRECTORY>/<SERVICE>`     | Nest CLI supports alias like "g" for "generate", "s" for "service", this command creates a service on <DIRECTORY> directory using <SERVICE> service name                                                  |
+| Create a pipe line    | `npx nest g p <DIRECTORY>/<PIPE>`        | Nest CLI supports alias like "g" for "generate", "p" for "pipe", this command creates a pipe line on <DIRECTORY> directory (usually that directory is called "common" or "shared") using <PIPE> pipe name |
