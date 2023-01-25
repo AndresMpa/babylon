@@ -23,3 +23,11 @@ implements
 | Create a controller   | `npx nest g co <DIRECTORY>/<CONTROLLER>` | Nest CLI supports alias like "g" for "generate", "co" for "controller", this command creates a controller on <DIRECTORY> directory using <CONTROLLER> controller name                                     |
 | Create a service      | `npx nest g s <DIRECTORY>/<SERVICE>`     | Nest CLI supports alias like "g" for "generate", "s" for "service", this command creates a service on <DIRECTORY> directory using <SERVICE> service name                                                  |
 | Create a pipe line    | `npx nest g p <DIRECTORY>/<PIPE>`        | Nest CLI supports alias like "g" for "generate", "p" for "pipe", this command creates a pipe line on <DIRECTORY> directory (usually that directory is called "common" or "shared") using <PIPE> pipe name |
+
+#### Patters
+
+##### DTO
+
+Data Transfer Objects aliased as DTO or "dtos", are a Objects created with the purpose of 
+adding some kind of "shield" to ensure that data from requests is going to match the right
+data type, this is a way different from a net feature, its goal is to reduce the amount of bugs
