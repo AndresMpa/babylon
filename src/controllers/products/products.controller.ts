@@ -10,6 +10,7 @@ import {
   HttpCode,
   HttpStatus,
   Res,
+  ParseIntPipe,
 } from '@nestjs/common';
 
 import { Response } from 'express';
@@ -34,7 +35,7 @@ export class ProductsController {
 
   @Get('/:productId')
   @HttpCode(HttpStatus.ACCEPTED)
-  getDetails(@Param('productId') productId: string) {
+  getDetails(@Param('productId', ParseIntPipe) productId: number) {
     return {
       message: `Product id: ${productId}`,
       data: this.productsService.findOne(productId),
@@ -50,7 +51,7 @@ export class ProductsController {
   @Get('express/:productId')
   getOneExpressLike(
     @Res() response: Response,
-    @Param('productId') productId: string,
+    @Param('productId', ParseIntPipe) productId: number,
   ) {
     response.status(200).send({
       message: `Express like response ${productId}`,
@@ -66,7 +67,10 @@ export class ProductsController {
   }
 
   @Put(':productId')
-  update(@Param('productId') productId: string, @Body() payload: any) {
+  update(
+    @Param('productId', ParseIntPipe) productId: number,
+    @Body() payload: any,
+  ) {
     return {
       message: `Product ${productId} created sucessfully`,
       data: this.productsService.update(productId, payload),
@@ -74,7 +78,7 @@ export class ProductsController {
   }
 
   @Delete(':productId')
-  delete(@Param('productId') productId: string) {
+  delete(@Param('productId', ParseIntPipe) productId: number) {
     return {
       message: `Product ${productId} deleted`,
       productId,
