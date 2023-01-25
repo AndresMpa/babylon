@@ -14,8 +14,12 @@ import {
 
 import { Response } from 'express';
 
+import { ProductsService } from '../../services/products/products.service';
+
 @Controller('products')
 export class ProductsController {
+  constructor(private productsService: ProductsService) {}
+
   @Get()
   getAll(
     @Query('limit') limit = 100,
@@ -23,14 +27,18 @@ export class ProductsController {
     @Query('brand') brand: string,
   ) {
     return {
-      message: `Limit: ${limit}, Offset: ${offset}, Brand: ${brand}`,
+      message: `Using limit(${limit}), offset(${offset}) and brand(${brand}) as filters`,
+      data: this.productsService.findAll(),
     };
   }
 
   @Get('/:productId')
   @HttpCode(HttpStatus.ACCEPTED)
   getDetails(@Param('productId') productId: string) {
-    return `Product id: ${productId}`;
+    return {
+      message: `Product id: ${productId}`,
+      data: this.productsService.findOne(productId),
+    };
   }
 
   /*
@@ -52,16 +60,16 @@ export class ProductsController {
   @Post()
   create(@Body() payload: any): any {
     return {
-      message: `Data created`,
-      payload,
+      message: 'Data created',
+      data: this.productsService.create(payload),
     };
   }
 
   @Put(':productId')
   update(@Param('productId') productId: string, @Body() payload: any) {
     return {
-      productId,
-      payload,
+      message: `Product ${productId} created sucessfully`,
+      data: this.productsService.update(productId, payload),
     };
   }
 
