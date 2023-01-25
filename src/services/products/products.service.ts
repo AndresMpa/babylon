@@ -7,7 +7,7 @@ export class ProductsService {
   private counterIdentifier = 1;
   private products: Product[] = [
     {
-      identifier: 1,
+      identifier: '1',
       name: 'Pijama del niño de rayas',
       description: 'Una pijama comoda, calientita y rayada',
       price: 10_000,
