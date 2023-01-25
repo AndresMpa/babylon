@@ -18,6 +18,8 @@ import { Response } from 'express';
 
 import { ProductsService } from '../../services/products/products.service';
 
+import { CreateProductDto, UpdateProductDto } from '../../dtos/products.dtos.ts';
+
 @Controller('products')
 export class ProductsController {
   constructor(private productsService: ProductsService) {}
@@ -60,7 +62,7 @@ export class ProductsController {
   }
 
   @Post()
-  create(@Body() payload: any): any {
+  create(@Body() payload: CreateProductDto) {
     return {
       message: 'Data created',
       data: this.productsService.create(payload),
@@ -70,7 +72,7 @@ export class ProductsController {
   @Put(':productId')
   update(
     @Param('productId', ParseIntPipe) productId: number,
-    @Body() payload: any,
+    @Body() payload: UpdateProductDto,
   ) {
     return {
       message: `Product ${productId} created sucessfully`,
