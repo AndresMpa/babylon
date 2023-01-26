@@ -1,7 +1,7 @@
 import { Controller, Get, Param, Query } from '@nestjs/common';
 
 @Controller('categories')
-export class CatergoriesController {
+export class CategoriesController {
   @Get()
   getAll(@Query('limit') limit = 100, @Query('offset') offset = 0) {
     return {

@@ -1,8 +1,8 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { CatergoriesController } from './catergories.controller';
 
-describe('CatergoriesController', () => {
-  let controller: CatergoriesController;
+describe('CategoriesController', () => {
+  let controller: CategoriesController;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
