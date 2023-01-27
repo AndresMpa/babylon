@@ -20,13 +20,13 @@ export class CustomersService {
   ];
 
   findOne(index: number) {
-    const order = this.customers.find((item) => item.identifier === index);
-    if (!order) {
+    const customer = this.customers.find((item) => item.identifier === index);
+    if (!customer) {
       throw new NotFoundException(
-        `There's no a order assigned to ${index} identifier`,
+        `There's no a customer assigned to ${index} identifier`,
       );
     } else {
-      return order;
+      return customer;
     }
   }
 
@@ -43,14 +43,14 @@ export class CustomersService {
   }
 
   update(identifier: number, payload: UpdateCustomerDto) {
-    const order = this.findOne(identifier);
+    const customer = this.findOne(identifier);
 
-    if (order) {
+    if (customer) {
       const index = this.customers.findIndex(
         (item) => item.identifier === identifier,
       );
       this.customers[index] = {
-        ...order,
+        ...customer,
         ...payload,
       };
       return this.customers[index];
@@ -63,7 +63,7 @@ export class CustomersService {
     );
     if (index === -1) {
       throw new NotFoundException(
-        `There's no a order assigned to ${index} identifier`,
+        `There's no a customer assigned to ${index} identifier`,
       );
     }
     this.customers.splice(index, 1);
