@@ -31,9 +31,9 @@ simply roles inside the platform
 ##### Modules communication
 
 Modules are isolated, so communication between them can be tricky, it's pretty simple,
-if a module needs something from other that module whose host the service needs to export
+if a module needs something from other that module who hosts the service needs to export
 the service/s using the `expots` field inside <MODULE>.module.ts file, then this module
-whose need the service can use the `imports` field in its own <MODULE>.module.ts to import
+who needs the service can use the `imports` field in its own <MODULE>.module.ts to import
 the service, is quite simple, Nest exports services but imports modules
 
 #### Some useful features
@@ -56,3 +56,31 @@ first two are alias for whole word like "co" for "controller" or "s" for "servic
 Data Transfer Objects aliased as DTO or "dtos", are a Objects created with the purpose of
 adding some kind of "shield" to ensure that data from requests is going to match the right
 data type, this is a way different from a net feature, its goal is to reduce the amount of bugs
+
+##### Dependencies Injection, Singleton and @Injectable()
+
+The Dependencies Injection is a patter which is used to split things; software is easier to
+maintain this way so it's pretty useful; Nest uses the @Injectable() decorator to handle with this
+using the Singleton patter, so we split code in services to make it maintainable, but we also use it
+through a Singleton patter to reduce the amount of instances we invoke using the @Injectable() 
+decorator; to make this architecture works we use wrappers, those wrappers are our "modules", quite
+simple to follow, modules host services that uses @Injectable() decorator to be used by controller
+through a Singleton patter, Nest achieve this using TS syntax to identify when it needs to send a
+common instance for those controllers who use those services instances
+
+
+![Dependencies Injection](./DI.png)
+
+At the end we have controllers who can inject multiple services, but those services aren't going
+to incur in stack overflow due to Singleton
+
+##### Circular Dependency Injection
+
+This can happen if we don't play attention to what we are doing, the Circular Dependency Injection
+is an "special" case of the Dependency Injection patter; everything is wrong about it, same as a
+snake biting its own tail, this "Circular" systems incur into a circular reference error, so Nest can
+resolve what to Inject
+
+![Circular Dependency Injection](./CDI.png)
+
+
