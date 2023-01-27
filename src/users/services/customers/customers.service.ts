@@ -6,9 +6,13 @@ import {
   CreateCustomerDto,
   UpdateCustomerDto,
 } from 'src/users/dtos/customers.dtos';
+import { Order } from 'src/users/entities/order.entity';
+import { ProductsService } from 'src/stock/services/products/products.service';
 
 @Injectable()
 export class CustomersService {
+  constructor(private productsService: ProductsService) {}
+
   private counterIdentifier = 1;
   private customers: Customer[] = [
     {
@@ -68,5 +72,14 @@ export class CustomersService {
     }
     this.customers.splice(index, 1);
     return true;
+  }
+
+  getOrder(identifier: number): Order {
+    const customer = this.findOne(identifier);
+    return {
+      date: new Date(),
+      owner: customer,
+      products: this.productsService.findAll(),
+    };
   }
 }

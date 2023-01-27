@@ -1,5 +1,8 @@
+import { Product } from 'src/stock/entities/product.entity';
+import { Customer } from './customer.entity';
+
 export class Order {
-  identifier: number;
-  owner: number;
-  phone: string;
+  date: Date;
+  owner: Customer;
+  products: Product[];
 }

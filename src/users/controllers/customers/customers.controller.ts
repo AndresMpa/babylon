@@ -19,11 +19,20 @@ import {
 @Controller('customers')
 export class CustomersController {
   constructor(private customerServive: CustomersService) {}
+
   @Get(':customerId')
   getDetails(@Param('customerId', ParseIntPipe) customerId: number) {
     return {
       message: `Customer id ${customerId}`,
       data: this.customerServive.findOne(customerId),
+    };
+  }
+
+  @Get(':customerId/orders')
+  getOrder(@Param('customerId', ParseIntPipe) customerId: number) {
+    return {
+      message: `Customer ${customerId} orders`,
+      data: this.customerServive.getOrder(customerId),
     };
   }
 
