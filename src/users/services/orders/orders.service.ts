@@ -14,6 +14,7 @@ export class OrdersService {
       phone: '3123456789',
     },
   ];
+
   findAll() {
     return this.orders;
   }
@@ -31,14 +32,14 @@ export class OrdersService {
 
   create(payload: CreateOrderDto) {
     this.counterIdentifier += 1;
-    const newProduct = {
+    const newOrder = {
       identifier: this.counterIdentifier,
       ...payload,
     };
 
-    this.orders.push(newProduct);
+    this.orders.push(newOrder);
 
-    return newProduct;
+    return newOrder;
   }
 
   update(identifier: number, payload: UpdateOrderDto) {
