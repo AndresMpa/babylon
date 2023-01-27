@@ -28,6 +28,14 @@ everything matters for stock in a store. Other example can be Users module, that
 could hots "Customers" or "Clients", also "Managers" or "Admins"; since both of them are
 simply roles inside the platform
 
+##### Modules communication
+
+Modules are isolated, so communication between them can be tricky, it's pretty simple,
+if a module needs something from other that module whose host the service needs to export
+the service/s using the `expots` field inside <MODULE>.module.ts file, then this module
+whose need the service can use the `imports` field in its own <MODULE>.module.ts to import
+the service, is quite simple, Nest exports services but imports modules
+
 #### Some useful features
 
 Nest CLI supports alias like "g" for "generate", is quite simple to follow, first letter or
