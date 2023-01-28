@@ -226,4 +226,9 @@ that's an anti-patter, then what do I do? Well, that's a perfect example of `Glo
 is useful, but a little tricky, perhaps putting everything in there is not a good idea (Anti-patter),
 since @Module has a scope, app.module.ts can't share instances with modules whose scope isn't inside 
 the app module scope, in other words, a module "xyz.module.ts" can't use 'app.module.ts' injections, it
-means that only controllers and services inside "app.module.ts" will have access to them
+means that only controllers and services inside "app.module.ts" will have access to them. An example 
+can be found at
+
+> ../src/database/database.module.ts
+
+To use the global module data, it just same as seen before
