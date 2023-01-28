@@ -62,12 +62,11 @@ data type, this is a way different from a net feature, its goal is to reduce the
 The Dependencies Injection is a patter which is used to split things; software is easier to
 maintain this way so it's pretty useful; Nest uses the @Injectable() decorator to handle with this
 using the Singleton patter, so we split code in services to make it maintainable, but we also use it
-through a Singleton patter to reduce the amount of instances we invoke using the @Injectable() 
+through a Singleton patter to reduce the amount of instances we invoke using the @Injectable()
 decorator; to make this architecture works we use wrappers, those wrappers are our "modules", quite
 simple to follow, modules host services that uses @Injectable() decorator to be used by controller
 through a Singleton patter, Nest achieve this using TS syntax to identify when it needs to send a
 common instance for those controllers who use those services instances
-
 
 ![Dependencies Injection](./DI.png)
 
@@ -83,4 +82,148 @@ resolve what to Inject
 
 ![Circular Dependency Injection](./CDI.png)
 
+#### Providers
 
+##### useClass
+
+Nest uses different providers, by default inside the `providers` statement Nest uses `useClass`,
+this provider indicates Nest modules that we are using a service which is going to be invoke outside
+the module; Nest achieve this behaviour by using something similar to destructing, casting this:
+
+> _example.module.ts_
+
+```typescript
+@Module({
+  provider: [ServiceA]
+})
+```
+
+Into this:
+
+> _example.module.ts_
+
+```typescript
+@Module({
+  provider: [
+    {
+      provide: ServiceA,
+      useClass: ServiceA,
+    }
+  ]
+})
+```
+
+This Objects, contains two attributes, `provide` which is the name that service is going to be called,
+also `useClass` attribute indicates Nest to wrapper the `provide` parameter using the Module
+
+##### useValue
+
+Quite similar to `useClass`, `useValue` provider handle with Objects, but in this case; it's used to
+provide data, such as value, arrays, strings, etc.
+
+> _example.module.ts_
+
+```typescript
+const API_KEY = "somewhere.com/somedata&something=1"
+const PROD_API_KEY = "prodenv.com/proddata&something=prod"
+
+@Module({
+  provider: [
+    {
+      provide: 'API_KEY',
+      useValue: process.env.NODE_ENV === "prod" ? PROD_API_KEY : API_KEY,
+    }
+  ]
+})
+```
+
+Then we use it like this:
+
+> ._example.service.ts_
+
+```typescript
+import { Injectable, Inject } from '@nestjs/common';
+
+@Injectable()
+export class AppService {
+  constructor(@Inject('API_KEY') private apiKey: string) {}
+
+  getExample(): string {
+    return `API key ${this.apiKey}`;
+  }
+}
+```
+
+That example show how to share an API key according to process stage, development/test or production.
+`useValue` is quite useful for testing purpose, but also for sharing data, such as API keys
+
+##### useFactory
+
+This is an asynchronous provider that uses a factory allowing injections; this option is particularly
+useful with we need to fetch data, bringing resources from other API, let's imaging a case in where we
+are using a task queue, but that queue is handled by other app, that app make it's for handling it or
+even it comes from an external provider, so there no options to include it inside our Nest app, how can
+we bring that data? Using `useFactory` of course, because its a technical requirement to handle it in
+different modules
+
+> _example.module.ts_
+
+```typescript
+import { HttpModule, HttpService } from '@nestjs/axios';
+
+@Module({
+  imports: [HttpModule],
+  provider: [
+    {
+      provide: 'TASKS',
+      useFactory: async () => {
+        const tasks = await http
+          .get('https://jsonplaceholder.typicode.com/todos')
+          .toPromise();
+        return tasks;
+      },
+    }
+  ]
+})
+```
+
+> _example.service.ts_
+
+```typescript
+import { Injectable, Inject } from '@nestjs/common';
+
+@Injectable()
+export class ExampleService {
+  constructor(@Inject('TASKS') private tasks: any[]) {}
+
+  getExample(): any {
+    console.log(this.tasks);
+  }
+}
+```
+
+In this example we use the `useFactory` provider to fetch data from an external resource
+called 'jsonplaceholder', this is bringing some fake data
+
+> Note #1: Don't use the `useFactory` to call external resources, this action with slow down the API_KEY
+
+> Note #2: It is better to use the `HttpModule` inside service to avoid slowing down the app on initialization
+
+
+##### @Global @Module
+
+`Global Module` an everything inside it is going to be instanced for the rest of the modules,
+in other words, it creates an instance with no necessity of importing that specific module to
+inject that instance. `@Global @Module` are used to handle with global generic data, such as
+API keys, constants values, data base connection, etc. 
+
+
+###### Use case
+
+Let's imagine a module who needs the API_KEY, used in "example.module.ts", what happen if I need that
+API_KEY inside a module like app.module.ts, Do we import the app.module.ts inside this module? No,
+that's an anti-patter, then what do I do? Well, that's a perfect example of `Global Module`; this tool
+is useful, but a little tricky, perhaps putting everything in there is not a good idea (Anti-patter),
+since @Module has a scope, app.module.ts can't share instances with modules whose scope isn't inside 
+the app module scope, in other words, a module "xyz.module.ts" can't use 'app.module.ts' injections, it
+means that only controllers and services inside "app.module.ts" will have access to them
