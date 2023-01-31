@@ -1,5 +1,6 @@
-import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
+import { Module } from '@nestjs/common';
+import * as joi from 'joi';
 
 import { AppController } from './app.controller';
 
@@ -24,6 +25,11 @@ import config from './config';
       envFilePath: environments[process.env.NODE_ENV] || '.env',
       isGlobal: true,
       load: [config],
+      validationSchema: joi.object({
+        API_KEY: joi.string().required(),
+        DATABASE_NAME: joi.string().required(),
+        DATABASE_PORT: joi.number().required(),
+      }),
     }),
   ],
 })
