@@ -8,18 +8,23 @@ import {
   Controller,
   ParseIntPipe,
 } from '@nestjs/common';
+import { ApiTags } from '@nestjs/swagger';
 
 import { CustomersService } from 'src/users/services/customers/customers.service';
 
 import {
   CreateCustomerDto,
   UpdateCustomerDto,
-} from 'src/users/dtos/customers.dtos';
+} from 'src/users/dtos/customers.dto';
 
+@ApiTags('Customers')
 @Controller('customers')
 export class CustomersController {
   constructor(private customerServive: CustomersService) {}
 
+  /**
+    Returns specific information form a customer using its identifier
+  */
   @Get(':customerId')
   getDetails(@Param('customerId', ParseIntPipe) customerId: number) {
     return {
@@ -28,6 +33,9 @@ export class CustomersController {
     };
   }
 
+  /**
+    Returns customer's orders using its identifier
+  */
   @Get(':customerId/orders')
   getOrder(@Param('customerId', ParseIntPipe) customerId: number) {
     return {
@@ -36,6 +44,9 @@ export class CustomersController {
     };
   }
 
+  /**
+    Creates a customer using a payload
+  */
   @Post()
   create(@Body() payload: CreateCustomerDto) {
     return {
@@ -44,6 +55,10 @@ export class CustomersController {
     };
   }
 
+  /**
+    Partially updates a customer information using its identifier
+    and a payload
+  */
   @Put(':customerId')
   update(
     @Param('customerId', ParseIntPipe) customerId: number,
@@ -55,6 +70,9 @@ export class CustomersController {
     };
   }
 
+  /**
+    Deletes a customer using its identifier
+  */
   @Delete(':customerId')
   remove(@Param('customerId', ParseIntPipe) customerId: number) {
     return {

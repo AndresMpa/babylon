@@ -9,15 +9,20 @@ import {
   Controller,
   ParseIntPipe,
 } from '@nestjs/common';
+import { ApiTags } from '@nestjs/swagger';
 
 import { CategoriesService } from 'src/stock/services/categories/categories.service';
 
-import { CreateCategoryDto } from 'src/stock/dtos/categories.dtos';
+import { CreateCategoryDto } from 'src/stock/dtos/categories.dto';
 
+@ApiTags('Categories')
 @Controller('categories')
 export class CategoriesController {
   constructor(private categoryService: CategoriesService) {}
 
+  /**
+    Get all categories, in a range (default as: {limit: 100, offset: 0})
+  */
   @Get()
   getAll(@Query('limit') limit = 100, @Query('offset') offset = 0) {
     return {
@@ -26,6 +31,10 @@ export class CategoriesController {
     };
   }
 
+  /**
+    Get product existences from a particular category using identifiers
+    from both entities
+  */
   @Get(':categoryId/products/:productId')
   getProductDetails(
     @Param('categoryId', ParseIntPipe) categoryId: number,
@@ -37,6 +46,9 @@ export class CategoriesController {
     };
   }
 
+  /**
+    Creates a category, using a payload
+  */
   @Post(':categoryId')
   create(@Body() payload: CreateCategoryDto) {
     return {
@@ -45,6 +57,10 @@ export class CategoriesController {
     };
   }
 
+  /**
+    Partially updates a category information, using a its identifier
+    and a payload
+  */
   @Put(':categoryId')
   update(
     @Param('categoryId', ParseIntPipe) categoryId: number,
@@ -56,6 +72,9 @@ export class CategoriesController {
     };
   }
 
+  /**
+    Deletes a category using its identifiers
+  */
   @Delete(':categoryId')
   remove(@Param('categoryId', ParseIntPipe) categoryId: number) {
     return {

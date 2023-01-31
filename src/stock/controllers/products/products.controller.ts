@@ -12,17 +12,23 @@ import {
   Controller,
   ParseIntPipe,
 } from '@nestjs/common';
+import { ApiTags } from '@nestjs/swagger';
 
 import { Response } from 'express';
 
 import { ProductsService } from '../../services/products/products.service';
 
-import { CreateProductDto, UpdateProductDto } from '../../dtos/products.dtos';
+import { CreateProductDto, UpdateProductDto } from '../../dtos/products.dto';
 
+@ApiTags('Products')
 @Controller('products')
 export class ProductsController {
   constructor(private productsService: ProductsService) {}
 
+  /**
+    Return all products in a range (default: {limit: 100, offset: 0})
+    using a brand filter (default: none)
+  */
   @Get()
   getAll(
     @Query('limit') limit = 100,
@@ -35,6 +41,9 @@ export class ProductsController {
     };
   }
 
+  /*
+    Returns matching product with sent identifier
+  */
   @Get('/:productId')
   @HttpCode(HttpStatus.ACCEPTED)
   getDetails(@Param('productId', ParseIntPipe) productId: number) {
@@ -60,6 +69,9 @@ export class ProductsController {
     });
   }
 
+  /**
+    Creates a product using a payload
+  */
   @Post()
   create(@Body() payload: CreateProductDto) {
     return {
@@ -68,6 +80,9 @@ export class ProductsController {
     };
   }
 
+  /**
+    Partially updates a product using a payload and its identifier
+  */
   @Put(':productId')
   update(
     @Param('productId', ParseIntPipe) productId: number,
@@ -79,6 +94,9 @@ export class ProductsController {
     };
   }
 
+  /**
+    Removes a product using its identifier
+  */
   @Delete(':productId')
   delete(@Param('productId', ParseIntPipe) productId: number) {
     return {
