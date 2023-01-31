@@ -49,15 +49,15 @@ first two are alias for whole word like "co" for "controller" or "s" for "servic
 | Create a pipe line    | `npx nest g p <DIRECTORY>/<PIPE>`        | Creates a pipe line in <DIRECTORY> (usually called "common" or "shared") using <PIPE> name |
 | Create a module       | `npx nest g mo <MODULE>`                 | Creates a module in ./src using <MODULE> name                                              |
 
-#### Patters
+## Patters
 
-##### DTO
+### DTO
 
 Data Transfer Objects aliased as DTO or "dtos", are a Objects created with the purpose of
 adding some kind of "shield" to ensure that data from requests is going to match the right
 data type, this is a way different from a net feature, its goal is to reduce the amount of bugs
 
-##### Dependencies Injection, Singleton and @Injectable()
+### Dependencies Injection, Singleton and @Injectable()
 
 The Dependencies Injection is a patter which is used to split things; software is easier to
 maintain this way so it's pretty useful; Nest uses the @Injectable() decorator to handle with this
@@ -73,7 +73,7 @@ common instance for those controllers who use those services instances
 At the end we have controllers who can inject multiple services, but those services aren't going
 to incur in stack overflow due to Singleton
 
-##### Circular Dependency Injection
+### Circular Dependency Injection
 
 This can happen if we don't play attention to what we are doing, the Circular Dependency Injection
 is an "special" case of the Dependency Injection patter; everything is wrong about it, same as a
@@ -82,9 +82,9 @@ resolve what to Inject
 
 ![Circular Dependency Injection](./CDI.png)
 
-#### Providers
+## Providers
 
-##### useClass
+### useClass
 
 Nest uses different providers, by default inside the `providers` statement Nest uses `useClass`,
 this provider indicates Nest modules that we are using a service which is going to be invoke outside
@@ -116,7 +116,7 @@ Into this:
 This Objects, contains two attributes, `provide` which is the name that service is going to be called,
 also `useClass` attribute indicates Nest to wrapper the `provide` parameter using the Module
 
-##### useValue
+### useValue
 
 Quite similar to `useClass`, `useValue` provider handle with Objects, but in this case; it's used to
 provide data, such as value, arrays, strings, etc.
@@ -157,7 +157,7 @@ export class AppService {
 That example show how to share an API key according to process stage, development/test or production.
 `useValue` is quite useful for testing purpose, but also for sharing data, such as API keys
 
-##### useFactory
+### useFactory
 
 This is an asynchronous provider that uses a factory allowing injections; this option is particularly
 useful with we need to fetch data, bringing resources from other API, let's imaging a case in where we
@@ -209,14 +209,12 @@ called 'jsonplaceholder', this is bringing some fake data
 
 > Note #2: It is better to use the `HttpModule` inside service to avoid slowing down the app on initialization
 
-
-##### @Global @Module
+### @Global @Module
 
 `Global Module` an everything inside it is going to be instanced for the rest of the modules,
 in other words, it creates an instance with no necessity of importing that specific module to
 inject that instance. `@Global @Module` are used to handle with global generic data, such as
-API keys, constants values, data base connection, etc. 
-
+API keys, constants values, data base connection, etc.
 
 ###### Use case
 
@@ -224,11 +222,121 @@ Let's imagine a module who needs the API_KEY, used in "example.module.ts", what 
 API_KEY inside a module like app.module.ts, Do we import the app.module.ts inside this module? No,
 that's an anti-patter, then what do I do? Well, that's a perfect example of `Global Module`; this tool
 is useful, but a little tricky, perhaps putting everything in there is not a good idea (Anti-patter),
-since @Module has a scope, app.module.ts can't share instances with modules whose scope isn't inside 
+since @Module has a scope, app.module.ts can't share instances with modules whose scope isn't inside
 the app module scope, in other words, a module "xyz.module.ts" can't use 'app.module.ts' injections, it
-means that only controllers and services inside "app.module.ts" will have access to them. An example 
+means that only controllers and services inside "app.module.ts" will have access to them. An example
 can be found at
 
 > ../src/database/database.module.ts
 
 To use the global module data, it just same as seen before
+
+## Accessing configurations
+
+Nest have 2 different ways to bring data from other files, using the ConfigService, or using a configuration
+file; every options comes with different pros and cons, but as general tip, ConfigService is used for small
+projects and configuration files are more common in big projects
+
+### ConfigService
+
+Using the ConfigService, allow Nest to use a .env file, those files can be used according to stages, but their
+purpose is to storage data such as API keys, credentials, etc. The path to the corresponding file is defined at
+envFilePath field, then to be used globally isGlobal need to be set as true, after those simple configurations
+we can use the ConfigService to create an instance of it in our services, to access .env we use the get() method
+and the key to that value, "DATA_FROM_DOT_ENV" in example belong
+
+> random.module.ts
+
+```typescript
+import { ConfigModule } from '@nestjs/config';
+
+@Module({
+  imports: [
+    ConfigModule.forRoot({
+      envFilePath: '.env',
+      isGlobal: true,
+    }),
+  ],
+})
+export class RandomModule {}
+```
+
+> random.service.ts
+
+```typescript
+import { ConfigService } from '@nestjs/config';
+
+@Injectable()
+export class RandomService {
+  constructor(private configService: ConfigService) {}
+
+  example() {
+    return this.configService.get('DATA_FROM_DOT_ENV');
+  }
+}
+```
+
+### Configuration file
+
+It's pretty simple to use, we need to create a file (config.ts) which is going to handle with .env files as
+simple as this can be we need registerAs method to achieve this behaviour, we can create set of data using
+objects (like someObject in the example belong), since Nest allow us to use more than 1 .env file, we have
+to load ours, using the load field inside the corresponding module, last step is using the information
+contained in a instance of ConfigType, no get() methods are required to invoke data this way, avoiding typos
+due to miss writing any key, this is the main different with previous method
+
+> config.ts
+
+```typescript
+import { registerAs } from '@nestjs/config';
+
+export default registerAs('config', () => {
+  return {
+    someObject: {
+      dataFromDotEnv: process.env.DATA_FROM_DOT_ENV,
+      moreDataFromDotEnv: process.env.MORE_DATA_FROM_DOT_ENV,
+    },
+    otherObject: process.env.OTHER_OBJECT,
+  };
+});
+```
+
+> random.module.ts
+
+```typescript
+import { ConfigModule } from '@nestjs/config';
+import config from './config';
+
+@Global()
+@Module({
+  imports: [
+    ConfigModule.forRoot({
+      envFilePath: '.env',
+      load: [config],
+      isGlobal: true,
+    }),
+  ],
+})
+export class RandomModule {}
+```
+
+> random.service.ts
+
+```typescript
+import { ConfigType } from '@nestjs/config';
+import config from './config';
+
+@Injectable()
+export class RandomService {
+  constructor(
+    @Inject(config.KEY) private configService: ConfigType<typeof config>,
+  ) {}
+
+  getExample(): string {
+    const dataFromDotEnv = this.configService.someObject.dataFromDotEnv;
+    const otherObject = this.configService.otherObject;
+
+    return `dataFromDotEnv: ${dataFromDotEnv} - otherObject: ${otherObject}`;
+  }
+}
+```
