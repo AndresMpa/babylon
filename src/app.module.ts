@@ -11,6 +11,8 @@ import { DatabaseModule } from './database/database.module';
 
 import { environments } from './environments';
 
+import config from './config';
+
 @Module({
   controllers: [AppController],
   providers: [AppService],
@@ -21,6 +23,7 @@ import { environments } from './environments';
     ConfigModule.forRoot({
       envFilePath: environments[process.env.NODE_ENV] || '.env',
       isGlobal: true,
+      load: [config],
     }),
   ],
 })
