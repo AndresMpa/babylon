@@ -1,29 +1,29 @@
-import { HttpModule, HttpService } from '@nestjs/axios';
-import { Global, Module } from '@nestjs/common';
+import { Global, Inject, Module } from '@nestjs/common';
+import { ConfigType } from '@nestjs/config';
+import { Client } from 'pg';
 
-const API_KEY = 'somewhere.com/somedata&something=1';
-const PROD_API_KEY = 'prodenv.com/proddata&something=prod';
+import config from '../config';
 
 @Global()
 @Module({
-  imports: [HttpModule],
   providers: [
     {
-      provide: 'API_KEY',
-      useValue: process.env.NODE_ENV === 'prod' ? PROD_API_KEY : API_KEY,
-    },
-    {
-      provide: 'TASKS',
-      useFactory: async (http: HttpService) => {
-        const toDo = await http.get(
-          'https://jsonplaceholder.typicode.com/todos',
-        );
-
-        return toDo;
+      provide: 'POSTGRES',
+      useFactory: (configService: ConfigType<typeof config>) => {
+        const { user, host, database, password, port } = configService.database;
+        const client = new Client({
+          user,
+          host,
+          database,
+          password,
+          port,
+        });
+        client.connect();
+        return client;
       },
-      inject: [HttpService],
+      inject: [config.KEY],
     },
   ],
-  exports: ['API_KEY', 'TASKS'],
+  exports: ['POSTGRES'],
 })
 export class DatabaseModule {}
