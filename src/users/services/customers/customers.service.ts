@@ -1,4 +1,5 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { Inject, Injectable, NotFoundException } from '@nestjs/common';
+import { Client } from 'pg';
 
 import { Customer } from 'src/users/entities/customer.entity';
 import { Order } from 'src/users/entities/order.entity';
@@ -12,7 +13,10 @@ import { ProductsService } from 'src/stock/services/products/products.service';
 
 @Injectable()
 export class CustomersService {
-  constructor(private productsService: ProductsService) {}
+  constructor(
+    @Inject('POSTGRES') private postgresInstance: Client,
+    private productsService: ProductsService,
+  ) {}
 
   private counterIdentifier = 1;
   private customers: Customer[] = [
@@ -82,5 +86,17 @@ export class CustomersService {
       owner: customer,
       products: this.productsService.findAll(),
     };
+  }
+
+  getTask() {
+    return new Promise((resolve, reject) => {
+      this.postgresInstance.query('SELECT * FROM tasks', (error, response) => {
+        if (error) {
+          reject(error);
+        } else {
+          resolve(response.rows);
+        }
+      });
+    });
   }
 }

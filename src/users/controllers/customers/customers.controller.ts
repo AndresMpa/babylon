@@ -23,6 +23,14 @@ export class CustomersController {
   constructor(private customerServive: CustomersService) {}
 
   /**
+    Returns all tasks from an user
+  */
+  @Get('task')
+  getTasks() {
+    return this.customerServive.getTask();
+  }
+
+  /**
     Returns specific information form a customer using its identifier
   */
   @Get(':customerId')
