@@ -26,9 +26,12 @@ import config from './config';
       isGlobal: true,
       load: [config],
       validationSchema: joi.object({
-        API_KEY: joi.string().required(),
+        DATABASE_URI: joi.string().optional(),
+        DATABASE_HOST: joi.string().required(),
         DATABASE_NAME: joi.string().required(),
         DATABASE_PORT: joi.number().required(),
+        DATABASE_USER: joi.string().required(),
+        DATABASE_PASSWORD: joi.string().required(),
       }),
     }),
   ],
