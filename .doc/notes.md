@@ -227,7 +227,7 @@ the app module scope, in other words, a module "xyz.module.ts" can't use 'app.mo
 means that only controllers and services inside "app.module.ts" will have access to them. An example
 can be found at
 
-> ../src/database/database.module.ts
+> /src/database/database.module.ts from [this commit](https://github.com/AndresMpa/courses/tree/7f2757de5f8d1b6552ac1aa61e5a2141194eb3d5)
 
 To use the global module data, it just same as seen before
 
