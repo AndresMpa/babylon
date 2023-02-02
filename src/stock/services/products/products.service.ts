@@ -1,4 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
 
 import { Product } from '../../entities/product.entity';
 
@@ -6,27 +8,19 @@ import { CreateProductDto, UpdateProductDto } from '../../dtos/products.dto';
 
 @Injectable()
 export class ProductsService {
-  private counterIdentifier = 1;
-  private products: Product[] = [
-    {
-      identifier: 1,
-      name: 'Pijama del niño de rayas',
-      description: 'Una pijama comoda, calientita y rayada',
-      price: 10_000,
-      image: '',
-      stock: 1,
-    },
-  ];
+  constructor(
+    @InjectRepository(Product) private productRepository: Repository<Product>,
+  ) {}
 
   findAll() {
-    return this.products;
+    return this.productRepository.find();
   }
 
-  findOne(index: number) {
-    const product = this.products.find((item) => item.identifier === index);
+  async findOne(identifier: number) {
+    const product = await this.productRepository.findOneBy({ identifier });
     if (!product) {
       throw new NotFoundException(
-        `There's no a product assigned to ${index} identifier`,
+        `There's no a product assigned to ${identifier} identifier`,
       );
     } else {
       return product;
@@ -34,42 +28,17 @@ export class ProductsService {
   }
 
   create(payload: CreateProductDto) {
-    this.counterIdentifier += 1;
-    const newProduct = {
-      identifier: this.counterIdentifier,
-      ...payload,
-    };
-
-    this.products.push(newProduct);
-
-    return newProduct;
+    const newProduct = this.productRepository.create(payload);
+    return this.productRepository.save(newProduct);
   }
 
-  update(identifier: number, payload: UpdateProductDto) {
-    const product = this.findOne(identifier);
-
-    if (product) {
-      const index = this.products.findIndex(
-        (item) => item.identifier === identifier,
-      );
-      this.products[index] = {
-        ...product,
-        ...payload,
-      };
-      return this.products[index];
-    }
+  async update(identifier: number, payload: UpdateProductDto) {
+    const product = await this.productRepository.findOneBy({ identifier });
+    this.productRepository.merge(product, payload);
+    return this.productRepository.save(product);
   }
 
   remove(identifier: number) {
-    const index = this.products.findIndex(
-      (item) => item.identifier === identifier,
-    );
-    if (index === -1) {
-      throw new NotFoundException(
-        `There's no a product assigned to ${index} identifier`,
-      );
-    }
-    this.products.splice(index, 1);
-    return true;
+    return this.productRepository.delete(identifier);
   }
 }
