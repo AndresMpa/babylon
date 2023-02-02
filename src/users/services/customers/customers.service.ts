@@ -79,12 +79,12 @@ export class CustomersService {
     return true;
   }
 
-  getOrder(identifier: number): Order {
+  async getOrder(identifier: number) {
     const customer = this.findOne(identifier);
     return {
       date: new Date(),
       owner: customer,
-      products: this.productsService.findAll(),
+      products: await this.productsService.findAll(),
     };
   }
 
