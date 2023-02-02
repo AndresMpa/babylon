@@ -407,3 +407,59 @@ typeORM, which is the recommended ORM to use in Nest using TS
   exports: [TypeOrmModule],
 })
 ```
+
+Then we have to change a little the way our entities are defined, since TypeORM handle with models, our
+entities match what a model is, a quick example can be the products entity
+
+```typescript
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+
+@Entity()
+export class Product {
+  @PrimaryGeneratedColumn()
+  identifier: number;
+
+  @Column({
+    unique: true,
+    type: 'varchar',
+    length: 255,
+  })
+  name: string;
+
+  @Column({
+    type: 'text',
+  })
+  description: string;
+
+  @Column({
+    type: 'int',
+  })
+  price: number;
+
+  @Column({
+    type: 'int',
+  })
+  stock: number;
+
+  @Column({
+    type: 'varchar',
+  })
+  image: string;
+}
+```
+
+In that example we converted the product entity into a Entity as what a entity is for SQL model,
+once the model is created it is necessary to register that Entity in the module
+
+```typescript
+import { TypeOrmModule } from '@nestjs/typeorm';
+...
+import { Product } from './entities/product.entity.ts';
+
+@Module({
+  imports: [TypeOrmModule.forFeature([Product])],
+  ...
+})
+```
+
+That is pretty simple to do, as seen before
