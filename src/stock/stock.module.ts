@@ -12,7 +12,7 @@ import { ProductsService } from './services/products/products.service';
 import { CategoriesService } from './services/categories/categories.service';
 
 // Entities
-import { Product } from './entities/product.entity.ts';
+import { Product } from './entities/product.entity';
 
 @Module({
   imports: [TypeOrmModule.forFeature([Product])],
