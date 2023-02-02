@@ -463,3 +463,11 @@ import { Product } from './entities/product.entity.ts';
 ```
 
 That is pretty simple to do, as seen before
+
+### Sync mode
+
+An important feature to talk about is the `synchronize`, widely known as the "sync mode", is feature
+that many other ORMs use such as Djgano, Lavaravel, sequelize, etc. This particular mode enable our
+ORM to make some changes in our data base, to make its structure match with what we are doing, this
+feature makes our development experience something less painful, but it can also cause several problems
+in production stages, that why it's highly recommended not to use it on production

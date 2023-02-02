@@ -1,4 +1,4 @@
-import { Global, Inject, Module } from '@nestjs/common';
+import { Global, Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigType } from '@nestjs/config';
 import { Client } from 'pg';
@@ -13,12 +13,14 @@ import config from '../config';
       useFactory: (configService: ConfigType<typeof config>) => {
         const { user, host, database, password, port } = configService.database;
         return {
-          type: "postgres",
+          type: 'postgres',
           host,
           port,
           database,
           password,
           username: user,
+          autoLoadEntities: true,
+          synchronize: process.env.NODE_ENV !== 'prod',
         };
       },
     }),
