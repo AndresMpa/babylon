@@ -340,3 +340,70 @@ export class RandomService {
   }
 }
 ```
+
+## Data bases connection
+
+Nest comes with some native support for sequelize and typeORM, in order to follow the TS ecosystem it
+is recommended to use typeORM, both approach comes with differences; when we are talking about a database
+their are not always needed, since we can create queries using simple SQL and a simple database connection
+we could deal with a team to use a simple connection, then when projects gets bigger enough, we should/could
+use an ORM, in Nest using each approach we could have something like this:
+
+### Direct connection
+
+If we use a specific file to handle with database connections (Do it), we could use an global module to share
+the database connection using a useFactory, in order to have only one instance of it (Which is more maintainable),
+using this method we get a simple global connection
+
+```typescript
+@Global()
+@Module({
+  providers: [
+    {
+      provide: 'POSTGRES',
+      useFactory: (configService: ConfigType<typeof config>) => {
+        const { user, host, database, password, port } = configService.database;
+        const client = new Client({
+          user,
+          host,
+          database,
+          password,
+          port,
+        });
+        client.connect();
+        return client;
+      },
+      inject: [config.KEY],
+    },
+  ],
+  exports: ['POSTGRES'],
+})
+```
+
+### ORM way (TypeORM)
+
+When our project get bigger or simply if we want to use them, we have the ORMs, this is an example using
+typeORM, which is the recommended ORM to use in Nest using TS
+
+```typescript
+@Global()
+@Module({
+  imports: [
+    TypeOrmModule.forRootAsync({
+      inject: [config.KEY],
+      useFactory: (configService: ConfigType<typeof config>) => {
+        const { user, host, database, password, port } = configService.database;
+        return {
+          type: "postgres",
+          host,
+          port,
+          database,
+          password,
+          username: user,
+        };
+      },
+    }),
+  ],
+  exports: [TypeOrmModule],
+})
+```
