@@ -35,10 +35,7 @@ export class ProductsController {
     @Query('offset') offset = 0,
     @Query('brand') brand: string,
   ) {
-    return {
-      message: `Using limit(${limit}), offset(${offset}) and brand(${brand}) as filters`,
-      data: this.productsService.findAll(),
-    };
+    return this.productsService.findAll();
   }
 
   /*
@@ -47,10 +44,7 @@ export class ProductsController {
   @Get('/:productId')
   @HttpCode(HttpStatus.ACCEPTED)
   getDetails(@Param('productId', ParseIntPipe) productId: number) {
-    return {
-      message: `Product id: ${productId}`,
-      data: this.productsService.findOne(productId),
-    };
+    return this.productsService.findOne(productId);
   }
 
   /*
@@ -74,10 +68,7 @@ export class ProductsController {
   */
   @Post()
   create(@Body() payload: CreateProductDto) {
-    return {
-      message: 'Data created',
-      data: this.productsService.create(payload),
-    };
+    return this.productsService.create(payload);
   }
 
   /**
@@ -88,10 +79,7 @@ export class ProductsController {
     @Param('productId', ParseIntPipe) productId: number,
     @Body() payload: UpdateProductDto,
   ) {
-    return {
-      message: `Product ${productId} created sucessfully`,
-      data: this.productsService.update(productId, payload),
-    };
+    return this.productsService.update(productId, payload);
   }
 
   /**
@@ -99,9 +87,6 @@ export class ProductsController {
   */
   @Delete(':productId')
   delete(@Param('productId', ParseIntPipe) productId: number) {
-    return {
-      message: `Product ${productId} deleted`,
-      productId,
-    };
+    return this.productsService.remove(productId);
   }
 }
