@@ -1,4 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
 
 import { Admin } from 'src/users/entities/admin.entity';
 
@@ -6,64 +8,34 @@ import { CreateAdminDto, UpdateAdminDto } from 'src/users/dtos/admins.dto';
 
 @Injectable()
 export class AdminsService {
-  private counterIdentifier = 1;
-  private admins: Admin[] = [
-    {
-      identifier: 1,
-      password: '123456',
-      email: 'test@shop.com',
-      role: 'salesman',
-    },
-  ];
+  constructor(
+    @InjectRepository(Admin)
+    private adminRepository: Repository<Admin>,
+  ) {}
 
-  findOne(index: number) {
-    const admin = this.admins.find((item) => item.identifier === index);
+  async findOne(identifier: number) {
+    const admin = await this.adminRepository.findOneBy({ identifier });
     if (!admin) {
       throw new NotFoundException(
-        `There's no a admin assigned to ${index} identifier`,
+        `There's no a administrator assigned to ${identifier} identifier`,
       );
     } else {
       return admin;
     }
   }
 
-  create(payload: CreateAdminDto) {
-    this.counterIdentifier += 1;
-    const admin = {
-      identifier: this.counterIdentifier,
-      ...payload,
-    };
-
-    this.admins.push(admin);
-
-    return admin;
+  async create(payload: CreateAdminDto) {
+    const newAdmin = await this.adminRepository.create(payload);
+    return this.adminRepository.save(newAdmin);
   }
 
-  update(identifier: number, payload: UpdateAdminDto) {
-    const admin = this.findOne(identifier);
-
-    if (admin) {
-      const index = this.admins.findIndex(
-        (item) => item.identifier === identifier,
-      );
-      this.admins[index] = {
-        ...admin,
-        ...payload,
-      };
-      return this.admins[index];
-    }
+  async update(identifier: number, payload: UpdateAdminDto) {
+    const admin = await this.findOne(identifier);
+    this.adminRepository.merge(admin, payload);
+    return this.adminRepository.save(admin);
   }
 
-  remove(identifier: number) {
-    const index = this.admins.findIndex(
-      (item) => item.identifier === identifier,
-    );
-    if (index === -1) {
-      throw new NotFoundException(
-        `There's no a admin assigned to ${index} identifier`,
-      );
-    }
-    this.admins.splice(index, 1);
-    return true;
+  async remove(identifier: number) {
+    return await this.adminRepository.delete(identifier);
   }
 }

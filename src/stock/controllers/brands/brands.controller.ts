@@ -25,10 +25,7 @@ export class BrandsController {
   */
   @Get()
   getAll(@Query('limit') limit = 1, @Query('offset') offset = 0) {
-    return {
-      message: `Brands limit: ${limit} offset ${offset}`,
-      data: this.brandService.findAll(),
-    };
+    return this.brandService.findAll();
   }
 
   /**
@@ -36,10 +33,7 @@ export class BrandsController {
   */
   @Get(':brandId')
   getDetails(@Param('brandId', ParseIntPipe) brandId: number) {
-    return {
-      message: `Brand id ${brandId}`,
-      data: this.brandService.findOne(brandId),
-    };
+    return this.brandService.findOne(brandId);
   }
 
   /**
@@ -47,10 +41,7 @@ export class BrandsController {
   */
   @Post()
   create(@Body() payload: CreateBrandsDto) {
-    return {
-      message: 'Data created',
-      data: this.brandService.create(payload),
-    };
+    return this.brandService.create(payload);
   }
 
   /**
@@ -62,10 +53,7 @@ export class BrandsController {
     @Param('brandId', ParseIntPipe) brandId: number,
     @Body() payload: UpdateBrandsDto,
   ) {
-    return {
-      message: `Brand ${brandId} created`,
-      data: this.brandService.update(brandId, payload),
-    };
+    return this.brandService.update(brandId, payload);
   }
 
   /**
@@ -73,9 +61,6 @@ export class BrandsController {
   */
   @Delete(':brandId')
   remove(@Param('brandId', ParseIntPipe) brandId: number) {
-    return {
-      message: `Brand ${brandId} deleted`,
-      data: this.brandService.remove(brandId),
-    };
+    return this.brandService.remove(brandId);
   }
 }

@@ -21,15 +21,6 @@ import {
 @Controller('customers')
 export class CustomersController {
   constructor(private customerServive: CustomersService) {}
-
-  /**
-    Returns all tasks from an user
-  */
-  @Get('task')
-  getTasks() {
-    return this.customerServive.getTask();
-  }
-
   /**
     Returns specific information form a customer using its identifier
   */
@@ -41,18 +32,7 @@ export class CustomersController {
     };
   }
 
-  /**
-    Returns customer's orders using its identifier
-  */
-  @Get(':customerId/orders')
-  getOrder(@Param('customerId', ParseIntPipe) customerId: number) {
-    return {
-      message: `Customer ${customerId} orders`,
-      data: this.customerServive.getOrder(customerId),
-    };
-  }
-
-  /**
+ /**
     Creates a customer using a payload
   */
   @Post()

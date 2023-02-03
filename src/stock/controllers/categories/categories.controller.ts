@@ -25,10 +25,7 @@ export class CategoriesController {
   */
   @Get()
   getAll(@Query('limit') limit = 100, @Query('offset') offset = 0) {
-    return {
-      message: `limit: ${limit} / offset: ${offset}`,
-      data: this.categoryService.findAll(),
-    };
+    return this.categoryService.findAll();
   }
 
   /**
@@ -40,10 +37,7 @@ export class CategoriesController {
     @Param('categoryId', ParseIntPipe) categoryId: number,
     @Param('productId', ParseIntPipe) productId: number,
   ) {
-    return {
-      message: `Category id: ${categoryId} product id: ${productId}`,
-      data: this.categoryService.findOne(categoryId),
-    };
+    return this.categoryService.findOne(categoryId);
   }
 
   /**
@@ -51,10 +45,7 @@ export class CategoriesController {
   */
   @Post(':categoryId')
   create(@Body() payload: CreateCategoryDto) {
-    return {
-      message: 'Data created',
-      data: this.categoryService.create(payload),
-    };
+    return this.categoryService.create(payload);
   }
 
   /**
@@ -66,10 +57,7 @@ export class CategoriesController {
     @Param('categoryId', ParseIntPipe) categoryId: number,
     @Body() payload: CreateCategoryDto,
   ) {
-    return {
-      message: 'Data created',
-      data: this.categoryService.update(categoryId, payload),
-    };
+    return this.categoryService.update(categoryId, payload);
   }
 
   /**
@@ -77,9 +65,6 @@ export class CategoriesController {
   */
   @Delete(':categoryId')
   remove(@Param('categoryId', ParseIntPipe) categoryId: number) {
-    return {
-      message: `Category ${categoryId} has been removed`,
-      data: this.categoryService.remove(categoryId),
-    };
+    return this.categoryService.remove(categoryId);
   }
 }

@@ -1,4 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
 
 import { Category } from 'src/stock/entities/category.entity';
 
@@ -9,67 +11,38 @@ import {
 
 @Injectable()
 export class CategoriesService {
-  private counterIdentifier = 1;
-  private categories: Category[] = [
-    {
-      identifier: 1,
-      name: 'Variado',
-      description: 'Donde ponemos lo que tiene descuentos',
-    },
-  ];
+  constructor(
+    @InjectRepository(Category)
+    private categoryRepository: Repository<Category>,
+  ) {}
 
-  findAll() {
-    return this.categories;
+  async findAll() {
+    return await this.categoryRepository.find();
   }
 
-  findOne(index: number) {
-    const category = this.categories.find((item) => item.identifier === index);
+  async findOne(identifier: number) {
+    const category = await this.categoryRepository.findOneBy({ identifier });
     if (!category) {
       throw new NotFoundException(
-        `There's no a category assigned to ${index} identifier`,
+        `There's no a category assigned to ${identifier} identifier`,
       );
     } else {
       return category;
     }
   }
 
-  create(payload: CreateCategoryDto) {
-    this.counterIdentifier += 1;
-    const newCategory = {
-      identifier: this.counterIdentifier,
-      ...payload,
-    };
-
-    this.categories.push(newCategory);
-
-    return newCategory;
+  async create(payload: CreateCategoryDto) {
+    const newCategory = await this.categoryRepository.create(payload);
+    return this.categoryRepository.save(newCategory);
   }
 
-  update(identifier: number, payload: UpdateCategoryDto) {
-    const category = this.findOne(identifier);
-
-    if (category) {
-      const index = this.categories.findIndex(
-        (item) => item.identifier === identifier,
-      );
-      this.categories[index] = {
-        ...category,
-        ...payload,
-      };
-      return this.categories[index];
-    }
+  async update(identifier: number, payload: UpdateCategoryDto) {
+    const category = await this.findOne(identifier);
+    this.categoryRepository.merge(category, payload);
+    return this.categoryRepository.save(category);
   }
 
-  remove(identifier: number) {
-    const index = this.categories.findIndex(
-      (item) => item.identifier === identifier,
-    );
-    if (index === -1) {
-      throw new NotFoundException(
-        `There's no categories assigned to ${index} identifier`,
-      );
-    }
-    this.categories.splice(index, 1);
-    return true;
+  async remove(identifier: number) {
+    return await this.categoryRepository.delete(identifier);
   }
 }

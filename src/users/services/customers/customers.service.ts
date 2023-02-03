@@ -1,5 +1,6 @@
 import { Inject, Injectable, NotFoundException } from '@nestjs/common';
-import { Client } from 'pg';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
 
 import { Customer } from 'src/users/entities/customer.entity';
 import { Order } from 'src/users/entities/order.entity';
@@ -9,94 +10,39 @@ import {
   UpdateCustomerDto,
 } from 'src/users/dtos/customers.dto';
 
-import { ProductsService } from 'src/stock/services/products/products.service';
-
 @Injectable()
 export class CustomersService {
   constructor(
-    @Inject('POSTGRES') private postgresInstance: Client,
-    private productsService: ProductsService,
+    @InjectRepository(Customer)
+    private customerRepository: Repository<Customer>,
   ) {}
 
-  private counterIdentifier = 1;
-  private customers: Customer[] = [
-    {
-      identifier: 1,
-      name: 'Test',
-      lastName: 'Man',
-      phone: '3123456789',
-    },
-  ];
+  async findAll() {
+    return await this.customerRepository.find();
+  }
 
-  findOne(index: number) {
-    const customer = this.customers.find((item) => item.identifier === index);
+  async findOne(identifier: number) {
+    const customer = await this.customerRepository.findOneBy({ identifier });
     if (!customer) {
       throw new NotFoundException(
-        `There's no a customer assigned to ${index} identifier`,
+        `There's no a customer assigned to ${identifier} identifier`,
       );
     } else {
       return customer;
     }
   }
 
-  create(payload: CreateCustomerDto) {
-    this.counterIdentifier += 1;
-    const newProduct = {
-      identifier: this.counterIdentifier,
-      ...payload,
-    };
-
-    this.customers.push(newProduct);
-
-    return newProduct;
+  async create(payload: CreateCustomerDto) {
+    const newCustomer = await this.customerRepository.create(payload);
+    return this.customerRepository.save(newCustomer);
   }
 
-  update(identifier: number, payload: UpdateCustomerDto) {
-    const customer = this.findOne(identifier);
-
-    if (customer) {
-      const index = this.customers.findIndex(
-        (item) => item.identifier === identifier,
-      );
-      this.customers[index] = {
-        ...customer,
-        ...payload,
-      };
-      return this.customers[index];
-    }
+  async update(identifier: number, payload: UpdateCustomerDto) {
+    const customer = await this.findOne(identifier);
+    this.customerRepository.merge(customer, payload);
   }
 
-  remove(identifier: number) {
-    const index = this.customers.findIndex(
-      (item) => item.identifier === identifier,
-    );
-    if (index === -1) {
-      throw new NotFoundException(
-        `There's no a customer assigned to ${index} identifier`,
-      );
-    }
-    this.customers.splice(index, 1);
-    return true;
-  }
-
-  async getOrder(identifier: number) {
-    const customer = this.findOne(identifier);
-    return {
-      date: new Date(),
-      owner: customer,
-      products: await this.productsService.findAll(),
-    };
-  }
-
-  getTask() {
-    return new Promise((resolve, reject) => {
-      this.postgresInstance.query('SELECT * FROM tasks', (error, response) => {
-        if (error) {
-          reject(error);
-        } else {
-          resolve(response.rows);
-        }
-      });
-    });
+  async remove(identifier: number) {
+    return await this.customerRepository.delete(identifier);
   }
 }

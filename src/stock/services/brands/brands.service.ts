@@ -1,4 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
 
 import { Brand } from 'src/stock/entities/brand.entity';
 
@@ -6,67 +8,38 @@ import { CreateBrandsDto, UpdateBrandsDto } from 'src/stock/dtos/brands.dto';
 
 @Injectable()
 export class BrandsService {
-  private counterIdentifier = 1;
-  private brands: Brand[] = [
-    {
-      identifier: 1,
-      name: 'Example brand',
-      image: 'https://some-data.com',
-    },
-  ];
+  constructor(
+    @InjectRepository(Brand)
+    private brandRepository: Repository<Brand>,
+  ) {}
 
-  findAll() {
-    return this.brands;
+  async findAll() {
+    return await this.brandRepository.find();
   }
 
-  findOne(index: number) {
-    const brand = this.brands.find((item) => item.identifier === index);
+  async findOne(identifier: number) {
+    const brand = await this.brandRepository.findOneBy({ identifier });
     if (!brand) {
       throw new NotFoundException(
-        `There's no a brand assigned to ${index} identifier`,
+        `There's no a brand assigned to ${identifier} identifier`,
       );
     } else {
       return brand;
     }
   }
 
-  create(payload: CreateBrandsDto) {
-    this.counterIdentifier += 1;
-    const newCategory = {
-      identifier: this.counterIdentifier,
-      ...payload,
-    };
-
-    this.brands.push(newCategory);
-
-    return newCategory;
+  async create(payload: CreateBrandsDto) {
+    const newBrand = await this.brandRepository.create(payload);
+    return this.brandRepository.save(newBrand);
   }
 
-  update(identifier: number, payload: UpdateBrandsDto) {
-    const brand = this.findOne(identifier);
-
-    if (brand) {
-      const index = this.brands.findIndex(
-        (item) => item.identifier === identifier,
-      );
-      this.brands[index] = {
-        ...brand,
-        ...payload,
-      };
-      return this.brands[index];
-    }
+  async update(identifier: number, payload: UpdateBrandsDto) {
+    const brand = await this.brandRepository.findOneBy({ identifier });
+    this.brandRepository.merge(brand, payload);
+    return this.brandRepository.save(brand);
   }
 
-  remove(identifier: number) {
-    const index = this.brands.findIndex(
-      (item) => item.identifier === identifier,
-    );
-    if (index === -1) {
-      throw new NotFoundException(
-        `There's no brands assigned to ${index} identifier`,
-      );
-    }
-    this.brands.splice(index, 1);
-    return true;
+ async remove(identifier: number) {
+    return await this.brandRepository.delete(identifier);
   }
 }
