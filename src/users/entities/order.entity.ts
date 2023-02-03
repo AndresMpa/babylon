@@ -1,4 +1,4 @@
-import { Column } from 'typeorm';
+import { Column, Entity } from 'typeorm';
 
 import { Customer } from './customer.entity';
 import { Product } from 'src/stock/entities/product.entity';
@@ -6,7 +6,7 @@ import { Product } from 'src/stock/entities/product.entity';
 @Entity({ name: 'orders' })
 export class Order {
   @Column({
-    type: 'date'
+    type: 'date',
   })
   date: Date;
   owner: Customer;

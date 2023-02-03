@@ -15,6 +15,7 @@ lerna-debug.log*
 # OS
 .DS_Store
 *.env
+postgres_data/
 
 # Tests
 /coverage
