@@ -471,3 +471,11 @@ that many other ORMs use such as Djgano, Lavaravel, sequelize, etc. This particu
 ORM to make some changes in our data base, to make its structure match with what we are doing, this
 feature makes our development experience something less painful, but it can also cause several problems
 in production stages, that why it's highly recommended not to use it on production
+
+## Relations (Using TypeORM)
+
+### One to one relations
+
+To make relations (Using TypeORM), it is simple, it just needs two decorators, @JoinColumn and @OneToOne
+OneToOne sets relations 1:1 type, while JoinColumn specifies a reference in the database, so OneToOne decorator
+can be used in each field of the relation, but JoinColumn can be used only on the primary entity
