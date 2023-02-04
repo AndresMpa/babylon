@@ -20,7 +20,7 @@ import config from '../config';
           password,
           username: user,
           autoLoadEntities: true,
-          synchronize: process.env.NODE_ENV !== 'prod',
+          synchronize: process.env.NODE_ENV === 'stag',
         };
       },
     }),
