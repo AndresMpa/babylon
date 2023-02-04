@@ -17,7 +17,13 @@
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --config ./test/jest-e2e.json"
+    "test:e2e": "jest --config ./test/jest-e2e.json",
+    "typeorm": "typeorm-ts-node-commonjs",
+    "migration:run": "npx typeorm-ts-node-commonjs migration:run",
+    "migration:show": "npx typeorm-ts-node-commonjs migration:show",
+    "migration:drop": "npx typeorm-ts-node-commonjs migration:drop",
+    "migration:revert": "npx typeorm-ts-node-commonjs migration:revert",
+    "migration:generate": "npx typeorm-ts-node-commonjs migration:generate -p -d src/database/dataSource.ts ./migrations/current.migration"
   },
   "dependencies": {
     "@nestjs/axios": "^1.0.1",
