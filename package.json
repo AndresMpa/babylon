@@ -19,11 +19,11 @@
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
     "typeorm": "typeorm-ts-node-commonjs",
-    "migration:run": "npx typeorm-ts-node-commonjs migration:run",
-    "migration:show": "npx typeorm-ts-node-commonjs migration:show",
-    "migration:drop": "npx typeorm-ts-node-commonjs migration:drop",
-    "migration:revert": "npx typeorm-ts-node-commonjs migration:revert",
-    "migration:generate": "npx typeorm-ts-node-commonjs migration:generate -p -d src/database/dataSource.ts ./migrations/current.migration"
+    "schema:drop": "npx typeorm-ts-node-commonjs schema:drop -d src/database/dataSource.ts",
+    "migration:run": "npx typeorm-ts-node-commonjs migration:run -d src/database/dataSource.ts",
+    "migration:show": "npx typeorm-ts-node-commonjs migration:show -d src/database/dataSource.ts",
+    "migration:revert": "npx typeorm-ts-node-commonjs migration:revert -d src/database/dataSource.ts",
+    "migration:generate": "npx typeorm-ts-node-commonjs migration:generate -d src/database/dataSource.ts ./migrations/current_migration"
   },
   "dependencies": {
     "@nestjs/axios": "^1.0.1",

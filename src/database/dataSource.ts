@@ -6,7 +6,7 @@ config();
 
 const configService = new ConfigService();
 
-const connectionSource = new DataSource({
+export const connectionSource = new DataSource({
   type: 'postgres',
   port: parseInt(configService.get('DATABASE_PORT'), 10),
   host: configService.get('DATABASE_HOST'),
@@ -16,9 +16,5 @@ const connectionSource = new DataSource({
   logging: configService.get('ORM_LOG'),
   synchronize: configService.get('ORM_SYNC'),
   entities: ['src/**/*.entity.ts'],
-  migrations: ['./src/database/migrations/*.ts'],
+  migrations: ['./migrations/*.ts']
 });
-
-connectionSource.initialize();
-
-export { connectionSource };
