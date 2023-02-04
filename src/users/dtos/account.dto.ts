@@ -1,9 +1,9 @@
 import { IsEmail, IsNotEmpty, IsString } from '@nestjs/class-validator';
 import { PartialType } from '@nestjs/swagger';
 
-export class CreateAdminDto {
+export class CreateAccountDto {
   /**
-   * Administrator's encrypted password
+   * Account's encrypted password
    * @example a$@ase365/6dsf@@@d
    */
   @IsNotEmpty()
@@ -11,7 +11,7 @@ export class CreateAdminDto {
   readonly password: string;
 
   /**
-   * Administrator's registered email
+   * Account's registered email
    * @example 'admin@admin.com'
    */
   @IsNotEmpty()
@@ -20,12 +20,12 @@ export class CreateAdminDto {
   readonly email: string;
 
   /**
-   * Different administrator should have different roles
-   * @example ['Manager', 'Salesman']
+   * Different accounts should have different roles
+   * @example ['Manager', 'Customer']
    */
   @IsNotEmpty()
   @IsString()
   readonly role: string;
 }
 
-export class UpdateAdminDto extends PartialType(CreateAdminDto) {}
+export class UpdateAccountDto extends PartialType(CreateAccountDto) {}

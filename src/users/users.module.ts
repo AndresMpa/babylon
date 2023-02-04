@@ -5,20 +5,20 @@ import { Module } from '@nestjs/common';
 import { StockModule } from 'src/stock/stock.module';
 
 // Controllers
-import { AdminsController } from './controllers/admins/admins.controller';
+import { AccountController } from './controllers/account/account.controller';
 import { CustomersController } from './controllers/customers/customers.controller';
 
 // Services
-import { AdminsService } from './services/admins/admins.service';
+import { AccountService } from './services/account/account.service';
 import { CustomersService } from './services/customers/customers.service';
 
 // Entities
 import { Customer } from './entities/customer.entity';
-import { Admin } from './entities/admin.entity';
+import { Account } from './entities/account.entity';
 
 @Module({
-  controllers: [CustomersController, AdminsController],
-  providers: [CustomersService, AdminsService],
-  imports: [TypeOrmModule.forFeature([Customer, Admin]), StockModule],
+  controllers: [CustomersController, AccountController],
+  providers: [CustomersService, AccountService],
+  imports: [TypeOrmModule.forFeature([Customer, Account]), StockModule],
 })
 export class UsersModule {}
