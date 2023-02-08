@@ -478,4 +478,8 @@ in production stages, that why it's highly recommended not to use it on producti
 
 To make relations (Using TypeORM), it is simple, it just needs two decorators, @JoinColumn and @OneToOne
 OneToOne sets relations 1:1 type, while JoinColumn specifies a reference in the database, so OneToOne decorator
-can be used in each field of the relation, but JoinColumn can be used only on the primary entity
+can be used in each field of the relation (It's a marker), but JoinColumn can be used only on a entity (It's the 
+foreign key), also TypeORM allow us to specify extra data such as:
+- Target relation type
+- A specific field on the other side entity which is hosting the relation
+- Some options like "nullable"
