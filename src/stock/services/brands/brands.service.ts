@@ -18,7 +18,12 @@ export class BrandsService {
   }
 
   async findOne(identifier: number) {
-    const brand = await this.brandRepository.findOneBy({ identifier });
+    const brand = await this.brandRepository.findOne({
+      where: {
+        identifier: identifier,
+      },
+      relations: ['products'],
+    });
     if (!brand) {
       throw new NotFoundException(
         `There's no a brand assigned to ${identifier} identifier`,
