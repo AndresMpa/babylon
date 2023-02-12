@@ -23,7 +23,6 @@ export class CreateCustomerDto {
    * @example 32184568945
    */
   @IsNotEmpty()
-  @IsString()
   @IsPhoneNumber()
   readonly phone: string;
 }
