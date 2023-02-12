@@ -1,4 +1,11 @@
-import { IsEmail, IsNotEmpty, IsString } from '@nestjs/class-validator';
+import {
+  IsPositive,
+  IsOptional,
+  IsNotEmpty,
+  IsNumber,
+  IsString,
+  IsEmail,
+} from '@nestjs/class-validator';
 import { PartialType } from '@nestjs/swagger';
 
 export class CreateAccountDto {
@@ -26,6 +33,16 @@ export class CreateAccountDto {
   @IsNotEmpty()
   @IsString()
   readonly role: string;
+
+  /**
+   * There's a 1:1 relation between accounts and customers
+   * that relations requires a foreign key which is this
+   * field
+   */
+  @IsOptional()
+  @IsPositive()
+  @IsNumber()
+  readonly customerIdentifier: number;
 }
 
 export class UpdateAccountDto extends PartialType(CreateAccountDto) {}
