@@ -483,3 +483,9 @@ foreign key), also TypeORM allow us to specify extra data such as:
 - Target relation type
 - A specific field on the other side entity which is hosting the relation
 - Some options like "nullable"
+
+### One to many relations
+
+Following SQL basics, weak entities host the relation, so in 1:M "the 1" is going to host it relation while
+the other entity just have a reference, to do this, TypeORM uses 2 decorators @OneToMany() and @ManyToOne()
+same as "1:M" where @ManyToOne represents the weak entity (Field whit this decorator uses the foreign key)
