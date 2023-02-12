@@ -22,25 +22,19 @@ import {
 export class CustomersController {
   constructor(private customerServive: CustomersService) {}
   /**
-    Returns specific information form a customer using its identifier
+    Returns specific information from a customer using its identifier
   */
   @Get(':customerId')
   getDetails(@Param('customerId', ParseIntPipe) customerId: number) {
-    return {
-      message: `Customer id ${customerId}`,
-      data: this.customerServive.findOne(customerId),
-    };
+    return this.customerServive.findOne(customerId);
   }
 
- /**
+  /**
     Creates a customer using a payload
   */
   @Post()
   create(@Body() payload: CreateCustomerDto) {
-    return {
-      message: `Customer created`,
-      data: this.customerServive.create(payload),
-    };
+    return this.customerServive.create(payload);
   }
 
   /**
@@ -52,10 +46,7 @@ export class CustomersController {
     @Param('customerId', ParseIntPipe) customerId: number,
     @Body() payload: UpdateCustomerDto,
   ) {
-    return {
-      message: `Customer ${customerId} updates`,
-      data: this.customerServive.update(customerId, payload),
-    };
+    return this.customerServive.update(customerId, payload);
   }
 
   /**
@@ -63,9 +54,6 @@ export class CustomersController {
   */
   @Delete(':customerId')
   remove(@Param('customerId', ParseIntPipe) customerId: number) {
-    return {
-      message: `Customer ${customerId} has been removed from DB`,
-      data: this.customerServive.remove(customerId),
-    };
+    return this.customerServive.remove(customerId);
   }
 }
