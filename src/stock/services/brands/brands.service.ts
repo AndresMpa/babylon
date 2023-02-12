@@ -39,7 +39,7 @@ export class BrandsService {
     return this.brandRepository.save(brand);
   }
 
- async remove(identifier: number) {
+  async remove(identifier: number) {
     return await this.brandRepository.delete(identifier);
   }
 }
