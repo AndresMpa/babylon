@@ -49,6 +49,15 @@ export class CreateProductDto {
   @IsNotEmpty()
   @IsUrl()
   readonly image: string;
+
+  /**
+   * Brand category for this product
+   * @example 1
+   */
+  @IsNotEmpty()
+  @IsPositive()
+  @IsNumber()
+  readonly brandIdentifier: number;
 }
 
 export class UpdateProductDto extends PartialType(CreateProductDto) {}
