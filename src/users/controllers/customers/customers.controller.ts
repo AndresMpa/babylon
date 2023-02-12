@@ -22,6 +22,14 @@ import {
 export class CustomersController {
   constructor(private customerServive: CustomersService) {}
   /**
+    Returns all customers information
+  */
+  @Get()
+  findAll() {
+    return this.customerServive.findAll();
+  }
+
+  /**
     Returns specific information from a customer using its identifier
   */
   @Get(':customerId')
