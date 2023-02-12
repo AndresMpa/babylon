@@ -45,6 +45,7 @@ export class AccountService {
   async update(identifier: number, payload: UpdateAccountDto) {
     const account = await this.findOne(identifier);
     this.accountRepository.merge(account, payload);
+    return this.accountRepository.save(account);
   }
 
   async remove(identifier: number) {

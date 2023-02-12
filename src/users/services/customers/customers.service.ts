@@ -39,6 +39,7 @@ export class CustomersService {
   async update(identifier: number, payload: UpdateCustomerDto) {
     const customer = await this.findOne(identifier);
     this.customerRepository.merge(customer, payload);
+    return this.customerRepository.save(customer);
   }
 
   async remove(identifier: number) {
