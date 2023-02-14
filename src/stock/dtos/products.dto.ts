@@ -4,8 +4,10 @@ import {
   IsPositive,
   IsNumber,
   IsString,
+  IsArray,
   IsUrl,
 } from '@nestjs/class-validator';
+import { Category } from '../entities/category.entity';
 
 export class CreateProductDto {
   /**
@@ -58,6 +60,14 @@ export class CreateProductDto {
   @IsPositive()
   @IsNumber()
   readonly brandIdentifier: number;
+
+  /**
+   * Categories this product belongs to
+   * @example ["tech", "imported"]
+   */
+  @IsNotEmpty()
+  @IsArray()
+  readonly categories: Category[];
 }
 
 export class UpdateProductDto extends PartialType(CreateProductDto) {}
