@@ -21,7 +21,10 @@ export class CategoriesService {
   }
 
   async findOne(identifier: number) {
-    const category = await this.categoryRepository.findOneBy({ identifier });
+    const category = await this.categoryRepository.findOne({
+      where: { identifier },
+      relations: ['products'],
+    });
     if (!category) {
       throw new NotFoundException(
         `There's no a category assigned to ${identifier} identifier`,

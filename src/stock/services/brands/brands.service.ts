@@ -13,16 +13,40 @@ export class BrandsService {
     private brandRepository: Repository<Brand>,
   ) {}
 
+  /**
+    Get all brands information
+  */
   async findAll() {
     return await this.brandRepository.find();
   }
 
+  /**
+    Get a specific brand, relations included
+  */
   async findOne(identifier: number) {
     const brand = await this.brandRepository.findOne({
       where: {
         identifier: identifier,
       },
       relations: ['products'],
+    });
+    if (!brand) {
+      throw new NotFoundException(
+        `There's no a brand assigned to ${identifier} identifier`,
+      );
+    } else {
+      return brand;
+    }
+  }
+
+  /**
+    Get a specific brand without relations
+  */
+  async findOneOnRaw(identifier: number) {
+    const brand = await this.brandRepository.findOne({
+      where: {
+        identifier: identifier,
+      },
     });
     if (!brand) {
       throw new NotFoundException(
