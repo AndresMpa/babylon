@@ -489,3 +489,9 @@ foreign key), also TypeORM allow us to specify extra data such as:
 Following SQL basics, weak entities host the relation, so in 1:M "the 1" is going to host it relation while
 the other entity just have a reference, to do this, TypeORM uses 2 decorators @OneToMany() and @ManyToOne()
 same as "1:M" where @ManyToOne represents the weak entity (Field whit this decorator uses the foreign key)
+
+### Many to many
+
+In order to create M:M relation using TypeORM, we use 2 decorators: @ManyToMany() and @JointTable, TypeORM
+will create the pivot table by itself so it doesn't matter which entity host the @JoinTable decorator which
+establish the reference between entities
