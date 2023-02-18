@@ -15,7 +15,7 @@ import { CustomersService } from 'src/users/services/customers/customers.service
 import {
   CreateCustomerDto,
   UpdateCustomerDto,
-} from 'src/users/dtos/customers.dto';
+} from 'src/users/dtos/customer.dto';
 
 @ApiTags('Customers')
 @Controller('customers')
