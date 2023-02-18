@@ -11,12 +11,12 @@ import {
 import { ApiTags } from '@nestjs/swagger';
 import { CreateAccountDto, UpdateAccountDto } from 'src/users/dtos/account.dto';
 
-import { AccountService } from 'src/users/services/account/account.service';
+import { AccountsService } from 'src/users/services/accounts/accounts.service';
 
 @ApiTags('Customers')
 @Controller('accounts')
-export class AccountController {
-  constructor(private accountService: AccountService) {}
+export class AccountsController {
+  constructor(private accountService: AccountsService) {}
 
   /**
     Returns all accounts information
