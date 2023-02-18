@@ -83,10 +83,32 @@ export class ProductsController {
   }
 
   /**
+    Adds an specific category to a particular product
+  */
+  @Put(':productId/category/:categoryId')
+  addCategory(
+    @Param('productId', ParseIntPipe) productId: number,
+    @Param('categoryId', ParseIntPipe) categoryId: number,
+  ) {
+    return this.productsService.addCategoryByProdut(productId, categoryId);
+  }
+
+  /**
     Removes a product using its identifier
   */
   @Delete(':productId')
   delete(@Param('productId', ParseIntPipe) productId: number) {
     return this.productsService.remove(productId);
+  }
+
+  /**
+    Removes an specific category from a particular product
+  */
+  @Delete(':productId/category/:categoryId')
+  deleteCategory(
+    @Param('productId', ParseIntPipe) productId: number,
+    @Param('categoryId', ParseIntPipe) categoryId: number,
+  ) {
+    return this.productsService.removeCategoryByProdut(productId, categoryId);
   }
 }
