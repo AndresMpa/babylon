@@ -15,10 +15,14 @@ import { CustomersService } from './services/customers/customers.service';
 // Entities
 import { Customer } from './entities/customer.entity';
 import { Account } from './entities/account.entity';
+import { Order } from './entities/order.entity.ts';
 
 @Module({
   controllers: [CustomersController, AccountController],
   providers: [CustomersService, AccountService],
-  imports: [TypeOrmModule.forFeature([Customer, Account]), StockModule],
+  imports: [
+    TypeOrmModule.forFeature([Customer, Account, Order, OrderItem]),
+    StockModule,
+  ],
 })
 export class UsersModule {}
