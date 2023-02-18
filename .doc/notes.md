@@ -495,3 +495,13 @@ same as "1:M" where @ManyToOne represents the weak entity (Field whit this decor
 In order to create M:M relation using TypeORM, we use 2 decorators: @ManyToMany() and @JointTable, TypeORM
 will create the pivot table by itself so it doesn't matter which entity host the @JoinTable decorator which
 establish the reference between entities
+
+### Custom M:M
+
+Sometimes TypeORM M:M relations are not enough, those relations can't handle with custom fields, which is
+something important under SQL model, since TypeORM is an Object Relational Mapping (ORM), we use Object
+to model the DB, this characteristic helps developers to model the DB easier and faster, perhaps it also
+"hide" the process.
+
+To create a custom M:M relation we use a entity, that entity host 2 @ManyToOne(), then a @OneToMany() (Or
+more) decorator
