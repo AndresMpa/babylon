@@ -7,11 +7,11 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { In, Repository } from 'typeorm';
 
 import { Product } from '../../entities/product.entity';
+import { Category } from 'src/stock/entities/category.entity';
 
 import { CreateProductDto, UpdateProductDto } from '../../dtos/products.dto';
 
 import { BrandsService } from '../brands/brands.service';
-import { Category } from 'src/stock/entities/category.entity';
 
 @Injectable()
 export class ProductsService {
@@ -43,7 +43,9 @@ export class ProductsService {
   async create(payload: CreateProductDto) {
     const newProduct = this.productRepository.create(payload);
     if (payload.brandIdentifier) {
-      const brand = await this.brandService.findOneOnRaw(payload.brandIdentifier);
+      const brand = await this.brandService.findOneOnRaw(
+        payload.brandIdentifier,
+      );
       newProduct.brand = brand;
     }
     if (payload.categories) {
@@ -55,13 +57,34 @@ export class ProductsService {
     return this.productRepository.save(newProduct);
   }
 
+  async addCategoryByProdut(
+    productIdentifier: number,
+    categoryIdentifier: number,
+  ) {
+    const product = await this.findOne(productIdentifier);
+    const category = await this.categoryRepository.findOne({
+      where: {
+        identifier: categoryIdentifier,
+      },
+    });
+    product.categories.push(category);
+    return this.productRepository.save(product);
+  }
+
   async update(identifier: number, payload: UpdateProductDto) {
     const product = await this.productRepository.findOneBy({ identifier });
     if (payload.brandIdentifier) {
-      const brand = await this.brandService.findOneOnRaw(payload.brandIdentifier);
+      const brand = await this.brandService.findOneOnRaw(
+        payload.brandIdentifier,
+      );
       product.brand = brand;
-    } else {
-      throw new BadRequestException('Missing parameter "Brand"');
+    }
+
+    if (payload.categories) {
+      const categories = await this.categoryRepository.findBy({
+        identifier: In(payload.categories),
+      });
+      product.categories = categories;
     }
     this.productRepository.merge(product, payload);
     return this.productRepository.save(product);
@@ -69,5 +92,16 @@ export class ProductsService {
 
   remove(identifier: number) {
     return this.productRepository.delete(identifier);
+  }
+
+  async removeCategoryByProdut(
+    productIdentifier: number,
+    categoryIdentifier: number,
+  ) {
+    const product = await this.findOne(productIdentifier);
+    product.categories = product.categories.filter(
+      (item: Category) => item.identifier !== categoryIdentifier,
+    );
+    return this.productRepository.save(product);
   }
 }
