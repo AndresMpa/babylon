@@ -21,7 +21,10 @@ export class OrdersService {
   }
 
   async findOne(identifier: number) {
-    const order = await this.orderRepository.findOneBy({ identifier });
+    const order = await this.orderRepository.findOne({
+      where: { identifier },
+      relations: ['items', 'items.product'],
+    });
     if (!order) {
       throw new NotFoundException(
         `There's no a customer assigned to ${identifier} identifier`,
