@@ -505,3 +505,9 @@ to model the DB, this characteristic helps developers to model the DB easier and
 
 To create a custom M:M relation we use a entity, that entity host 2 @ManyToOne(), then a @OneToMany() (Or
 more) decorator
+
+## Serializer
+
+A serializer is kind of a middleware in which you "manage" fields on entities to "hide", "create", etc; some
+fields, those fields are created by node (Which is not so optimal), due to this characteristic, it's better to
+use SQL for big calculus, while serializers are a good option to handle with small queries
