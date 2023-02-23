@@ -18,7 +18,11 @@ import { Response } from 'express';
 
 import { ProductsService } from '../../services/products/products.service';
 
-import { CreateProductDto, UpdateProductDto } from '../../dtos/products.dto';
+import {
+  UpdateProductDto,
+  CreateProductDto,
+  FilterProductsDto,
+} from '../../dtos/products.dto';
 
 @ApiTags('Products')
 @Controller('products')
@@ -30,12 +34,8 @@ export class ProductsController {
     using a brand filter (default: none)
   */
   @Get()
-  getAll(
-    @Query('limit') limit = 100,
-    @Query('offset') offset = 0,
-    @Query('brand') brand: string,
-  ) {
-    return this.productsService.findAll();
+  getAll(@Query() params: FilterProductsDto) {
+    return this.productsService.findAll(params);
   }
 
   /*
