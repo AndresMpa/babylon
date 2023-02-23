@@ -1,4 +1,5 @@
 import {
+  Index,
   Entity,
   Column,
   CreateDateColumn,
@@ -18,6 +19,7 @@ export class Brand {
   })
   image: string;
 
+  @Index()
   @Column({
     type: 'varchar',
     unique: true,
