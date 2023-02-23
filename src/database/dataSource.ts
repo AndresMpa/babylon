@@ -16,5 +16,5 @@ export const connectionSource = new DataSource({
   logging: configService.get('ORM_LOG'),
   synchronize: configService.get('ORM_SYNC'),
   entities: ['src/**/*.entity.ts'],
-  migrations: ['./migrations/*.ts']
+  migrations: ['./migrations/*.ts'],
 });

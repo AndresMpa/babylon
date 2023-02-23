@@ -33,17 +33,14 @@ export class CategoriesController {
     from both entities
   */
   @Get(':categoryId/products/:productId')
-  getProductDetails(
-    @Param('categoryId', ParseIntPipe) categoryId: number,
-    @Param('productId', ParseIntPipe) productId: number,
-  ) {
+  getProductDetails(@Param('categoryId', ParseIntPipe) categoryId: number) {
     return this.categoryService.findOne(categoryId);
   }
 
   /**
     Creates a category, using a payload
   */
-  @Post(':categoryId')
+  @Post()
   create(@Body() payload: CreateCategoryDto) {
     return this.categoryService.create(payload);
   }
