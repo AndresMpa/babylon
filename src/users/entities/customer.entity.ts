@@ -7,8 +7,10 @@ import {
   OneToOne,
   OneToMany,
 } from 'typeorm';
-import { Account } from './account.entity';
+import { Exclude } from '@nestjs/class-transformer';
+
 import { Order } from './order.entity';
+import { Account } from './account.entity';
 
 @Entity({ name: 'customers' })
 export class Customer {
@@ -28,12 +30,14 @@ export class Customer {
   })
   lastName: string;
 
+  @Exclude()
   @Column({
     type: 'varchar',
     length: 15,
   })
   phone: string;
 
+  @Exclude()
   @CreateDateColumn({
     name: 'create_at',
     type: 'timestamptz',
@@ -41,6 +45,7 @@ export class Customer {
   })
   createAt: Date;
 
+  @Exclude()
   @UpdateDateColumn({
     name: 'update_at',
     type: 'timestamptz',

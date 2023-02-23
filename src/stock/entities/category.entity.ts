@@ -8,6 +8,8 @@ import {
   ManyToMany,
   JoinTable,
 } from 'typeorm';
+import { Exclude } from '@nestjs/class-transformer';
+
 import { Product } from './product.entity';
 
 @Entity({ name: 'categories' })
@@ -27,6 +29,7 @@ export class Category {
   })
   name: string;
 
+  @Exclude()
   @CreateDateColumn({
     name: 'create_at',
     type: 'timestamptz',
@@ -34,6 +37,7 @@ export class Category {
   })
   createAt: Date;
 
+  @Exclude()
   @UpdateDateColumn({
     name: 'update_at',
     type: 'timestamptz',

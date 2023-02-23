@@ -7,6 +7,8 @@ import {
   ManyToOne,
   JoinColumn,
 } from 'typeorm';
+import { Exclude } from '@nestjs/class-transformer';
+
 import { Product } from '../../stock/entities/product.entity';
 import { Order } from './order.entity';
 
@@ -18,6 +20,7 @@ export class OrderItem {
   @Column({ type: 'int' })
   quantity: number;
 
+  @Exclude()
   @CreateDateColumn({
     name: 'create_at',
     type: 'timestamptz',
@@ -25,6 +28,7 @@ export class OrderItem {
   })
   createAt: Date;
 
+  @Exclude()
   @UpdateDateColumn({
     name: 'update_at',
     type: 'timestamptz',

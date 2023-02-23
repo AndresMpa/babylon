@@ -7,6 +7,8 @@ import {
   PrimaryGeneratedColumn,
   OneToMany,
 } from 'typeorm';
+import { Exclude } from '@nestjs/class-transformer';
+
 import { Product } from './product.entity';
 
 @Entity({ name: 'brands' })
@@ -26,6 +28,7 @@ export class Brand {
   })
   name: string;
 
+  @Exclude()
   @CreateDateColumn({
     name: 'create_at',
     type: 'timestamptz',
@@ -33,6 +36,7 @@ export class Brand {
   })
   createAt: Date;
 
+  @Exclude()
   @UpdateDateColumn({
     name: 'update_at',
     type: 'timestamptz',
