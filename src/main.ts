@@ -1,6 +1,6 @@
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
-import { ValidationPipe } from '@nestjs/common';
-import { NestFactory } from '@nestjs/core';
+import { ClassSerializerInterceptor, ValidationPipe } from '@nestjs/common';
+import { NestFactory, Reflector } from '@nestjs/core';
 
 import { AppModule } from './app.module';
 
@@ -20,6 +20,9 @@ async function bootstrap() {
       },
     }),
   );
+
+  // Serializer
+  app.useGlobalInterceptors(new ClassSerializerInterceptor(app.get(Reflector)));
 
   // Documentation configuration
   const config = new DocumentBuilder()
