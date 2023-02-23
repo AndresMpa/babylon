@@ -1,15 +1,15 @@
-import {
-  Injectable,
-  NotFoundException,
-  BadRequestException,
-} from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { In, Repository } from 'typeorm';
 
 import { Product } from '../../entities/product.entity';
 import { Category } from 'src/stock/entities/category.entity';
 
-import { CreateProductDto, UpdateProductDto } from '../../dtos/products.dto';
+import {
+  UpdateProductDto,
+  CreateProductDto,
+  FilterProductsDto,
+} from '../../dtos/products.dto';
 
 import { BrandsService } from '../brands/brands.service';
 
@@ -22,8 +22,15 @@ export class ProductsService {
     private brandService: BrandsService,
   ) {}
 
-  findAll() {
-    return this.productRepository.find();
+  findAll(params?: FilterProductsDto) {
+    if (params) {
+      const { limit, offset } = params;
+      return this.productRepository.find({
+        relations: ['brand'],
+        take: limit,
+        skip: offset,
+      });
+    }
   }
 
   async findOne(identifier: number) {
