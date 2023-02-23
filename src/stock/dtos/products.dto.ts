@@ -1,11 +1,13 @@
 import { PartialType } from '@nestjs/swagger';
 import {
+  IsOptional,
   IsNotEmpty,
   IsPositive,
   IsNumber,
   IsString,
   IsArray,
   IsUrl,
+  Min,
 } from '@nestjs/class-validator';
 import { Category } from '../entities/category.entity';
 
@@ -71,3 +73,15 @@ export class CreateProductDto {
 }
 
 export class UpdateProductDto extends PartialType(CreateProductDto) {}
+
+export class FilterProductsDto {
+  @IsOptional()
+  @IsPositive()
+  @IsNumber()
+  readonly limit: number;
+
+  @IsOptional()
+  @IsNumber()
+  @Min(0)
+  readonly offset: number;
+}
