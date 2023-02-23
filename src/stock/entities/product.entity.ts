@@ -1,4 +1,5 @@
 import {
+  Index,
   Entity,
   Column,
   CreateDateColumn,
@@ -12,6 +13,7 @@ import { Brand } from './brand.entity';
 import { Category } from './category.entity';
 
 @Entity({ name: 'products' })
+@Index(['price', 'stock'])
 export class Product {
   @PrimaryGeneratedColumn()
   identifier: number;
