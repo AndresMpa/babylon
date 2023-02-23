@@ -7,8 +7,7 @@ import {
   OneToMany,
   JoinColumn,
 } from 'typeorm';
-import { Exclude } from '@nestjs/class-transformer';
-
+import { Exclude, Expose } from '@nestjs/class-transformer';
 
 import { Customer } from './customer.entity';
 import { OrderItem } from './orderItem.entity';
@@ -38,6 +37,33 @@ export class Order {
   @JoinColumn({ name: 'customer_identifier' })
   customer: Customer;
 
+  @Exclude()
   @OneToMany(() => OrderItem, (item) => item.order)
   items: OrderItem[];
+
+  @Expose()
+  get products() {
+    if (this.items) {
+      return this.items
+        .filter((entries) => !!entries)
+        .map((item) => ({
+          ...item.product,
+          quantity: item.quantity,
+          itemIdentifier: item.identifier,
+        }));
+    }
+    return [];
+  }
+
+  @Expose()
+  get total() {
+    if (this.items) {
+      return this.items
+        .filter((entries) => !!entries)
+        .reduce((total, item) => {
+          return total + item.product.price * item.quantity;
+        }, 0);
+    }
+    return 0;
+  }
 }
