@@ -22,6 +22,7 @@ export class Customer {
   name: string;
 
   @Column({
+    name: 'last_name',
     type: 'varchar',
     length: 25,
   })
@@ -34,12 +35,14 @@ export class Customer {
   phone: string;
 
   @CreateDateColumn({
+    name: 'create_at',
     type: 'timestamptz',
     default: () => 'CURRENT_TIMESTAMP',
   })
   createAt: Date;
 
   @UpdateDateColumn({
+    name: 'update_at',
     type: 'timestamptz',
     default: () => 'CURRENT_TIMESTAMP',
   })

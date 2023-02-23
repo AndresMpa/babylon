@@ -33,18 +33,20 @@ export class Account {
   role: string;
 
   @CreateDateColumn({
+    name: 'create_at',
     type: 'timestamptz',
     default: () => 'CURRENT_TIMESTAMP',
   })
   createAt: Date;
 
   @UpdateDateColumn({
+    name: 'update_at',
     type: 'timestamptz',
     default: () => 'CURRENT_TIMESTAMP',
   })
   updateAt: Date;
 
   @OneToOne(() => Customer, (customer) => customer.account, { nullable: true })
-  @JoinColumn()
+  @JoinColumn({ name: 'customer_identifier' })
   customer: Customer;
 }
