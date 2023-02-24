@@ -1,29 +1,27 @@
-import { HttpModule, HttpService } from '@nestjs/axios';
 import { Global, Module } from '@nestjs/common';
+import { ConfigType } from '@nestjs/config';
 
-const API_KEY = 'somewhere.com/somedata&something=1';
-const PROD_API_KEY = 'prodenv.com/proddata&something=prod';
+import { MongoClient } from 'mongodb';
+import config from 'src/config';
 
 @Global()
 @Module({
-  imports: [HttpModule],
   providers: [
     {
-      provide: 'API_KEY',
-      useValue: process.env.NODE_ENV === 'prod' ? PROD_API_KEY : API_KEY,
-    },
-    {
-      provide: 'TASKS',
-      useFactory: async (http: HttpService) => {
-        const toDo = await http.get(
-          'https://jsonplaceholder.typicode.com/todos',
-        );
+      provide: 'MONGO',
+      useFactory: async (configService: ConfigType<typeof config>) => {
+        const { connection, user, password, host, port, databaseName } =
+          configService.database;
+        const uri = `${connection}://${user}:${password}@${host}:${port}/?authSource=admin&readPreference=primary`;
+        const client = new MongoClient(uri);
 
-        return toDo;
+        await client.connect();
+        const databaseInstance = client.db(`${databaseName}`);
+        return databaseInstance;
       },
-      inject: [HttpService],
+      inject: [config.KEY],
     },
   ],
-  exports: ['API_KEY', 'TASKS'],
+  exports: ['MONGO'],
 })
 export class DatabaseModule {}
