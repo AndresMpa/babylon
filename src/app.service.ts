@@ -1,43 +1,18 @@
 import { Inject, Injectable } from '@nestjs/common';
-
-import { ConfigService, ConfigType } from '@nestjs/config';
-
-import config from './config';
+import { Db } from 'mongodb';
 
 @Injectable()
 export class AppService {
-  constructor(
-    @Inject('API_KEY') private apiKey: string,
-    @Inject('TASKS') private tasks: any[],
-
-    @Inject(config.KEY) private configAsType: ConfigType<typeof config>,
-
-    private configService: ConfigService,
-  ) {}
+  constructor(@Inject('MONGO') private dataBase: Db) {}
 
   getData() {
-    const tasksFromInjection = this.configService.get<string>('TASK_API');
-    const apiKeyFromInjection = this.configService.get<string>('API_KEY');
+    console.log(this.dataBase);
 
-    const apiKeyFromType = this.configAsType.apiKey;
-    const dataBase = this.configAsType.database;
+    return 'Working';
+  }
 
-    console.log(
-      this.apiKey,
-      this.tasks,
-      tasksFromInjection,
-      apiKeyFromInjection,
-      dataBase,
-      apiKeyFromType,
-    );
-
-    return {
-      'injected apiKey': this.apiKey,
-      'injected task': this.tasks,
-      tasksFromInjection,
-      apiKeyFromInjection,
-      dataBase,
-      apiKeyFromType,
-    };
+  getTasks() {
+    const tasksCollection = this.dataBase.collection('tasks');
+    return tasksCollection.find().toArray();
   }
 }
