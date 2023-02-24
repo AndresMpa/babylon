@@ -9,4 +9,9 @@ export class AppController {
   getExample() {
     return this.appService.getData();
   }
+
+  @Get('/tasks')
+  getTasks() {
+    return this.appService.getTasks();
+  }
 }
