@@ -1,10 +1,13 @@
 import { PartialType } from '@nestjs/swagger';
 import {
+  ValidateIf,
   IsNotEmpty,
+  IsOptional,
   IsPositive,
   IsNumber,
   IsString,
   IsUrl,
+  Min,
 } from '@nestjs/class-validator';
 
 export class CreateProductDto {
@@ -52,3 +55,24 @@ export class CreateProductDto {
 }
 
 export class UpdateProductDto extends PartialType(CreateProductDto) {}
+
+export class FilterProductDto {
+  @IsOptional()
+  @IsPositive()
+  @IsNumber()
+  limit: number;
+
+  @IsOptional()
+  @IsNumber()
+  @Min(0)
+  offset: number;
+
+  @IsOptional()
+  @Min(0)
+  minPrice: number;
+
+  @ValidateIf((params) => params.minPrice)
+  @IsPositive()
+  @IsNumber()
+  maxPrice: number;
+}
