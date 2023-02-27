@@ -1,4 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
+import { InjectModel } from '@nestjs/mongoose';
+import { Model } from 'mongoose';
 
 import { Category } from 'src/stock/entities/category.entity';
 
@@ -9,30 +11,28 @@ import {
 
 @Injectable()
 export class CategoriesService {
-  private counterIdentifier = 1;
-  private categories: Category[] = [
-    {
-      identifier: 1,
-      name: 'Variado',
-      description: 'Donde ponemos lo que tiene descuentos',
-    },
-  ];
+  constructor(
+    @InjectModel(Category.name) private categoryModel: Model<Category>,
+  ) {}
 
-  findAll() {
-    return this.categories;
+  async findAll() {
+    return this.categoryModel.find().exec();
   }
 
-  findOne(index: number) {
-    const category = this.categories.find((item) => item.identifier === index);
+  async findOne(identifier: string) {
+    const category = await this.categoryModel
+      .findOne({ id: identifier })
+      .exec();
     if (!category) {
       throw new NotFoundException(
-        `There's no a category assigned to ${index} identifier`,
+        `There's no a category assigned to ${identifier} identifier`,
       );
     } else {
       return category;
     }
   }
 
+  /**
   create(payload: CreateCategoryDto) {
     this.counterIdentifier += 1;
     const newCategory = {
@@ -72,4 +72,5 @@ export class CategoriesService {
     this.categories.splice(index, 1);
     return true;
   }
+  */
 }

@@ -1,4 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
+import { InjectModel } from '@nestjs/mongoose';
+import { Model } from 'mongoose';
 
 import { Brand } from 'src/stock/entities/brand.entity';
 
@@ -6,30 +8,24 @@ import { CreateBrandsDto, UpdateBrandsDto } from 'src/stock/dtos/brands.dto';
 
 @Injectable()
 export class BrandsService {
-  private counterIdentifier = 1;
-  private brands: Brand[] = [
-    {
-      identifier: 1,
-      name: 'Example brand',
-      image: 'https://some-data.com',
-    },
-  ];
+  constructor(@InjectModel(Brand.name) private brandModel: Model<Brand>) {}
 
-  findAll() {
-    return this.brands;
+  async findAll() {
+    return await this.brandModel.find().exec();
   }
 
-  findOne(index: number) {
-    const brand = this.brands.find((item) => item.identifier === index);
+  async findOne(identifier: string) {
+    const brand = await this.brandModel.findOne({ id: identifier }).exec();
     if (!brand) {
       throw new NotFoundException(
-        `There's no a brand assigned to ${index} identifier`,
+        `There's no a brand assigned to ${identifier} identifier`,
       );
     } else {
       return brand;
     }
   }
 
+  /**
   create(payload: CreateBrandsDto) {
     this.counterIdentifier += 1;
     const newCategory = {
@@ -69,4 +65,5 @@ export class BrandsService {
     this.brands.splice(index, 1);
     return true;
   }
+  */
 }
