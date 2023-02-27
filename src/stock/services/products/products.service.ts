@@ -24,45 +24,38 @@ export class ProductsService {
     return product;
   }
 
-  /**
   create(payload: CreateProductDto) {
-    this.counterIdentifier += 1;
-    const newProduct = {
-      identifier: this.counterIdentifier,
-      ...payload,
-    };
-
-    this.products.push(newProduct);
-
-    return newProduct;
+    const newProduct = new this.productModel(payload);
+    return newProduct.save();
   }
 
-  update(identifier: number, payload: UpdateProductDto) {
-    const product = this.findOne(identifier);
-
-    if (product) {
-      const index = this.products.findIndex(
-        (item) => item.identifier === identifier,
-      );
-      this.products[index] = {
-        ...product,
-        ...payload,
-      };
-      return this.products[index];
-    }
-  }
-
-  remove(identifier: number) {
-    const index = this.products.findIndex(
-      (item) => item.identifier === identifier,
-    );
-    if (index === -1) {
-      throw new NotFoundException(
-        `There's no a product assigned to ${index} identifier`,
-      );
-    }
-    this.products.splice(index, 1);
-    return true;
-  }
+  /**
+    Using $set mongoose updates only fields that changed
+    instead of updating the entire object
   */
+  async update(identifier: string, payload: UpdateProductDto) {
+    const product = await this.productModel
+      .findOneAndUpdate(
+        { id: identifier },
+        {
+          $set: payload,
+        },
+        { new: true },
+      )
+      .exec();
+    if (!product) {
+      throw new NotFoundException(`Product ${identifier} not found`);
+    }
+    return product;
+  }
+
+  async remove(identifier: string) {
+    const product = await this.productModel.findOneAndDelete({
+      id: identifier,
+    });
+    if (!product) {
+      throw new NotFoundException(`Product ${identifier} not found`);
+    }
+    return product;
+  }
 }

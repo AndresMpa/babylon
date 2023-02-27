@@ -16,7 +16,7 @@ export class CategoriesService {
   ) {}
 
   async findAll() {
-    return this.categoryModel.find().exec();
+    return await this.categoryModel.find().exec();
   }
 
   async findOne(identifier: string) {
@@ -32,45 +32,34 @@ export class CategoriesService {
     }
   }
 
-  /**
   create(payload: CreateCategoryDto) {
-    this.counterIdentifier += 1;
-    const newCategory = {
-      identifier: this.counterIdentifier,
-      ...payload,
-    };
-
-    this.categories.push(newCategory);
-
-    return newCategory;
+    const newCategory = new this.categoryModel(payload);
+    return newCategory.save();
   }
 
-  update(identifier: number, payload: UpdateCategoryDto) {
-    const category = this.findOne(identifier);
-
-    if (category) {
-      const index = this.categories.findIndex(
-        (item) => item.identifier === identifier,
-      );
-      this.categories[index] = {
-        ...category,
-        ...payload,
-      };
-      return this.categories[index];
+  async update(identifier: string, payload: UpdateCategoryDto) {
+    const category = await this.categoryModel
+      .findOneAndUpdate(
+        { id: identifier },
+        {
+          $set: payload,
+        },
+        { new: true },
+      )
+      .exec();
+    if (!category) {
+      throw new NotFoundException(`Category ${identifier} not found`);
     }
+    return category;
   }
 
-  remove(identifier: number) {
-    const index = this.categories.findIndex(
-      (item) => item.identifier === identifier,
-    );
-    if (index === -1) {
-      throw new NotFoundException(
-        `There's no categories assigned to ${index} identifier`,
-      );
+  async remove(identifier: string) {
+    const category = await this.categoryModel.findOneAndDelete({
+      id: identifier,
+    });
+    if (!category) {
+      throw new NotFoundException(`Category ${identifier} not found`);
     }
-    this.categories.splice(index, 1);
-    return true;
+    return category;
   }
-  */
 }
