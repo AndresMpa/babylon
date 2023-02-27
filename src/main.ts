@@ -15,6 +15,10 @@ async function bootstrap() {
       whitelist: true, // To ignore data that isn't in the DTOs
       forbidNonWhitelisted: true, // To send an error message if there's that shouldn't be there
       disableErrorMessages: stage, //To disable error message
+      transformOptions: {
+        // This options parses int directly
+        enableImplicitConversion: true,
+      },
     }),
   );
 
