@@ -12,7 +12,11 @@ import { ApiTags } from '@nestjs/swagger';
 
 import { BrandsService } from '../../services/brands/brands.service';
 
-import { CreateBrandsDto, UpdateBrandsDto } from 'src/stock/dtos/brands.dto';
+import {
+  CreateBrandDto,
+  UpdateBrandDto,
+  FilterBrandDto,
+} from 'src/stock/dtos/brands.dto';
 
 import { MongoIdPipe } from '../../../common/mongo-id/mongo-id.pipe';
 
@@ -25,8 +29,8 @@ export class BrandsController {
     Get all brands information
   */
   @Get()
-  getAll(@Query('limit') limit = 1, @Query('offset') offset = 0) {
-    return this.brandService.findAll();
+  getAll(@Query() params: FilterBrandDto) {
+    return this.brandService.findAll(params);
   }
 
   /**
@@ -41,7 +45,7 @@ export class BrandsController {
     Creates a brand using a payload
   */
   @Post()
-  create(@Body() payload: CreateBrandsDto) {
+  create(@Body() payload: CreateBrandDto) {
     return this.brandService.create(payload);
   }
 
@@ -52,7 +56,7 @@ export class BrandsController {
   @Put(':brandId')
   update(
     @Param('brandId', MongoIdPipe) brandId: string,
-    @Body() payload: UpdateBrandsDto,
+    @Body() payload: UpdateBrandDto,
   ) {
     return this.brandService.update(brandId, payload);
   }

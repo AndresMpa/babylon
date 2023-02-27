@@ -14,6 +14,7 @@ import { CategoriesService } from 'src/stock/services/categories/categories.serv
 
 import {
   CreateCategoryDto,
+  FilterCategoryDto,
   UpdateCategoryDto,
 } from 'src/stock/dtos/categories.dto';
 
@@ -28,8 +29,8 @@ export class CategoriesController {
     Get all categories, in a range (default as: {limit: 100, offset: 0})
   */
   @Get()
-  getAll(@Query('limit') limit = 100, @Query('offset') offset = 0) {
-    return this.categoryService.findAll();
+  getAll(@Query() params: FilterCategoryDto) {
+    return this.categoryService.findAll(params);
   }
 
   /**
