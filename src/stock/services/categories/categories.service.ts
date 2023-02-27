@@ -7,6 +7,7 @@ import { Category } from 'src/stock/entities/category.entity';
 import {
   CreateCategoryDto,
   UpdateCategoryDto,
+  FilterCategoryDto,
 } from '../../dtos/categories.dto';
 
 @Injectable()
@@ -15,8 +16,17 @@ export class CategoriesService {
     @InjectModel(Category.name) private categoryModel: Model<Category>,
   ) {}
 
-  async findAll() {
-    return await this.categoryModel.find().exec();
+  async findAll(params?: FilterCategoryDto) {
+    if (params) {
+      const { limit, offset } = params;
+      return await this.categoryModel
+        .find()
+        .limit(limit)
+        .skip(offset * limit)
+        .exec();
+    } else {
+      return await this.categoryModel.find().exec();
+    }
   }
 
   async findOne(identifier: string) {

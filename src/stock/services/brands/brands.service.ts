@@ -4,14 +4,28 @@ import { Model } from 'mongoose';
 
 import { Brand } from 'src/stock/entities/brand.entity';
 
-import { CreateBrandsDto, UpdateBrandsDto } from 'src/stock/dtos/brands.dto';
+import {
+  CreateBrandDto,
+  UpdateBrandDto,
+  FilterBrandDto,
+} from 'src/stock/dtos/brands.dto';
 
 @Injectable()
 export class BrandsService {
   constructor(@InjectModel(Brand.name) private brandModel: Model<Brand>) {}
 
-  async findAll() {
-    return await this.brandModel.find().exec();
+  async findAll(params?: FilterBrandDto) {
+    if (params) {
+      const { limit, offset } = params;
+
+      return await this.brandModel
+        .find()
+        .limit(limit)
+        .skip(offset * limit)
+        .exec();
+    } else {
+      return await this.brandModel.find().exec();
+    }
   }
 
   async findOne(identifier: string) {
@@ -25,12 +39,12 @@ export class BrandsService {
     }
   }
 
-  create(payload: CreateBrandsDto) {
+  create(payload: CreateBrandDto) {
     const newBrand = new this.brandModel(payload);
     return newBrand.save();
   }
 
-  async update(identifier: string, payload: UpdateBrandsDto) {
+  async update(identifier: string, payload: UpdateBrandDto) {
     const brand = await this.brandModel
       .findOneAndUpdate(
         { id: identifier },
