@@ -36,6 +36,10 @@ export class ProductsService {
         take: limit,
         skip: offset,
       });
+    } else {
+      return this.productRepository.find({
+        relations: ['brand'],
+      });
     }
   }
 
