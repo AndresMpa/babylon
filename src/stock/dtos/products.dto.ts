@@ -57,20 +57,36 @@ export class CreateProductDto {
 export class UpdateProductDto extends PartialType(CreateProductDto) {}
 
 export class FilterProductDto {
+  /**
+    Where a pagination ends
+    @example 1
+  */
   @IsOptional()
   @IsPositive()
   @IsNumber()
   limit: number;
 
+  /**
+    Where a pagination starts
+    @example 24
+  */
   @IsOptional()
   @IsNumber()
   @Min(0)
   offset: number;
 
+  /**
+    Min price in a range
+    @example 1
+  */
   @IsOptional()
   @Min(0)
   minPrice: number;
 
+  /**
+    Max price in a range
+    @example 1000
+  */
   @ValidateIf((params) => params.minPrice)
   @IsPositive()
   @IsNumber()

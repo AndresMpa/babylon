@@ -1,7 +1,15 @@
-import { IsNotEmpty, IsString, IsUrl } from '@nestjs/class-validator';
+import {
+  IsNotEmpty,
+  IsOptional,
+  IsPositive,
+  IsString,
+  IsNumber,
+  IsUrl,
+  Min,
+} from '@nestjs/class-validator';
 import { PartialType } from '@nestjs/swagger';
 
-export class CreateBrandsDto {
+export class CreateBrandDto {
   /**
    * An URL to brand's icon
    * @example 'https://images/brand-1.jpg'
@@ -20,4 +28,24 @@ export class CreateBrandsDto {
   readonly name: string;
 }
 
-export class UpdateBrandsDto extends PartialType(CreateBrandsDto) {}
+export class UpdateBrandDto extends PartialType(CreateBrandDto) {}
+
+export class FilterBrandDto {
+  /**
+    Where a pagination ends
+    @example 1
+  */
+  @IsOptional()
+  @IsPositive()
+  @IsNumber()
+  limit: number;
+
+  /**
+    Where a pagination starts
+    @example 24
+  */
+  @IsOptional()
+  @IsNumber()
+  @Min(0)
+  offset: number;
+}
