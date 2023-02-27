@@ -12,7 +12,12 @@ import { ApiTags } from '@nestjs/swagger';
 
 import { CategoriesService } from 'src/stock/services/categories/categories.service';
 
-import { CreateCategoryDto } from 'src/stock/dtos/categories.dto';
+import {
+  CreateCategoryDto,
+  UpdateCategoryDto,
+} from 'src/stock/dtos/categories.dto';
+
+import { MongoIdPipe } from 'src/common/mongo-id/mongo-id.pipe';
 
 @ApiTags('Categories')
 @Controller('categories')
@@ -32,41 +37,35 @@ export class CategoriesController {
     from both entities
   */
   @Get(':categoryId')
-  getProductDetails(@Param('categoryId') categoryId: string) {
+  getProductDetails(@Param('categoryId', MongoIdPipe) categoryId: string) {
     return this.categoryService.findOne(categoryId);
   }
 
   /**
     Creates a category, using a payload
   */
-  /**
-  @Post(':categoryId')
+  @Post()
   create(@Body() payload: CreateCategoryDto) {
     return this.categoryService.create(payload);
   }
-  */
 
   /**
     Partially updates a category information, using a its identifier
     and a payload
   */
-  /**
   @Put(':categoryId')
   update(
-    @Param('categoryId') categoryId: string,
-    @Body() payload: CreateCategoryDto,
+    @Param('categoryId', MongoIdPipe) categoryId: string,
+    @Body() payload: UpdateCategoryDto,
   ) {
     return this.categoryService.update(categoryId, payload);
   }
-  */
 
   /**
     Deletes a category using its identifiers
   */
-  /**
   @Delete(':categoryId')
-  remove(@Param('categoryId') categoryId: string) {
+  remove(@Param('categoryId', MongoIdPipe) categoryId: string) {
     return this.categoryService.remove(categoryId);
   }
-  */
 }

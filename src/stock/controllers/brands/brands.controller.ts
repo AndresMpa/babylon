@@ -14,6 +14,8 @@ import { BrandsService } from '../../services/brands/brands.service';
 
 import { CreateBrandsDto, UpdateBrandsDto } from 'src/stock/dtos/brands.dto';
 
+import { MongoIdPipe } from '../../../common/mongo-id/mongo-id.pipe.ts';
+
 @ApiTags('Brands')
 @Controller('brands')
 export class BrandsController {
@@ -31,41 +33,35 @@ export class BrandsController {
     Get a specific brand information using its identifier
   */
   @Get(':brandId')
-  getDetails(@Param('brandId') brandId: string) {
+  getDetails(@Param('brandId', MongoIdPipe) brandId: string) {
     return this.brandService.findOne(brandId);
   }
 
   /**
     Creates a brand using a payload
   */
-  /**
   @Post()
   create(@Body() payload: CreateBrandsDto) {
     return this.brandService.create(payload);
   }
-  */
 
   /**
     Updates a brand by parts using its identifier, also using a
     payload
   */
-  /**
   @Put(':brandId')
   update(
-    @Param('brandId') brandId: string,
+    @Param('brandId', MongoIdPipe) brandId: string,
     @Body() payload: UpdateBrandsDto,
   ) {
     return this.brandService.update(brandId, payload);
   }
-  */
 
   /**
     Deletes a brand using its identifier
   */
-  /**
   @Delete(':brandId')
-  remove(@Param('brandId') brandId: string) {
+  remove(@Param('brandId', MongoIdPipe) brandId: string) {
     return this.brandService.remove(brandId);
   }
-  */
 }
