@@ -8,7 +8,7 @@ export class Category extends Document {
   @Prop()
   description: string;
 
-  @Prop({ required: true })
+  @Prop({ required: true, index: true })
   name: string;
 }
 
