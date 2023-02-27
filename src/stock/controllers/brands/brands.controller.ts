@@ -14,7 +14,7 @@ import { BrandsService } from '../../services/brands/brands.service';
 
 import { CreateBrandsDto, UpdateBrandsDto } from 'src/stock/dtos/brands.dto';
 
-import { MongoIdPipe } from '../../../common/mongo-id/mongo-id.pipe.ts';
+import { MongoIdPipe } from '../../../common/mongo-id/mongo-id.pipe';
 
 @ApiTags('Brands')
 @Controller('brands')
