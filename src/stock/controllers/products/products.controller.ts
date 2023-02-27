@@ -6,15 +6,11 @@ import {
   Body,
   Query,
   Param,
-  Res,
   HttpCode,
   HttpStatus,
   Controller,
-  ParseIntPipe,
 } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
-
-import { Response } from 'express';
 
 import { ProductsService } from '../../services/products/products.service';
 
@@ -30,15 +26,8 @@ export class ProductsController {
     using a brand filter (default: none)
   */
   @Get()
-  getAll(
-    @Query('limit') limit = 100,
-    @Query('offset') offset = 0,
-    @Query('brand') brand: string,
-  ) {
-    return {
-      message: `Using limit(${limit}), offset(${offset}) and brand(${brand}) as filters`,
-      data: this.productsService.findAll(),
-    };
+  getAll(@Query('limit') limit = 100, @Query('offset') offset = 0) {
+    return this.productsService.findAll();
   }
 
   /*
@@ -46,62 +35,40 @@ export class ProductsController {
   */
   @Get('/:productId')
   @HttpCode(HttpStatus.ACCEPTED)
-  getDetails(@Param('productId', ParseIntPipe) productId: number) {
-    return {
-      message: `Product id: ${productId}`,
-      data: this.productsService.findOne(productId),
-    };
-  }
-
-  /*
-    Some cases It can be useful to get native express objects
-    in general it's better to use Nest itself, but in some cases
-    to use express can be easier, instead of using this option a
-    custom decorator could achieve this too
-  */
-  @Get('express/:productId')
-  getOneExpressLike(
-    @Res() response: Response,
-    @Param('productId', ParseIntPipe) productId: number,
-  ) {
-    response.status(200).send({
-      message: `Express like response ${productId}`,
-    });
+  getDetails(@Param('productId') productId: string) {
+    return this.productsService.findOne(productId);
   }
 
   /**
     Creates a product using a payload
   */
+  /**
   @Post()
   create(@Body() payload: CreateProductDto) {
-    return {
-      message: 'Data created',
-      data: this.productsService.create(payload),
-    };
+    return this.productsService.create(payload);
   }
+  */
 
   /**
     Partially updates a product using a payload and its identifier
   */
+  /**
   @Put(':productId')
   update(
-    @Param('productId', ParseIntPipe) productId: number,
+    @Param('productId') productId: string,
     @Body() payload: UpdateProductDto,
   ) {
-    return {
-      message: `Product ${productId} created sucessfully`,
-      data: this.productsService.update(productId, payload),
-    };
+    return this.productsService.update(productId, payload);
   }
+  */
 
   /**
     Removes a product using its identifier
   */
+  /**
   @Delete(':productId')
-  delete(@Param('productId', ParseIntPipe) productId: number) {
-    return {
-      message: `Product ${productId} deleted`,
-      productId,
-    };
+  delete(@Param('productId') productId: string) {
+    return this.productsService.remove()
   }
+  */
 }

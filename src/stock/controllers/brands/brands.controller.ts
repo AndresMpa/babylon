@@ -2,12 +2,11 @@ import {
   Put,
   Get,
   Post,
+  Delete,
   Body,
   Param,
   Query,
   Controller,
-  ParseIntPipe,
-  Delete,
 } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 
@@ -25,57 +24,48 @@ export class BrandsController {
   */
   @Get()
   getAll(@Query('limit') limit = 1, @Query('offset') offset = 0) {
-    return {
-      message: `Brands limit: ${limit} offset ${offset}`,
-      data: this.brandService.findAll(),
-    };
+    return this.brandService.findAll();
   }
 
   /**
     Get a specific brand information using its identifier
   */
   @Get(':brandId')
-  getDetails(@Param('brandId', ParseIntPipe) brandId: number) {
-    return {
-      message: `Brand id ${brandId}`,
-      data: this.brandService.findOne(brandId),
-    };
+  getDetails(@Param('brandId') brandId: string) {
+    return this.brandService.findOne(brandId);
   }
 
   /**
     Creates a brand using a payload
   */
+  /**
   @Post()
   create(@Body() payload: CreateBrandsDto) {
-    return {
-      message: 'Data created',
-      data: this.brandService.create(payload),
-    };
+    return this.brandService.create(payload);
   }
+  */
 
   /**
     Updates a brand by parts using its identifier, also using a
     payload
   */
+  /**
   @Put(':brandId')
   update(
-    @Param('brandId', ParseIntPipe) brandId: number,
+    @Param('brandId') brandId: string,
     @Body() payload: UpdateBrandsDto,
   ) {
-    return {
-      message: `Brand ${brandId} created`,
-      data: this.brandService.update(brandId, payload),
-    };
+    return this.brandService.update(brandId, payload);
   }
+  */
 
   /**
     Deletes a brand using its identifier
   */
+  /**
   @Delete(':brandId')
-  remove(@Param('brandId', ParseIntPipe) brandId: number) {
-    return {
-      message: `Brand ${brandId} deleted`,
-      data: this.brandService.remove(brandId),
-    };
+  remove(@Param('brandId') brandId: string) {
+    return this.brandService.remove(brandId);
   }
+  */
 }
