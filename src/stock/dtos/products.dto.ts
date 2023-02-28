@@ -1,5 +1,6 @@
 import { PartialType } from '@nestjs/swagger';
 import {
+  ValidateNested,
   ValidateIf,
   IsNotEmpty,
   IsOptional,
@@ -9,6 +10,8 @@ import {
   IsUrl,
   Min,
 } from '@nestjs/class-validator';
+
+import { CreateCategoryDto } from './categories.dto';
 
 export class CreateProductDto {
   /**
@@ -52,6 +55,17 @@ export class CreateProductDto {
   @IsNotEmpty()
   @IsUrl()
   readonly image: string;
+
+  /**
+   * An object that makes reference to any
+   * category
+   * @example
+      name: "Inmported",
+      description: "Imported products"
+   */
+  @ValidateNested()
+  @IsNotEmpty()
+  readonly category: CreateCategoryDto;
 }
 
 export class UpdateProductDto extends PartialType(CreateProductDto) {}
