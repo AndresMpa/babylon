@@ -29,7 +29,7 @@ export class BrandsService {
   }
 
   async findOne(identifier: string) {
-    const brand = await this.brandModel.findOne({ id: identifier }).exec();
+    const brand = await this.brandModel.findOne({ _id: identifier }).exec();
     if (!brand) {
       throw new NotFoundException(
         `There's no a brand assigned to ${identifier} identifier`,
@@ -47,7 +47,7 @@ export class BrandsService {
   async update(identifier: string, payload: UpdateBrandDto) {
     const brand = await this.brandModel
       .findOneAndUpdate(
-        { id: identifier },
+        { _id: identifier },
         {
           $set: payload,
         },
@@ -62,7 +62,7 @@ export class BrandsService {
 
   async remove(identifier: string) {
     const brand = await this.brandModel.findOneAndDelete({
-      id: identifier,
+      _id: identifier,
     });
     if (!brand) {
       throw new NotFoundException(`Brand ${identifier} not found`);

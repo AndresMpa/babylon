@@ -31,7 +31,7 @@ export class CategoriesService {
 
   async findOne(identifier: string) {
     const category = await this.categoryModel
-      .findOne({ id: identifier })
+      .findOne({ _id: identifier })
       .exec();
     if (!category) {
       throw new NotFoundException(
@@ -50,7 +50,7 @@ export class CategoriesService {
   async update(identifier: string, payload: UpdateCategoryDto) {
     const category = await this.categoryModel
       .findOneAndUpdate(
-        { id: identifier },
+        { _id: identifier },
         {
           $set: payload,
         },
@@ -65,7 +65,7 @@ export class CategoriesService {
 
   async remove(identifier: string) {
     const category = await this.categoryModel.findOneAndDelete({
-      id: identifier,
+      _id: identifier,
     });
     if (!category) {
       throw new NotFoundException(`Category ${identifier} not found`);

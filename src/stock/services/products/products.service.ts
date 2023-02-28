@@ -35,7 +35,7 @@ export class ProductsService {
   }
 
   async findOne(identifier: string) {
-    const product = await this.productModel.findOne({ id: identifier }).exec();
+    const product = await this.productModel.findOne({ _id: identifier }).exec();
     if (!product) {
       throw new NotFoundException(`Product ${identifier} not found`);
     }
@@ -54,7 +54,7 @@ export class ProductsService {
   async update(identifier: string, payload: UpdateProductDto) {
     const product = await this.productModel
       .findOneAndUpdate(
-        { id: identifier },
+        { _id: identifier },
         {
           $set: payload,
         },
@@ -69,7 +69,7 @@ export class ProductsService {
 
   async remove(identifier: string) {
     const product = await this.productModel.findOneAndDelete({
-      id: identifier,
+      _id: identifier,
     });
     if (!product) {
       throw new NotFoundException(`Product ${identifier} not found`);
