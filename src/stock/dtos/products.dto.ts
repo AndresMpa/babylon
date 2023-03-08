@@ -5,6 +5,7 @@ import {
   IsNotEmpty,
   IsOptional,
   IsPositive,
+  IsMongoId,
   IsNumber,
   IsString,
   IsUrl,
@@ -66,6 +67,10 @@ export class CreateProductDto {
   @ValidateNested()
   @IsNotEmpty()
   readonly category: CreateCategoryDto;
+
+  @IsNotEmpty()
+  @IsMongoId()
+  readonly brand: string;
 }
 
 export class UpdateProductDto extends PartialType(CreateProductDto) {}
