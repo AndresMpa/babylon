@@ -35,7 +35,10 @@ export class ProductsService {
   }
 
   async findOne(identifier: string) {
-    const product = await this.productModel.findOne({ _id: identifier }).exec();
+    const product = await this.productModel
+      .findOne({ _id: identifier })
+      .populate('brand')
+      .exec();
     if (!product) {
       throw new NotFoundException(`Product ${identifier} not found`);
     }
