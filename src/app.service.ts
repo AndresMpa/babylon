@@ -6,9 +6,7 @@ export class AppService {
   constructor(@Inject('MONGO') private dataBase: Db) {}
 
   getData() {
-    console.log(this.dataBase);
-
-    return 'Working';
+    return 'Doc at localhost:3000/doc';
   }
 
   getTasks() {
