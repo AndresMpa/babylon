@@ -6,16 +6,14 @@ import {
   Body,
   Param,
   Controller,
-  ParseIntPipe,
 } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
-
-import { CustomersService } from 'src/users/services/customers/customers.service';
 
 import {
   CreateCustomerDto,
   UpdateCustomerDto,
 } from 'src/users/dtos/customers.dto';
+import { CustomersService } from 'src/users/services/customers/customers.service';
 
 @ApiTags('Customers')
 @Controller('customers')
@@ -23,25 +21,19 @@ export class CustomersController {
   constructor(private customerServive: CustomersService) {}
 
   /**
-    Returns specific information form a customer using its identifier
+    Returns all information form customers
   */
-  @Get(':customerId')
-  getDetails(@Param('customerId', ParseIntPipe) customerId: number) {
-    return {
-      message: `Customer id ${customerId}`,
-      data: this.customerServive.findOne(customerId),
-    };
+  @Get()
+  getCustomers() {
+    return this.customerServive.findAll();
   }
 
   /**
-    Returns customer's orders using its identifier
+    Returns specific information form a customer using its identifier
   */
-  @Get(':customerId/orders')
-  getOrder(@Param('customerId', ParseIntPipe) customerId: number) {
-    return {
-      message: `Customer ${customerId} orders`,
-      data: this.customerServive.getOrder(customerId),
-    };
+  @Get(':customerId')
+  getDetails(@Param('customerId') customerId: string) {
+    return this.customerServive.findOne(customerId);
   }
 
   /**
@@ -49,10 +41,7 @@ export class CustomersController {
   */
   @Post()
   create(@Body() payload: CreateCustomerDto) {
-    return {
-      message: `Customer created`,
-      data: this.customerServive.create(payload),
-    };
+    return this.customerServive.create(payload);
   }
 
   /**
@@ -61,23 +50,17 @@ export class CustomersController {
   */
   @Put(':customerId')
   update(
-    @Param('customerId', ParseIntPipe) customerId: number,
+    @Param('customerId') customerId: string,
     @Body() payload: UpdateCustomerDto,
   ) {
-    return {
-      message: `Customer ${customerId} updates`,
-      data: this.customerServive.update(customerId, payload),
-    };
+    return this.customerServive.update(customerId, payload);
   }
 
   /**
     Deletes a customer using its identifier
   */
   @Delete(':customerId')
-  remove(@Param('customerId', ParseIntPipe) customerId: number) {
-    return {
-      message: `Customer ${customerId} has been removed from DB`,
-      data: this.customerServive.remove(customerId),
-    };
+  remove(@Param('customerId') customerId: string) {
+    return this.customerServive.remove(customerId);
   }
 }
