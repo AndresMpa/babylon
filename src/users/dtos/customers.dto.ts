@@ -7,7 +7,6 @@ import {
   ValidateNested,
 } from '@nestjs/class-validator';
 import { PartialType } from '@nestjs/swagger';
-import { Preferences } from 'src/common/dataytpes/Preferences';
 
 export class CreateCustomerDto {
   /**
@@ -36,6 +35,7 @@ export class CreateCustomerDto {
   readonly phone: string;
 
   @IsNotEmpty()
+  @IsArray()
   readonly preferences: any;
 }
 
