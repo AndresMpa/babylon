@@ -1,34 +1,31 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
+import { InjectModel } from '@nestjs/mongoose';
+import { Model } from 'mongoose';
 
 import { Customer } from 'src/users/entities/customer.entity';
-import { Order } from 'src/users/entities/order.entity';
 
 import {
   CreateCustomerDto,
   UpdateCustomerDto,
 } from 'src/users/dtos/customers.dto';
 
-import { ProductsService } from 'src/stock/services/products/products.service';
-
 @Injectable()
 export class CustomersService {
-  constructor(private productsService: ProductsService) {}
+  constructor(
+    @InjectModel(Customer.name) private customerModel: Model<Customer>,
+  ) {}
 
-  private counterIdentifier = 1;
-  private customers: Customer[] = [
-    {
-      identifier: 1,
-      name: 'Test',
-      lastName: 'Man',
-      phone: '3123456789',
-    },
-  ];
+  async findAll() {
+    return await this.customerModel.find().exec();
+  }
 
-  findOne(index: number) {
-    const customer = this.customers.find((item) => item.identifier === index);
+  async findOne(identifier: string) {
+    const customer = await this.customerModel
+      .findOne({ _id: identifier })
+      .exec();
     if (!customer) {
       throw new NotFoundException(
-        `There's no a customer assigned to ${index} identifier`,
+        `There's no a customer assigned to ${identifier} identifier`,
       );
     } else {
       return customer;
@@ -36,51 +33,35 @@ export class CustomersService {
   }
 
   create(payload: CreateCustomerDto) {
-    this.counterIdentifier += 1;
-    const newProduct = {
-      identifier: this.counterIdentifier,
-      ...payload,
-    };
+    console.log(payload);
 
-    this.customers.push(newProduct);
-
-    return newProduct;
+    const newCustomer = new this.customerModel(payload);
+    return newCustomer.save();
   }
 
-  update(identifier: number, payload: UpdateCustomerDto) {
-    const customer = this.findOne(identifier);
-
-    if (customer) {
-      const index = this.customers.findIndex(
-        (item) => item.identifier === identifier,
-      );
-      this.customers[index] = {
-        ...customer,
-        ...payload,
-      };
-      return this.customers[index];
+  async update(identifier: string, payload: UpdateCustomerDto) {
+    const customer = await this.customerModel
+      .findOneAndUpdate(
+        { _id: identifier },
+        {
+          $set: payload,
+        },
+        { new: true },
+      )
+      .exec();
+    if (!customer) {
+      throw new NotFoundException(`Customer ${identifier} not found`);
     }
+    return customer;
   }
 
-  remove(identifier: number) {
-    const index = this.customers.findIndex(
-      (item) => item.identifier === identifier,
-    );
-    if (index === -1) {
-      throw new NotFoundException(
-        `There's no a customer assigned to ${index} identifier`,
-      );
+  async remove(identifier: string) {
+    const customer = await this.customerModel.findOneAndDelete({
+      _id: identifier,
+    });
+    if (!customer) {
+      throw new NotFoundException(`Customer ${identifier} not found`);
     }
-    this.customers.splice(index, 1);
-    return true;
-  }
-
-  async getOrder(identifier: number) {
-    const customer = this.findOne(identifier);
-    return {
-      date: new Date(),
-      owner: customer,
-      products: await this.productsService.findAll(),
-    };
+    return customer;
   }
 }
