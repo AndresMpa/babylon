@@ -34,6 +34,9 @@ export class CreateCustomerDto {
   @IsString()
   readonly phone: string;
 
+  /**
+   * preferences sub field
+   */
   @IsNotEmpty()
   @IsArray()
   readonly preferences: any;
