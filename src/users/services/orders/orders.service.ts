@@ -13,7 +13,7 @@ export class OrdersService {
   async findAll() {
     return await this.orderModel
       .find()
-      .populate(['customers', 'products'])
+      .populate(['customer', 'products'])
       .exec();
   }
 
@@ -34,5 +34,19 @@ export class OrdersService {
 
   async remove(identifier: string) {
     return await this.orderModel.findByIdAndDelete(identifier);
+  }
+
+  // To handle with array of orders
+
+  async addProduct(identifier: string, productId: string[]) {
+    const order = await this.findOne(identifier);
+    order.products.push(...productId);
+    return order.save();
+  }
+
+  async removeProduct(identifier: string, productId: string) {
+    const order = await this.findOne(identifier);
+    order.products.pull(productId);
+    return order.save();
   }
 }
