@@ -48,6 +48,7 @@ first two are alias for whole word like "co" for "controller" or "s" for "servic
 | Create a service      | `npx nest g s <DIRECTORY>/<SERVICE>`     | Creates a service in <DIRECTORY> using <SERVICE> name                                      |
 | Create a pipe line    | `npx nest g p <DIRECTORY>/<PIPE>`        | Creates a pipe line in <DIRECTORY> (usually called "common" or "shared") using <PIPE> name |
 | Create a module       | `npx nest g mo <MODULE>`                 | Creates a module in ./src using <MODULE> name                                              |
+| Create a guardian     | `npx nest g gu <PATH>`                   | Guardians generally go inside a module, so it's better to create a module first            |
 
 ## Patters
 
