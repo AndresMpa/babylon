@@ -2,6 +2,7 @@ import { registerAs } from '@nestjs/config';
 
 export default registerAs('config', () => {
   return {
+    apiKey: process.env.API_KEY,
     database: {
       type: process.env.DATABASE_TYPE,
       host: process.env.DATABASE_HOST,
