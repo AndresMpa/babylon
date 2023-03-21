@@ -20,7 +20,7 @@ export class OrderItem {
   @Column({ type: 'int' })
   quantity: number;
 
-  @Exclude()
+  @Exclude({ toPlainOnly: true })
   @CreateDateColumn({
     name: 'create_at',
     type: 'timestamptz',
@@ -28,7 +28,7 @@ export class OrderItem {
   })
   createAt: Date;
 
-  @Exclude()
+  @Exclude({ toPlainOnly: true })
   @UpdateDateColumn({
     name: 'update_at',
     type: 'timestamptz',

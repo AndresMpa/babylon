@@ -16,14 +16,13 @@ export class Account {
   @PrimaryGeneratedColumn()
   identifier: number;
 
-  @Exclude()
+  @Exclude({ toPlainOnly: true })
   @Column({
     type: 'varchar',
     length: 255,
   })
   password: string;
 
-  @Exclude()
   @Column({
     type: 'varchar',
     length: 255,
@@ -36,7 +35,7 @@ export class Account {
   })
   role: string;
 
-  @Exclude()
+  @Exclude({ toPlainOnly: true })
   @CreateDateColumn({
     name: 'create_at',
     type: 'timestamptz',
@@ -44,7 +43,7 @@ export class Account {
   })
   createAt: Date;
 
-  @Exclude()
+  @Exclude({ toPlainOnly: true })
   @UpdateDateColumn({
     name: 'update_at',
     type: 'timestamptz',

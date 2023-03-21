@@ -17,7 +17,7 @@ export class Order {
   @PrimaryGeneratedColumn()
   identifier: number;
 
-  @Exclude()
+  @Exclude({ toPlainOnly: true })
   @CreateDateColumn({
     name: 'create_at',
     type: 'timestamptz',
@@ -25,7 +25,7 @@ export class Order {
   })
   createAt: Date;
 
-  @Exclude()
+  @Exclude({ toPlainOnly: true })
   @UpdateDateColumn({
     name: 'update_at',
     type: 'timestamptz',
@@ -37,11 +37,11 @@ export class Order {
   @JoinColumn({ name: 'customer_identifier' })
   customer: Customer;
 
-  @Exclude()
+  @Exclude({ toPlainOnly: true })
   @OneToMany(() => OrderItem, (item) => item.order)
   items: OrderItem[];
 
-  @Expose()
+  @Exclude({ toPlainOnly: true })
   get products() {
     if (this.items) {
       return this.items
@@ -55,7 +55,7 @@ export class Order {
     return [];
   }
 
-  @Expose()
+  @Exclude({ toPlainOnly: true })
   get total() {
     if (this.items) {
       return this.items

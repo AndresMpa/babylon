@@ -30,14 +30,14 @@ export class Customer {
   })
   lastName: string;
 
-  @Exclude()
+  @Exclude({ toPlainOnly: true })
   @Column({
     type: 'varchar',
     length: 15,
   })
   phone: string;
 
-  @Exclude()
+  @Exclude({ toPlainOnly: true })
   @CreateDateColumn({
     name: 'create_at',
     type: 'timestamptz',
@@ -45,7 +45,7 @@ export class Customer {
   })
   createAt: Date;
 
-  @Exclude()
+  @Exclude({ toPlainOnly: true })
   @UpdateDateColumn({
     name: 'update_at',
     type: 'timestamptz',
