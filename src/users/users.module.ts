@@ -39,5 +39,6 @@ import { Order } from './entities/order.entity';
     TypeOrmModule.forFeature([Customer, Account, Order, OrderItem]),
     StockModule,
   ],
+  exports: [AccountsService],
 })
 export class UsersModule {}
