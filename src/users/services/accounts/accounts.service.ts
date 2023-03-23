@@ -37,7 +37,7 @@ export class AccountsService {
   }
 
   async findByEmail(email: string) {
-    return await this.accountRepository.find({ where: { email } });
+    return await this.accountRepository.findOne({ where: { email } });
   }
 
   async create(payload: CreateAccountDto) {
