@@ -11,6 +11,7 @@ import {
   HttpStatus,
   Controller,
   ParseIntPipe,
+  UseGuards,
 } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 
@@ -23,9 +24,11 @@ import {
   CreateProductDto,
   FilterProductsDto,
 } from '../../dtos/products.dto';
+import { AuthGuard } from '@nestjs/passport';
 
 @ApiTags('Products')
 @Controller('products')
+@UseGuards(AuthGuard('jwt'))
 export class ProductsController {
   constructor(private productsService: ProductsService) {}
 
