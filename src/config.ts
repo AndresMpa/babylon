@@ -16,5 +16,9 @@ export default registerAs('config', () => {
       logging: process.env.ORM_LOG === 'true',
       synchronize: process.env.ORM_SYNC === 'true',
     },
+    secure: {
+      secret: process.env.SECURE_SECRET || 'some random secret',
+      expiration: process.env.SECURE_EXPIRATION || '10d',
+    },
   };
 });
