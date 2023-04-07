@@ -7,14 +7,18 @@ import {
   Param,
   Controller,
   ParseIntPipe,
+  UseGuards,
 } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
+import { AuthGuard } from '@nestjs/passport';
+
 import { CreateAccountDto, UpdateAccountDto } from 'src/users/dtos/account.dto';
 
 import { AccountsService } from 'src/users/services/accounts/accounts.service';
 
-@ApiTags('Customers')
+@ApiTags('Accounts')
 @Controller('accounts')
+@UseGuards(AuthGuard('jwt'))
 export class AccountsController {
   constructor(private accountService: AccountsService) {}
 

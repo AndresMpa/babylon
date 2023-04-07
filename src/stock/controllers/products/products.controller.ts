@@ -14,6 +14,7 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
+import { AuthGuard } from '@nestjs/passport';
 
 import { Response } from 'express';
 
@@ -24,7 +25,6 @@ import {
   CreateProductDto,
   FilterProductsDto,
 } from '../../dtos/products.dto';
-import { AuthGuard } from '@nestjs/passport';
 
 @ApiTags('Products')
 @Controller('products')
