@@ -26,11 +26,16 @@ import {
 } from '../../dtos/products.dto';
 
 import { JwtAuthGuard } from '../../../auth/guards/jwt-auth/jwt-auth.guard';
+import { RolesGuard } from '../../../auth/guards/roles/roles.guard';
+
 import { Public } from '../../../auth/decorators/public/public.decorator';
+import { Roles } from '../../../auth/decorators/roles/roles.decorator';
+
+import { Role } from '../../../auth/model/roles.model';
 
 @ApiTags('Products')
 @Controller('products')
-@UseGuards(JwtAuthGuard)
+@UseGuards(JwtAuthGuard, RolesGuard)
 export class ProductsController {
   constructor(private productsService: ProductsService) {}
 
@@ -75,6 +80,7 @@ export class ProductsController {
     Creates a product using a payload
   */
   @Post()
+  @Roles(Role.ADMIN)
   create(@Body() payload: CreateProductDto) {
     return this.productsService.create(payload);
   }
