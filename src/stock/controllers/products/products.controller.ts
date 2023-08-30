@@ -14,7 +14,6 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
-import { AuthGuard } from '@nestjs/passport';
 
 import { Response } from 'express';
 
@@ -26,9 +25,12 @@ import {
   FilterProductsDto,
 } from '../../dtos/products.dto';
 
+import { JwtAuthGuard } from '../../../auth/guards/jwt-auth/jwt-auth.guard';
+import { Public } from '../../../auth/decorators/public/public.decorator';
+
 @ApiTags('Products')
 @Controller('products')
-@UseGuards(AuthGuard('jwt'))
+@UseGuards(JwtAuthGuard)
 export class ProductsController {
   constructor(private productsService: ProductsService) {}
 
@@ -37,6 +39,7 @@ export class ProductsController {
     using a brand filter (default: none)
   */
   @Get()
+  @Public()
   getAll(@Query() params: FilterProductsDto) {
     return this.productsService.findAll(params);
   }
@@ -44,6 +47,7 @@ export class ProductsController {
   /*
     Returns matching product with sent identifier
   */
+  @Public()
   @Get('/:productId')
   @HttpCode(HttpStatus.ACCEPTED)
   getDetails(@Param('productId', ParseIntPipe) productId: number) {
@@ -56,6 +60,7 @@ export class ProductsController {
     to use express can be easier, instead of using this option a
     custom decorator could achieve this too
   */
+  @Public()
   @Get('express/:productId')
   getOneExpressLike(
     @Res() response: Response,
