@@ -3,6 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 
 import { Order } from 'src/users/entities/order.entity';
+import { Account } from 'src/users/entities/account.entity';
 import { Customer } from 'src/users/entities/customer.entity';
 
 import { CreateOrderDto, UpdateOrderDto } from 'src/users/dtos/order.dto';
@@ -12,6 +13,8 @@ export class OrdersService {
   constructor(
     @InjectRepository(Order)
     private orderRepository: Repository<Order>,
+    @InjectRepository(Account)
+    private accountRepository: Repository<Account>,
     @InjectRepository(Customer)
     private customerRepository: Repository<Customer>,
   ) {}
@@ -32,6 +35,17 @@ export class OrdersService {
     } else {
       return order;
     }
+  }
+
+  async ordersByCustomer(userId: number) {
+    const user = await this.user.findOne({
+      where: { id: userId },
+      relations: ['customer'],
+    });
+    const customerId = user.customer.id;
+    return await this.orderRepository.find({
+      where: { customer: { id: customerId } },
+    });
   }
 
   async create(payload: CreateOrderDto) {
