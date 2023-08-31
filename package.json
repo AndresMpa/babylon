@@ -1,0 +1,28 @@
+{
+  "name": "babylon",
+  "version": "1.0.0",
+  "description": "Webpack using express, react and ts",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node ./src/index.js"
+  },
+  "keywords": [
+    "react",
+    "express",
+    "backend",
+    "frontend",
+    "typescript"
+  ],
+  "author": "AndresMpa",
+  "license": "MIT",
+  "dependencies": {
+    "@babel/core": "^7.22.11",
+    "@babel/preset-env": "^7.22.14",
+    "babel-loader": "^9.1.3",
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "webpack": "^5.88.2",
+    "webpack-cli": "^5.1.4"
+  }
+}
