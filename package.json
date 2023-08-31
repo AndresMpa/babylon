@@ -4,7 +4,9 @@
   "description": "Webpack using express, react and ts",
   "main": "index.js",
   "scripts": {
-    "dev": "node ./src/index.js"
+    "dev": "webpack --mode development && node dist/index.js",
+    "build": "webpack --mode production",
+    "start": "node ./dist/index.js"
   },
   "keywords": [
     "react",
