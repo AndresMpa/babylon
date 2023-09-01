@@ -1,10 +1,13 @@
 import { Request, Response } from "express";
 import * as express from "express";
+import cors = require("cors");
 
 import { config } from "./config/vars";
 import { initialState } from "./config/initialState";
 
 const app = express();
+
+app.use(cors<Request>());
 
 app.get("/", (req: Request, res: Response) => res.send("Hello Typescript"));
 
