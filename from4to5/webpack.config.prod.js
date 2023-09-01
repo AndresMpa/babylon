@@ -13,6 +13,14 @@ module.exports = {
   },
   resolve: {
     extensions: [".js", ".jsx"],
+    alias: {
+      "@components/": ["../from4to5/src/components/"],
+      "@containers/": ["../from4to5/src/containers/"],
+      "@context/": ["../from4to5/src/context/"],
+      "@hooks/": ["../from4to5/src/hooks/"],
+      "@routes/": ["../from4to5/src/routes/"],
+      "@styles/": ["../from4to5/src/styles/"],
+    },
   },
   module: {
     rules: [
