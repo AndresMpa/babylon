@@ -8,7 +8,7 @@ const app = express();
 
 app.get("/", (req: Request, res: Response) => res.send("Hello Typescript"));
 
-app.get(`/api/${config.version}`, (req: Request, res: Response) =>
+app.get(`/api/${config.version}/`, (req: Request, res: Response) =>
   res.json(initialState),
 );
 
