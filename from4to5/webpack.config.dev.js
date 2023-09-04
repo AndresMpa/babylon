@@ -1,6 +1,7 @@
 const path = require("path");
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const ImageMinimizerPlugin = require("image-minimizer-webpack-plugin");
 
 module.exports = {
   entry: "./src/index.js",
@@ -11,12 +12,13 @@ module.exports = {
   resolve: {
     extensions: [".js", ".jsx"],
     alias: {
-      "@components/": ["../from4to5/src/components/"],
-      "@containers/": ["../from4to5/src/containers/"],
-      "@context/": ["../from4to5/src/context/"],
-      "@hooks/": ["../from4to5/src/hooks/"],
-      "@routes/": ["../from4to5/src/routes/"],
-      "@styles/": ["../from4to5/src/styles/"],
+      "@components": path.resolve(__dirname, "src/components/"),
+      "@containers": path.resolve(__dirname, "src/containers/"),
+      "@context": path.resolve(__dirname, "src/context/"),
+      "@hooks": path.resolve(__dirname, "src/hooks/"),
+      "@routes": path.resolve(__dirname, "src/routes/"),
+      "@styles": path.resolve(__dirname, "src/styles/"),
+      "@assets": path.resolve(__dirname, "src/assets/"),
     },
   },
   module: {
@@ -46,6 +48,10 @@ module.exports = {
           "stylus-loader",
         ],
       },
+      {
+        test: /\.(png|gif|jpg|jpeg|svg)$/,
+        type: "asset",
+      },
     ],
   },
   devServer: {
@@ -62,6 +68,11 @@ module.exports = {
     }),
     new MiniCssExtractPlugin({
       filename: "assets/[name].css",
+    }),
+    new ImageMinimizerPlugin({
+      minimizerOptions: {
+        plugins: [["optipng", { optimizationLevel: 5 }]],
+      },
     }),
   ],
 };

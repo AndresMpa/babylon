@@ -1,5 +1,6 @@
 import React from "react";
-import "../styles/components/Checkout.styl";
+
+import "@styles/components/Checkout.styl";
 
 const Checkout = () => {
   const cart = useContext(AppContext);

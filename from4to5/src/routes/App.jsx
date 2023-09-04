@@ -1,13 +1,13 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import Home from "../containers/Home";
-import Layout from "../components/Layout";
-import Checkout from "../containers/Checkout";
-import NotFound from "../containers/NotFound";
+import Home from "@containers/Home";
+import Layout from "@components/Layout";
+import Checkout from "@containers/Checkout";
+import NotFound from "@containers/NotFound";
 
-import AppContext from "../context/AppContext";
-import useInitialState from "../hooks/useInitialState";
+import AppContext from "@context/AppContext";
+import useInitialState from "@hooks/useInitialState";
 
 const App = () => {
   const initialState = useInitialState();

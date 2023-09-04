@@ -1,7 +1,9 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import "../styles/components/Header.styl";
-import AppContext from "../context/AppContext";
+
+import "@styles/components/Header.styl";
+import logo from "@assets/logo.png";
+import AppContext from "@context/AppContext";
 
 const Header = () => {
   const cart = useContext(AppContext);
@@ -9,7 +11,10 @@ const Header = () => {
   return (
     <div className="Header">
       <h1 className="Header-title">
-        <Link to="/">Platzi Store</Link>
+        <Link to="/">
+          <img src={logo} alt="Logo" width="32" />
+          Platzi Store
+        </Link>
       </h1>
       <div className="Header-checkout">
         <Link to="/checkout">
