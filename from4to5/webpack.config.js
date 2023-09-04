@@ -9,7 +9,7 @@ module.exports = {
     filename: "bundle.js",
   },
   resolve: {
-    extensions: [".js", ".jsx"],
+    extensions: [".js", ".jsx", ".tsx"],
     alias: {
       "@components": path.resolve(__dirname, "src/components/"),
       "@containers": path.resolve(__dirname, "src/containers/"),
@@ -51,18 +51,26 @@ module.exports = {
         test: /\.(png|gif|jpg|jpeg|svg)$/,
         type: "asset/resource",
       },
+      {
+        test: /\.tsx?$/,
+        use: "ts-loader",
+        exclude: "/node_modules/",
+      },
     ],
   },
   devServer: {
     historyApiFallback: true,
   },
-  plugins: [
-    new HtmlWebPackPlugin({
-      template: "./public/index.html",
-      filename: "./index.html",
-    }),
-    new MiniCssExtractPlugin({
-      filename: "assets/[name].css",
-    }),
-  ],
+  optimization: {
+    minimize: true,
+    minimizer: [
+      new HtmlWebPackPlugin({
+        template: "./public/index.html",
+        filename: "./index.html",
+      }),
+      new MiniCssExtractPlugin({
+        filename: "assets/[name].css",
+      }),
+    ],
+  },
 };

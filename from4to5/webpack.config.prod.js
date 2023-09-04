@@ -13,7 +13,7 @@ module.exports = {
     filename: "bundle.js",
   },
   resolve: {
-    extensions: [".js", ".jsx"],
+    extensions: [".js", ".jsx", ".tsx"],
     alias: {
       "@components": path.resolve(__dirname, "src/components/"),
       "@containers": path.resolve(__dirname, "src/containers/"),
@@ -55,28 +55,36 @@ module.exports = {
         test: /\.(png|gif|jpg|jpeg|svg)$/,
         type: "asset",
       },
+      {
+        test: /\.tsx?$/,
+        use: "ts-loader",
+        exclude: "/node_modules/",
+      },
     ],
   },
   devServer: {
     historyApiFallback: true,
   },
-  plugins: [
-    new HtmlWebPackPlugin({
-      template: "./public/index.html",
-      filename: "./index.html",
-    }),
-    new MiniCssExtractPlugin({
-      filename: "assets/[name].css",
-    }),
-    new ImageMinimizerPlugin({
-      minimizerOptions: {
-        plugins: [["optipng", { optimizationLevel: 5 }]],
-      },
-    }),
-    new CleanWebpackPlugin(),
-  ],
   optimization: {
     minimize: true,
-    minimizer: [new CSSMinimizerPlugin(), new TerserPlugin()],
+    minimizer: [
+      new TerserPlugin(),
+      new HtmlWebPackPlugin({
+        template: "./public/index.html",
+        filename: "./index.html",
+      }),
+      new CSSMinimizerPlugin({
+        filename: "assets/[name].css",
+      }),
+      new ImageMinimizerPlugin({
+        minimizer: {
+          implementation: ImageMinimizerPlugin.imageminMinify,
+          options: {
+            plugins: [["optipng", { optimizationLevel: 5 }]],
+          },
+        },
+      }),
+      new CleanWebpackPlugin(),
+    ],
   },
 };
