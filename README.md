@@ -23,6 +23,7 @@ find what you are looking for in this README file.
 | [Professional JS](https://github.com/AndresMpa/courses/tree/professionalJScourse)                                               | JavaScript                           | professionalJScourse            |
 | [Practice Fronted development course](https://github.com/AndresMpa/courses/tree/practiceCourseFrontendDeveloper)                | JavaScript, CSS, Frontend            | practiceCourseFrontendDeveloper |
 | [Practical React](https://github.com/AndresMpa/courses/tree/reactPracticeCourse)                                                | JavaScript, React, Frontend          | reactPracticeCourse             |
+| [Render and composition using React](https://github.com/AndresMpa/courses/tree/renderAndCompositionWithReact)                   | React, Frontend                      | renderAndCompositionWithReact   |
 | [Data visualization](https://github.com/AndresMpa/courses/tree/dataVisualizatione)                                              | Python, AI, ML, Basics               | dataVisualizatione              |
 | [Data structures](https://github.com/AndresMpa/courses/tree/dataStructures)                                                     | Python, Data structures, Basics      | dataStructures                  |
 | [Webpack](https://github.com/AndresMpa/courses/tree/webpackCourse)                                                              | JavaScript, Builders, Webpack        | webpackCourse                   |
