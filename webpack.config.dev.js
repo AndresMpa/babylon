@@ -13,7 +13,7 @@ module.exports = {
     chunkFilename: "[name].bundle.js",
   },
   resolve: {
-    extensions: [".js", ".tsx"],
+    extensions: [".js",  ".jsx", ".tsx"],
     alias: {
       "@components": path.resolve(__dirname, "src/components/"),
       "@containers": path.resolve(__dirname, "src/containers/"),
@@ -42,14 +42,8 @@ module.exports = {
         ],
       },
       {
-        test: /\.css|.styl$/,
-        use: [
-          {
-            loader: MiniCssExtractPlugin.loader,
-          },
-          "css-loader",
-          "stylus-loader",
-        ],
+        test: /\.s[ac]ss$/i,
+        use: ["style-loader", "css-loader", "sass-loader"],
       },
       {
         test: /\.(png|gif|jpg|jpeg|svg)$/,
