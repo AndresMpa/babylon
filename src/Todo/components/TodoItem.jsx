@@ -6,6 +6,7 @@ import crossIcon from "@assets/images/icon-cross.svg";
 import "@styles/components/Todo.styl";
 
 const TodoItem = ({ task }) => {
+  console.log(task)
   return (
     <article className="todo">
       <figure className="todo--icon">
