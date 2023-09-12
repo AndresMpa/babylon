@@ -1,32 +1,15 @@
-import React, { Suspense } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import React, { setState } from "react";
 
-import Layout from "@containers/Layout";
+function App() {
+  const [state, setState] = setState(initialState);
 
-const LazyCheckout = React.lazy(() => {
-  import("@containers/Done");
-});
+  return <TodoHeader state={state} setState={setState} />;
+}
 
-const LazyNotFound = React.lazy(() => {
-  import("@containers/Error");
-});
-
-const App = () => {
+function TodoHeader({ state, setState }) {
   return (
-    <>
-      <Suspense fallback={<h1>Loading</h1>}>
-        <BrowserRouter>
-          <Layout>
-            <Routes>
-              <Route exact path="/" component={Home} />
-              <Route exact path="/checkout" component={LazyCheckout} />
-              <Route component={LazyNotFound} />
-            </Routes>
-          </Layout>
-        </BrowserRouter>
-      </Suspense>
-    </>
+    <header>
+      <TodoCounter state={state} setState={setState} />
+    </header>
   );
-};
-
-export default App;
+}
