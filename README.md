@@ -18,7 +18,7 @@ find what you are looking for in this README file.
 | [Docker](https://github.com/AndresMpa/courses/tree/dockerCourse)                                                                | Docker, Basics                       | dockerCourse                    |
 | [Basic JavaScript](https://github.com/AndresMpa/courses/tree/Basic-JavaScript)                                                  | JavaScript, Basics                   | Basic-JavaScript                |
 | [Asynchronism](https://github.com/AndresMpa/courses/tree/asynchronism)                                                          | JavaScript                           | asynchronism                    |
-| https://github.com/AndresMpa/courses/tree/DOM                                                                                   | HTML, JavaScript, Basics             | DOM                             |
+| [DOM](https://github.com/AndresMpa/courses/tree/DOM)                                                                            | HTML, JavaScript, Basics             | DOM                             |
 | [Practical JS](https://github.com/AndresMpa/courses/tree/practiceCourserJS)                                                     | JavaScript                           | practiceCourserJS               |
 | [Professional JS](https://github.com/AndresMpa/courses/tree/professionalJScourse)                                               | JavaScript                           | professionalJScourse            |
 | [Practice Fronted development course](https://github.com/AndresMpa/courses/tree/practiceCourseFrontendDeveloper)                | JavaScript, CSS, Frontend            | practiceCourseFrontendDeveloper |
