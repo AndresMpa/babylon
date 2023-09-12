@@ -8,7 +8,10 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 module.exports = {
   entry: {
-    home: "./src/index.js",
+    header: "src/Header/header.js",
+    todo: "src/Todo/todo.js",
+    mobile: "src/Mobile/mobile.js",
+    hint: "src/Hint/hint.js",
   },
   output: {
     path: path.resolve(__dirname, "dist"),
@@ -18,13 +21,12 @@ module.exports = {
   resolve: {
     extensions: [".js", ".jsx", ".tsx"],
     alias: {
-      "@components": path.resolve(__dirname, "src/components/"),
-      "@containers": path.resolve(__dirname, "src/containers/"),
-      "@context": path.resolve(__dirname, "src/context/"),
-      "@hooks": path.resolve(__dirname, "src/hooks/"),
-      "@routes": path.resolve(__dirname, "src/routes/"),
-      "@styles": path.resolve(__dirname, "src/styles/"),
-      "@assets": path.resolve(__dirname, "src/assets/"),
+      "@hint": path.resolve(__dirname, "src/Hint"),
+      "@todo": path.resolve(__dirname, "src/Todo"),
+      "@header": path.resolve(__dirname, "src/Header"),
+      "@mobile": path.resolve(__dirname, "src/Mobile"),
+      "@styles": path.resolve(__dirname, "src/styles"),
+      "@assets": path.resolve(__dirname, "src/assets"),
     },
   },
   module: {
@@ -45,8 +47,18 @@ module.exports = {
         ],
       },
       {
-        test: /\.s[ac]ss$/i,
-        use: ["style-loader", "css-loader", "sass-loader"],
+        test: /\.css|.styl$/,
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+          },
+          "css-loader",
+          "stylus-loader",
+        ],
+      },
+      {
+        test: /\.(woff|woff2|eot|ttf|otf)$/i,
+        type: "asset/resource",
       },
       {
         test: /\.(png|gif|jpg|jpeg|svg)$/,
@@ -64,6 +76,7 @@ module.exports = {
     minimizer: [
       new TerserPlugin(),
       new HtmlWebPackPlugin({
+        favicon: "src/assets/images/favicon.ico",
         template: "./public/index.html",
         filename: "./index.html",
       }),
