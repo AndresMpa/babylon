@@ -2,11 +2,11 @@ import React from "react";
 
 import "@styles/components/Config.styl";
 
-const TodoConfig = () => {
+const TodoConfig = (tasks) => {
   return (
     <article className="config">
       <p className="config--remainig">
-        <span id="itemsLeft">0</span> items left
+        <span id="itemsLeft">{tasks.lenght}</span> items left
       </p>
       <ul className="config--filter" id="filters">
         <li className="config--filter--item">
