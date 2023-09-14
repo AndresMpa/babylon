@@ -83,9 +83,9 @@ module.exports = {
     minimize: true,
     minimizer: [
       new HtmlWebPackPlugin({
-        favicon: "./src/assets/images/favicon.ico",
-        template: "./public/index.html",
-        filename: "./index.html",
+        favicon: path.resolve(__dirname, "src/assets/images/favicon.ico"),
+        template: path.resolve(__dirname, "public/index.html"),
+        filename: "index.html",
       }),
       new MiniCssExtractPlugin({
         filename: "assets/[name].css",
