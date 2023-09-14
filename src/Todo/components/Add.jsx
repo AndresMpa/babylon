@@ -4,7 +4,12 @@ import iconCheck from "@assets/images/icon-check.svg";
 
 import "@styles/components/Todo.styl";
 
-const AddTodo = () => {
+const AddTodo = (addTodo) => {
+  const handleKeyDonw = (event) => {
+    if (event.key === "Enter") {
+      addTodo(event.target.value);
+    }
+  };
   return (
     <nav className="addTodo">
       <figure className="addTodo--icon">
@@ -13,7 +18,7 @@ const AddTodo = () => {
       <input
         placeholder="Create a new todo..."
         className="addTodo--description"
-        id="addTodo"
+        onKeyDown={handleKeyDonw}
         name="todo"
         type="text"
       />

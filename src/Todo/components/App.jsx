@@ -1,36 +1,53 @@
 import React, { useState } from "react";
 
-import TodoItem from "@todo/components/TodoItem";
-import AddTodo from "@todo/components/AddTodo";
-import TodoConfig from "@todo/components/TodoConfig";
 import Layout from "@todo/containers/Layout";
 
-const App = () => {
-  const [taskState, setTaskState] = useState([
-    {
-      msg: "Holita",
-      status: false,
-    },
-    {
-      msg: "Holita",
-      status: false,
-    },
-  ]);
+import Item from "@todo/components/Item";
+import Add from "@todo/components/Add";
 
-  const todoList = taskState.map((task, index) => {
-    console.log(task.msg);
-    return (
-      <TodoItem key={index} task={task.msg} toggleComplete={setTaskState} />
-    );
-  });
+import Counter from "@todo/components/Counter";
+import Filters from "@todo/components/Filters";
+import Clear from "@todo/components/Clear";
+
+import { useTodo } from "@todo/hooks/useTodo";
+
+const App = () => {
+  const {
+    addTodo,
+    clearTodo,
+    deleteTodo,
+    currentTodos,
+    completeTodo,
+
+    filterAll,
+    filterActive,
+    filterCompleted,
+  } = useTodo();
 
   return (
     <>
-      <AddTodo></AddTodo>
+      <Add addTodo={addTodo} />
       <Layout id="todoList" class="">
-        {todoList}
+        {currentTodos.map((task, index) => {
+          return (
+            <Item
+              key={index}
+              task={task}
+              deleteTodo={deleteTodo}
+              completeTodo={completeTodo}
+            />
+          );
+        })}
       </Layout>
-      <TodoConfig tasks={taskState}></TodoConfig>
+      <Layout id="" class="config">
+        <Counter countTodos={currentTodos.length} />
+        <Filters
+          filterAll={filterAll}
+          filterActive={filterActive}
+          filterCompleted={filterCompleted}
+        />
+        <Clear clearTodo={clearTodo} />
+      </Layout>
     </>
   );
 };
