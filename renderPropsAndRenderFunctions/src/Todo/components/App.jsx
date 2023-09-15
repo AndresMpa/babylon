@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 
 import Layout from "@todo/containers/Layout";
+import LayoutToRender from "@todo/containers/LayoutToRender";
 
-import Item from "@todo/components/Item";
 import Add from "@todo/components/Add";
-
+import Item from "@todo/components/Item";
+import Clear from "@todo/components/Clear";
 import Counter from "@todo/components/Counter";
 import Filters from "@todo/components/Filters";
-import Clear from "@todo/components/Clear";
 
 import { useTodo } from "@todo/hooks/useTodo";
 
@@ -27,18 +27,19 @@ const App = () => {
   return (
     <>
       <Add addTodo={addTodo} />
-      <Layout id="todoList" class="">
-        {currentTodos.map((task, index) => {
-          return (
-            <Item
-              key={index}
-              task={task}
-              onComplete={() => completeTodo(task.msg)}
-              onDelete={() => deleteTodo(task.msg)}
-            />
-          );
-        })}
-      </Layout>
+      <LayoutToRender
+        class=""
+        id="todoList"
+        todos={currentTodos}
+        render={(task, index) => (
+          <Item
+            key={index}
+            task={task}
+            onComplete={() => completeTodo(task.msg)}
+            onDelete={() => deleteTodo(task.msg)}
+          />
+        )}
+      />
       <Layout id="" class="config">
         <Counter todoList={currentTodos} />
         <Filters

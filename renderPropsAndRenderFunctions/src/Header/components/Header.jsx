@@ -27,10 +27,12 @@ const Header = () => {
     : (iconConfig.icon = moonIcon);
 
   return (
-    <Wrapper section="header" wrapper="header--wrapper">
-      <Title class="header--title" title="todo" />
-      <Icon config={iconConfig} clickHandler={switchTheme} />
-    </Wrapper>
+    <Wrapper
+      section="header"
+      wrapper="header--wrapper"
+      renderTitle={() => <Title class="header--title" title="todo" />}
+      renderIcon={() => <Icon config={iconConfig} clickHandler={switchTheme} />}
+    />
   );
 };
 

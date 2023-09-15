@@ -1,9 +1,12 @@
 import React from "react";
 
-const Wrapper = ({ section, wrapper, children }) => {
+const Wrapper = (props) => {
   return (
-    <section className={section}>
-      <article className={wrapper}>{children}</article>
+    <section className={props.section}>
+      <article className={props.wrapper}>
+        {props.renderTitle()}
+        {props.renderIcon()}
+      </article>
     </section>
   );
 };

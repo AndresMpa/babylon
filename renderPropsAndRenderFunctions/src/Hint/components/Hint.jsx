@@ -7,9 +7,12 @@ import "@styles/components/Hint.styl";
 
 const Hint = () => {
   return (
-    <Layout class="hint">
-      <Label class="hint--label" text="Drag and drop to reorder list" />
-    </Layout>
+    <Layout
+      class="hint"
+      render={() => (
+        <Label class="hint--label" text="Drag and drop to reorder list" />
+      )}
+    />
   );
 };
 export default Hint;
