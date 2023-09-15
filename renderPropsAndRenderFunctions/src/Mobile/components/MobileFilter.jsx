@@ -2,7 +2,7 @@ import React from "react";
 
 import "@styles/components/Config.styl";
 
-const AltTodoConfig = () => {
+const MobileFilter = () => {
   return (
     <div className="alt-config">
       <ul className="alt-config--filter" id="altFilters">
@@ -22,4 +22,4 @@ const AltTodoConfig = () => {
   );
 };
 
-export default AltTodoConfig;
+export default MobileFilter;
