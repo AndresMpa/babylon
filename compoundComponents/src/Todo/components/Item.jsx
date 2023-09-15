@@ -7,7 +7,7 @@ import crossIcon from "@assets/images/icon-cross.svg";
 
 import "@styles/components/Todo.styl";
 
-const TodoItem = ({ task, completeTodo, deleteTodo }) => {
+const TodoItem = ({ task, onComplete, onDelete }) => {
   return (
     <article className="todo">
       <Icon
@@ -19,7 +19,7 @@ const TodoItem = ({ task, completeTodo, deleteTodo }) => {
           icon: checkIcon,
           alt: "Complete",
         }}
-        clickHandler={completeTodo}
+        clickHandler={onComplete}
       />
 
       <p className="todo--description">{task.msg}</p>
@@ -33,7 +33,7 @@ const TodoItem = ({ task, completeTodo, deleteTodo }) => {
           icon: crossIcon,
           alt: "Delete",
         }}
-        clickHandler={deleteTodo}
+        clickHandler={onDelete}
       />
     </article>
   );

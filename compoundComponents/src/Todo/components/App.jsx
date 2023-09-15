@@ -33,8 +33,8 @@ const App = () => {
             <Item
               key={index}
               task={task}
-              completeTodo={() => completeTodo(task.msg)}
-              deleteTodo={() => deleteTodo(task.msg)}
+              onComplete={() => completeTodo(task.msg)}
+              onDelete={() => deleteTodo(task.msg)}
             />
           );
         })}
