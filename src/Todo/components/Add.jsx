@@ -4,10 +4,11 @@ import iconCheck from "@assets/images/icon-check.svg";
 
 import "@styles/components/Todo.styl";
 
-const AddTodo = (addTodo) => {
+const AddTodo = ({ addTodo }) => {
   const handleKeyDonw = (event) => {
     if (event.key === "Enter") {
       addTodo(event.target.value);
+      event.target.value = "";
     }
   };
   return (

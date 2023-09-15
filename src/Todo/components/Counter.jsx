@@ -2,10 +2,10 @@ import React from "react";
 
 import "@styles/components/Config.styl";
 
-const TodoCounter = (todos) => {
+const TodoCounter = ({ todoList }) => {
   return (
     <p className="config--remainig">
-      <span id="itemsLeft">{todos.length}</span> items left
+      <span id="itemsLeft">{todoList.length}</span> items left
     </p>
   );
 };

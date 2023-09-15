@@ -6,11 +6,11 @@ const useTodo = () => {
   const {
     error,
     loading,
-    items: todos,
+    item: todos,
     saveItem: saveTodos,
   } = useLocalStorage("TOODS", []);
 
-  let currentTodos = [{ msg: "test", state: false }];
+  let currentTodos = todos;
 
   const addTodo = (text) => {
     const newTodo = [...todos];
@@ -19,30 +19,36 @@ const useTodo = () => {
       state: false,
     });
 
-    saveTodos(todos);
+    currentTodos = newTodo;
+    saveTodos(newTodo);
   };
 
   const clearTodo = () => {
-    const todos = getItem(STORAGE);
     const clearedTodo = todos.filter((task) => !task.state);
 
+    currentTodos = clearedTodo;
     saveTodos(clearedTodo);
   };
 
   const deleteTodo = (text) => {
-    const todoIndex = todos.findIndex((todo) => todo.text === text);
+    const todoIndex = todos.findIndex((todo) => todo.msg === text);
     const newTodos = [...todos];
 
     newTodos.splice(todoIndex, 1);
+
+    currentTodos = newTodos;
     saveTodos(newTodos);
   };
 
   const completeTodo = (text) => {
+    console.log(`Completing "${text}"`);
+
     const todoIndex = todos.findIndex((todo) => todo.msg === text);
     const newTodos = [...todos];
 
-    newTodos[todoIndex].completed = true;
+    newTodos[todoIndex].status = !newTodos[todoIndex].status;
 
+    currentTodos = newTodos;
     saveTodos(newTodos);
   };
 

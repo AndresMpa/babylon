@@ -33,14 +33,14 @@ const App = () => {
             <Item
               key={index}
               task={task}
-              deleteTodo={deleteTodo}
-              completeTodo={completeTodo}
+              completeTodo={() => completeTodo(task.msg)}
+              deleteTodo={() => deleteTodo(task.msg)}
             />
           );
         })}
       </Layout>
       <Layout id="" class="config">
-        <Counter countTodos={currentTodos.length} />
+        <Counter todoList={currentTodos} />
         <Filters
           filterAll={filterAll}
           filterActive={filterActive}
