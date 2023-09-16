@@ -27,11 +27,8 @@ const App = () => {
   return (
     <>
       <Add addTodo={addTodo} />
-      <LayoutToRender
-        class=""
-        id="todoList"
-        todos={currentTodos}
-        render={(task, index) => (
+      <LayoutToRender class="" id="todoList" todos={currentTodos}>
+        {(task, index) => (
           <Item
             key={index}
             task={task}
@@ -39,7 +36,7 @@ const App = () => {
             onDelete={() => deleteTodo(task.msg)}
           />
         )}
-      />
+      </LayoutToRender>
       <Layout id="" class="config">
         <Counter todoList={currentTodos} />
         <Filters
