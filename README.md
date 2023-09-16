@@ -7,4 +7,5 @@ what they do is to improve usability
 In orders of complexity:
 
 - [Compound Components](./compoundComponents/)
-- [Render Props and Render Functions](./renderPropsAndRenderFunctions/)
+- [Render Props and Render Functions (Children and cloneElement)](./renderPropsAndRenderFunctions/)
+- [High Order Components](./highOrderComponents/)
