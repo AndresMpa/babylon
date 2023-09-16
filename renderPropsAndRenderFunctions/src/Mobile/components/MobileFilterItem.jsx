@@ -3,7 +3,11 @@ import React from "react";
 const MobileFilterItem = (props) => {
   return (
     <li className={props.classItem}>
-      <button className={props.classButton}>{props.title}</button>
+      <button
+        className={props.classButton + (props.active ? props.classActive : "")}
+      >
+        {props.title}
+      </button>
     </li>
   );
 };

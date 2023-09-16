@@ -8,16 +8,19 @@ import "@styles/components/Config.styl";
 const MobileFilter = () => {
   const filters = [
     {
+      active: true,
       title: "All",
+      classButton: "alt-config--button",
       classItem: "alt-config--filter--item",
-      classButton: "alt-config--button alt-config--button__active",
     },
     {
+      active: false,
       title: "Active",
       classButton: "alt-config--button",
       classItem: "alt-config--filter--item",
     },
     {
+      active: false,
       title: "Completed",
       classButton: "alt-config--button",
       classItem: "alt-config--filter--item",
@@ -35,6 +38,7 @@ const MobileFilter = () => {
           title={title}
           classItem={classItem}
           classButton={classButton}
+          classActive="alt-config--button__active"
         />
       )}
     />
