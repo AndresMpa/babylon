@@ -1,0 +1,52 @@
+:root {
+  --primary: #233056;
+  --secondary: #090c15;
+  --terdary: #026e00;
+  --letter: #ffffff;
+  --links: rgb(173, 216, 230);
+}
+
+* {
+  margin: 0px;
+  padding: 0px;
+  color: var(--letter);
+  overflow-anchor: none;
+  font-family: "Nunito", sans-serif;
+}
+
+body {
+  background-color: var(--primary);
+}
+
+ul,
+li {
+  text-decoration: none;
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: var(--links);
+}
+
+.presentation {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+}
+
+.presentation--banner {
+  padding-top: 15vh;
+  text-align: center;
+}
+
+.presentation--banner__labels {
+  padding: 5vh 0;
+  margin-bottom: 5vh;
+  background-color: var(--secondary);
+}
+
+.presentation--banner__image {
+  text-align: center;
+}
