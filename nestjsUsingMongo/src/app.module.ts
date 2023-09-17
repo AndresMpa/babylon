@@ -6,7 +6,6 @@ import { AppController } from './app.controller';
 
 import { AppService } from './app.service';
 
-import { AuthModule } from './auth/auth.module';
 import { StockModule } from './stock/stock.module';
 import { UsersModule } from './users/users.module';
 import { DatabaseModule } from './database/database.module';
@@ -19,7 +18,6 @@ import config from './config';
   controllers: [AppController],
   providers: [AppService],
   imports: [
-    AuthModule,
     StockModule,
     UsersModule,
     DatabaseModule,
@@ -28,16 +26,9 @@ import config from './config';
       isGlobal: true,
       load: [config],
       validationSchema: joi.object({
-        //Data base data
-        DATABASE_URI: joi.string().optional(),
-        DATABASE_HOST: joi.string().required(),
+        API_KEY: joi.string().required(),
         DATABASE_NAME: joi.string().required(),
         DATABASE_PORT: joi.number().required(),
-        DATABASE_USER: joi.string().required(),
-        DATABASE_PASSWORD: joi.string().required(),
-        // Security data
-        SECURE_SECRET: joi.string().required(),
-        SECURE_EXPIRATION: joi.string().required(),
       }),
     }),
   ],

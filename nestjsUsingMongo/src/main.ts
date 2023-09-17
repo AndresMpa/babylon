@@ -1,6 +1,6 @@
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
-import { ClassSerializerInterceptor, ValidationPipe } from '@nestjs/common';
-import { NestFactory, Reflector } from '@nestjs/core';
+import { ValidationPipe } from '@nestjs/common';
+import { NestFactory } from '@nestjs/core';
 
 import { AppModule } from './app.module';
 
@@ -16,17 +16,11 @@ async function bootstrap() {
       forbidNonWhitelisted: true, // To send an error message if there's that shouldn't be there
       disableErrorMessages: stage, //To disable error message
       transformOptions: {
-<<<<<<<< HEAD:nestjsUsingMongo/src/main.ts
         // This options parses int directly
-========
->>>>>>>> main:nestjsCourse/src/main.ts
         enableImplicitConversion: true,
       },
     }),
   );
-
-  // Serializer
-  app.useGlobalInterceptors(new ClassSerializerInterceptor(app.get(Reflector)));
 
   // Documentation configuration
   const config = new DocumentBuilder()

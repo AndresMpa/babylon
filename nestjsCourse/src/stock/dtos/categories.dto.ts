@@ -1,11 +1,4 @@
-import {
-  IsNotEmpty,
-  IsOptional,
-  IsPositive,
-  IsString,
-  IsNumber,
-  Min,
-} from '@nestjs/class-validator';
+import { IsNotEmpty, IsString } from '@nestjs/class-validator';
 import { PartialType } from '@nestjs/swagger';
 
 export class CreateCategoryDto {
@@ -27,23 +20,3 @@ export class CreateCategoryDto {
 }
 
 export class UpdateCategoryDto extends PartialType(CreateCategoryDto) {}
-
-export class FilterCategoryDto {
-  /**
-    Where a pagination ends
-    @example 1
-  */
-  @IsOptional()
-  @IsPositive()
-  @IsNumber()
-  limit: number;
-
-  /**
-    Where a pagination starts
-    @example 24
-  */
-  @IsOptional()
-  @IsNumber()
-  @Min(0)
-  offset: number;
-}

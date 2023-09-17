@@ -1,0 +1,151 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Comforter&display=swap");
+
+:root {
+  --backgroundColor: #ffffff;
+  --letterColor: #000;
+  --linksColor: #000;
+
+  --main: #500509;
+  --second: #a58256;
+}
+
+* {
+  margin: 0%;
+  padding: 0%;
+  overflow-anchor: none;
+  color: var(--letterColor);
+  font-family: "Roboto", sans-serif;
+}
+
+body {
+  background-color: var(--main);
+  height: 100vh;
+}
+
+ul,
+li {
+  text-decoration: none;
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: var(--linksColor);
+}
+
+.d-none {
+  display: none;
+}
+
+.actions {
+  position: relative;
+}
+
+.actions span:nth-child(1) {
+  position: fixed;
+  right: 0;
+}
+
+footer span:nth-child(1) {
+  position: fixed;
+  right: 0;
+  bottom: 0px;
+}
+
+.actions span i {
+  font-size: 1.5em;
+  color: white;
+}
+
+.options {
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  display: flex;
+
+  height: 100vh;
+}
+
+.options article:nth-child(1) {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+
+  height: 55vh;
+  width: 60%;
+}
+
+.options article:nth-child(1) h1 {
+  font-family: "Comforter", cursive;
+  text-align: center;
+  font-size: 10em;
+  color: white;
+}
+
+.options article:nth-child(2) {
+  justify-content: space-between;
+  display: flex;
+
+  width: 60%;
+}
+
+.options article:nth-child(2) button {
+  height: 10vh;
+  width: 15vw;
+
+  background-color: var(--second);
+  border-radius: 15px;
+  font-size: 1.35em;
+  font-weight: 900;
+  border: none;
+  color: black;
+}
+
+#moviesList {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+#moviesList li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#moviesList li img {
+  height: 90vh;
+  width: 100%;
+}
+
+#moviesList li p em,
+#moviesList li h5,
+#moviesList li p {
+  color: snow;
+}
+
+#moviesList li h5 {
+  font-size: 2em;
+}
+
+@media screen and (max-width: 800px) {
+  .options article:nth-child(2) {
+    flex-direction: column;
+  }
+
+  .options article:nth-child(2) button {
+    margin: 5px 0px;
+    height: 5vh;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .options article:nth-child(1) h1 {
+    font-size: 5em;
+    color: white;
+  }
+}

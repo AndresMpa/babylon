@@ -2,7 +2,6 @@
 *.js
 /dist
 /node_modules
-/mongo_data
 
 # Logs
 logs

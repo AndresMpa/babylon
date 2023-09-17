@@ -17,13 +17,7 @@
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --config ./test/jest-e2e.json",
-    "typeorm": "typeorm-ts-node-commonjs",
-    "schema:drop": "npx typeorm-ts-node-commonjs schema:drop -d src/database/dataSource.ts",
-    "migration:run": "npx typeorm-ts-node-commonjs migration:run -d src/database/dataSource.ts",
-    "migration:show": "npx typeorm-ts-node-commonjs migration:show -d src/database/dataSource.ts",
-    "migration:revert": "npx typeorm-ts-node-commonjs migration:revert -d src/database/dataSource.ts",
-    "migration:generate": "npx typeorm-ts-node-commonjs migration:generate -d src/database/dataSource.ts ./migrations/current_migration"
+    "test:e2e": "jest --config ./test/jest-e2e.json"
   },
   "dependencies": {
     "@nestjs/axios": "^1.0.1",
@@ -32,44 +26,25 @@
     "@nestjs/common": "^9.0.0",
     "@nestjs/config": "^2.2.0",
     "@nestjs/core": "^9.0.0",
-    "@nestjs/jwt": "^10.0.2",
     "@nestjs/mapped-types": "^1.2.0",
-<<<<<<<< HEAD:nestjsUsingMongo/package.json
     "@nestjs/mongoose": "^9.2.1",
-========
-    "@nestjs/passport": "^9.0.3",
->>>>>>>> main:nestjsCourse/package.json
     "@nestjs/platform-express": "^9.0.0",
     "@nestjs/swagger": "^6.1.4",
-    "@nestjs/typeorm": "^9.0.1",
-    "bcrypt": "^5.1.0",
     "dotenv": "^16.0.3",
     "joi": "^17.7.0",
-<<<<<<<< HEAD:nestjsUsingMongo/package.json
     "mongodb": "^5.1.0",
     "mongoose": "^6.10.0",
-========
-    "passport": "^0.6.0",
-    "passport-jwt": "^4.0.1",
-    "passport-local": "^1.0.0",
-    "pg": "^8.9.0",
->>>>>>>> main:nestjsCourse/package.json
     "reflect-metadata": "^0.1.13",
-    "rxjs": "^7.2.0",
-    "typeorm": "^0.3.11"
+    "rxjs": "^7.2.0"
   },
   "devDependencies": {
     "@nestjs/cli": "^9.0.0",
     "@nestjs/schematics": "^9.0.0",
     "@nestjs/testing": "^9.0.0",
-    "@types/bcrypt": "^5.0.0",
     "@types/express": "^4.17.13",
     "@types/jest": "29.2.4",
     "@types/mongodb": "^4.0.7",
     "@types/node": "18.11.18",
-    "@types/passport-jwt": "^3.0.8",
-    "@types/passport-local": "^1.0.35",
-    "@types/pg": "^8.6.6",
     "@types/supertest": "^2.0.11",
     "@typescript-eslint/eslint-plugin": "^5.0.0",
     "@typescript-eslint/parser": "^5.0.0",

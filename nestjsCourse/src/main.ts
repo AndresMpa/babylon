@@ -16,10 +16,6 @@ async function bootstrap() {
       forbidNonWhitelisted: true, // To send an error message if there's that shouldn't be there
       disableErrorMessages: stage, //To disable error message
       transformOptions: {
-<<<<<<<< HEAD:nestjsUsingMongo/src/main.ts
-        // This options parses int directly
-========
->>>>>>>> main:nestjsCourse/src/main.ts
         enableImplicitConversion: true,
       },
     }),

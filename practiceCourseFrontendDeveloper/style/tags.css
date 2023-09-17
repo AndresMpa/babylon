@@ -1,0 +1,20 @@
+* {
+  margin: 0%;
+  padding: 0%;
+  color: var(--letterColor);
+}
+
+body {
+  background-color: var(--backgroundColor);
+}
+
+ul,
+li {
+  text-decoration: none;
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: var(--linksColor);
+}

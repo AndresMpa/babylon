@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="./assent/js.png" type="image/x-icon" />
+    <link
+      rel="stylesheet"
+      crossorigin="anonymous"
+      href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+      integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>Media player</title>
+  </head>
+  <body>
+    <header class="titleLabel">
+      <h1>Pro JS Media player</h1>
+      <p>An extensible media player.</p>
+    </header>
+    <main class="principal">
+      <article class="videoContainer">
+        <video src="./assent/BigBuckBunny.mp4"></video>
+        <div class="videoControl">
+          <button id="playStop">
+            <i class="fas fa-pause"></i>
+          </button>
+
+          <p class="timeFollower"></p>
+          <input type="range" name="videoLength" id="videoLength" />
+
+          <button id="mute">
+            <i class="fas fa-volume-up"></i>
+          </button>
+        </div>
+      </article>
+
+      <article class="optionVideo">
+        <figure>
+          <video src="./assent/water.mp4"></video>
+          <figcaption>Water on video</figcaption>
+        </figure>
+        <figure>
+          <video src="./assent/cinema.mp4"></video>
+          <figcaption>Movie theater</figcaption>
+        </figure>
+        <figure>
+          <video src="./assent/afternoon.mp4"></video>
+          <figcaption>Beautiful sunset</figcaption>
+        </figure>
+      </article>
+    </main>
+
+    <hr />
+
+    <section id="commentBox">
+      <article>
+        <h2>Comments</h2>
+        <div id="comments">
+          <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Unde cum
+            magnam doloribus itaque distinctio! Perspiciatis, soluta. Harum,
+            suscipit architecto! Aliquid molestias eum tempore temporibus
+            voluptatibus quam numquam doloribus neque sit?
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Unde cum
+            magnam doloribus itaque distinctio! Perspiciatis, soluta. Harum,
+            suscipit architecto! Aliquid molestias eum tempore temporibus
+            voluptatibus quam numquam doloribus neque sit?
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Unde cum
+            magnam doloribus itaque distinctio! Perspiciatis, soluta. Harum,
+            suscipit architecto! Aliquid molestias eum tempore temporibus
+            voluptatibus quam numquam doloribus neque sit?
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Unde cum
+            magnam doloribus itaque distinctio! Perspiciatis, soluta. Harum,
+            suscipit architecto! Aliquid molestias eum tempore temporibus
+            voluptatibus quam numquam doloribus neque sit?
+          </p>
+        </div>
+      </article>
+    </section>
+
+    <script type="module" src="./src/player.ts"></script>
+    <!--<script src="./examples/scope.js"></script>-->
+    <!--<script src="./examples/cloures.js"></script>-->
+  </body>
+</html>

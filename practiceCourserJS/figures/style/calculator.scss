@@ -1,0 +1,18 @@
+.calculator {
+  display: flex;
+  justify-content: space-around;
+  .calculator--container {
+    flex-direction: column;
+    width: 45%;
+
+    .calculator--container__logo {
+      img {
+        height: 30px;
+        width: 30px;
+      }
+    }
+    .calculator--container__input {
+      background-color: $background;
+    }
+  }
+}

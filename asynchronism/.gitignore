@@ -6,22 +6,9 @@ bin-release/
 node_modules/
 *lock.json
 */.next/
-<<<<<<< HEAD:.gitignore
-credentials.json
-public/uploads/
-.env
-=======
-mongo_data/
->>>>>>> main:asynchronism/.gitignore
 
 # Other files and folders
 .settings/
-<<<<<<< HEAD:.gitignore
-=======
-postgres_data/
-mysql_data/
->>>>>>> main:asynchronism/.gitignore
-.env
 
 # Executables
 *.swf
@@ -29,9 +16,9 @@ mysql_data/
 *.ipa
 *.apk
 
-*.cache/
-*dist/
-*build/
+*/.cache/
+*/dist/
+*/build/
 
 # Project files, i.e. `.project`, `.actionScriptProperties` and `.flexProperties`
 # should NOT be excluded as they contain compiler settings and other important

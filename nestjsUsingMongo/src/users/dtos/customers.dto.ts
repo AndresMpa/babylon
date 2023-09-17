@@ -31,11 +31,7 @@ export class CreateCustomerDto {
    */
   @IsPhoneNumber()
   @IsNotEmpty()
-<<<<<<<< HEAD:nestjsUsingMongo/src/users/dtos/customers.dto.ts
   @IsString()
-========
-  @IsPhoneNumber()
->>>>>>>> main:nestjsCourse/src/users/dtos/customer.dto.ts
   readonly phone: string;
 
   /**

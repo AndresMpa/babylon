@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vacation Destinations WishList</title>
+
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Our CSS -->
+    <link rel="stylesheet" href="styles.css" />
+    <!-- Our JavaScript -->
+    <script src="script.js"></script>
+  </head>
+
+  <body>
+    <header>
+      <h1>Vacation Destinations Wish List</h1>
+      <p>
+        Found exciting places to visit on your next vacation? Use the form below
+        to add there to your wish list.
+      </p>
+    </header>
+
+    <main>
+      <form id="destinationDetailsForm">
+        <label for="name">Destination name</label>
+        <input
+          type="text"
+          id="name"
+          placeholder="Provide a name for destination"
+          required
+        />
+        <label for="location">Destination location</label>
+        <input
+          type="text"
+          id="location"
+          placeholder="type where is this destination located"
+          required
+        />
+        <label for="photo">Destination photo</label>
+        <input type="url" id="photo" placeholder="Append and URL for a photo" />
+        <label for="description">Destination description</label>
+        <textarea
+          name="description"
+          id="description"
+          cols="30"
+          rows="10"
+          placeholder="Describe the destination"
+        ></textarea>
+        <button type="submit">Add to list</button>
+      </form>
+      <article>
+        <h2 id="title ">Enter destination details</h2>
+        <div id="destinationContainer">
+          <div class="card">
+            <img src="images/signpost.jpg" alt="signpost" />
+            <div class="card--body">
+              <h3>Destination name</h3>
+              <h4>Destination location</h4>
+              <p class="card--text">Destination description</p>
+              <button>Remove</button>
+            </div>
+          </div>
+        </div>
+      </article>
+    </main>
+  </body>
+</html>
