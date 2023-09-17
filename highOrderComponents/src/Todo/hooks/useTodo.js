@@ -8,7 +8,7 @@ const useTodo = () => {
     loading,
     item: todos,
     saveItem: saveTodos,
-  } = useLocalStorage("TOODS", []);
+  } = useLocalStorage("TODOS", []);
 
   let currentTodos = todos;
 
