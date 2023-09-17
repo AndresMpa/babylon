@@ -6,9 +6,17 @@ bin-release/
 node_modules/
 *lock.json
 */.next/
+<<<<<<< HEAD:.gitignore
+.next/
+=======
+mongo_data/
+>>>>>>> main:apiUsingSails/.gitignore
 
 # Other files and folders
 .settings/
+postgres_data/
+mysql_data/
+.env
 
 # Executables
 *.swf
