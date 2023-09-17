@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Web site created using create-snowpack-app"
+    />
+    <!--
+      Snowpack will replace %PUBLIC_URL% with the value you have for `baseUrl` in `snowpack.config.js`.
+      Make sure to update it with your GitHub Page URL. https://<your-username>.github.io/<your-repo-name>
+
+      More about config options:
+      - https://www.snowpack.dev/reference/configuration#buildoptions.baseurl
+    -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="%PUBLIC_URL%/_dist/index.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <title>Lazy loading</title>
+  </head>
+  <body>
+    <header class="flex justify-between bg-gray-200 p-4">
+      <article>
+        <h2 class="font-sans font-extrabold">The social media</h2>
+        <p
+          class="ml-auto text-base leading-6 text-sky-600 font-semibold tracking-wide uppercase"
+        >
+          Lazy loading workshop
+        </p>
+      </article>
+
+      <article class="relative flex items-center">
+        <div class="block mx-5 fixed right-10 top-5">
+          <button
+            class="bg-red-400 rounded px-5 py-2 text-white font-semibold"
+            id="add"
+          >
+            Add
+          </button>
+          <button
+            class="bg-sky-600 rounded px-5 py-2 text-white font-semibold"
+            id="remove"
+          >
+            Remove
+          </button>
+        </div>
+        <div class="fixed right-4 top-6">
+          <img
+            src="%PUBLIC_URL%/_dist/assets/zorro.png"
+            alt="foxIcon"
+            id="foxIcon"
+          />
+        </div>
+      </article>
+    </header>
+    <section class="py-6 max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
+      <article class="text-center" id="banner">
+        <h3
+          class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl sm:leading-10"
+        >
+          Do you like foxes?
+        </h3>
+        <p class="mt-4 max-w-2xl text-xl leading-7 text-gray-500 mx-auto">
+          Press red button to add a beautiful little fox, or remove last one
+          them by pressing the blue button
+        </p>
+      </article>
+    </section>
+
+    <main
+      id="app"
+      class="grid gap-4 grid-cols-1 place-items-center md:grid-cols-2 sd:grid-cols-1 my-5"
+    ></main>
+
+    <footer class="relative">
+      <article
+        id="credits"
+        class="fixed bottom-0 left-0 w-full flex place-content-center bg-gray-200 p-2"
+      >
+        <p>
+          Powered by <a href="https://randomfox.ca/">randomfox</a> &
+          <a href="https://www.flaticon.es/autores/freepik">freepik</a>
+          made by <a href="https://github.com/AndresMpa">@AndresMpa</a>
+        </p>
+      </article>
+    </footer>
+    <!-- Add more scripts here -->
+    <script type="module" src="%PUBLIC_URL%/_dist/index.js"></script>
+  </body>
+</html>

@@ -1,0 +1,41 @@
+# Build and Release Folders
+bin-debug/
+bin-release/
+[Oo]bj/
+[Bb]in/
+node_modules/
+*lock.json
+*/.next/
+mongo_data/
+
+# Other files and folders
+.settings/
+<<<<<<< HEAD:.gitignore
+mongo_data/
+public/files
+=======
+<<<<<<< HEAD:.gitignore
+mysql_data/
+redis_data/
+=======
+postgres_data/
+mysql_data/
+>>>>>>> main:authUsingPasswordjsAndJWT/.gitignore
+>>>>>>> main:authUsingPasswordjsAndJWT/.gitignore
+.env
+
+# Executables
+*.swf
+*.air
+*.ipa
+*.apk
+
+*/.cache/
+*/dist/
+*/build/
+
+# Project files, i.e. `.project`, `.actionScriptProperties` and `.flexProperties`
+# should NOT be excluded as they contain compiler settings and other important
+# information for Eclipse / Flash Builder.
+
+.vercel
