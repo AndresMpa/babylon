@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html ml-update="aware" data-lt-installed="true" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <link rel="stylesheet" href="css/platzi-overflow.css" />
+    <link rel="stylesheet" href="css/custom.css" />
+    <title>PlatziOverflow - Registro</title>
+  </head>
+  <body class="bg-secondary">
+    <header>
+      <div class="container-fluid">
+        <nav
+          class="navbar navbar-expand-sm navbar-light bg-primary row align-items-center"
+        >
+          <div class="container">
+            <div class="col m-2">
+              <h1>
+                <a href="/"
+                  ><img src="images/logo.png" style="max-height: 60px"
+                /></a>
+              </h1>
+            </div>
+            <div class="col m-2 text-right">
+              <a
+                href="#"
+                class="btn btn-primary btn-lg border border-white"
+                role="button"
+                aria-pressed="true"
+                >Login</a
+              >
+              <a
+                href="#"
+                class="btn btn-primary btn-lg border border-white ml-2"
+                role="button"
+                aria-pressed="true"
+                >Registrarse</a
+              >
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <main role="main" class="container-fluid">
+      <div class="container mt-4">
+        <div class="card mb-3">
+          <div class="card-header">
+            <h3>Cree su cuenta</h3>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col">
+                <form method="POST" action="">
+                  <div class="form-group">
+                    <label for="name">Nombre</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="name"
+                      name="name"
+                      placeholder="Ingrese su nombre"
+                      pattern=".{3,}"
+                      required=""
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="email">Correo</label>
+                    <input
+                      type="email"
+                      class="form-control"
+                      id="email"
+                      name="email"
+                      placeholder="Ingrese su correo"
+                      required=""
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="password">Contraseña</label>
+                    <input
+                      type="password"
+                      class="form-control"
+                      id="password"
+                      name="password"
+                      placeholder="Ingrese su contraseña"
+                      pattern=".{6,}"
+                      required=""
+                    />
+                  </div>
+                  <div class="text-center mt-5">
+                    <button type="submit" class="btn btn-primary">
+                      Registrarse
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer class="footer swatch-900 mt-4">
+      <div class="container">
+        <p class="text-center">
+          Curso de hapi.js -
+          <a href="https://platzi.com" target="blank"
+            ><img src="images/logo-platzi.png" class="small-logo"
+          /></a>
+          © 2019
+        </p>
+      </div>
+    </footer>
+
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js"
+      integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
