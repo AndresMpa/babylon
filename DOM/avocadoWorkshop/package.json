@@ -1,0 +1,19 @@
+{
+  "scripts": {
+    "start": "snowpack dev",
+    "build": "snowpack build",
+    "format": "prettier --write \"src/**/*.js\"",
+    "lint": "prettier --check \"src/**/*.js\"",
+    "pre-commit": "pretty-quick --staged",
+    "install:husky": "husky install"
+  },
+  "devDependencies": {
+    "@snowpack/plugin-postcss": "^1.4.3",
+    "husky": "7",
+    "postcss": "^8.4.20",
+    "prettier": "^2.0.5",
+    "pretty-quick": "^3.1.0",
+    "snowpack": "^3.0.11",
+    "tailwindcss": "^3.2.4"
+  }
+}
