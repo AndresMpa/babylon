@@ -6,12 +6,19 @@ bin-release/
 node_modules/
 *lock.json
 */.next/
+<<<<<<< HEAD:.gitignore
 credentials.json
 public/uploads/
 .env
+=======
+mongo_data/
+>>>>>>> main:asynchronism/.gitignore
 
 # Other files and folders
 .settings/
+postgres_data/
+mysql_data/
+.env
 
 # Executables
 *.swf
