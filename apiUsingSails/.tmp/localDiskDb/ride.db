@@ -1,0 +1,4 @@
+{"$$indexCreated":{"fieldName":"id","unique":true,"sparse":false}}
+{"name":"Alaska","start":"27-03-20223","createdAt":1672359347994,"updatedAt":1672359347994,"id":1,"_id":1}
+{"name":"Mexico","start":"30-03-20223","createdAt":1672359452081,"updatedAt":1672359452081,"id":2,"_id":2}
+{"name":"Mexico","start":"30-03-20223","createdAt":1673440517439,"updatedAt":1673440517439,"id":3,"_id":3}

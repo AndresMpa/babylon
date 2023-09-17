@@ -6,9 +6,13 @@ bin-release/
 node_modules/
 *lock.json
 */.next/
+mongo_data/
 
 # Other files and folders
 .settings/
+postgres_data/
+mysql_data/
+.env
 
 # Executables
 *.swf
