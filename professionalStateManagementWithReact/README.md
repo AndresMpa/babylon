@@ -74,3 +74,15 @@ Let's see the way `useEffect` bully life cycle
     }
   }, []);
 ```
+
+### "Simple states"
+
+This is really easy, "simple states" are usual ones
+
+```javascript
+const [loading, setLoading] = useState(false);
+const [error, setError] = useState(false);
+const [value, setValue] = useState("");
+```
+
+Those are simple states
