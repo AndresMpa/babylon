@@ -8,8 +8,19 @@ class VerificationClass extends Component {
 
     this.state = {
       error: false,
+      loading: false,
     };
   }
+
+  componentDidUpdate() {
+    // Fake backend behaviour
+    if (this.state.loading) {
+      setTimeout(() => {
+        this.setState({ loading: false });
+      }, 2000);
+    }
+  }
+
   render() {
     return (
       <article className="verification">
@@ -29,6 +40,8 @@ class VerificationClass extends Component {
           </p>
         )}
 
+        {this.state.loading && <p className="verification--text">Loading...</p>}
+
         <div className="verification--wrapper">
           <input
             className="verification--input"
@@ -36,7 +49,11 @@ class VerificationClass extends Component {
             name={this.props.name}
             type="text"
           />
-          <button className="verification--button" disabled={this.state.error}>
+          <button
+            className="verification--button"
+            disabled={this.state.error}
+            onClick={() => this.setState({ loading: true })}
+          >
             {this.props.button}
           </button>
         </div>

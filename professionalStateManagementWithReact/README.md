@@ -20,7 +20,57 @@ React, having some states to handle with it
 
 > Deeper explanation [here](https://javascript.plainenglish.io/lifecycle-methods-substitute-with-react-hooks-b173073052a)
 
-Hooks "ate" life cycle, is that simple; useEffect replaces a lot
-of previous functions from life cycle. Check the image below
+Hooks "ate" life cycle, is that simple; `useEffect` replaces
+a lot of previous functions from life cycle. Check the image
+below
 
 ![life_cycle_vs_hooks](./.doc/life_cycle_vs_hooks.jpg)
+
+Let's see the way `useEffect` bully life cycle
+
+### One shot behaviour
+
+```javascript
+  componentDidMount() {
+    console.log("componentWillMount");
+  }
+  useEffect( () => {
+    /*
+      This is equivalent to componentWillMount
+      when the second parameter at useEffect
+      is "[]" this means 'Do it the first time'
+    */
+  }, [])
+```
+
+### Multi calls
+
+```javascript
+  componentDidUpdate() {
+    console.log("componentDidUpdate");
+  }
+  useEffect( () => {
+    /*
+      This is equivalent to componentDidUpdate
+      when the second parameter at useEffect
+      is "[someState, otherState, nStatesHere]"
+      this means 'Do it each time that var changes'
+    */
+  }, [someState])
+```
+
+### Before unmount
+
+```javascript
+  componentWillUnmount() {
+    console.log("componentWillUnmount");
+  }
+  useEffect(() => {
+    // Some stuff, like window.addEventListener()
+
+    // The expression return () => {} is equivalent to componentWillUnmount()
+    return () => {
+      // Some stuff, like window.removeEventListener()
+    }
+  }, []);
+```
