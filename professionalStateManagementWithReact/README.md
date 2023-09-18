@@ -15,3 +15,12 @@ extends our toolbox.
 
 The idea is to have a confirmation code, trough state of
 React, having some states to handle with it
+
+## Key differences between React.Component and React.useState
+
+> Deeper explanation [here](https://javascript.plainenglish.io/lifecycle-methods-substitute-with-react-hooks-b173073052a)
+
+Hooks "ate" life cycle, is that simple; useEffect replaces a lot
+of previous functions from life cycle. Check the image below
+
+![life_cycle_vs_hooks](./.doc/life_cycle_vs_hooks.jpg)
