@@ -1,11 +1,12 @@
-@import '../setting/color.scss';
+@import "../setting/color.scss";
+@import "../setting/fonts.scss";
 
 * {
   margin: 0%;
   padding: 0%;
   color: $letter;
+  font-family: $normal;
   overflow-anchor: none;
-  font-family: "Nunito", sans-serif;
 }
 
 body {

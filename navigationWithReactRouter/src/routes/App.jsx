@@ -1,7 +1,7 @@
 import React from "react";
 import { HashRouter, Route, Routes } from "react-router-dom";
 
-import Menu from "@components/Menu";
+import Menu from "@containers/Menu";
 
 import Home from "@pages/Home";
 import Blog from "@pages/Blog";
