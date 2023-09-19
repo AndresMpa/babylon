@@ -1,0 +1,56 @@
+# Navigation with React Router
+
+## Concepts
+
+### SSR vs SPA (CSR)
+
+#### SSR
+
+Sever Side Render (SSR) allows server to handle with HTML trough code injection
+it means that, client web browser will receive the entire page, so web browser
+can look for that build improving at the same time initial load of that build
+(Or page). What's not so good about this is that, SSR worsen performance also
+reduce interactivity.
+
+> I rather SSR when I need SEO, SEO is something... Awful, but SSR tackles it
+
+#### SPA (CSR)
+
+Client Side Render (CSR) is the coolest thing in word, when your server sucks, CSR
+render everything on Clients so your server could be worst under this architecture
+Single Page Apps (SPA) are web apps, Web Apps!, Web APPS!, it means interactivity...
+They load one index.html file then they build the entire application around that,
+so users are the "Target", the engine that makes the app works are users, they are
+so useful when you don't need to worry about Web Browsers "SEO", neither first load
+or initial load; SPA isn't the best option in those cases
+
+> I have build many SPA use them, they are so cool but mix then with something with better SEO
+
+### Progressive Server Side Rendering + Rehydration
+
+This is a trick, when you want the best of both works PSSR comes to you, and it sucks
+PSSR is another architecture to handle with this process of send information, but
+it's difficult to handle with it; PRRS allows you to use SSR strategy at the beginning
+them slowly move to SPA but... At the end, you take that SSR process an you throw it
+to a trash can an let amazing SPA deals with everything
+
+## About React Router
+
+### BrowserRouter
+
+The typical one, that router we generally use that one we need to stand when we need a route
+this is the one uses slashes to identify routes and paths is that simple and useful as `/`
+or `/something`
+
+### HashRouter
+
+A useful twist for those who needs the URL paths to do something, this options adds a `#`
+is that simple and that useful, we can get the current path using a simple regrex to cut
+from `#` to the end of that path, that's the biggest difference, also the reason why I like
+it. It looks in the end like: `/#/something`
+
+### MemoryRouter (FaithRouter)
+
+`Now you do what they told ya` this thing `uses an array`, might be useful for mobile where
+there's no an specific route or path, but I don't trust this approach to a router it's a
+bit like a fairy tale, so not trusting on it yet

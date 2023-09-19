@@ -1,0 +1,24 @@
+@import '../setting/color.scss';
+
+* {
+  margin: 0%;
+  padding: 0%;
+  color: $letter;
+  overflow-anchor: none;
+  font-family: "Nunito", sans-serif;
+}
+
+body {
+  background-color: $background;
+
+  ul,
+  li {
+    text-decoration: none;
+    list-style: none;
+  }
+
+  a {
+    text-decoration: none;
+    color: $label;
+  }
+}
