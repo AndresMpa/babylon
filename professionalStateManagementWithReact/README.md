@@ -86,3 +86,22 @@ const [value, setValue] = useState("");
 ```
 
 Those are simple states
+
+### Composed states
+
+It's also something simple, those are state that deals with objects
+instead simple values, works as follows
+
+```javascript
+  constructor(props) {
+    this.state = {
+      value: "",
+      error: false,
+      loading: false,
+    };
+  }
+  ...
+
+  this.setState({ error: true, loading: false })
+  ...
+```

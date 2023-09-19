@@ -2,11 +2,15 @@ import React, { Component } from "react";
 
 import "@styles/components/verification.scss";
 
+// Just an example, you know
+const SECURITY_CODE = "papaya";
+
 class VerificationClass extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
+      value: "",
       error: false,
       loading: false,
     };
@@ -16,7 +20,9 @@ class VerificationClass extends Component {
     // Fake backend behaviour
     if (this.state.loading) {
       setTimeout(() => {
-        this.setState({ loading: false });
+        this.state.value === SECURITY_CODE
+          ? this.setState({ loading: false })
+          : this.setState({ error: true, loading: false });
       }, 2000);
     }
   }
@@ -27,7 +33,7 @@ class VerificationClass extends Component {
         <h2 className="verification--title">{this.props.title}</h2>
         <p className="verification--text">{this.props.text}</p>
 
-        {this.state.error && (
+        {this.state.error && !this.state.loading && (
           <p
             className="verification--text"
             onClick={() =>
@@ -44,7 +50,9 @@ class VerificationClass extends Component {
 
         <div className="verification--wrapper">
           <input
+            onChange={(event) => this.setState({ value: event.target.value })}
             className="verification--input"
+            value={this.state.value}
             placeholder="Type here"
             name={this.props.name}
             type="text"
