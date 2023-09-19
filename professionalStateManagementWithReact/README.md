@@ -105,3 +105,14 @@ instead simple values, works as follows
   this.setState({ error: true, loading: false })
   ...
 ```
+
+#### Using React.useState
+
+```javascript
+const [request, setRequest] = useState({
+  loading: false,
+  error: false,
+});
+
+setRequest({ ...request, error: false });
+```

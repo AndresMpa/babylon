@@ -6,34 +6,42 @@ import "@styles/components/verification.scss";
 const SECURITY_CODE = "papaya";
 
 const VerificationState = (props) => {
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
+  // Simple state
   const [value, setValue] = useState("");
+  // Composed state
+  const [request, setRequest] = useState({
+    loading: false,
+    error: false,
+  });
 
   useEffect(() => {
     // Fake backend behaviour
-    if (loading) {
+    if (request.loading) {
       setTimeout(() => {
         if (value !== SECURITY_CODE) {
-          setError(true);
+          setRequest({ ...request, error: true, loading: false });
+        } else {
+          setRequest({ ...request, error: false, loading: false });
         }
-        setLoading(false);
       }, 2000);
     }
-  }, [loading]);
+  }, [request.loading]);
 
   return (
     <article className="verification">
       <h2 className="verification--title">{props.title}</h2>
       <p className="verification--text">{props.text}</p>
 
-      {error && !loading && (
-        <p className="verification--text" onClick={() => setError(!error)}>
+      {request.error && !request.loading && (
+        <p
+          className="verification--text"
+          onClick={() => setRequest({ ...request, error: false })}
+        >
           Ups... There's an error, click here, please
         </p>
       )}
 
-      {loading && <p className="verification--text">Loading...</p>}
+      {request.loading && <p className="verification--text">Loading...</p>}
 
       <div className="verification--wrapper">
         <input
@@ -48,8 +56,8 @@ const VerificationState = (props) => {
         />
         <button
           className="verification--button"
-          disabled={error}
-          onClick={() => setLoading(!loading)}
+          disabled={request.error}
+          onClick={() => setRequest({ ...request, loading: true })}
         >
           {props.button}
         </button>
