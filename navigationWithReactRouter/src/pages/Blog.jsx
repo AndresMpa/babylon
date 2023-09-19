@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 
 import { blogRefs } from "../blogRefs";
 
@@ -7,6 +7,9 @@ const Blog = () => {
   return (
     <>
       <p>Blog</p>
+
+      <Outlet></Outlet>
+
       <ul className="blog">
         {blogRefs.map((item, index) => (
           <li className="blog--item" key={item.slug}>

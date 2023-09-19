@@ -85,3 +85,21 @@ This hook can also use numbers as follows
 ```javascript
 navigate(-1);
 ```
+
+### Nesting routes
+
+Nesting routes is weird in here, we use a component called `Outlet`, that component is used to render
+a component "inside" other component it looks weird but might work for something
+
+````javascript
+import { Outlet } from "react-router-dom";
+
+const component = () => {
+      return (
+            // ...
+            <Outlet></Outlet>
+            // ...
+      )
+}
+```javascript
+````
