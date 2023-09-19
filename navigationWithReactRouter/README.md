@@ -54,3 +54,11 @@ it. It looks in the end like: `/#/something`
 `Now you do what they told ya` this thing `uses an array`, might be useful for mobile where
 there's no an specific route or path, but I don't trust this approach to a router it's a
 bit like a fairy tale, so not trusting on it yet
+
+## NavLink vs Link
+
+This solve some common issues `<Link></Link>` doesn't allow to do something different from
+redirections while `<NavLink></NavLink>` allow to send some custom data for `className` or
+`style`, that useful to "active" like status for routes
+
+> We can sent params for ids (Called "slug") trough a link as usual `/:slug` we need to add it to the router
