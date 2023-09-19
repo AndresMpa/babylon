@@ -139,3 +139,78 @@ on pure React needs 2 things:
 
 - Type: Which is a "keyword" used to find the action we want to perform (Remember Vuex actions)
 - Payload (Optional): Is used to specify a change in that state (Remember Vuex payload)
+
+### Reducer structure
+
+Reducers can be done easily using a good structure, reducer are simple
+Final State Machines or "FSM" for React, they can receive custom values
+using a payload or simple make changes accessing different states trough
+"action.type"
+
+```javascript
+const reducerObject = (state, payload) => ({
+  ERROR: {
+    ...state,
+    error: false,
+    deleted: true,
+    loading: false,
+  },
+  WRITE: {
+    ...state,
+    value: payload,
+  },
+});
+
+// Type and payload goes here
+const reducer = (state, action) => {
+  return reducerObject(state)[action.type] ? reducerObject(state, action.payload)[action.type] : state;
+};
+```
+
+As well as other possibilities, it's better to have an object mapper
+a directions directory or something like that to handle with "keys"
+reducers generally uses `actionTypes`
+
+```javascript
+const actionTypes = {
+  error: "ERROR",
+  write: "WRITE",
+};
+```
+
+So we can mapped each key making a small change on the `reducerObject`
+
+```javascript
+const reducerObject = (state, payload) => ({
+  [actionTypes.error]: {
+    ...state,
+    error: false,
+    deleted: true,
+    loading: false,
+  },
+  [actionTypes.write]: {
+    ...state,
+    value: payload,
+  },
+});
+```
+
+As well as other FSM, we use a `dispatch` function to change the state
+in the FSM. But, the big difference for React is that, we map `mutations`
+in components as follows
+
+```javascript
+import { initialState, reducer } from "./reducer";
+
+  //...
+  const [state, dispatch] = useReducer(reducer, initialState);
+
+  // Action creators
+  const onError = () => dispatch({ type: actionTypes.error });
+  const onWrite = ({ target: { value } }) =>
+    dispatch({ type: actionTypes.write, payload: value });
+  //...
+```
+
+Another weird thing in here is that `mutations` are called `action creators`
+any way they follow the `onWhatever` convention

@@ -1,30 +1,8 @@
 import React, { useEffect, useReducer } from "react";
 
+import { initialState, reducer } from "./reducer";
+
 import "@styles/components/verification.scss";
-
-const initialState = {
-  value: "",
-  error: false,
-  loading: false,
-  confirmed: false,
-  deleted: false,
-};
-
-const reducerObject = (state, payload) => ({
-  CONFIRMED: { ...state, error: true, loading: false },
-  ERROR: { ...state, deleted: true, error: false, loading: false },
-  RETRY: { ...state, error: false },
-  WRITE: { ...state, value: payload },
-  CHECK: { ...state, loading: true },
-  CONFIRM: { ...state, confirmed: true },
-  RESET: { ...state, value: "", deleted: false, confirmed: false },
-});
-
-const reducer = (state, action) => {
-  return reducerObject(state)[action.type]
-    ? reducerObject(state, action.payload)[action.type]
-    : state;
-};
 
 // Just an example, you know
 const SECURITY_CODE = "papaya";
@@ -32,12 +10,21 @@ const SECURITY_CODE = "papaya";
 const VerificationReducer = (props) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
+  // Action creators
+
+  const onError = () => dispatch({ type: actionTypes.error });
+  const onRetry = () => dispatch({ type: actionTypes.retry });
+  const onCheck = () => dispatch({ type: actionTypes.check });
+  const onReset = () => dispatch({ type: actionTypes.reset });
+  const onConfirm = () => dispatch({ type: actionTypes.confirm });
+  const onConfirmed = () => dispatch({ type: actionTypes.confirmed });
+  const onWrite = ({ target: { value } }) =>
+    dispatch({ type: actionTypes.write, payload: value });
+
   useEffect(() => {
     if (state.loading) {
       setTimeout(() => {
-        state.value !== SECURITY_CODE
-          ? dispatch({ type: "CONFIRMED" })
-          : dispatch({ type: "ERROR" });
+        state.value !== SECURITY_CODE ? onConfirmed() : onError();
       }, 2000);
     }
   }, [state.loading]);
@@ -49,10 +36,7 @@ const VerificationReducer = (props) => {
         <p className="verification--text">{props.text}</p>
 
         {state.error && !state.loading && (
-          <p
-            className="verification--text"
-            onClick={() => dispatch({ type: "RETRY" })}
-          >
+          <p className="verification--text" onClick={onRetry}>
             Ups... There's an error, click here, please
           </p>
         )}
@@ -61,19 +45,17 @@ const VerificationReducer = (props) => {
 
         <div className="verification--wrapper">
           <input
-            onChange={(event) =>
-              dispatch({ type: "WRITE", payload: event.target.value })
-            }
             className="verification--input"
             placeholder="Type here"
-            name={props.name}
             value={state.value}
+            onChange={onWrite}
+            name={props.name}
             type="text"
           />
           <button
-            onClick={() => dispatch({ type: "CHECK" })}
             className="verification--button"
             disabled={state.error}
+            onClick={onCheck}
           >
             {props.button}
           </button>
@@ -89,16 +71,10 @@ const VerificationReducer = (props) => {
         </p>
 
         <div className="verification--wrapper">
-          <button
-            onClick={() => dispatch({ type: "RESET" })}
-            className="verification--button"
-          >
+          <button onClick={onReset} className="verification--button">
             No, get item back
           </button>
-          <button
-            onClick={() => dispatch({ type: "CONFIRM" })}
-            className="verification--button"
-          >
+          <button onClick={onConfirm} className="verification--button">
             Yes, Confirme
           </button>
         </div>
@@ -113,10 +89,7 @@ const VerificationReducer = (props) => {
         </p>
 
         <div className="verification--wrapper">
-          <button
-            onClick={() => dispatch({ type: "RESET" })}
-            className="verification--button"
-          >
+          <button onClick={onReset} className="verification--button">
             Undone action, recover item
           </button>
         </div>
