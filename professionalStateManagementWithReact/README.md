@@ -116,3 +116,26 @@ const [request, setRequest] = useState({
 
 setRequest({ ...request, error: false });
 ```
+
+## Declarative vs imperative
+
+Both are ways to write code programming paradigms to be exact, in
+short "imperative programming" means "do it, then care about how"
+while declarative programming means "This is how to do it, then care
+about using it"
+
+[Some reference](https://www.educative.io/blog/declarative-vs-imperative-programming)
+
+This concept is useful for FSM (Final State Machines), reminds a lot
+to Vuex
+
+> Boilerplate: Sentence or section (Code structure) use it in a text (Code) many times in different notes
+
+## Reducers
+
+A Reducer is a pure function that takes the state of an application
+and action as arguments and returns a new state (Remember Vuex). Reducers
+on pure React needs 2 things:
+
+- Type: Which is a "keyword" used to find the action we want to perform (Remember Vuex actions)
+- Payload (Optional): Is used to specify a change in that state (Remember Vuex payload)

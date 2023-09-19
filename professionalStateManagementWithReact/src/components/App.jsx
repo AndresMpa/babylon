@@ -1,7 +1,7 @@
 import React from "react";
 
 import { VerificationState } from "./VerificationState";
-import { VerificationClass } from "./VerificationClass";
+import { VerificationReducer } from "./VerificationReducer";
 
 const App = () => {
   return (
@@ -14,7 +14,7 @@ const App = () => {
         name="accept"
       />
 
-      <VerificationClass
+      <VerificationReducer
         title="Are you sure you want to remove this item?"
         text="Please, type the verification code in the box below to remove this item,
         be aware this action can't be undone"
