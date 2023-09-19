@@ -1,6 +1,10 @@
 import React, { useEffect, useReducer } from "react";
 
-import { initialState, reducer } from "./reducer";
+import {
+  reducer,
+  actionTypes,
+  initialState,
+} from "@components/reducers/verification";
 
 import "@styles/components/verification.scss";
 
