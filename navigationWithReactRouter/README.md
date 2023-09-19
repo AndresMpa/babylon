@@ -62,3 +62,26 @@ redirections while `<NavLink></NavLink>` allow to send some custom data for `cla
 `style`, that useful to "active" like status for routes
 
 > We can sent params for ids (Called "slug") trough a link as usual `/:slug` we need to add it to the router
+
+### Controlling navigation
+
+This is useful, we have a hook called `useNavigate` that hook is used basically to handle with
+navigation (Wow), so we can control navigation using it
+
+```javascript
+import { useNavigate } from "react-router-dom";
+// ...
+
+const navigate = useNavigate();
+
+navigate("/blog", { replace: true });
+// ...
+```
+
+We can use it like this to move from some path to other removing previous path from the historical
+
+This hook can also use numbers as follows
+
+```javascript
+navigate(-1);
+```
