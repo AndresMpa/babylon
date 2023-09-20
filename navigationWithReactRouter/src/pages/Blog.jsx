@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, Outlet } from "react-router-dom";
 
-import { blogRefs } from "../blogRefs";
+import { blogRefs } from "@util/blogRefs";
 
 const Blog = () => {
   return (

@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
-import { blogRefs } from "../blogRefs";
+import { blogRefs } from "@util/blogRefs";
 
 const BlogPost = () => {
   const navigate = useNavigate();
@@ -11,7 +11,7 @@ const BlogPost = () => {
 
   const goBack = () => {
     //navigate("/blog", { replace: true });
-    navigate(-1)
+    navigate(-1);
   };
 
   return (
