@@ -5,23 +5,31 @@ import Menu from "@containers/Menu";
 
 import Home from "@pages/Home";
 import Blog from "@pages/Blog";
+import Login from "@pages/Login";
+import Logout from "@pages/Logout";
 import Profile from "@pages/Profile";
 import NotFound from "@pages/NotFound";
 import BlogPost from "@components/BlogPost";
+
+import { AuthProvider } from "@util/auth";
 
 const App = () => {
   return (
     <>
       <HashRouter>
-        <Menu></Menu>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/blog" element={<Blog />}>
-            <Route path=":slug" element={<BlogPost />} />
-          </Route>
-          <Route path="/profile" element={<Profile />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+        <AuthProvider>
+          <Menu></Menu>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/blog" element={<Blog />}>
+              <Route path=":slug" element={<BlogPost />} />
+            </Route>
+            <Route path="/login" element={<Login />} />
+            <Route path="/logout" element={<Logout />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </AuthProvider>
       </HashRouter>
     </>
   );

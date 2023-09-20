@@ -91,15 +91,67 @@ navigate(-1);
 Nesting routes is weird in here, we use a component called `Outlet`, that component is used to render
 a component "inside" other component it looks weird but might work for something
 
-````javascript
+```javascript
 import { Outlet } from "react-router-dom";
 
 const component = () => {
-      return (
-            // ...
-            <Outlet></Outlet>
-            // ...
-      )
-}
+  return (
+    // ...
+    <Outlet></Outlet>
+    // ...
+  );
+};
+```
+
+### AuthX
+
+Using react AuthX works as usual, but under hooks or providers, providers provide (Wow) context for AuthX
+state, while hooks handle with state, so first we use a provider under a router
+
 ```javascript
-````
+import { HashRouter, Route, Routes } from "react-router-dom";
+
+import { AuthProvider } from "@util/auth";
+
+const Router = () => {
+  return (
+    <>
+      <HashRouter>
+        <AuthProvider>
+          <Routes>
+            <Route path="/some-path" element={<SomeComponent />} />
+          </Routes>
+        </AuthProvider>
+      </HashRouter>
+    </>
+  );
+};
+```
+
+In that example we use a `<HashRouter>` them the `<AuthProvider>`, that order is important in order to use
+`<HashRouter>` methods to handle with redirections according to components needs for `<AuthProvider>` to
+handle them
+
+```javascript
+<HashRouter>
+      <AuthProvider>
+            {...}
+      </AuthProvider>
+</HashRouter>
+```
+
+In the other hand, Hooks are useful to access providers methods, this hooks is generally called `useAuth()`,
+that hooks "wraps" AuthX methods
+
+```javascript
+import { useAuth } from "@util/auth";
+
+const SomeComponent = () => {
+  //...
+  const auth = useAuth();
+  // Functions can be invoke like
+  const onLogin = () => auth.login();
+};
+```
+
+> Check [auth.js](./src/util/auth.js) for a specific example

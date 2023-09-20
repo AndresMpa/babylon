@@ -1,0 +1,31 @@
+@import "../setting/color.scss";
+
+.login {
+  margin: 20px auto;
+  padding: 30px;
+  width: 80%;
+
+  background: $canvas;
+  &--title {
+    padding: 15px;
+  }
+  &--form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    &--label {
+      padding: 10px;
+    }
+    &--input {
+      padding: 5px;
+      color: $canvas;
+    }
+    &--button {
+      margin: 15px auto;
+      padding: 5px;
+      width: 25%;
+
+      color: $canvas;
+    }
+  }
+}

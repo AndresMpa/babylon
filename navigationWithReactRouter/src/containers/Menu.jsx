@@ -8,6 +8,8 @@ const Menu = () => {
     { name: "Home", path: "/" },
     { name: "Blog", path: "/blog" },
     { name: "Profile", path: "/profile" },
+    { name: "Login", path: "/login" },
+    { name: "Logout", path: "/logout" },
   ];
 
   return (
