@@ -21,13 +21,16 @@ module.exports = {
     extensions: [".js", ".jsx", ".ts", ".tsx"],
     alias: {
       // Replace them if using splitting options
-      "@components": path.resolve(__dirname, "src/components/"),
-      "@containers": path.resolve(__dirname, "src/containers/"),
-      "@context": path.resolve(__dirname, "src/context/"),
-      "@hooks": path.resolve(__dirname, "src/hooks/"),
-      "@routes": path.resolve(__dirname, "src/routes/"),
-      "@styles": path.resolve(__dirname, "src/styles/"),
-      "@assets": path.resolve(__dirname, "src/assets/"),
+      '@components': path.resolve(__dirname, 'src/components/'),
+      '@containers': path.resolve(__dirname, 'src/containers/'),
+      '@routes': path.resolve(__dirname, 'src/routes/'),
+      '@pages': path.resolve(__dirname, 'src/pages/'),
+
+      '@hooks': path.resolve(__dirname, 'src/hooks/'),
+      '@util': path.resolve(__dirname, 'src/util/'),
+
+      '@styles': path.resolve(__dirname, 'src/styles/'),
+      '@assets': path.resolve(__dirname, 'src/assets/'),
     },
   },
   module: {
