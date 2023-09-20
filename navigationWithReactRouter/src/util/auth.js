@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 const AuthContext = createContext();
 
@@ -27,4 +27,14 @@ const useAuth = () => {
   return auth;
 };
 
-export { AuthContext, AuthProvider, useAuth };
+const AuthRoute = (props) => {
+  const auth = useAuth();
+
+  if (!auth.user) {
+    return <Navigate to="/login" replace />;
+  }
+
+  return props.children;
+};
+
+export { AuthProvider, AuthRoute, useAuth };

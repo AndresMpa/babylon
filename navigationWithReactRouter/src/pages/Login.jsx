@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Navigate } from "react-router-dom";
 
 import { useAuth } from "@util/auth";
 
@@ -8,11 +9,15 @@ const Login = () => {
   const [username, setUsername] = useState("");
   const auth = useAuth();
 
+  if (auth.user) {
+    return <Navigate to="/profile" replace />;
+  }
+
   // Action creators
   const onWrite = ({ target: { value } }) => setUsername(value);
   const onLogin = (event) => {
     event.preventDefault();
-    auth.login(username);
+    auth.login({ username });
   };
 
   return (

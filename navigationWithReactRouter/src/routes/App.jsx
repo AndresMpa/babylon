@@ -11,7 +11,7 @@ import Profile from "@pages/Profile";
 import NotFound from "@pages/NotFound";
 import BlogPost from "@components/BlogPost";
 
-import { AuthProvider } from "@util/auth";
+import { AuthProvider, AuthRoute } from "@util/auth";
 
 const App = () => {
   return (
@@ -25,8 +25,22 @@ const App = () => {
               <Route path=":slug" element={<BlogPost />} />
             </Route>
             <Route path="/login" element={<Login />} />
-            <Route path="/logout" element={<Logout />} />
-            <Route path="/profile" element={<Profile />} />
+            <Route
+              path="/logout"
+              element={
+                <AuthRoute>
+                  <Logout />
+                </AuthRoute>
+              }
+            />
+            <Route
+              path="/profile"
+              element={
+                <AuthRoute>
+                  <Profile />
+                </AuthRoute>
+              }
+            />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </AuthProvider>

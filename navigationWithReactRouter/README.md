@@ -55,7 +55,7 @@ it. It looks in the end like: `/#/something`
 there's no an specific route or path, but I don't trust this approach to a router it's a
 bit like a fairy tale, so not trusting on it yet
 
-## NavLink vs Link
+### NavLink vs Link
 
 This solve some common issues `<Link></Link>` doesn't allow to do something different from
 redirections while `<NavLink></NavLink>` allow to send some custom data for `className` or
@@ -155,3 +155,44 @@ const SomeComponent = () => {
 ```
 
 > Check [auth.js](./src/util/auth.js) for a specific example
+
+### Routes protection
+
+To protect routes we simply need a component who handles with that, them we call it inside a route as a wrapper
+for that component we want to protect
+
+```javascript
+const AuthRoute = (props) => {
+  const auth = useAuth();
+
+  if (!auth.user) {
+    return <Navigate to="/login" replace />;
+  }
+
+  return props.children;
+};
+```
+
+Then to wrap the component
+
+```javascript
+<Route
+  path="/profile"
+  element={
+    <AuthRoute>
+      <Profile />
+    </AuthRoute>
+  }
+/>
+```
+
+This simple wrapper will protect most of out private routes, but there's also another way to make this, simple using
+a "hard coded" redirection
+
+```javascript
+if (auth.user) {
+  return <Navigate to="/profile" replace />;
+}
+```
+
+We use this approach to handle with routes that needs some special management, for example public only routes
