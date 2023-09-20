@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState } from 'react';
 import { Navigate, useNavigate } from 'react-router-dom';
+import adminList from './adminList';
 
 const AuthContext = createContext();
 
@@ -9,7 +10,8 @@ const AuthProvider = ({ children }) => {
 
   // Those methods should ask a backend about that data (Fake API)
   const login = ({ username }) => {
-    setUser({ username });
+    const isAdmin = adminList.find((admin) => admin === username);
+    setUser({ username, isAdmin });
     navigate('/profile');
   };
   const logout = () => {
