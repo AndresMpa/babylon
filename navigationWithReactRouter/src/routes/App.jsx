@@ -9,7 +9,10 @@ import Login from "@pages/Login";
 import Logout from "@pages/Logout";
 import Profile from "@pages/Profile";
 import NotFound from "@pages/NotFound";
+
 import BlogPost from "@components/BlogPost";
+import BlogEditor from "@components/BLogEditor";
+import BlogDelete from "@components/BlogDelete";
 
 import { AuthProvider, AuthRoute } from "@util/auth";
 
@@ -22,7 +25,23 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/blog" element={<Blog />}>
-              <Route path=":slug" element={<BlogPost />} />
+              <Route path=":slug/post" element={<BlogPost />} />
+              <Route
+                path=":slug/edit"
+                element={
+                  <AuthRoute>
+                    <BlogEditor />
+                  </AuthRoute>
+                }
+              />
+              <Route
+                path=":slug/delete"
+                element={
+                  <AuthRoute>
+                    <BlogDelete />
+                  </AuthRoute>
+                }
+              />
             </Route>
             <Route path="/login" element={<Login />} />
             <Route
