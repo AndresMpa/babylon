@@ -14,6 +14,10 @@ import BlogPost from "@components/BlogPost";
 import BlogEditor from "@components/BLogEditor";
 import BlogDelete from "@components/BlogDelete";
 
+import ProfileDelete from "@components/ProfileDelete";
+import ProfileEditor from "@components/ProfileEditor";
+import ProfileView from "@components/ProfileView";
+
 import { AuthProvider, AuthRoute } from "@util/auth";
 
 const App = () => {
@@ -52,14 +56,25 @@ const App = () => {
                 </AuthRoute>
               }
             />
-            <Route
-              path="/profile"
-              element={
-                <AuthRoute>
-                  <Profile />
-                </AuthRoute>
-              }
-            />
+            <Route path="/profile" element={<Profile />}>
+              <Route path=":slug/view" element={<ProfileView />} />
+              <Route
+                path=":slug/edit"
+                element={
+                  <AuthRoute>
+                    <ProfileEditor />
+                  </AuthRoute>
+                }
+              />
+              <Route
+                path=":slug/delete"
+                element={
+                  <AuthRoute>
+                    <ProfileDelete />
+                  </AuthRoute>
+                }
+              />
+            </Route>
             <Route path="*" element={<NotFound />} />
           </Routes>
         </AuthProvider>

@@ -1,4 +1,6 @@
 import React from "react";
+import { Outlet } from "react-router-dom";
+
 import { useAuth } from "@util/auth";
 
 import "@styles/components/Profile.scss";
@@ -8,8 +10,9 @@ const Profile = () => {
 
   return (
     <>
-      <h1>Profile page</h1>
-      <p>Welcome {auth.user?.username}</p>
+      <h2>Welcome {auth.user?.username}</h2>
+
+      <Outlet></Outlet>
     </>
   );
 };
