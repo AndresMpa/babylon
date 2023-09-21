@@ -25,7 +25,7 @@ const Login = () => {
       <h2 className="login--title">Login</h2>
       <form className="login--form" onSubmit={onLogin}>
         <label className="login--form--label" htmlFor="username">
-          Ingresa tu nombre de usuario
+          Type your username
         </label>
         <input
           type="text"
@@ -38,7 +38,7 @@ const Login = () => {
         />
 
         <button className="login--form--button" type="submit">
-          Entrar
+          Submit
         </button>
       </form>
     </article>

@@ -14,8 +14,8 @@ const Logout = () => {
     <>
       <h2>Logout</h2>
       <form onSubmit={onLogout}>
-        <label htmlFor="username">Adios, regresa pronto</label>
-        <button type="submit">Cerrar sesión</button>
+        <label htmlFor="username">Goodbye, go back soon</label>
+        <button type="submit">End session</button>
       </form>
     </>
   );
