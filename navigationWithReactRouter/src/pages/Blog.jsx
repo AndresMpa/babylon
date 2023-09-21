@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useReducer } from "react";
 import { Link, Outlet } from "react-router-dom";
 
 import { blogRefs } from "@util/blogRefs";
@@ -13,7 +13,7 @@ const Blog = () => {
       <ul className="blog">
         {blogRefs.map((item, index) => (
           <li className="blog--item" key={item.slug}>
-            <Link to={`/blog/${item.slug}`}>{item.title}</Link>
+            <Link to={`/blog/${item.slug}/post`}>{item.title}</Link>
           </li>
         ))}
       </ul>
