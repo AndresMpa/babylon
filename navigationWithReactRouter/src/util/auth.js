@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState } from 'react';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { Navigate, useLocation, useNavigate } from 'react-router-dom';
 import adminList from './adminList';
 
 const AuthContext = createContext();
@@ -7,16 +7,18 @@ const AuthContext = createContext();
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
+  const location = useLocation();
 
   // Those methods should ask a backend about that data (Fake API)
   const login = ({ username }) => {
     const isAdmin = adminList.find((admin) => admin === username);
+    let to = location.state?.from?.pathame || -1;
     setUser({ username, isAdmin });
-    navigate('/profile');
+    navigate(to, { replace: true });
   };
   const logout = () => {
     setUser(null);
-    navigate('/login');
+    navigate('/login', { replace: true });
   };
 
   const auth = { user, login, logout };
@@ -33,7 +35,7 @@ const AuthRoute = (props) => {
   const auth = useAuth();
 
   if (!auth.user) {
-    return <Navigate to="/login" replace />;
+    return <Navigate to="/login" state={{ from: location }} replace />;
   }
 
   return props.children;
