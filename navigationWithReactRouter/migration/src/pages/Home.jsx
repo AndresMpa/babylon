@@ -28,13 +28,8 @@ function Home() {
     completedTodos,
   } = state;
 
-  const {
-    //addTodo,
-    deleteTodo,
-    completeTodo,
-    setSearchValue,
-    sincronizeTodos,
-  } = stateUpdaters;
+  const { deleteTodo, completeTodo, setSearchValue, sincronizeTodos } =
+    stateUpdaters;
 
   return (
     <React.Fragment>
@@ -63,7 +58,11 @@ function Home() {
             completed={todo.completed}
             onDelete={() => deleteTodo(todo.id)}
             onComplete={() => completeTodo(todo.id)}
-            onEdit={() => navigate(`/edit/${todo.id}`)}
+            onEdit={() =>
+              navigate(`/edit/${todo.id}`, {
+                state: { todo },
+              })
+            }
           />
         )}
       </TodoList>
