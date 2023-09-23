@@ -32,6 +32,7 @@ remember of find topic. I'm also adding a reference list for tools I find useful
 | [Practice Fronted development course](./practiceCourseFrontendDeveloper)                | Frontend, CSS, JavaScript                |
 | [Practical React](./reactPracticeCourse)                                                | Frontend, JavaScript, React, Basics      |
 | [Render and composition using React](./renderAndCompositionWithReact)                   | microFrontend, Render Patterns, React    |
+| [Navigation with React Router DOM](./navigationWithReactRouter/)                        | Frontend, Router, React                  |
 | [Webpack](./webpackCourse)                                                              | Builders, Webpack, JavaScript            |
 | [Practical Nextjs](./nextjsPracticeCourse)                                              | Frontend, React, Nextjs                  |
 | [Professional Nextjs](./professionalNextjsCourse)                                       | Frontend, React, Nextjs                  |
