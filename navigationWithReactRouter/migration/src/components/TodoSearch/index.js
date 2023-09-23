@@ -1,19 +1,27 @@
 import React from 'react';
 
 import '../../styles/TodoSearch.css';
+import { useSearchParams } from 'react-router-dom';
 
 function TodoSearch({ searchValue, setSearchValue, loading }) {
-  const onSearchValueChange = (event) => {
-    console.log(event.target.value);
-    setSearchValue(event.target.value);
+  const [searchParam, setSearchParam] = useSearchParams();
+  const paramValue = searchParam.get('search');
+
+  if (paramValue) {
+    setSearchValue(paramValue);
+  }
+
+  const onSearchValueChange = ({ target: { value } }) => {
+    setSearchValue(value);
+    setSearchParam({ search: value });
   };
 
   return (
     <input
+      onChange={onSearchValueChange}
       className="TodoSearch"
       placeholder="Cebolla"
-      value={searchValue}
-      onChange={onSearchValueChange}
+      value={paramValue}
       disabled={loading}
     />
   );
