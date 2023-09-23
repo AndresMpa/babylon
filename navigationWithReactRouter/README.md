@@ -196,3 +196,12 @@ if (auth.user) {
 ```
 
 We use this approach to handle with routes that needs some special management, for example public only routes
+
+### useParam vs useSearchParams vs useLocation vs useNavigate
+
+Those are hooks:
+
+- `useParams` allow you to get "/:something"
+- `useSearchParams` allow you to catch "/?something"
+- `useLocation` allow you to get data from something that comes from `useNavigate` in an object called `location.state`
+  where we can put basically whatever we want using and key value object
