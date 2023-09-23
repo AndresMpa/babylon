@@ -7,6 +7,11 @@
   width: 48px;
   /* background-color: #CCC; */
 }
+.Icon-container--edit {
+  position: absolute;
+  top: -24px;
+  right: 48px;
+}
 .Icon-container--check {
   position: absolute;
   left: 12px;
@@ -20,7 +25,10 @@
 .Icon-svg {
   width: 24px;
   height: 24px;
-  transition: fill .15s;
+  transition: fill 0.15s;
+}
+.Icon-container:hover .Icon-svg--edit {
+  fill: #61dafa;
 }
 .Icon-container:hover .Icon-svg--check {
   fill: #4caf50;

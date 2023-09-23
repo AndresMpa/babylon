@@ -1,19 +1,19 @@
-import React from 'react';
+import React from "react";
 
-import { useTodos } from '../hooks/useTodos';
+import { useTodos } from "../hooks/useTodos";
 
-import { TodoHeader } from '../components/TodoHeader';
-import { TodoCounter } from '../components/TodoCounter';
-import { TodoSearch } from '../components/TodoSearch';
-import { TodoList } from '../components/TodoList';
-import { TodoItem } from '../components/TodoItem';
-import { TodosError } from '../components/TodosError';
-import { TodosLoading } from '../components/TodosLoading';
-import { EmptyTodos } from '../components/EmptyTodos';
-import { TodoForm } from '../components/TodoForm';
-import { CreateTodoButton } from '../components/CreateTodoButton';
-import { ChangeAlert } from '../components/ChangeAlert';
-import { Modal } from '../components/Modal';
+import { TodoHeader } from "../components/TodoHeader";
+import { TodoCounter } from "../components/TodoCounter";
+import { TodoSearch } from "../components/TodoSearch";
+import { TodoList } from "../components/TodoList";
+import { TodoItem } from "../components/TodoItem";
+import { TodosError } from "../components/TodosError";
+import { TodosLoading } from "../components/TodosLoading";
+import { EmptyTodos } from "../components/EmptyTodos";
+import { TodoForm } from "../components/TodoForm";
+import { CreateTodoButton } from "../components/CreateTodoButton";
+import { ChangeAlert } from "../components/ChangeAlert";
+import { Modal } from "../components/Modal";
 
 function Home() {
   const { state, stateUpdaters } = useTodos();
@@ -64,6 +64,7 @@ function Home() {
             completed={todo.completed}
             onComplete={() => completeTodo(todo.text)}
             onDelete={() => deleteTodo(todo.text)}
+            onEdit={() => console.log("Working")}
           />
         )}
       </TodoList>
