@@ -1,27 +1,27 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 import { useTodos } from "../hooks/useTodos";
 
-import { TodoHeader } from "../components/TodoHeader";
-import { TodoCounter } from "../components/TodoCounter";
-import { TodoSearch } from "../components/TodoSearch";
 import { TodoList } from "../components/TodoList";
 import { TodoItem } from "../components/TodoItem";
+import { TodoHeader } from "../components/TodoHeader";
+import { TodoSearch } from "../components/TodoSearch";
 import { TodosError } from "../components/TodosError";
-import { TodosLoading } from "../components/TodosLoading";
 import { EmptyTodos } from "../components/EmptyTodos";
-import { TodoForm } from "../components/TodoForm";
+import { TodoCounter } from "../components/TodoCounter";
+import { TodosLoading } from "../components/TodosLoading";
 import { CreateTodoButton } from "../components/CreateTodoButton";
 import { ChangeAlert } from "../components/ChangeAlert";
-import { Modal } from "../components/Modal";
 
 function Home() {
+  const navigate = useNavigate();
+
   const { state, stateUpdaters } = useTodos();
 
   const {
     error,
     loading,
-    openModal,
     totalTodos,
     searchValue,
     searchedTodos,
@@ -29,9 +29,8 @@ function Home() {
   } = state;
 
   const {
-    addTodo,
+    //addTodo,
     deleteTodo,
-    setOpenModal,
     completeTodo,
     setSearchValue,
     sincronizeTodos,
@@ -64,18 +63,12 @@ function Home() {
             completed={todo.completed}
             onDelete={() => deleteTodo(todo.id)}
             onComplete={() => completeTodo(todo.id)}
-            onEdit={() => console.log("Working")}
+            onEdit={() => navigate(`/edit/${todo.id}`)}
           />
         )}
       </TodoList>
 
-      {!!openModal && (
-        <Modal>
-          <TodoForm addTodo={addTodo} setOpenModal={setOpenModal} />
-        </Modal>
-      )}
-
-      <CreateTodoButton setOpenModal={setOpenModal} />
+      <CreateTodoButton onCreateTodo={() => navigate("/new")} />
 
       <ChangeAlert sincronize={sincronizeTodos} />
     </React.Fragment>

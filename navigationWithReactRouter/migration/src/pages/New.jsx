@@ -1,8 +1,16 @@
 import React from "react";
+import { TodoForm } from "../components/TodoForm";
 
 const New = () => {
   // Action creators
-  return <h2>Create a new todo</h2>;
+
+  return (
+    <TodoForm
+      title="Create a new to do item"
+      buttonLabel="Add"
+      submitEvent={() => console.log("adding")}
+    />
+  );
 };
 
 export default New;
