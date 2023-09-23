@@ -1,0 +1,25 @@
+@import "../setting/color.scss";
+@import "../setting/fonts.scss";
+
+* {
+  margin: 0%;
+  padding: 0%;
+  color: $letter;
+  font-family: $normal;
+  overflow-anchor: none;
+}
+
+body {
+  background-color: $background;
+
+  ul,
+  li {
+    text-decoration: none;
+    list-style: none;
+  }
+
+  a {
+    text-decoration: none;
+    color: $label;
+  }
+}
