@@ -5,22 +5,24 @@ import '../../styles/TodoForm.css';
 
 function TodoForm(props) {
   const navigate = useNavigate();
-  const [newTodoValue, setNewTodoValue] = React.useState('');
+  const [todoValue, setTodoValue] = React.useState(
+    props.defaultTodoValue || '',
+  );
 
-  const onChange = ({ target: { value } }) => setNewTodoValue(value);
+  const onChange = ({ target: { value } }) => setTodoValue(value);
   const onCancel = () => navigate('/');
   const onSubmit = (event) => {
     event.preventDefault();
 
+    props.submitEvent(todoValue);
     navigate('/');
-    props.submitEvent(newTodoValue);
   };
 
   return (
     <form onSubmit={onSubmit}>
       <label>{props.title}</label>
       <textarea
-        value={newTodoValue}
+        value={todoValue}
         onChange={onChange}
         placeholder="Cortar la cebolla oara el almuerzo"
       />
