@@ -3,15 +3,22 @@ import { createContext, useState } from "react";
 const ShopingCardContext = createContext();
 
 const ShopingCardProvider = ({ children }) => {
-  const [showDetail, setShowDetail] = useState(false);
+  // Shopping bag counter
   const [count, setCount] = useState(0);
 
-  const openProductDetail = () => setShowDetail(true);
+  // Detail component
+  const [showDetail, setShowDetail] = useState(false);
   const closeProductDetail = () => setShowDetail(false);
+  const openProductDetail = () => setShowDetail(true);
+
+  // Product detail information
+  const [productToShow, setProductToShow] = useState({});
 
   return (
     <ShopingCardContext.Provider
       value={{
+        setProductToShow,
+        productToShow,
         closeProductDetail,
         openProductDetail,
         showDetail,

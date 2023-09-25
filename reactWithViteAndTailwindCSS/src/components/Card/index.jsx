@@ -7,12 +7,19 @@ const Card = ({ props }) => {
   const shoppingContext = useContext(ShopingCardContext);
 
   const onAddToCard = () => shoppingContext.setCount(shoppingContext.count + 1);
+  const onSetProduct = () => {
+    shoppingContext.openProductDetail();
+    shoppingContext.setProductToShow({
+      description: props.description,
+      category: props.category.name,
+      images: props.images,
+      title: props.title,
+      price: props.price,
+    });
+  };
 
   return (
-    <div
-      className="bg-white cursor-pointer w-56 h-60"
-      onClick={shoppingContext.openProductDetail}
-    >
+    <div className="bg-white cursor-pointer w-56 h-60" onClick={onSetProduct}>
       <figure className="relative mb-2 w-full h-4/5">
         <figcaption className="absolute bottom-0 left-0 bg-white/60 rounded-lg text-black text-xs m-2 px-3 py-0.5">
           {props.category.name}
@@ -30,7 +37,7 @@ const Card = ({ props }) => {
         </button>
       </figure>
       <p className="flex justify-between">
-        <span className="text-sm font-light">{props.name}</span>
+        <span className="text-sm font-light">{props.title}</span>
         <span className="text-lg font-medium">${props.price}</span>
       </p>
     </div>
