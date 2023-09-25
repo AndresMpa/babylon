@@ -11,6 +11,8 @@ import MyAccount from "../pages/MyAccount";
 import Navbar from "../components/Navbar";
 import Layout from "../components/Layout";
 
+import ShopingCardProvider from "../context";
+
 const AppRoutes = () => {
   const routes = useRoutes([
     { path: "/", element: <Home /> },
@@ -28,10 +30,12 @@ const AppRoutes = () => {
 const App = () => {
   return (
     <BrowserRouter>
-      <Navbar></Navbar>
-      <Layout>
-        <AppRoutes></AppRoutes>
-      </Layout>
+      <ShopingCardProvider>
+        <Navbar></Navbar>
+        <Layout>
+          <AppRoutes></AppRoutes>
+        </Layout>
+      </ShopingCardProvider>
     </BrowserRouter>
   );
 };
