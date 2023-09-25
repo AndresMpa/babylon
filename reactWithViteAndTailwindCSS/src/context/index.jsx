@@ -22,6 +22,9 @@ const ShopingCardProvider = ({ children }) => {
   // Product detail information
   const [productToShow, setProductToShow] = useState({});
 
+  // Shopping cart order
+  const [order, setOrder] = useState([]);
+
   return (
     <ShopingCardContext.Provider
       value={{
@@ -37,6 +40,8 @@ const ShopingCardProvider = ({ children }) => {
         closeProductDetail,
         openProductDetail,
         showDetail,
+        order,
+        setOrder,
       }}
     >
       {children}
