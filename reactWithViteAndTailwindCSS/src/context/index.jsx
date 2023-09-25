@@ -3,6 +3,9 @@ import { createContext, useState } from "react";
 const ShopingCardContext = createContext();
 
 const ShopingCardProvider = ({ children }) => {
+  // Cart products
+  const [cartProducts, setCartProducts] = useState([]);
+
   // Shopping bag counter
   const [count, setCount] = useState(0);
 
@@ -17,13 +20,15 @@ const ShopingCardProvider = ({ children }) => {
   return (
     <ShopingCardContext.Provider
       value={{
+        cartProducts,
+        setCartProducts,
+        setCount,
+        count,
         setProductToShow,
         productToShow,
         closeProductDetail,
         openProductDetail,
         showDetail,
-        setCount,
-        count,
       }}
     >
       {children}

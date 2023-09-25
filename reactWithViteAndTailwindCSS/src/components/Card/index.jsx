@@ -6,16 +6,14 @@ import { ShopingCardContext } from "../../context";
 const Card = ({ props }) => {
   const shoppingContext = useContext(ShopingCardContext);
 
-  const onAddToCard = () => shoppingContext.setCount(shoppingContext.count + 1);
+  const onAddToCard = () => {
+    shoppingContext.setCartProducts([...shoppingContext.cartProducts, props]);
+    shoppingContext.setCount(shoppingContext.count + 1);
+  };
+
   const onSetProduct = () => {
     shoppingContext.openProductDetail();
-    shoppingContext.setProductToShow({
-      description: props.description,
-      category: props.category.name,
-      images: props.images,
-      title: props.title,
-      price: props.price,
-    });
+    shoppingContext.setProductToShow(props);
   };
 
   return (
