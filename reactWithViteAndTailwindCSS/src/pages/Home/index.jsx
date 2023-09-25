@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 
 import Card from "../../components/Card";
+import ProductDetail from "../../components/ProductDetail";
 
 function Home() {
   const URL = "https://api.escuelajs.co/api/v1/products";
@@ -18,7 +19,11 @@ function Home() {
 
   return (
     <>
-      <div className="grid gap-4 grid-cols-4 w-full max-w-screen-lg">{productsToRender}</div>
+      <article className="grid gap-4 grid-cols-4 w-full max-w-screen-lg">
+        {productsToRender}
+      </article>
+
+      <ProductDetail></ProductDetail>
     </>
   );
 }
