@@ -1,12 +1,12 @@
-const Card = (props) => {
+const Card = ({ props }) => {
   return (
     <div className="bg-white cursor-pointer w-56 h-60">
       <figure className="relative mb-2 w-full h-4/5">
         <figcaption className="absolute bottom-0 left-0 bg-white/60 rounded-lg text-black text-xs m-2 px-3 py-0.5">
-          {props.category}
+          {props.category.name}
         </figcaption>
         <img
-          src="https://specials-images.forbesimg.com/imageserve/643084e4326800d7e86ba1ae/best-gaming-headsets/960x0.png?fit=scale"
+          src={props.images[0]}
           className="w-full h-full object-cover rounded-lg"
           alt="Produt loading"
         />
@@ -15,8 +15,8 @@ const Card = (props) => {
         </div>
       </figure>
       <p className="flex justify-between">
-        <span className="text-sm font-light">{props.productName}</span>
-        <span className="text-lg font-medium">${props.productName}</span>
+        <span className="text-sm font-light">{props.name}</span>
+        <span className="text-lg font-medium">${props.price}</span>
       </p>
     </div>
   );
