@@ -1,9 +1,19 @@
-import { createContext } from "react";
+import { createContext, useState } from "react";
 
 const ShopingCardContext = createContext();
 
-const ShopingCardProvider = ({ children }) => (
-  <ShopingCardContext.Provider>{children}</ShopingCardContext.Provider>
-);
+const ShopingCardProvider = ({ children }) => {
+  const [count, setCount] = useState(0);
 
-export default ShopingCardProvider;
+  return (
+    <ShopingCardContext.Provider
+      value={{
+        setCount,
+        count,
+      }}
+    >
+      {children}
+    </ShopingCardContext.Provider>
+  );
+};
+export { ShopingCardProvider, ShopingCardContext };

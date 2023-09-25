@@ -1,4 +1,7 @@
+import { useContext } from "react";
 import { NavLink } from "react-router-dom";
+
+import { ShopingCardContext } from "../../context";
 
 const navRoutes = () => {
   const categories = [
@@ -19,6 +22,8 @@ const navRoutes = () => {
 };
 
 const Navbar = () => {
+  const shoppingContext = useContext(ShopingCardContext);
+
   const { categories, paths } = navRoutes();
   const activeStyle = "underline";
 
@@ -58,6 +63,7 @@ const Navbar = () => {
       <ul className="flex items-center gap-3">
         <li className="text-black/60">testman@testman.com</li>
         {pathsToReder}
+        <li>{shoppingContext.count}</li>
       </ul>
     </nav>
   );

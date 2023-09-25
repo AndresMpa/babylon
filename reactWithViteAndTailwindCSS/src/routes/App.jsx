@@ -11,7 +11,7 @@ import MyAccount from "../pages/MyAccount";
 import Navbar from "../components/Navbar";
 import Layout from "../components/Layout";
 
-import ShopingCardProvider from "../context";
+import { ShopingCardProvider } from "../context";
 
 const AppRoutes = () => {
   const routes = useRoutes([
