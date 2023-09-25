@@ -19,7 +19,7 @@ const ProductDetail = () => {
           onClick={shoppingContext.closeProductDetail}
           className="cursor-pointer"
         >
-          <XMarkIcon />
+          <XMarkIcon className="h-6 w-6 text-black" />
         </button>
       </article>
 

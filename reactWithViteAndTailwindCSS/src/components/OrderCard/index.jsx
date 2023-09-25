@@ -17,8 +17,8 @@ const OrderCard = ({ props, deleteHandler }) => {
       </article>
       <article className="flex ">
         <h3 className="text-lg font-medium">${props.price}</h3>
-        <button onClick={onDeleteHandler}>
-          <XMarkIcon className="h-6 w-6 text-black cursor-pointer" />
+        <button onClick={onDeleteHandler} className="cursor-pointer">
+          <XMarkIcon className="h-6 w-6 text-black" />
         </button>
       </article>
     </section>

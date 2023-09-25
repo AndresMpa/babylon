@@ -1,5 +1,6 @@
 import { useContext } from "react";
-import { XMarkIcon } from "@heroicons/react/24/solid";
+import { useNavigate } from "react-router-dom";
+import { XMarkIcon, BanknotesIcon } from "@heroicons/react/24/solid";
 
 import { ShopingCardContext } from "../../context";
 import OrderCard from "../OrderCard";
@@ -8,6 +9,7 @@ import { totalPrice } from "../../util";
 
 const CheckoutSideMenu = () => {
   const shoppingContext = useContext(ShopingCardContext);
+  const navigate = useNavigate();
 
   const deleteHandler = (id) => {
     const filteredProducts = shoppingContext.cartProducts.filter(
@@ -19,6 +21,10 @@ const CheckoutSideMenu = () => {
   const productsToRender = shoppingContext.cartProducts.map((product) => (
     <OrderCard key={product.id} props={product} deleteHandler={deleteHandler} />
   ));
+
+  const onCheckout = () => {
+    navigate("/my-order");
+  };
 
   return (
     <aside
@@ -32,19 +38,24 @@ const CheckoutSideMenu = () => {
           onClick={shoppingContext.closeChechoutMenu}
           className="cursor-pointer"
         >
-          <XMarkIcon />
+          <XMarkIcon className="h-6 w-6 text-black" />
         </button>
       </article>
 
       <article className="flex flex-col items-center">
         {productsToRender}
 
-        <p className="absolute bottom-2 flex justify-around mt-4 p-1 w-11/12 text-center rounded-lg border border-black">
-          <span>Total</span>
+        <button
+          className="absolute bottom-2 flex justify-around mt-4 p-1 w-11/12 text-center rounded-lg border border-black"
+          onClick={onCheckout}
+        >
+          <span className="flex flex-row">
+            <BanknotesIcon className="my-auto h-5 w-5 text-black" /> Total
+          </span>
           <span className="font-bold text-black">
             ${totalPrice(shoppingContext.cartProducts)}
           </span>
-        </p>
+        </button>
       </article>
     </aside>
   );
