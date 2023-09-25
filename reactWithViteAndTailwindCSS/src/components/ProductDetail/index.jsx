@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { XMarkIcon } from "@heroicons/react/24/solid";
 
 import { ShopingCardContext } from "../../context";
 
@@ -18,7 +19,7 @@ const ProductDetail = () => {
           onClick={shoppingContext.closeProductDetail}
           className="cursor-pointer"
         >
-          X
+          <XMarkIcon />
         </button>
       </article>
 

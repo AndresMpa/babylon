@@ -12,6 +12,7 @@ import Navbar from "../components/Navbar";
 import Layout from "../components/Layout";
 
 import { ShopingCardProvider } from "../context";
+import CheckoutSideMenu from "../components/CheckoutSideMenu";
 
 const AppRoutes = () => {
   const routes = useRoutes([
@@ -31,9 +32,10 @@ const App = () => {
   return (
     <BrowserRouter>
       <ShopingCardProvider>
-        <Navbar></Navbar>
+        <Navbar />
+        <CheckoutSideMenu />
         <Layout>
-          <AppRoutes></AppRoutes>
+          <AppRoutes />
         </Layout>
       </ShopingCardProvider>
     </BrowserRouter>

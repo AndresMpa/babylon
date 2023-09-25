@@ -9,6 +9,11 @@ const ShopingCardProvider = ({ children }) => {
   // Shopping bag counter
   const [count, setCount] = useState(0);
 
+  // Checkout component
+  const [showCheckoutMenu, setShowCheckoutMenu] = useState(false);
+  const closeShowCheckoutMenu = () => setShowCheckoutMenu(false);
+  const openShowCheckoutMenu = () => setShowCheckoutMenu(true);
+
   // Detail component
   const [showDetail, setShowDetail] = useState(false);
   const closeProductDetail = () => setShowDetail(false);
@@ -24,6 +29,9 @@ const ShopingCardProvider = ({ children }) => {
         setCartProducts,
         setCount,
         count,
+        closeShowCheckoutMenu,
+        openShowCheckoutMenu,
+        showCheckoutMenu,
         setProductToShow,
         productToShow,
         closeProductDetail,
