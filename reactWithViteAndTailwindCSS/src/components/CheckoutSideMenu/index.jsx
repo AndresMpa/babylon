@@ -24,16 +24,17 @@ const CheckoutSideMenu = () => {
 
     const orderToAdd = {
       date: date,
-      product: shoppingContext.cartProducts,
+      products: shoppingContext.cartProducts,
       totalProducts: shoppingContext.cartProducts.length,
       totalPrice: totalPrice(shoppingContext.cartProducts),
     };
 
     shoppingContext.setOrder([...shoppingContext.order, orderToAdd]);
+    shoppingContext.closeShowCheckoutMenu();
     shoppingContext.setCartProducts([]);
     shoppingContext.setCount(0);
 
-    navigate("/my-order");
+    navigate("/my-orders/last");
   };
 
   const productsToRender = shoppingContext.cartProducts.map((product) => (
