@@ -2,9 +2,14 @@ import { useContext } from "react";
 import { XMarkIcon } from "@heroicons/react/24/solid";
 
 import { ShopingCardContext } from "../../context";
+import OrderCard from "../OrderCard";
 
 const CheckoutSideMenu = () => {
   const shoppingContext = useContext(ShopingCardContext);
+
+  const productsToRender = shoppingContext.cartProducts.map((product) => (
+    <OrderCard key={product.id} props={product} />
+  ));
 
   return (
     <aside
@@ -22,7 +27,9 @@ const CheckoutSideMenu = () => {
         </button>
       </article>
 
-      <article className="flex flex-col items-center">{}</article>
+      <article className="flex flex-col items-center">
+        {productsToRender}
+      </article>
     </aside>
   );
 };
