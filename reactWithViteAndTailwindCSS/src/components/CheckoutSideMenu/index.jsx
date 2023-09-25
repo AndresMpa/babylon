@@ -7,8 +7,15 @@ import OrderCard from "../OrderCard";
 const CheckoutSideMenu = () => {
   const shoppingContext = useContext(ShopingCardContext);
 
+  const deleteHandler = (id) => {
+    const filteredProducts = shoppingContext.cartProducts.filter(
+      (product) => product.id !== id,
+    );
+    shoppingContext.setCartProducts(filteredProducts);
+  };
+
   const productsToRender = shoppingContext.cartProducts.map((product) => (
-    <OrderCard key={product.id} props={product} />
+    <OrderCard key={product.id} props={product} deleteHandler={deleteHandler} />
   ));
 
   return (
