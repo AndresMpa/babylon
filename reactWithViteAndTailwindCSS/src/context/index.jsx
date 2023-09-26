@@ -19,14 +19,29 @@ const ShopingCardProvider = ({ children }) => {
   // Filtered products
   const [filteredProducts, setFilteredProducts] = useState([]);
 
+  // Filter narrow
+  const [narrow, setNarrow] = useState("");
+
   const filterByTitle = (items, searchNarrow) =>
     items?.filter((item) =>
       item.title.toLowerCase().includes(searchNarrow.toLowerCase()),
     );
 
+  const filterByCategory = (items, category) =>
+    items?.filter(
+      (item) => item.category.name.toLowerCase() === category.toLowerCase(),
+    );
+
   useEffect(() => {
-    if (searchValue) setFilteredProducts(filterByTitle(products, searchValue));
-  }, [products, searchValue]);
+    if (searchValue && narrow) {
+      setFilteredProducts(filterByCategory(products, narrow));
+      setFilteredProducts(filterByTitle(filteredProducts, searchValue));
+    } else if (searchValue) {
+      setFilteredProducts(filterByTitle(products, searchValue));
+    } else if (narrow) {
+      setFilteredProducts(filterByCategory(products, narrow));
+    }
+  }, [products, filteredProducts, narrow, searchValue]);
 
   // Cart products
   const [cartProducts, setCartProducts] = useState([]);
@@ -58,6 +73,8 @@ const ShopingCardProvider = ({ children }) => {
         searchValue,
         setSearchValue,
         filteredProducts,
+        setNarrow,
+        narrow,
         cartProducts,
         setCartProducts,
         setCount,
