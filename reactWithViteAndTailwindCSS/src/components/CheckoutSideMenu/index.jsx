@@ -15,7 +15,6 @@ const CheckoutSideMenu = () => {
     const filteredProducts = shoppingContext.cartProducts.filter(
       (product) => product.id !== id,
     );
-    shoppingContext.setCount(shoppingContext.count - 1);
     shoppingContext.setCartProducts(filteredProducts);
   };
 
@@ -32,7 +31,7 @@ const CheckoutSideMenu = () => {
     shoppingContext.setOrder([...shoppingContext.order, orderToAdd]);
     shoppingContext.closeShowCheckoutMenu();
     shoppingContext.setCartProducts([]);
-    shoppingContext.setCount(0);
+    shoppingContext.setSearchValue("");
 
     navigate("/my-orders/last");
   };

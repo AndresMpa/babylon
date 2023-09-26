@@ -9,7 +9,6 @@ const Card = ({ props }) => {
   const onAddToCard = (event) => {
     event.stopPropagation();
     shoppingContext.setCartProducts([...shoppingContext.cartProducts, props]);
-    shoppingContext.setCount(shoppingContext.count + 1);
     shoppingContext.openShowCheckoutMenu();
     shoppingContext.closeProductDetail();
   };

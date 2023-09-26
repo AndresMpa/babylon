@@ -55,7 +55,7 @@ const Navbar = () => {
         {pathsToReder(paths)}
         <li className="flex items-center">
           <ShoppingBagIcon className="h-6 w-6 text-black-500" />
-          <div>{shoppingContext.count}</div>
+          <div>{shoppingContext.cartProducts.length}</div>
         </li>
       </ul>
     </nav>

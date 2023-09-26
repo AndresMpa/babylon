@@ -46,9 +46,6 @@ const ShopingCardProvider = ({ children }) => {
   // Cart products
   const [cartProducts, setCartProducts] = useState([]);
 
-  // Shopping bag counter
-  const [count, setCount] = useState(0);
-
   // Checkout component
   const [showCheckoutMenu, setShowCheckoutMenu] = useState(false);
   const closeShowCheckoutMenu = () => setShowCheckoutMenu(false);
@@ -77,8 +74,6 @@ const ShopingCardProvider = ({ children }) => {
         narrow,
         cartProducts,
         setCartProducts,
-        setCount,
-        count,
         closeShowCheckoutMenu,
         openShowCheckoutMenu,
         showCheckoutMenu,
