@@ -36,6 +36,7 @@ remember of find topic. I'm also adding a reference list for tools I find useful
 | [Webpack](./webpackCourse)                                                              | Builders, Webpack, JavaScript            |
 | [Practical Nextjs](./nextjsPracticeCourse)                                              | Frontend, React, Nextjs                  |
 | [Professional Nextjs](./professionalNextjsCourse)                                       | Frontend, React, Nextjs                  |
+| [React with Vite and TailwindCSS](./reactWithViteAndTailwindCSS/)                       | Frontend, React, Vite, TailwindCSS       |
 | [Webpack for code splitting with Express, React and TS](./webpackWithExpressReactAndTS) | microFrontend, Optimization, React, TS   |
 | [Node fundamentals](./nodeFundamentals)                                                 | Backend, Nodejs, Basics                  |
 | [AutoX using Passport and JWT](./authUsingPasswordjsAndJWT)                             | Backend, AuthX, Passport, JWT            |
