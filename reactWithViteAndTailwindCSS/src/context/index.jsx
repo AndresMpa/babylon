@@ -16,6 +16,18 @@ const ShopingCardProvider = ({ children }) => {
   // Search value
   const [searchValue, setSearchValue] = useState("");
 
+  // Filtered products
+  const [filteredProducts, setFilteredProducts] = useState([]);
+
+  const filterByTitle = (items, searchNarrow) =>
+    items?.filter((item) =>
+      item.title.toLowerCase().includes(searchNarrow.toLowerCase()),
+    );
+
+  useEffect(() => {
+    if (searchValue) setFilteredProducts(filterByTitle(products, searchValue));
+  }, [products, searchValue]);
+
   // Cart products
   const [cartProducts, setCartProducts] = useState([]);
 
@@ -45,6 +57,7 @@ const ShopingCardProvider = ({ children }) => {
         setProducts,
         searchValue,
         setSearchValue,
+        filteredProducts,
         cartProducts,
         setCartProducts,
         setCount,
