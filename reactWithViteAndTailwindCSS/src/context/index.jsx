@@ -1,8 +1,21 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 
 const ShopingCardContext = createContext();
 
 const ShopingCardProvider = ({ children }) => {
+  // To fetch products
+  const URL = "https://api.escuelajs.co/api/v1/products";
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    fetch(URL)
+      .then((rawResponse) => rawResponse.json())
+      .then((response) => setProducts(response));
+  }, []);
+
+  // Search value
+  const [searchValue, setSearchValue] = useState("");
+
   // Cart products
   const [cartProducts, setCartProducts] = useState([]);
 
@@ -28,6 +41,10 @@ const ShopingCardProvider = ({ children }) => {
   return (
     <ShopingCardContext.Provider
       value={{
+        products,
+        setProducts,
+        searchValue,
+        setSearchValue,
         cartProducts,
         setCartProducts,
         setCount,
