@@ -67,3 +67,44 @@ As it says, those are mappers, mappers helps components to handle with
 redux connection
 
 > Some [reference](https://redux.js.org/usage/usage-with-typescript#usage-with-react-redux)
+
+## Mappers/Connect "HOC" vs useSelector/useDispatch "hooks"
+
+The recommended way are "hooks", using "HOC" testing is easier, but it's
+kind of awful, since we need to add props to our components also create some
+functions/objects call "map-" `mapState` and `mapDispatch` then, we use a
+wrapper (Which is the HOC) call `connect` to make a connector instance with
+those "map-"
+
+```javascriptreact
+// Redux mappers
+const mapState = (state) => ({ someState: state.someState });
+const mapDispatch = { setSomeState: (value) => setSomeStateAction(value) };
+const connector = connect(mapState, mapDispatch);
+
+const App = ({ someState, setSomeState }) => {
+  //...
+}
+
+export default connector(App)
+```
+
+That approach makes a lot of boilerplate.
+
+In the other hand, we have "hooks" approach which is a lot easier to use
+
+```javascriptreact
+
+const App = () => {
+  const someState = useSelector((state) => state.someState);
+  const dispatch = useDispatch();
+
+  //...
+  dispatch(setSomeState(someValue)); // Here we change the state
+  //...
+}
+
+export default App
+```
+
+This reduce a lot boilerplate

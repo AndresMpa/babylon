@@ -1,23 +1,21 @@
-import { useEffect, useState } from "react";
-import { connect } from "react-redux";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 import { Col } from "antd";
 import Search from "./components/Search";
 import Pokedex from "./components/Pokedex";
 
 import { getPokemon } from "./api";
-import { setPokemon as setPokemonAction } from "./actions";
+import { setPokemon } from "./actions";
 
-// Redux mappers
-const mapState = (state) => ({ pokemons: state.pokemons });
-const mapDispatch = { setPokemons: (value) => setPokemonAction(value) };
-const connector = connect(mapState, mapDispatch);
+const App = () => {
+  const pokemons = useSelector((state) => state.pokemons);
+  const dispatch = useDispatch();
 
-const App = ({ pokemons, setPokemons }) => {
   useEffect(() => {
     const fetchPokemon = async () => {
       const pokemonList = await getPokemon();
-      setPokemons(pokemonList);
+      dispatch(setPokemon(pokemonList));
     };
 
     fetchPokemon();
@@ -33,4 +31,4 @@ const App = ({ pokemons, setPokemons }) => {
   );
 };
 
-export default connector(App);
+export default App;
