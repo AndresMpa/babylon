@@ -1,22 +1,30 @@
+import { useEffect, useState } from "react";
+
 import { Col } from "antd";
 
 import Search from "./components/Search";
 import Pokedex from "./components/Pokedex";
 
-const test = Array(10).fill({
-  name: "Ditto",
-  category: "Fire, Water",
-  image:
-    "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png",
-});
+import { getPokemon } from "./api";
 
 const App = () => {
+  const [pokemon, setPokemon] = useState([]);
+
+  useEffect(() => {
+    const fetchPokemon = async () => {
+      const pokemonList = await getPokemon();
+      setPokemon(pokemonList);
+    };
+
+    fetchPokemon();
+  }, []);
+
   return (
     <>
       <Col span={12} offset={6}>
         <Search></Search>
       </Col>
-      <Pokedex pokemons={test}></Pokedex>
+      <Pokedex pokemons={pokemon}></Pokedex>
     </>
   );
 };

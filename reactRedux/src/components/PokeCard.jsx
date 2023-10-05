@@ -4,14 +4,21 @@ import { StarOutlined } from "@ant-design/icons";
 
 import "./../style/pokecard.css";
 
-const PokeCard = ({ pokemonInfo: { name, image, category } }) => {
+const pokeImage = (pokemonIndex) =>
+  `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemonIndex}.png`;
+
+const PokeCard = ({ pokemonInfo: { name, url } }) => {
+  const index = url.split("/")[6].split(".")[0];
+  const pokemonUrl = pokeImage(index);
+
   return (
     <div className="pokecard">
       <Card
         title={name}
-        cover={<img src={image} alt={name} extra={<StarOutlined />} />}
+        cover={<img src={pokemonUrl} alt={name} extra={<StarOutlined />} />}
+        extra={<StarOutlined />}
       >
-        <Meta description={category}></Meta>
+        <Meta description={name}></Meta>
       </Card>
     </div>
   );

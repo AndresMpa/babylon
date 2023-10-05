@@ -6,6 +6,7 @@ const Pokedex = ({ pokemons }) => {
   const pokeList = pokemons.map((pokemon, index) => (
     <PokeCard key={index} pokemonInfo={pokemon} />
   ));
+
   return <div className="pokedex">{pokeList}</div>;
 };
 
