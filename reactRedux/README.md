@@ -55,3 +55,15 @@ prevent useless renders.
 
 Context works for small projects, without a bunch of data, while redux
 works for bigger ones with lots of state
+
+## Redux mappers
+
+```javascript
+const mapState = (state) => ({ someState: state.someState });
+const mapDispatch = { setSomeState: (value) => setSomeStateAction(value) };
+```
+
+As it says, those are mappers, mappers helps components to handle with
+redux connection
+
+> Some [reference](https://redux.js.org/usage/usage-with-typescript#usage-with-react-redux)
