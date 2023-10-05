@@ -1,16 +1,22 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 
+import {
+  compose,
+  applyMiddleware,
+  legacy_createStore as createStore, // This is the old way to do it
+} from "redux";
 import { Provider } from "react-redux";
-// This is the old way to do it
-import { legacy_createStore as createStore } from "redux";
 import { reducer } from "./reducers/index.jsx";
+import { customizePokedex, logger } from "./middlewares/index.js";
 
 import App from "./App.jsx";
 
 import "./style/index.css";
 
-const store = createStore(reducer);
+const composedEnhancer = compose(applyMiddleware(logger, customizePokedex));
+
+const store = createStore(reducer, composedEnhancer);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
