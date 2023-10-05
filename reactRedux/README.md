@@ -108,3 +108,15 @@ export default App
 ```
 
 This reduce a lot boilerplate
+
+## Redux dev Tools
+
+To use dev tools here, it's necessary to add a line of code inside
+`createStore`, we get this
+
+```javascriptreact
+const store = createStore(
+  reducer,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+);
+```
