@@ -121,7 +121,7 @@ const store = createStore(
 );
 ```
 
-## Redux thunk
+## [Redux thunk](https://github.com/reduxjs/redux-thunk) (React like)
 
 It helps you to delay some responses, this feature allow you to handle
 with multiple response such as fetch, async/await, etc.
@@ -129,3 +129,16 @@ with multiple response such as fetch, async/await, etc.
 Redux thunks defines itself as: "Thunk middleware for Redux. It allows
 writing functions with logic inside that can interact with a Redux
 store's `dispatch` and `getState` methods."
+
+## [Redux Saga](https://redux-saga.js.org/) (Angular like)
+
+Redux Saga is another middleware we can use instead of Redux Thunk, it
+aims to solve similar problems to those that Thunk solves, it is focus
+on management of "side-effects" such as API calls using "sagas", scalability
+composition, testing process, etc
+
+## [Zustand form pmndrs](https://github.com/pmndrs/zustand) (Vue like)
+
+This is a small, fast and scalable bearbones state-management solution
+using simplified flux principles. Has a comfy API based on hooks,
+isn't boilerplatey or opinionated.
