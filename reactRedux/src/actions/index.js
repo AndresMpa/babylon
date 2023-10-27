@@ -6,6 +6,11 @@ const setPokemon = (payload) => ({
   payload,
 });
 
+const setLoading = (payload) => ({
+  type: actionType.setLoading,
+  payload,
+});
+
 const getPokemonWithDetails =
   (pokemons = []) =>
   async (dispatch) => {
@@ -16,4 +21,4 @@ const getPokemonWithDetails =
     dispatch(setPokemon(pokemonsDetailed));
   };
 
-export { setPokemon, getPokemonWithDetails };
+export { setPokemon, setLoading, getPokemonWithDetails };
