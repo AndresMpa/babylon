@@ -6,7 +6,7 @@ import Search from "./components/Search";
 import Pokedex from "./components/Pokedex";
 
 import { getPokemon } from "./api";
-import { setPokemon } from "./actions";
+import { getPokemonWithDetails, setPokemon } from "./actions";
 
 const App = () => {
   const pokemons = useSelector((state) => state.pokemons);
@@ -15,7 +15,7 @@ const App = () => {
   useEffect(() => {
     const fetchPokemon = async () => {
       const pokemonList = await getPokemon();
-      dispatch(setPokemon(pokemonList));
+      dispatch(getPokemonWithDetails(pokemonList));
     };
 
     fetchPokemon();
