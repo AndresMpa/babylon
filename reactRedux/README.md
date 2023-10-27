@@ -120,3 +120,12 @@ const store = createStore(
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
 );
 ```
+
+## Redux thunk
+
+It helps you to delay some responses, this feature allow you to handle
+with multiple response such as fetch, async/await, etc.
+
+Redux thunks defines itself as: "Thunk middleware for Redux. It allows
+writing functions with logic inside that can interact with a Redux
+store's `dispatch` and `getState` methods."
