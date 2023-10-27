@@ -18,9 +18,7 @@ import "./style/index.css";
 
 const composeConfig = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-const composedEnhancer = composeConfig(
-  applyMiddleware(thunk, logger, customizePokedex),
-);
+const composedEnhancer = composeConfig(applyMiddleware(thunk, logger));
 
 const store = createStore(reducer, composedEnhancer);
 
