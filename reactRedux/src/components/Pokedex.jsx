@@ -54,6 +54,8 @@ const Pokedex = ({ pokemons }) => {
   let pokemonData;
   const pokeList = pokemons.map((pokemon, index) => {
     pokemonData = {
+      id: pokemon.id,
+      favorite: pokemon.favorite,
       name: capitalize(pokemon.name),
       types: pokemon.types.map((item) => `${capitalize(item.type.name)} `),
       image: pokemon.sprites.front_default,

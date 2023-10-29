@@ -1,27 +1,45 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 
 import Meta from "antd/es/card/Meta";
 import { Button, Card, Descriptions, Divider, Space } from "antd";
 import {
   BookOutlined,
-  HeartOutlined,
   SmallDashOutlined,
   RadarChartOutlined,
 } from "@ant-design/icons";
 
+import FavoriteButton from "./IconButton";
+
+import { setFavorite } from "../actions";
+
 import "./../style/pokecard.css";
 
 const PokeCard = ({
-  pokemonData: { name, image, types, description, information },
+  pokemonData: { id, name, image, types, favorite, description, information },
 }) => {
   const [pokemonDescription, setPokemonDescription] = useState(false);
   const [pokemonAbilities, setPokemonAbilities] = useState(false);
+  const dispatch = useDispatch();
+  console.log(`${name} is ${favorite}`);
+
+  const handleFavorite = () => dispatch(setFavorite({ pokemonId: id }));
 
   return (
     <Card
       title={name}
-      cover={<img src={image} alt={name} extra={<HeartOutlined />} />}
-      extra={<HeartOutlined />}
+      cover={
+        <img
+          alt={name}
+          src={image}
+          extra={
+            <FavoriteButton isFavorite={favorite} onFavorite={handleFavorite} />
+          }
+        />
+      }
+      extra={
+        <FavoriteButton isFavorite={favorite} onFavorite={handleFavorite} />
+      }
       actions={[
         <RadarChartOutlined
           key="description"
