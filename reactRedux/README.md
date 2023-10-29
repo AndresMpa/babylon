@@ -142,3 +142,9 @@ composition, testing process, etc
 This is a small, fast and scalable bearbones state-management solution
 using simplified flux principles. Has a comfy API based on hooks,
 isn't boilerplatey or opinionated.
+
+# Immutability
+
+Redux requires to maintain some short of status quo it needs it to work
+Redex'll update the UI only with something change, so it's necessary to
+work under that principle
