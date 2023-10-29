@@ -1,3 +1,5 @@
+import { markAsFavorite } from "./mutations";
+
 const initialState = {
   loading: false,
   pokemons: [],
@@ -6,6 +8,7 @@ const initialState = {
 const actionType = {
   setPokemon: "SET_POKEMON",
   setLoading: "SET_LOADING",
+  setFavorite: "SET_FAVORITE",
 };
 
 const reducerObject = (state, payload) => ({
@@ -16,6 +19,10 @@ const reducerObject = (state, payload) => ({
   [actionType.setLoading]: {
     ...state,
     loading: payload,
+  },
+  [actionType.setFavorite]: {
+    ...state,
+    pokemons: markAsFavorite(state.pokemons, payload),
   },
 });
 
