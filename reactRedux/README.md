@@ -147,4 +147,13 @@ isn't boilerplatey or opinionated.
 
 Redux requires to maintain some short of status quo it needs it to work
 Redex'll update the UI only with something change, so it's necessary to
-work under that principle
+work under that principle, there's a packer call "immutability-js" which
+can help with this there's also another package call "redux-immutable"
+both of them solve this issue under redux needs
+
+# Combine Reducers
+
+This feature is so useful when you're looking for some way to split the
+main or root reducer into different files or variables easier to handle
+with, `combineReducers` is its name for redux, it'll help devs to split
+a giant reducer into smaller ones
