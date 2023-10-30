@@ -157,3 +157,10 @@ This feature is so useful when you're looking for some way to split the
 main or root reducer into different files or variables easier to handle
 with, `combineReducers` is its name for redux, it'll help devs to split
 a giant reducer into smaller ones
+
+
+# Redux toolkit
+
+Redux toolkit is an interesting option to reduce the amount of boilerplate
+it owns several functionalities and features, including asynchronous queries
+"auto code", etc
