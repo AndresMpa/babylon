@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 
+import { setFavorite } from "../features/dataSlice";
+
 import Meta from "antd/es/card/Meta";
 import { Button, Card, Descriptions, Divider, Space } from "antd";
 import {
@@ -10,8 +12,6 @@ import {
 } from "@ant-design/icons";
 
 import FavoriteButton from "./IconButton";
-
-import { setFavorite } from "../actions";
 
 import "./../style/pokecard.css";
 
