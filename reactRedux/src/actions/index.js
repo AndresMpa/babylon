@@ -1,5 +1,5 @@
 import { getDetails } from '../api';
-import { actionType } from '../reducers';
+import { actionType } from './types';
 
 const setPokemon = (payload) => ({
   type: actionType.setPokemon,
