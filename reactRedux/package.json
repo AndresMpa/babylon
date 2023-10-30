@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@ant-design/icons": "^5.2.6",
+    "@reduxjs/toolkit": "^1.9.7",
     "antd": "^5.9.3",
     "axios": "^1.5.1",
     "immutable": "^4.3.4",
