@@ -9,7 +9,7 @@ import {
 import thunk from "redux-thunk";
 import { Provider } from "react-redux";
 
-import { reducer } from "./reducers";
+import { appReducer } from "./reducers";
 import { customizePokedex, logger } from "./middlewares";
 
 import App from "./App.jsx";
@@ -20,7 +20,7 @@ const composeConfig = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const composedEnhancer = composeConfig(applyMiddleware(thunk, logger));
 
-const store = createStore(reducer, composedEnhancer);
+const store = createStore(appReducer, composedEnhancer);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
