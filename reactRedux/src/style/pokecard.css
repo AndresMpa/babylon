@@ -1,0 +1,13 @@
+.description {
+  display: flex;
+  justify-content: space-around;
+}
+
+.centerExtraData {
+  text-align: center;
+  margin-top: 25px;
+}
+
+.centerExtraData table {
+  text-align: justify;
+}
