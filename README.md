@@ -29,15 +29,16 @@ remember of find topic. I'm also adding a reference list for tools I find useful
 | [DOM](./DOM)                                                                            | HTML, JavaScript, Basics                 |
 | [Practical JS](./practiceCourserJS)                                                     | JavaScript, WebAPI                       |
 | [Professional JS](./professionalJScourse)                                               | Frontend, CSS, JavaScript                |
+| [Webpack](./webpackCourse)                                                              | Builders, Webpack, JavaScript            |
+| [Webpack for code splitting with Express, React and TS](./webpackWithExpressReactAndTS) | microFrontend, Optimization, React, TS   |
 | [Practice Fronted development course](./practiceCourseFrontendDeveloper)                | Frontend, CSS, JavaScript                |
 | [Practical React](./reactPracticeCourse)                                                | Frontend, JavaScript, React, Basics      |
+| [React with Vite and TailwindCSS](./reactWithViteAndTailwindCSS/)                       | Frontend, React, Vite, TailwindCSS       |
 | [Render and composition using React](./renderAndCompositionWithReact)                   | microFrontend, Render Patterns, React    |
 | [Navigation with React Router DOM](./navigationWithReactRouter/)                        | Frontend, Router, React                  |
-| [Webpack](./webpackCourse)                                                              | Builders, Webpack, JavaScript            |
+| [Redux state management](./reactRedux/)                                                 | Frontend, FSM, React, Redux              |
 | [Practical Nextjs](./nextjsPracticeCourse)                                              | Frontend, React, Nextjs                  |
 | [Professional Nextjs](./professionalNextjsCourse)                                       | Frontend, React, Nextjs                  |
-| [React with Vite and TailwindCSS](./reactWithViteAndTailwindCSS/)                       | Frontend, React, Vite, TailwindCSS       |
-| [Webpack for code splitting with Express, React and TS](./webpackWithExpressReactAndTS) | microFrontend, Optimization, React, TS   |
 | [Node fundamentals](./nodeFundamentals)                                                 | Backend, Nodejs, Basics                  |
 | [AutoX using Passport and JWT](./authUsingPasswordjsAndJWT)                             | Backend, AuthX, Passport, JWT            |
 | [APIs using Salils](./apiUsingSails)                                                    | Backend, API, Sails                      |
