@@ -21,7 +21,6 @@ const PokeCard = ({
   const [pokemonDescription, setPokemonDescription] = useState(false);
   const [pokemonAbilities, setPokemonAbilities] = useState(false);
   const dispatch = useDispatch();
-  console.log(`${name} is ${favorite}`);
 
   const handleFavorite = () => dispatch(setFavorite({ pokemonId: id }));
 
