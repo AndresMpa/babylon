@@ -73,3 +73,9 @@ const ProductItem = () => {
   return <div>{router.query.productId}</div>
 }
 ```
+
+## Link
+
+`<Link></Link>` is the `<a></a>` tag for nextjs, when using it, nextjs
+uses a prefetch once it renders a component that contains a `Link`
+````
