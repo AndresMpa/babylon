@@ -42,6 +42,21 @@ Option 4: https://hygraph.com/ (For GraphQL)
 Option 5: https://directus.io/ (Open Source)
 Option 6: https://prismic.io/
 
+#### Contentful
+
+Here there are 3 APIs:
+
+- Content delivery API (CDA) which is the one who handles with updates
+- Content management API (CMA) which is the one who handles the content creation
+- Content Preview API (CPA) handles with previewing content
+
+To use then it's necessary to create a persona access token (PAT) also an API key:
+
+- To create the API key: Settings > API Keys
+- To create the PAT: Settings > CMA Tokens
+
+Then both things can be use to handle with the CLI
+
 ### Design Systems
 
 A design system is a collection of reusable components that follows an standard useful to build any app
