@@ -43,6 +43,8 @@
     "@types/sanitize-html": "^2.3.2",
     "autoprefixer": "^10.3.1",
     "clsx": "^1.1.1",
+    "contentful": "^10.6.16",
+    "contentful-cli": "^3.1.41",
     "eslint": "7.32.0",
     "eslint-config-next": "11.1.2",
     "graphql": "^15.5.0",
