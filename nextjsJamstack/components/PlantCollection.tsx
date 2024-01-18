@@ -1,11 +1,9 @@
-import { memo } from 'react'
 import Link from 'next/link'
 import { Grid, GridProps } from '@ui/Grid'
 import { Typography } from '@ui/Typography'
 import { Button } from '@ui/Button'
 
 import { Excerpt } from '@components/Excerpt'
-import { Image } from '@components/Image'
 
 type PlantCollectionProps = {
   plants: Plant[]
@@ -21,20 +19,11 @@ export function PlantCollection({
   return (
     <Grid container component="ul" spacing={4} className={className}>
       {plants.map((plant) => (
-        <MemoizedPlantEntry key={plant.id} plant={plant} variant={variant} />
+        <PlantEntry key={plant.id} plant={plant} variant={variant} />
       ))}
     </Grid>
   )
 }
-
-const isEqual = (previousProps: PlantEntryType, newProps: PlantEntryType) => {
-  // What's the property React has to know the component has to be updated?
-  // Even though lodash.isEqual could be used here, it could also lead to perf issues
-  // for big & deep nested objects.
-  // "Cherry-picking" the important props for the app gives the best result here
-  return previousProps.plant.plantName === newProps.plant.plantName
-}
-const MemoizedPlantEntry = memo(PlantEntry, isEqual)
 
 type PlantEntryType = {
   plant: Plant
@@ -65,12 +54,7 @@ export function PlantEntrySquare({ image, plantName, slug }: Plant) {
     <Link href={`/entry/${slug}`}>
       <a title={`Go to ${plantName}`}>
         <div className="opacity-95 hover:opacity-100">
-          <Image
-            src={image.url}
-            layout="intrinsic"
-            width={460}
-            aspectRatio="4:3"
-          />
+          <img src={image.url} width={460} />
           <div className="p-4">
             <Typography variant="h4" className="break-words">
               {plantName}
@@ -94,14 +78,7 @@ export function PlantEntryInline({
         <div
           className={`opacity-95 hover:opacity-100 flex items-end ${className}`}
         >
-          <Image
-            src={image.url}
-            layout="fixed"
-            width={84}
-            aspectRatio="1:1"
-            fit="fill"
-            className="flex-none"
-          />
+          <img src={image.url} width={84} className="flex-none" />
           <div className="pl-2 flex-auto">
             <Typography variant="h6" className="break-words">
               {plantName}
@@ -123,12 +100,7 @@ export function PlantEntryVertical({
     <div className="opacity-95 hover:opacity-100">
       <Link href={`/entry/${slug}`}>
         <a title={`Go to ${plantName}`}>
-          <Image
-            src={image.url}
-            width={624}
-            layout="intrinsic"
-            aspectRatio="9:12"
-          />
+          <img src={image.url} width={624} />
           <Typography variant="h2" className="break-words pt-4 px-4">
             {plantName}
           </Typography>
