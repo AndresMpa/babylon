@@ -55,6 +55,11 @@ To use then it's necessary to create a persona access token (PAT) also an API ke
 - To create the API key: Settings > API Keys
 - To create the PAT: Settings > CMA Tokens
 
+##### Contentful GraphQL server
+
+There's something cool about contentful which is its server available here:
+https://graphql.contentful.com/content/v1/spaces/{SPACE}/explore?access_token={CDA_TOKEN}
+
 Then both things can be use to handle with the CLI
 
 ### Design Systems
