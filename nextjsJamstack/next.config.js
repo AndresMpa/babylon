@@ -8,4 +8,12 @@ const config = {
   },
 }
 
-module.exports = withBundleAnalyzer(config)
+const env = {
+  NEXT_PUBLIC_SPACE_ID: '',
+  NEXT_PUBLIC_ACCESS_TOKEN: '',
+}
+
+module.exports = {
+  withBundleAnalyzer: withBundleAnalyzer(config),
+  env,
+}
