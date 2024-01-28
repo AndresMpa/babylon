@@ -65,6 +65,79 @@ Then both things can be use to handle with the CLI
 ### Design Systems
 
 A design system is a collection of reusable components that follows an standard useful to build any app
-
 Option 1: https://mui.com/
 Option 2: https://auradesignsystem.com/
+
+### Rendering strategy (Nextjs)
+
+Using Nextjs the rendering strategies look like this:
+
+#### Client-side rendering
+
+As usual we simply use 2 hooks (Or more) to get the data inside a state
+
+```jsx
+import { getPlantList } from '../api/'
+import { Layout } from '@components/Layout'
+import { PlantCollection } from '@components/PlantCollection'
+import { useEffect, useState } from 'react'
+```
+
+```jsx
+export default function Home() {
+  const [plantData, setPlantData] = useState<Plant[]>([])
+
+  useEffect(() => {
+    getPlantList({ limit: 10 }).then((data) => setPlantData(data))
+  }, [])
+
+  return (
+    <Layout>
+      <PlantCollection plants={plantData} variant="square" />
+    </Layout>
+  )
+}
+```
+
+#### Server-side rendering
+
+To render things from the Nextjs server we need to take in consideration a couple of this,
+there's a feature call "GetStaticProps" we can use it to create a SSR strategy, it's pretty
+simple, we just need to create a new export inside a component at `/pages`, this strategy
+only works inside the `/pages` directory, after adding the export we just need to infer its
+type using `InferGetStaticPropsType` we infer the type of that exported function, that function
+should fulfil the props of the component
+
+> Note: IT MUST BE INSIDE `/pages`
+
+```jsx
+import { GetStaticProps, InferGetStaticPropsType } from 'next'
+import { getPlantList } from '@api/index'
+
+import { PlantCollection } from '@components/PlantCollection'
+import { Layout } from '@components/Layout'
+
+type HomeProps = {
+  plantData: Plant[]
+}
+```
+
+```jsx
+export const getStaticProps: GetStaticProps<HomeProps> = async () => {
+  const plantData = await getPlantList({ limit: 10 })
+
+  return {
+    props: { plantData },
+  }
+}
+
+export default function Home({
+  plantData,
+}: InferGetStaticPropsType<typeof getStaticProps>) {
+  return (
+    <Layout>
+      <PlantCollection plants={plantData} variant="square" />
+    </Layout>
+  )
+}
+```
