@@ -169,3 +169,18 @@ export const getStaticPaths: GetStaticPaths = async () => {
 ```
 
 Where `AnyType` will be a type
+
+
+##### Pros
+
+- It builds only HTML, CSS and JS files so SSG doesn't need a lot of resources
+- SSG it's not an expensive hard computations work
+- SSG can be supported on a CDN
+- SEO and performance are better than other strategies
+
+#### Cons
+
+- Not everything can be generated under this strategy
+- RT strategies aren't supported by this strategy
+- Data is directly injected in the HTML
+- Performance decrease significantly when pages on `GetStaticPaths` increase
