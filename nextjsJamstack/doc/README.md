@@ -28,19 +28,19 @@ rendering as:
 
 Note: Nextjs is able to create hybrid apps that mix each rendering mode
 
-Ref 1: https://morioh.com/a/9f0457b8ee5f/client-side-rendering-or-server-side-rendering-what-is-the-best-solution-for-your-app
-Ref 2: https://platzi.com/blog/spa-vs-ssr-vs-static-site-generators/
+- Ref 1: https://morioh.com/a/9f0457b8ee5f/client-side-rendering-or-server-side-rendering-what-is-the-best-solution-for-your-app
+- Ref 2: https://platzi.com/blog/spa-vs-ssr-vs-static-site-generators/
 
 ### Content management systems (CMS)
 
 A content management system (CMS) is computer software used to manage the creation and modification of digital content (content management).
 
-Option 1: https://www.contentful.com/
-Option 2: https://www.sanity.io/exchange/framework=nextjs (With Nextjs support)
-Option 3: https://strapi.io/integrations/nextjs-cms (With Nextjs support)
-Option 4: https://hygraph.com/ (For GraphQL)
-Option 5: https://directus.io/ (Open Source)
-Option 6: https://prismic.io/
+- Option 1: https://www.contentful.com/
+- Option 2: https://www.sanity.io/exchange/framework=nextjs (With Nextjs support)
+- Option 3: https://strapi.io/integrations/nextjs-cms (With Nextjs support)
+- Option 4: https://hygraph.com/ (For GraphQL)
+- Option 5: https://directus.io/ (Open Source)
+- Option 6: https://prismic.io/
 
 #### Contentful
 
@@ -65,8 +65,9 @@ Then both things can be use to handle with the CLI
 ### Design Systems
 
 A design system is a collection of reusable components that follows an standard useful to build any app
-Option 1: https://mui.com/
-Option 2: https://auradesignsystem.com/
+
+- Option 1: https://mui.com/
+- Option 2: https://auradesignsystem.com/
 
 ### Rendering strategy (Nextjs)
 
