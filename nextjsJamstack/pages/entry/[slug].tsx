@@ -1,15 +1,7 @@
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next'
 import Link from 'next/link'
 
-import { useRouter } from 'next/dist/client/router'
-import { useEffect, useState } from 'react'
-
-import {
-  getCategoryList,
-  getPlantList,
-  getPlant,
-  QueryStatus,
-} from '@api/index'
+import { getCategoryList, getPlantList, getPlant } from '@api/index'
 
 import { Layout } from '@components/Layout'
 import { RichText } from '@components/RichText'
@@ -24,20 +16,20 @@ type PathType = {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const entries = await getPlantList({ limiet: 10 })
+  const entries = await getPlantList({ limit: 10 })
   const paths: PathType[] = entries.map((plant) => ({
     params: { slug: plant.slug },
   }))
   return {
     paths,
-    fallback: false, // This means default 404
+    fallback: 'blocking',
   }
 }
 
 type PlantEntryProps = {
   plantData: Plant | null
   otherEntries: Plant[] | null
-  categories: Categories[] | null
+  categories: Category[] | null
 }
 
 export const getStaticProps: GetStaticProps<PlantEntryProps> = async ({
@@ -56,6 +48,7 @@ export const getStaticProps: GetStaticProps<PlantEntryProps> = async ({
 
     return {
       props: { plantData, otherEntries, categories },
+      revalidate: 5 * 60, // It means refresh => Every 5 min
     }
   } catch (e) {
     return { notFound: true }
@@ -73,16 +66,16 @@ export default function PlantEntryPage({
         <Grid item xs={12} md={8} lg={9} component="article">
           <figure>
             <img
-              src={plantData.image.url}
-              alt={plantData.image.title}
-              srcSet={plantData.image.url}
+              src={plantData!.image.url}
+              alt={plantData!.image.title}
+              srcSet={plantData!.image.url}
             />
           </figure>
           <div className="px-12 pt-8">
-            <Typography variant="h2">{plantData.plantName}</Typography>
+            <Typography variant="h2">{plantData!.plantName}</Typography>
           </div>
           <div className="p-10">
-            <RichText richText={plantData.description} />
+            <RichText richText={plantData!.description} />
           </div>
         </Grid>
         <Grid item xs={12} md={4} lg={3} component="aside">
@@ -113,7 +106,7 @@ export default function PlantEntryPage({
         </Grid>
       </Grid>
       <section className="my-4 border-t-2 border-b-2 border-gray-200 pt-200 pt-12 pb-7">
-        <AuthorCard {...plantData.author}></AuthorCard>
+        <AuthorCard {...plantData!.author}></AuthorCard>
       </section>
     </Layout>
   )

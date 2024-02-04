@@ -15,6 +15,7 @@ export const getStaticProps: GetStaticProps<HomeProps> = async () => {
 
   return {
     props: { plantData },
+    revalidate: 5 * 60, // It means refresh => Every 5 min
   }
 }
 
@@ -26,12 +27,12 @@ export default function Home({
       <Hero {...plantData[0]} className="mb-20" />
       <Authors className="mb-10" />
       <PlantCollection
-        plants={plantData.slice(1, 3)}
+        plants={plantData!.slice(1, 3)}
         variant="vertical"
         className="mb-24"
       />
       <PlantCollection
-        plants={plantData.lenght > 8 ? plantData.slice(3, 9) : plantData}
+        plants={plantData!.length > 8 ? plantData!.slice(3, 9) : plantData}
         variant="square"
       />
     </Layout>
