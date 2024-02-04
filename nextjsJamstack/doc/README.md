@@ -142,3 +142,30 @@ export default function Home({
   )
 }
 ```
+
+### GetStaticPaths
+
+While `GetStaticProps` gets the information, `GetStaticPaths` defines the pages
+that the server will need to create will building any content (On SSG). It's usage
+is pretty simple:
+
+```jsx
+import { GetStaticPaths } from 'next'
+```
+
+```jsx
+export const getStaticPaths: GetStaticPaths = async () => {
+  const entries = await getItemsList({ limiet: 10 })
+
+  const paths: AnyType[] = entries.map((item) => ({
+    params: { slug: item.slug },
+  }))
+
+  return {
+    paths,
+    fallback: false, // This means default 404
+  }
+}
+```
+
+Where `AnyType` will be a type
