@@ -1,4 +1,5 @@
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next'
+import { useRouter } from 'next/dist/client/router'
 import Link from 'next/link'
 
 import { getCategoryList, getPlantList, getPlant } from '@api/index'
@@ -22,7 +23,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   }))
   return {
     paths,
-    fallback: 'blocking',
+    fallback: true, // "blocking" works better
   }
 }
 
@@ -60,6 +61,12 @@ export default function PlantEntryPage({
   otherEntries,
   categories,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
+  const router = useRouter()
+
+  if (router.isFallback) {
+    return <Layout>Loading data...</Layout>
+  }
+
   return (
     <Layout>
       <Grid container spacing={4}>
