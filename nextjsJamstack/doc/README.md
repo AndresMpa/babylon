@@ -170,7 +170,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 Where `AnyType` will be a type
 
-
 ##### Pros
 
 - It builds only HTML, CSS and JS files so SSG doesn't need a lot of resources
@@ -184,3 +183,57 @@ Where `AnyType` will be a type
 - RT strategies aren't supported by this strategy
 - Data is directly injected in the HTML
 - Performance decrease significantly when pages on `GetStaticPaths` increase
+
+### Incremental Site Generation
+
+ISG is an improvement to SSG, SSG owns some issues when we try to add multiple
+pages so when we want to render multiple pages SSG is not good option, since
+the increasing of pages is equivalent to the worsening of performance. Using it
+is really simple you just need to add the following property.
+
+```jsx
+export const getStaticProps: GetStaticProps<EntryProps> = async ({
+  params,
+}) => {
+  // ...
+
+  try {
+    // ...
+    return {
+      props: { ... },
+      revalidate: 5 * 60, // It means refresh => Every 5 min
+    }
+  }
+
+  // ...
+}
+```
+
+The only thing you need the do is to use the property `revalidate`, giving it
+an amount of time. 
+
+When there's and `GetStaticPaths` you also need to use another strategy for the
+`fallback` parameter
+
+```jsx
+export const getStaticPaths: GetStaticPaths = async () => {
+  // ...
+  return {
+    paths,
+    fallback: 'blocking',
+  }
+}
+```
+
+Available `fallback` options are `false`, `blocking` & `true`; each option means:
+
+- `false`: A simple default 404 page (That you need to create)
+- `blocking`: It means that the server will fetch content once some data is required, so the component will wait until the data gets into the frontend, in other words, it will wait until HTTP is done
+- `true`: Useful for loading skeletons, this option let the component handle with the loading screen
+
+> Note: `fallback: true` is useful when data takes a lot of time to be fetch other ways `fallback: "blocking"` is simply better
+
+#### Stale-While-Revalidate
+
+This approach is useful for pages whit some tolerance on the criticality of information
+for example a footer don't need to update its data as frequently as a product page
