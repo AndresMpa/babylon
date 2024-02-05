@@ -170,6 +170,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 Where `AnyType` will be a type
 
+#### Trade offs
+
 ##### Pros
 
 - It builds only HTML, CSS and JS files so SSG doesn't need a lot of resources
@@ -177,7 +179,7 @@ Where `AnyType` will be a type
 - SSG can be supported on a CDN
 - SEO and performance are better than other strategies
 
-#### Cons
+##### Cons
 
 - Not everything can be generated under this strategy
 - RT strategies aren't supported by this strategy
@@ -210,7 +212,7 @@ export const getStaticProps: GetStaticProps<EntryProps> = async ({
 ```
 
 The only thing you need the do is to use the property `revalidate`, giving it
-an amount of time. 
+an amount of time.
 
 When there's and `GetStaticPaths` you also need to use another strategy for the
 `fallback` parameter
@@ -237,3 +239,73 @@ Available `fallback` options are `false`, `blocking` & `true`; each option means
 
 This approach is useful for pages whit some tolerance on the criticality of information
 for example a footer don't need to update its data as frequently as a product page
+
+#### Trade offs
+
+##### Pros
+
+- ISG is basically Server-Side Rendering (SSR) + Server-Static Generation (SSG)
+- Building time doesn't increase whit the amount of pages
+- Revelation increases pages flexibility
+
+##### Cons
+
+- ISG requires a node.js server
+- ISG is not an option for viral pages or RT responses
+- ISG is not an option for RT, User pages, custom data or dashboards
+- ISG complexity is not worth for pages whit few data such as blogs, it is worth for pages whit thousands of entries other options like SSG must be enough for least data
+
+#### Other options
+
+##### Server-Side Rendering (SSR)
+
+###### Pros
+
+- Data is always updated
+
+- Fetched data can be modified on demand
+
+###### Cons
+
+- It can be expensive, each fetch "hits" the server, that behavior can be expensive
+
+##### Server-Static Generation (Export)
+
+###### Pros
+
+- This way everything goes too fast, since `next export` removes the backend server (Node.js). So, in the end using the SSG we just render HTML, CSS and JS (That's what next.js build), allowing you to deploy your app as an static pages, useful for GitHub pages for example
+
+###### Cons
+
+- Using `next export` we lose the benefits of SSR, ISG, `revalidate`, routes, internalization & image optimization
+
+### Bonus
+
+```jsx
+import fs from 'fs'
+import path from 'path'
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const dataFromFile = fs
+    .readFileSync(path.join(process.cwd(), 'path.txt'), 'utf-8')
+    .toString()
+
+  const entriesFromFile = dataFromFile.split('\n').filter(Boolean);
+
+  const paths: PathType[] = entriesFromFile.map((slug) => ({
+    params: {
+      slug,
+    },
+  }))
+
+  return {
+    paths,
+    fallback: false,
+  }
+}
+```
+
+Inside `getStaticPaths` or `getStaticProps` we can use some server benefits such
+as `fs` or `path`, essentially those features are part of the next.js server
+
+> DO NOT use any of those benefits inside of ANY React component
