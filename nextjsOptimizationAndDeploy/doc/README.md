@@ -309,3 +309,10 @@ Inside `getStaticPaths` or `getStaticProps` we can use some server benefits such
 as `fs` or `path`, essentially those features are part of the next.js server
 
 > DO NOT use any of those benefits inside of ANY React component
+
+### Environments variables
+
+This is pretty simple Nextjs uses `process.env.VARIABLE` & `process.env.NEXT_PUBLIC_[VARIABLE]`
+the different is pretty simple anything with `NEXT_PUBLIC_` can be used for Client-Side Render
+
+Ref: https://nextjs.org/docs/pages/building-your-application/configuring/environment-variables
