@@ -316,3 +316,23 @@ This is pretty simple Nextjs uses `process.env.VARIABLE` & `process.env.NEXT_PUB
 the different is pretty simple anything with `NEXT_PUBLIC_` can be used for Client-Side Render
 
 Ref: https://nextjs.org/docs/pages/building-your-application/configuring/environment-variables
+
+#### Cross-env
+
+Something important about environment variables are OS, Windows & Unix differ significantly between
+OS:
+
+```bash
+# Windows
+set MY_SECRET=<your token here>
+
+# Unix (macOS + Linux)
+export MY_SECRET=<your token here>
+```
+
+In the end most of the server provide an option to handle with those variables without extra configurations,
+some extra references:
+
+- [GitHub Action](https://docs.github.com/es/actions/security-guides/using-secrets-in-github-actions)
+- [Heroku](https://devcenter.heroku.com/articles/config-vars)
+- [Vercel](https://vercel.com/docs/projects/environment-variables)
