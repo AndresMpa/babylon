@@ -339,10 +339,41 @@ some extra references:
 
 ### Extend types
 
+Sometimes it's useful for types to extend previous types a useful way to extend those types can be `DistributiveOmit`
+it's a simple type to extend others
+
 ```typescript
-type DistributiveOmit<T, K extends keyof T> = T extends unknown
-  ? Omit<T, K>
-  : never
+type DistributiveOmit<T, K extends keyof T> = T extends unknown ? Omit<T, K> : never
 ```
 
+The implementation of this can be the following
+
+```typescript
+import { ImageProps } from 'next/image'
+
+type ImageType = {
+  data?: SomeType
+} & DistributiveOmit<ImageProps, 'height'>
+```
+
+`ImageProps` is the previous type from "next/image"
+
 Ref: https://davidgomes.com/pick-omit-over-union-types-in-typescript/
+
+### Shallow Routing
+
+From Nextjs doc "Shallow routing allows you to change the URL without running data fetching methods again" then it says
+"You'll receive the updated pathname and the query via the router object (added by useRouter or withRouter), without
+losing state."
+
+Simply, shallow-routing will change the `pathname` without moving the state, to use it this is pretty simple
+
+```typescript
+// /pages/under-folder/[some-slug].tsx
+router.push('/something/${SOME-PATH}', undefined, { shallow: true })
+```
+
+Sometime important to understand is that `getServerSideProps`, `getStaticProps`, and `getInitialProps` will not fetch data
+so this method is useful when all the pages (/folder/[some-slug].tsx) will be render under the same source (/folder/index.tsx)
+
+Ref: https://nextjs.org/docs/pages/building-your-application/routing/linking-and-navigating#shallow-routing
