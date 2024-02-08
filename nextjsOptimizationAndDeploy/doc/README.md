@@ -408,3 +408,20 @@ export default Home
 ```
 
 Ref: https://nextjs.org/docs/pages/api-reference/components/link#if-the-child-is-a-functional-component
+
+#### Prefetch
+
+This method is only useful for navigations without next/link, as next/link takes care of prefetching pages automatically.
+
+> Note: Prefetch pages for faster client-side transitions
+
+> Note: This is a production only feature. Next.js doesn't prefetch pages in development.
+
+```jsx
+router.prefetch(
+	url: string,
+	as?: string
+)
+```
+
+Ref: https://nextjs.org/docs/pages/api-reference/functions/use-router#routerprefetch
