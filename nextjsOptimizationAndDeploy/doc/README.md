@@ -425,3 +425,11 @@ router.prefetch(
 ```
 
 Ref: https://nextjs.org/docs/pages/api-reference/functions/use-router#routerprefetch
+
+### Error pages
+
+Next.js by default comes with 404 and 500 pages
+- 404 for pages are not found
+- 500 when there's an error on the server or any component from React
+
+Ref: https://nextjs.org/docs/pages/building-your-application/routing/custom-error#404-page
