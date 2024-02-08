@@ -1,9 +1,11 @@
+import Link from 'next/link'
+
 import { Grid, GridProps } from '@ui/Grid'
 import { Typography } from '@ui/Typography'
 import { Button } from '@ui/Button'
 
 import { Excerpt } from '@components/Excerpt'
-import { PlantImage } from '@components/PlantImage'
+import { ContentfulImage } from '@components/ContentfulImage'
 
 type PlantCollectionProps = {
   plants: Plant[]
@@ -54,13 +56,11 @@ export function PlantEntrySquare({ image, plantName, slug }: Plant) {
     <Link href={`/entry/${slug}`}>
       <a title={`Go to ${plantName}`}>
         <div className="opacity-95 hover:opacity-100">
-          <PlantImage
+          <ContentfulImage
             width={460}
             src={image.url}
-            title={image.title}
-            layout="responsive"
+            layout="intrinsic"
             aspectRatio="4:3"
-            fit="scale"
           />
           <div className="p-4">
             <Typography variant="h4" className="break-words">
@@ -85,13 +85,13 @@ export function PlantEntryInline({
         <div
           className={`opacity-95 hover:opacity-100 flex items-end ${className}`}
         >
-          <PlantImage
+          <ContentfulImage
+            fit="fill"
             width={84}
+            layout="fixed"
             src={image.url}
-            title={image.title}
-            layout="responsive"
             aspectRatio="1:1"
-            fit="crop"
+            className="flex-none"
           />
           <div className="pl-2 flex-auto">
             <Typography variant="h6" className="break-words">
@@ -114,13 +114,11 @@ export function PlantEntryVertical({
     <div className="opacity-95 hover:opacity-100">
       <Link href={`/entry/${slug}`}>
         <a title={`Go to ${plantName}`}>
-          <PlantImage
+          <ContentfulImage
             width={624}
             src={image.url}
-            title={image.title}
-            layout="responsive"
-            aspectRatio="1:1"
-            fit="crop"
+            layout="intrinsic"
+            aspectRatio="9:12"
           />
           <Typography variant="h2" className="break-words pt-4 px-4">
             {plantName}

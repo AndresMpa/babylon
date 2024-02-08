@@ -336,3 +336,13 @@ some extra references:
 - [GitHub Action](https://docs.github.com/es/actions/security-guides/using-secrets-in-github-actions)
 - [Heroku](https://devcenter.heroku.com/articles/config-vars)
 - [Vercel](https://vercel.com/docs/projects/environment-variables)
+
+### Extend types
+
+```typescript
+type DistributiveOmit<T, K extends keyof T> = T extends unknown
+  ? Omit<T, K>
+  : never
+```
+
+Ref: https://davidgomes.com/pick-omit-over-union-types-in-typescript/

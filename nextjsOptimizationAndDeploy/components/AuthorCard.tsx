@@ -1,4 +1,5 @@
 import { Typography } from '@ui/Typography'
+import { ContentfulImage } from '@components/ContentfulImage'
 
 export function AuthorCard({
   fullName,
@@ -10,7 +11,13 @@ export function AuthorCard({
   return (
     <div className="md:flex">
       <div className="pr-8 pb-4 flex-shrink-0">
-        <img src={photo.url} width={192} />
+        <ContentfulImage
+          fit="fill"
+          width={192}
+          src={photo.url}
+          aspectRatio="1:1"
+          layout="intrinsic"
+        />
       </div>
       <div>
         <Typography variant="h5" component="p">
