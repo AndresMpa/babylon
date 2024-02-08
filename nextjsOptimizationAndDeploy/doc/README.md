@@ -377,3 +377,34 @@ Sometime important to understand is that `getServerSideProps`, `getStaticProps`,
 so this method is useful when all the pages (/folder/[some-slug].tsx) will be render under the same source (/folder/index.tsx)
 
 Ref: https://nextjs.org/docs/pages/building-your-application/routing/linking-and-navigating#shallow-routing
+
+#### passHref ("next/link")
+
+When using some custom component out of any library like material UI passHref must be sent, that's useful for custom components
+like doing a custom "a" tag
+
+```jsx
+import Link from 'next/link'
+ 
+// `onClick`, `href`, and `ref` need to be passed to the DOM element
+// for proper handling
+const MyButton = React.forwardRef(({ onClick, href }, ref) => {
+  return (
+    <a href={href} onClick={onClick} ref={ref}>
+      Click Me
+    </a>
+  )
+})
+ 
+function Home() {
+  return (
+    <Link href="/about" passHref legacyBehavior>
+      <MyButton />
+    </Link>
+  )
+}
+ 
+export default Home
+```
+
+Ref: https://nextjs.org/docs/pages/api-reference/components/link#if-the-child-is-a-functional-component
