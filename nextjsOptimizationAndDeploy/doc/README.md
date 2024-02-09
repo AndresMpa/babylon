@@ -385,7 +385,7 @@ like doing a custom "a" tag
 
 ```jsx
 import Link from 'next/link'
- 
+
 // `onClick`, `href`, and `ref` need to be passed to the DOM element
 // for proper handling
 const MyButton = React.forwardRef(({ onClick, href }, ref) => {
@@ -395,7 +395,7 @@ const MyButton = React.forwardRef(({ onClick, href }, ref) => {
     </a>
   )
 })
- 
+
 function Home() {
   return (
     <Link href="/about" passHref legacyBehavior>
@@ -403,7 +403,7 @@ function Home() {
     </Link>
   )
 }
- 
+
 export default Home
 ```
 
@@ -429,7 +429,25 @@ Ref: https://nextjs.org/docs/pages/api-reference/functions/use-router#routerpref
 ### Error pages
 
 Next.js by default comes with 404 and 500 pages
+
 - 404 for pages are not found
 - 500 when there's an error on the server or any component from React
 
 Ref: https://nextjs.org/docs/pages/building-your-application/routing/custom-error#404-page
+
+#### getInitialProps
+
+`getInitialProps` is an internal method that allow you to connect with nextjs server to catch request, its useful to catch
+the status code then to handle with error as follows
+
+```tsx
+const ErrorPage: NextPage<ErrorPageProps> = ({ statusCode, message }) => {
+  // Some component
+  return <>Error... {statusCode}</>
+}
+
+MyErrorPage.getInitialProps = ({ res, err }) => {
+  const statusCode = res ? res.statusCode : err ? err.statusCode : 404
+  return { statusCode }
+}
+```
