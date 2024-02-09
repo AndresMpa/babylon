@@ -1,20 +1,16 @@
-// 500.tsx
 import { Layout } from '@components/Layout'
 import { Typography } from '@ui/Typography'
 import { Button } from '@ui/Button'
 
-export default function NotFoundPage() {
+export default function NotFound() {
   return (
-    <Layout>
+    <Layout title="404">
       <div className="text-center">
         <Typography variant="h2" className="mb-6">
-          Something went wrong
+          We are sorry
         </Typography>
         <Typography variant="body1" className="mb-6">
-          It's not you, it's us. Please try it again in a few minutes.
-        </Typography>
-        <Typography variant="body1" className="mb-6">
-          <span className="bg-gray-300 inline-block">ERRORCODE: 505</span>
+          We could not find what you were looking for
         </Typography>
         <Button
           color="primary"
