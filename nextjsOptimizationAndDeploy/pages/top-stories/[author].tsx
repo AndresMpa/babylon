@@ -1,4 +1,5 @@
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
+import { useRouter } from 'next/dist/client/router'
 import { useState, useEffect } from 'react'
 
 import { VerticalTabs, TabItem } from '@ui/Tabs'
@@ -11,7 +12,8 @@ import { Layout } from '@components/Layout'
 
 import { IGetPlantListByAuthorQueryVariables } from '@api/generated/graphql'
 import { getAuthorList, getPlantListByAuthor, QueryStatus } from '@api'
-import { useRouter } from 'next/dist/client/router'
+
+import ErrorPage from '../_error'
 
 type TopStoriesPageProps = {
   authors: Author[]
@@ -67,27 +69,8 @@ export default function TopStories({
   const router = useRouter()
   const currentAuthor = router.query.author
 
-  if (
-    typeof currentAuthor !== 'string' ||
-    authors.length === 0 ||
-    status === 'error'
-  ) {
-    return (
-      <Layout>
-        <main className="pt-10 px-6">
-          <div className="pb-16">
-            <Typography variant="h2">Huh, algo no está bien</Typography>
-          </div>
-          <article>
-            <Alert severity="error">
-              {status === 'error'
-                ? 'Hubo un error consultando la información. Inspeccionar el request en la pestaña Network de DevTools podría dar más información'
-                : 'No se encontró la información. ¿Olvidaste configurar el contenido en Contentful?'}
-            </Alert>
-          </article>
-        </main>
-      </Layout>
-    )
+  if (true) {
+    return <ErrorPage message="Something went wrong; please try again later" />
   }
 
   const tabs: TabItem[] = authors.map((author) => ({
