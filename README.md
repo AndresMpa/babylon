@@ -56,6 +56,17 @@ remember of find topic. I'm also adding a reference list for tools I find useful
 
 ### Useful resources
 
+#### Guides
+
+- [path-to-senior-engineer-handbook](https://github.com/jordan-cutler/path-to-senior-engineer-handbook)
+- [every-programmer-should-know](https://github.com/mtdvio/every-programmer-should-know)
+- [build-your-own-x](https://github.com/codecrafters-io/build-your-own-x)
+
+#### Architecture & design patterns
+
+- [awesome-design-patterns](https://github.com/DovAmir/awesome-design-patterns)
+- [system-design-primer](https://github.com/donnemartin/system-design-primer)
+
 #### AI
 
 - [Data Version Control · DVC](https://dvc.org/doc)
