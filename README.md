@@ -61,6 +61,7 @@ remember of find topic. I'm also adding a reference list for tools I find useful
 - [path-to-senior-engineer-handbook](https://github.com/jordan-cutler/path-to-senior-engineer-handbook)
 - [every-programmer-should-know](https://github.com/mtdvio/every-programmer-should-know)
 - [build-your-own-x](https://github.com/codecrafters-io/build-your-own-x)
+- [About Solid](https://dev.to/alisamirali/mastering-solid-principles-1aa6)
 
 #### Architecture & design patterns
 
