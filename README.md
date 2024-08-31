@@ -105,5 +105,6 @@ remember of find topic. I'm also adding a reference list for tools I find useful
 
 - [You might not need jQuery](https://youmightnotneedjquery.com/)
 - [Node Best Practices](https://github.com/goldbergyoni/nodebestpractices/blob/spanish-translation/README.spanish.md)
+- [A library of hooks for react](https://usehooks.com/)
 
 > New rocking image by [freepik](https://www.freepik.com/ai-images-editor?prompt=futuristic+bookstore+with+old+egyptian+aesthetics&style=painting)
