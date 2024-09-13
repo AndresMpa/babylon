@@ -109,4 +109,10 @@ remember of find topic. I'm also adding a reference list for tools I find useful
 - [5 JavaScript Security Best Practices for 2024](https://thenewstack.io/5-javascript-security-best-practices-for-2024/)
 - [Better ways to use async functions in Javascript](https://dev.to/adityabhattad/better-way-to-make-async-calls-calls-in-javascript-dag)
 
+#### Python
+
+- [Automate the Boring Stuff with Python](https://automatetheboringstuff.com/)
+- [How to Think Like a Computer Scientist](https://openbookproject.net/thinkcs/python/english3e/)
+- [Learn Python 3 The Hard Way](https://learnpythonthehardway.org/python3/)
+
 > New rocking image by [freepik](https://www.freepik.com/ai-images-editor?prompt=futuristic+bookstore+with+old+egyptian+aesthetics&style=painting)
