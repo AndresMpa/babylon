@@ -102,6 +102,9 @@ remember of find topic. I'm also adding a reference list for tools I find useful
 - [github-readme-streak-stats](https://github.com/DenverCoder1/github-readme-streak-stats/blob/main/docs/themes.md)
 - [How to grep (search through)](https://stackoverflow.com/questions/2928584/how-to-grep-search-through-committed-code-in-the-git-history)
 
+#### CSS
+- [Transition.css - easy transitions with clip-path](https://www.transition.style/)
+
 #### JavaScript
 
 - [You might not need jQuery](https://youmightnotneedjquery.com/)
