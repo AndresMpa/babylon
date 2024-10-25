@@ -112,6 +112,7 @@ remember of find topic. I'm also adding a reference list for tools I find useful
 - [A library of hooks for react](https://usehooks.com/)
 - [5 JavaScript Security Best Practices for 2024](https://thenewstack.io/5-javascript-security-best-practices-for-2024/)
 - [Better ways to use async functions in Javascript](https://dev.to/adityabhattad/better-way-to-make-async-calls-calls-in-javascript-dag)
+- [Public APIs](https://publicapis.dev/)
 
 #### Python
 
