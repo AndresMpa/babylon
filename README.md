@@ -106,6 +106,7 @@ remember of find topic. I'm also adding a reference list for tools I find useful
 #### CSS
 - [Transition.css - easy transitions with clip-path](https://www.transition.style/)
 - [A game for practice CSS](https://flexboxfroggy.com/#es)
+- [Simple Flexbox test](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Flexbox_skills)
 
 #### JavaScript
 
