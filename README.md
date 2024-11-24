@@ -108,6 +108,7 @@ remember of find topic. I'm also adding a reference list for tools I find useful
 - [A game for practice CSS](https://flexboxfroggy.com/#es)
 - [Simple Flexbox test](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Flexbox_skills)
 - [Flexbox guide](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Flexbox)
+- [Float guide](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Floats)
 - [A guide for responsive design](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Responsive_Design)
 
 #### JavaScript
