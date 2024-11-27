@@ -111,6 +111,7 @@ remember of find topic. I'm also adding a reference list for tools I find useful
 - [Float guide](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Floats)
 - [Grid guide](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Grids)
 - [A guide for responsive design](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Responsive_Design)
+- [Zero-config number](http://number-flow.barvian.me)
 
 #### JavaScript
 
