@@ -121,7 +121,8 @@ remember of find topic. I'm also adding a reference list for tools I find useful
 - [5 JavaScript Security Best Practices for 2024](https://thenewstack.io/5-javascript-security-best-practices-for-2024/)
 - [Better ways to use async functions in Javascript](https://dev.to/adityabhattad/better-way-to-make-async-calls-calls-in-javascript-dag)
 - [Public APIs](https://publicapis.dev/)
-
+- [TypeScript Best Practices — Using Enums](https://dev.to/stephengade/typescript-best-practices-using-enums-311c)
+- 
 #### Python
 
 - [Automate the Boring Stuff with Python](https://automatetheboringstuff.com/)
