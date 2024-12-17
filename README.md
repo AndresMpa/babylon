@@ -67,6 +67,10 @@ remember of find topic. I'm also adding a reference list for tools I find useful
 - [build-your-own-x](https://github.com/codecrafters-io/build-your-own-x)
 - [About Solid](https://dev.to/alisamirali/mastering-solid-principles-1aa6)
 
+#### Certificartes
+
+- [A collection of free certifications](https://www.classcentral.com/report/free-developer-it-certifications/)
+
 #### Architecture & design patterns
 
 - [awesome-design-patterns](https://github.com/DovAmir/awesome-design-patterns)
