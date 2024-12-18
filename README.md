@@ -126,7 +126,8 @@ remember of find topic. I'm also adding a reference list for tools I find useful
 - [Better ways to use async functions in Javascript](https://dev.to/adityabhattad/better-way-to-make-async-calls-calls-in-javascript-dag)
 - [Public APIs](https://publicapis.dev/)
 - [TypeScript Best Practices — Using Enums](https://dev.to/stephengade/typescript-best-practices-using-enums-311c)
-- 
+- [Techniques for TypeScript](https://dev.to/shafayeat/advanced-and-creative-typescript-techniques-for-professionals-1f02)
+
 #### Python
 
 - [Automate the Boring Stuff with Python](https://automatetheboringstuff.com/)
