@@ -139,3 +139,4 @@ remember of find topic. I'm also adding a reference list for tools I find useful
 ## TODO
 - [ ] Refactor this readme
 - [ ] Start page project
+- [ ] Cut branches
