@@ -128,6 +128,7 @@ remember of find topic. I'm also adding a reference list for tools I find useful
 - [Public APIs](https://publicapis.dev/)
 - [TypeScript Best Practices — Using Enums](https://dev.to/stephengade/typescript-best-practices-using-enums-311c)
 - [Techniques for TypeScript](https://dev.to/shafayeat/advanced-and-creative-typescript-techniques-for-professionals-1f02)
+- [JS course by Midi](http://midu.link/js)
 
 #### Python
 
