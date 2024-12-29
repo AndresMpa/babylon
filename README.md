@@ -130,6 +130,7 @@ remember of find topic. I'm also adding a reference list for tools I find useful
 - [Techniques for TypeScript](https://dev.to/shafayeat/advanced-and-creative-typescript-techniques-for-professionals-1f02)
 - [JS course by Midi](http://midu.link/js)
 - [Practice Frontend short challenges](https://frontendpractice.hmellahi.me/)
+- [Tutorials on JS](https://driverjs.com/)
 
 #### Python
 
