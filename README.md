@@ -77,6 +77,7 @@ remember of find topic. I'm also adding a reference list for tools I find useful
 - [system-design-primer](https://github.com/donnemartin/system-design-primer)
 - [Observer Pattern](https://dev.to/superviz/design-pattern-3-observer-pattern-36eo)
 - [Data structures](https://www.techiedelight.com/data-structures-and-algorithms-problems)
+- [Books about programming](https://github.com/midudev/libros-programacion-gratis)
 
 #### AI
 
