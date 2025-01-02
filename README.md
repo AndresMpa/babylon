@@ -66,6 +66,7 @@ remember of find topic. I'm also adding a reference list for tools I find useful
 - [every-programmer-should-know](https://github.com/mtdvio/every-programmer-should-know)
 - [build-your-own-x](https://github.com/codecrafters-io/build-your-own-x)
 - [About Solid](https://dev.to/alisamirali/mastering-solid-principles-1aa6)
+- [Stay updated about JS/TS](https://ecma-international.org/publications-and-standards/standards/ecma-262/)
 
 #### Certificartes
 
