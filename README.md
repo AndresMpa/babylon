@@ -119,6 +119,7 @@ remember of find topic. I'm also adding a reference list for tools I find useful
 - [A guide for responsive design](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Responsive_Design)
 - [Zero-config number](http://number-flow.barvian.me)
 - [Reduce image sizes](https://squoosh.app/)
+- [A reference guide for css](https://cssreference.io/)
 
 #### JavaScript
 
