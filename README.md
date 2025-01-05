@@ -142,8 +142,6 @@ remember of find topic. I'm also adding a reference list for tools I find useful
 - [How to Think Like a Computer Scientist](https://openbookproject.net/thinkcs/python/english3e/)
 - [Learn Python 3 The Hard Way](https://learnpythonthehardway.org/python3/)
 
-> New rocking image by [freepik](https://www.freepik.com/ai-images-editor?prompt=futuristic+bookstore+with+old+egyptian+aesthetics&style=painting)
-
 ## TODO
 - [ ] Refactor this readme
 - [ ] Start page project
