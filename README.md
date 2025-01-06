@@ -90,6 +90,7 @@ remember of find topic. I'm also adding a reference list for tools I find useful
 - [Database visualizer](https://postgres.new/)
 - [5 Tips for Getting Started with Language Models](https://www.kdnuggets.com/5-tips-for-getting-started-with-language-models)
 - [10 GitHub Repositories to Master Computer Vision](https://www.kdnuggets.com/10-github-repositories-to-master-computer-vision)
+- [10 GitHub repositories to learn about Math](https://www.kdnuggets.com/10-github-repositories-master-math)
 
 ##### Git
 
@@ -110,6 +111,7 @@ remember of find topic. I'm also adding a reference list for tools I find useful
 - [How to grep (search through)](https://stackoverflow.com/questions/2928584/how-to-grep-search-through-committed-code-in-the-git-history)
 
 #### CSS
+
 - [Transition.css - easy transitions with clip-path](https://www.transition.style/)
 - [A game for practice CSS](https://flexboxfroggy.com/#es)
 - [Simple Flexbox test](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Flexbox_skills)
