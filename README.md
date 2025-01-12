@@ -142,6 +142,7 @@ remember of find topic. I'm also adding a reference list for tools I find useful
 - [Tutorials on JS](https://driverjs.com/)
 - [Threejs animations examples](https://sketches.sarlloc.xyz/sketch/homepage)
 - [Maps on Reactjs](https://github.com/visgl/react-google-maps)
+- [Small size calendar utility](https://github.com/WickyNilliams/cally)
 
 #### Python
 
