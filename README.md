@@ -91,6 +91,7 @@ remember of find topic. I'm also adding a reference list for tools I find useful
 - [5 Tips for Getting Started with Language Models](https://www.kdnuggets.com/5-tips-for-getting-started-with-language-models)
 - [10 GitHub Repositories to Master Computer Vision](https://www.kdnuggets.com/10-github-repositories-to-master-computer-vision)
 - [10 GitHub repositories to learn about Math](https://www.kdnuggets.com/10-github-repositories-master-math)
+- [Search engine with AI](https://www.perplexity.ai/)
 
 ##### Git
 
