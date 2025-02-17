@@ -152,6 +152,7 @@ remember of find topic. I'm also adding a reference list for tools I find useful
 - [REST API generator](http://retool.com/api-generator)
 - [Check web if it has any problem](http://web-check.xyz)
 - [Send email using JS](http://resend.com)
+- [SVX on Svelte](https://github.com/pheralb/svgl)
 
 #### Python
 
