@@ -60,6 +60,7 @@ remember of find topic. I'm also adding a reference list for tools I find useful
 
 - [Interview Warmup](https://grow.google/certificates/interview-warmup/)
 - [Guías de entrevistas para programación](https://github.com/DevCaress/guia-entrevistas-de-programacion)
+- [Data Structures and Algorithms Problems - Interview problems](https://www.techiedelight.com/data-structures-and-algorithms-problems)
 
 #### Guides
 
