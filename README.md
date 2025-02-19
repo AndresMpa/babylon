@@ -95,6 +95,7 @@ remember of find topic. I'm also adding a reference list for tools I find useful
 - [10 GitHub Repositories to Master Computer Vision](https://www.kdnuggets.com/10-github-repositories-to-master-computer-vision)
 - [10 GitHub repositories to learn about Math](https://www.kdnuggets.com/10-github-repositories-master-math)
 - [Search engine with AI](https://www.perplexity.ai/)
+- [AI Course from Helsinki](https://www.elementsofai.com/es/)
 
 ##### Git
 
