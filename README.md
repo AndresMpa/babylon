@@ -97,6 +97,9 @@ remember of find topic. I'm also adding a reference list for tools I find useful
 - [Search engine with AI](https://www.perplexity.ai/)
 - [AI Course from Helsinki](https://www.elementsofai.com/es/)
 
+##### Docker
+- [A way to visualize docker](https://code.visualstudio.com/docs/devcontainers/create-dev-container)
+
 ##### Git
 
 - [Delta](https://dandavison.github.io/delta/installation.html)
