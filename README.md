@@ -160,6 +160,7 @@ remember of find topic. I'm also adding a reference list for tools I find useful
 - [Check web if it has any problem](http://web-check.xyz)
 - [Send email using JS](http://resend.com)
 - [SVX on Svelte](https://github.com/pheralb/svgl)
+- [Easy to use Charts - Roseta Chart](https://rosencharts.com/)
 
 #### Python
 
