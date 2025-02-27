@@ -167,6 +167,7 @@ remember of find topic. I'm also adding a reference list for tools I find useful
 - [Automate the Boring Stuff with Python](https://automatetheboringstuff.com/)
 - [How to Think Like a Computer Scientist](https://openbookproject.net/thinkcs/python/english3e/)
 - [Learn Python 3 The Hard Way](https://learnpythonthehardway.org/python3/)
+- [30 Must-Know Tools for Python Development](https://search.app/G4Bh)
 
 ## TODO
 - [ ] Refactor this readme
