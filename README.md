@@ -70,7 +70,7 @@ remember of find topic. I'm also adding a reference list for tools I find useful
 - [About Solid](https://dev.to/alisamirali/mastering-solid-principles-1aa6)
 - [Stay updated about JS/TS](https://ecma-international.org/publications-and-standards/standards/ecma-262/)
 - [Courses about programming](https://www.codedex.io/courses)
--[Learn anything - Website for learning paths](https://learn-anything.xyz/)
+- [Learn anything - Website for learning paths](https://learn-anything.xyz/)
 
 #### Certificartes
 
