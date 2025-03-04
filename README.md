@@ -71,6 +71,7 @@ remember of find topic. I'm also adding a reference list for tools I find useful
 - [Stay updated about JS/TS](https://ecma-international.org/publications-and-standards/standards/ecma-262/)
 - [Courses about programming](https://www.codedex.io/courses)
 - [Learn anything - Website for learning paths](https://learn-anything.xyz/)
+- [Coding Katas](https://github.com/gamontal/awesome-katas)
 
 #### Certificartes
 
