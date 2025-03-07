@@ -166,6 +166,7 @@ remember of find topic. I'm also adding a reference list for tools I find useful
 - [SVX on Svelte](https://github.com/pheralb/svgl)
 - [Easy to use Charts - Roseta Chart](https://rosencharts.com/)
 - [5 Advanced JavaScript Concepts](https://javascript.plainenglish.io/5-most-powerful-advanced-javascript-concepts-9d78cc22287a)
+- [PyLint - Utility for python](https://pypi.org/project/pylint/)
 
 #### Python
 
@@ -173,6 +174,7 @@ remember of find topic. I'm also adding a reference list for tools I find useful
 - [How to Think Like a Computer Scientist](https://openbookproject.net/thinkcs/python/english3e/)
 - [Learn Python 3 The Hard Way](https://learnpythonthehardway.org/python3/)
 - [30 Must-Know Tools for Python Development](https://search.app/G4Bh)
+
 
 ## TODO
 - [ ] Refactor this readme
