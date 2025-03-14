@@ -84,6 +84,7 @@ remember of find topic. I'm also adding a reference list for tools I find useful
 - [Observer Pattern](https://dev.to/superviz/design-pattern-3-observer-pattern-36eo)
 - [Data structures](https://www.techiedelight.com/data-structures-and-algorithms-problems)
 - [Books about programming](https://github.com/midudev/libros-programacion-gratis)
+- [Free public apis](https://github.com/public-apis/public-apis)
 - [A guide about tunnels](https://medium.com/@mazleyou/comprehensive-guide-to-setting-up-cloudflare-tunnel-secure-access-to-local-resources-a0d8a88e437b)
 
 #### AI
