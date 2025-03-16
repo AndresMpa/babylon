@@ -140,6 +140,7 @@ remember of find topic. I'm also adding a reference list for tools I find useful
 - [Grid generator](http://cssgridgenerator.io)
 - [Flexbox generator](https://flexboxlabs.netlify.app/grid)
 - [Layout generator - Brad woods](https://layout.bradwoods.io)
+- [A comprensive guide about web components](https://css-tricks.com/web-components-demystified/)
 
 #### UX/UI
 
