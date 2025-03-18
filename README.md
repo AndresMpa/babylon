@@ -169,6 +169,7 @@ remember of find topic. I'm also adding a reference list for tools I find useful
 - [Easy to use Charts - Roseta Chart](https://rosencharts.com/)
 - [5 Advanced JavaScript Concepts](https://javascript.plainenglish.io/5-most-powerful-advanced-javascript-concepts-9d78cc22287a)
 - [PyLint - Utility for python](https://pypi.org/project/pylint/)
+- [Lottie for a Pull&Refresh using React)[https://search.app/owvRz]
 
 #### Python
 
