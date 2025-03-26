@@ -145,6 +145,7 @@ remember of find topic. I'm also adding a reference list for tools I find useful
 #### UX/UI
 
 - [A collection of different UX/UI ideas](https://calltoinspiration.com/)
+- [Inspiration for designers](http://godly.website)
 
 #### JavaScript
 
