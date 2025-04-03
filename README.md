@@ -176,7 +176,7 @@ remember of find topic. I'm also adding a reference list for tools I find useful
 #### Vue.js
 
 - [Components library - Vuetify](https://vuetifyjs.com/en/)
-- [Componente libray - PrimeVue](https://primevue.org/)
+- [Componente library - PrimeVue](https://primevue.org/)
 
 #### Python
 
