@@ -173,7 +173,7 @@ remember of find topic. I'm also adding a reference list for tools I find useful
 - [PyLint - Utility for python](https://pypi.org/project/pylint/)
 - [Lottie for a Pull&Refresh using React](https://search.app/owvRz)
 
-#### Vue.js
+#### Vue
 
 - [Components library - Vuetify](https://vuetifyjs.com/en/)
 - [Componente library - PrimeVue](https://primevue.org/)
