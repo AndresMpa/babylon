@@ -176,8 +176,9 @@ remember of find topic. I'm also adding a reference list for tools I find useful
 
 #### Vue
 
-- [Components library - Vuetify](https://vuetifyjs.com/en/)
-- [Componente library - PrimeVue](https://primevue.org/)
+- [Component library - Vuetify](https://vuetifyjs.com/en/)
+- [Component library - PrimeVue](https://primevue.org/)
+- [Component library - Quasar](https://quasar.dev/)
 
 #### Python
 
