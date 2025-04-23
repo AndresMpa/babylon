@@ -87,6 +87,7 @@ remember of find topic. I'm also adding a reference list for tools I find useful
 - [Free public apis](https://github.com/public-apis/public-apis)
 - [A guide about tunnels](https://medium.com/@mazleyou/comprehensive-guide-to-setting-up-cloudflare-tunnel-secure-access-to-local-resources-a0d8a88e437b)
 - [tRPC, gRPC, GraphQL or REST: When to Use What?](https://medium.com/@thiwankajayasiri/trpc-grpc-graphql-or-rest-when-to-use-what-fb16fb188268)
+- [30+ MCP Ideas with Complete Source Code by Anmol Baranwal](https://www.kdnuggets.com/10-free-machine-learning-books-for-2025)
 
 #### AI
 
