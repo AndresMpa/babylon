@@ -108,7 +108,7 @@ remember of find topic. I'm also adding a reference list for tools I find useful
 
 ##### Git
 
-- [Delta](https://dandavison.github.io/delta/installation.html)
+- [Delta - A better git analyzer](https://dandavison.github.io/delta/installation.html)
 - [Dive - See docker by layers](https://github.com/wagoodman/dive)
 - [Better replacement for "ls"](https://github.com/eza-community/eza)
 - [git reset | Atlassian Git Tutorial](https://www.atlassian.com/es/git/tutorials/undoing-changes/git-reset#:~:text=Como%20resumen%2C%20git%20reset%20es,y%20el%20directorio%20de%20trabajo.)
