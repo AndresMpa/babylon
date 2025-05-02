@@ -94,7 +94,7 @@ remember of find topic. I'm also adding a reference list for tools I found usefu
 - [Data Version Control · DVC](https://dvc.org/doc)
 - [ChatGPT](https://chat.openai.com/)
 - [Stability AI](https://stability.ai/)
-- [Index — AMPGO](https://infinity77.net/global_optimization/genindex.html)
+- [Index of functions - AMPGO](https://infinity77.net/global_optimization/genindex.html)
 - [A Neural Network Playground](https://playground.tensorflow.org/#activation=relu&batchSize=15&dataset=circle&regDataset=reg-plane&learningRate=0.3&regularizationRate=0&noise=25&networkShape=4,5,5,4&seed=0.52244&showTestData=false&discretize=false&percTrainData=70&x=true&y=true&xTimesY=false&xSquared=false&ySquared=false&cosX=false&sinX=false&cosY=false&sinY=false&collectStats=false&problem=classification&initZero=false&hideText=false)
 - [Database visualizer](https://postgres.new/)
 - [5 Tips for Getting Started with Language Models](https://www.kdnuggets.com/5-tips-for-getting-started-with-language-models)
