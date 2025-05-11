@@ -110,7 +110,7 @@ remember of find topic. I'm also adding a reference list for tools I found usefu
 
 - [Delta - A better git analyzer](https://dandavison.github.io/delta/installation.html)
 - [Dive - See docker by layers](https://github.com/wagoodman/dive)
-- [Better replacement for "ls"](https://github.com/eza-community/eza)
+- [Esa - Better replacement for "ls"](https://github.com/eza-community/eza)
 - [git reset | Atlassian Git Tutorial](https://www.atlassian.com/es/git/tutorials/undoing-changes/git-reset#:~:text=Como%20resumen%2C%20git%20reset%20es,y%20el%20directorio%20de%20trabajo.)
 - [setting-up-ssh-agent](https://github.com/White-Oak/arch-setup-for-dummies/blob/master/setting-up-ssh-agent.md)
 - [Generación de una nueva clave SSH y adición al agente SSH - Documentación de GitHub](https://docs.github.com/es/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
