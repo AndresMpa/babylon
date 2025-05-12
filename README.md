@@ -66,7 +66,7 @@ remember of find topic. I'm also adding a reference list for tools I found usefu
 
 - [Path to senior engineer handbook](https://github.com/jordan-cutler/path-to-senior-engineer-handbook)
 - [Every programmer should know](https://github.com/mtdvio/every-programmer-should-know)
-- [build your own x](https://github.com/codecrafters-io/build-your-own-x)
+- [Build your own x](https://github.com/codecrafters-io/build-your-own-x)
 - [About Solid](https://dev.to/alisamirali/mastering-solid-principles-1aa6)
 - [Stay updated about JS/TS](https://ecma-international.org/publications-and-standards/standards/ecma-262/)
 - [Courses about programming](https://www.codedex.io/courses)
