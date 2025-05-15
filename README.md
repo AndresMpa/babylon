@@ -62,7 +62,7 @@ remember of find topic. I'm also adding a reference list for tools I found usefu
 - [Guías de entrevistas para programación](https://github.com/DevCaress/guia-entrevistas-de-programacion)
 - [Data Structures and Algorithms Problems - Interview problems](https://www.techiedelight.com/data-structures-and-algorithms-problems)
 
-#### Guides
+#### Guides to improve 
 
 - [Path to senior engineer handbook](https://github.com/jordan-cutler/path-to-senior-engineer-handbook)
 - [Every programmer should know](https://github.com/mtdvio/every-programmer-should-know)
