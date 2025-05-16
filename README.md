@@ -89,7 +89,7 @@ remember of find topic. I'm also adding a reference list for tools I found usefu
 - [tRPC, gRPC, GraphQL or REST: When to Use What?](https://medium.com/@thiwankajayasiri/trpc-grpc-graphql-or-rest-when-to-use-what-fb16fb188268)
 - [30+ MCP Ideas with Complete Source Code by Anmol Baranwal](https://levelup.gitconnected.com/30-mcp-ideas-with-complete-source-code-2e1406495b8d)
 
-#### Artificial Intelligence
+#### Artificial Intelligence (AI)
 
 - [Data Version Control · DVC](https://dvc.org/doc)
 - [ChatGPT](https://chat.openai.com/)
