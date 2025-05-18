@@ -180,9 +180,9 @@ remember of find topic. I'm also adding a reference list for tools I found usefu
 
 #### Vue
 
-- [Component library - Vuetify](https://vuetifyjs.com/en/)
+- [UI Component library - Vuetify](https://vuetifyjs.com/en/)
 - [Component library - PrimeVue](https://primevue.org/)
-- [Component library - Quasar](https://quasar.dev/)
+- [UI Component library - Quasar](https://quasar.dev/)
 
 #### Python
 
