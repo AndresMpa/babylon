@@ -8,7 +8,7 @@
 
 ## What the hell is this?
 
-Babylon is a collection/library of courses I have took or I'm taking; basically those folders up there are my notes
+Babylon is a collection or a library of courses I have took or I'm taking; basically those folders up there are my notes
 some code and personal thoughts about different technologies, from Frontend to AI/ML, you can (Or will) find
 almost anything here.
 
