@@ -18,7 +18,7 @@ remember of find topic. I'm also adding a reference list for tools I found usefu
 
 <div align="center">
 
-| Course                                                                                  | Topic                                    |
+| Course(s)                                                                  | Topic                                    |
 | --------------------------------------------------------------------------------------- | ---------------------------------------- |
 | [Design patterns](./designPatterns)                                                     | Basics, Design Patterns                  |
 | [Data structures](./dataStructures)                                                     | Basics, Data structures, Python          |
