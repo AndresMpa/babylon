@@ -194,4 +194,3 @@ remember of find topic. I'm also adding a reference list for tools I found usefu
 ## TODO
 - [ ] Refactor this readme, split it
 - [ ] Change the folder system
-- [x] Consider merge branches
