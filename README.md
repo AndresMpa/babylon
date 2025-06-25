@@ -85,6 +85,7 @@ The aim of this repository is to have a set of tools for myself (Or you) to keep
 - [A guide about tunnels](https://medium.com/@mazleyou/comprehensive-guide-to-setting-up-cloudflare-tunnel-secure-access-to-local-resources-a0d8a88e437b)
 - [tRPC, gRPC, GraphQL or REST: When to Use What?](https://medium.com/@thiwankajayasiri/trpc-grpc-graphql-or-rest-when-to-use-what-fb16fb188268)
 - [30+ MCP Ideas with Complete Source Code by Anmol Baranwal](https://levelup.gitconnected.com/30-mcp-ideas-with-complete-source-code-2e1406495b8d)
+- [LGTM - Grafana stack for observability](https://blog.prateekjain.dev/mastering-observability-with-grafanas-lgtm-stack-e3b0e0a0e89b)
 
 #### Artificial Intelligence (AI)
 
