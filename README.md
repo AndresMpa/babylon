@@ -178,6 +178,7 @@ The aim of this repository is to have a set of tools for myself (Or you) to keep
 - [Interesting drag and drop](http://drag-and-drop.formkit.com)
 - [GridStack - Easy way to make dashboards](https://www.npmjs.com/package/gridstack)
 - [Swapy - Easy drag and drop](https://swapy.tahazsh.com/)
+- [Gridstack](https://www.npmjs.com/package/gridstack)
 
 #### Vue
 
