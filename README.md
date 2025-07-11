@@ -70,6 +70,7 @@ The aim of this repository is to have a set of tools for myself (Or you) to keep
 - [Learn anything - Website for learning paths](https://learn-anything.xyz/)
 - [Coding Katas](https://github.com/gamontal/awesome-katas)
 - [DevDocs](https://devdocs.io/)
+- [AI Agents for beginners](https://github.com/microsoft/ai-agents-for-beginners/blob/main/translations/es/README.md)
 
 #### Certificartes
 
