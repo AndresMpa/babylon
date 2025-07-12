@@ -150,6 +150,7 @@ The aim of this repository is to have a set of tools for myself (Or you) to keep
 
 - [A collection of different UX/UI ideas](https://calltoinspiration.com/)
 - [Inspiration for designers](http://godly.website)
+- [Fontpair - A tool for fonts](https://fontpair.co/index.html)
 
 #### JavaScript
 
