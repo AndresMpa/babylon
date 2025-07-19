@@ -103,6 +103,7 @@ The aim of this repository is to have a set of tools for myself (Or you) to keep
 - [Search engine with AI](https://www.perplexity.ai/)
 - [AI Course from Helsinki](https://www.elementsofai.com/es/)
 - [A good set of resources for arch](https://kodekloud.com/pages/free-labs/)
+- [A wiki to read doc about gh projects](https://deepwiki.com/)
 
 ##### Docker
 - [A way to visualize docker](https://code.visualstudio.com/docs/devcontainers/create-dev-container)
