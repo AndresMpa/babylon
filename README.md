@@ -58,7 +58,7 @@ The aim of this repository is to have a set of tools for myself (Or you) to keep
 - [Interview Warmup](https://grow.google/certificates/interview-warmup/)
 - [Guías de entrevistas para programación](https://github.com/DevCaress/guia-entrevistas-de-programacion)
 - [Data Structures and Algorithms Problems - Interview problems](https://www.techiedelight.com/data-structures-and-algorithms-problems)
-- [Auto generated documentation about repositories](https//deepwiki.com)
+- [Auto generated documentation about repositories](https://deepwiki.com/)
 
 #### Guides to improve 
 
