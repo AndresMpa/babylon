@@ -59,6 +59,7 @@ The aim of this repository is to have a set of tools for myself (Or you) to keep
 - [Guías de entrevistas para programación](https://github.com/DevCaress/guia-entrevistas-de-programacion)
 - [Data Structures and Algorithms Problems - Interview problems](https://www.techiedelight.com/data-structures-and-algorithms-problems)
 - [Auto generated documentation about repositories](https://deepwiki.com/)
+- [A Set of remote-friendly companies](https://github.com/remoteintech/remote-jobs)
 
 #### Guides to improve 
 
