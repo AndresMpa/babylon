@@ -74,6 +74,7 @@ The aim of this repository is to have a set of tools for myself (Or you) to keep
 - [DevDocs](https://devdocs.io/)
 - [AI Agents for beginners](https://github.com/microsoft/ai-agents-for-beginners/blob/main/translations/es/README.md)
 - [A Set of public APIs](https://github.com/public-apis-dev/public-apis)
+- [A set of free assets for devs](https://freesets.dev/)
 
 #### Certificartes
 
