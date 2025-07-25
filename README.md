@@ -187,7 +187,7 @@ The aim of this repository is to have a set of tools for myself (Or you) to keep
 - [Swapy - Easy drag and drop](https://swapy.tahazsh.com/)
 - [Gridstack](https://www.npmjs.com/package/gridstack)
 - [A Next template with 100 of performance](http://github.com/vercel/commerce)
-- [Mailing using JS](http://maileroo.com)
+- [A tool to send campaigns](http://maileroo.com)
 
 #### Vue
 
