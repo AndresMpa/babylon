@@ -111,6 +111,7 @@ The aim of this repository is to have a set of tools for myself (Or you) to keep
 - [Measuring LLMs](LLM quantization | LLM Inference Handbook
 https://bentoml.com/llm/getting-started/llm-quantization)
 - [A guide of projects in AI](https://www.marktechpost.com/2025/07/19/the-definitive-guide-to-ai-agents-architectures-frameworks-and-real-world-applications-2025/)
+- [A guide to build agents](https://blog.langchain.com/how-to-build-an-agent/)
 
 ##### Docker
 - [A way to visualize docker](https://code.visualstudio.com/docs/devcontainers/create-dev-container)
