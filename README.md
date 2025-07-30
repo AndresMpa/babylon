@@ -154,6 +154,7 @@ https://bentoml.com/llm/getting-started/llm-quantization)
 - [Layout generator - Brad woods](https://layout.bradwoods.io)
 - [A comprensive guide about web components](https://css-tricks.com/web-components-demystified/)
 - [BulmaCSS - A moder CSS framework](https://bulma.io/)
+- [Create draws with CSS](https://dev.to/alvaromontoro/css-only-infinite-office-28oe)
 
 #### UX/UI
 
