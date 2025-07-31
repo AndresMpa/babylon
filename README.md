@@ -60,6 +60,7 @@ The aim of this repository is to have a set of tools for myself (Or you) to keep
 - [Data Structures and Algorithms Problems - Interview problems](https://www.techiedelight.com/data-structures-and-algorithms-problems)
 - [Auto generated documentation about repositories](https://deepwiki.com/)
 - [A Set of remote-friendly companies](https://github.com/remoteintech/remote-jobs)
+- [A set of python questions](https://www.clcoding.com/2025/07/python-coding-challange-question-with_28.html?m=1)
 
 #### Guides to improve 
 
