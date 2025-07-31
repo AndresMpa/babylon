@@ -93,6 +93,7 @@ The aim of this repository is to have a set of tools for myself (Or you) to keep
 - [tRPC, gRPC, GraphQL or REST: When to Use What?](https://medium.com/@thiwankajayasiri/trpc-grpc-graphql-or-rest-when-to-use-what-fb16fb188268)
 - [30+ MCP Ideas with Complete Source Code by Anmol Baranwal](https://levelup.gitconnected.com/30-mcp-ideas-with-complete-source-code-2e1406495b8d)
 - [LGTM - Grafana stack for observability](https://blog.prateekjain.dev/mastering-observability-with-grafanas-lgtm-stack-e3b0e0a0e89b)
+- [See data basses as draws](https://www.drawdb.app/)
 
 #### Artificial Intelligence (AI)
 
