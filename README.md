@@ -195,6 +195,7 @@ https://bentoml.com/llm/getting-started/llm-quantization)
 - [Gridstack](https://www.npmjs.com/package/gridstack)
 - [A Next template with 100 of performance](http://github.com/vercel/commerce)
 - [A tool to send campaigns](http://maileroo.com)
+- [Easy to use authX](https://github.com/better-auth/better-auth)
 
 #### Vue
 
