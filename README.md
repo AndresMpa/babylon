@@ -196,6 +196,7 @@ https://bentoml.com/llm/getting-started/llm-quantization)
 - [A Next template with 100 of performance](http://github.com/vercel/commerce)
 - [A tool to send campaigns](http://maileroo.com)
 - [Easy to use authX](https://github.com/better-auth/better-auth)
+- [A list of free to use APIs](https://github.com/public-apis/public-apis)
 
 #### Vue
 
