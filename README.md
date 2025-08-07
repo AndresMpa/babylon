@@ -76,6 +76,7 @@ The aim of this repository is to have a set of tools for myself (Or you) to keep
 - [AI Agents for beginners](https://github.com/microsoft/ai-agents-for-beginners/blob/main/translations/es/README.md)
 - [A Set of public APIs](https://github.com/public-apis-dev/public-apis)
 - [A set of free assets for devs](https://freesets.dev/)
+- [Some resources for math](https://github.com/ossu/computer-science)
 
 #### Certificartes
 
