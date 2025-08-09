@@ -95,6 +95,7 @@ The aim of this repository is to have a set of tools for myself (Or you) to keep
 - [30+ MCP Ideas with Complete Source Code by Anmol Baranwal](https://levelup.gitconnected.com/30-mcp-ideas-with-complete-source-code-2e1406495b8d)
 - [LGTM - Grafana stack for observability](https://blog.prateekjain.dev/mastering-observability-with-grafanas-lgtm-stack-e3b0e0a0e89b)
 - [See data basses as draws](https://www.drawdb.app/)
+- [A great collection of patterns](https://github.com/gvergnaud/ts-pattern?utm_source=opensourceprojects.dev&ref=opensourceprojects.dev)
 
 #### Artificial Intelligence (AI)
 
