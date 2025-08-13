@@ -77,6 +77,7 @@ The aim of this repository is to have a set of tools for myself (Or you) to keep
 - [A Set of public APIs](https://github.com/public-apis-dev/public-apis)
 - [A set of free assets for devs](https://freesets.dev/)
 - [Some resources for math](https://github.com/ossu/computer-science)
+- [A helpful tool to do Pomodoro](https://github.com/szr2001/WorkLifeBalance)
 
 #### Certificartes
 
