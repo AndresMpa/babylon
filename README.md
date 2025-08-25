@@ -142,6 +142,7 @@ https://bentoml.com/llm/getting-started/llm-quantization)
 - [github-readme-streak-stats](https://github.com/DenverCoder1/github-readme-streak-stats/blob/main/docs/themes.md)
 - [How to grep (search through)](https://stackoverflow.com/questions/2928584/how-to-grep-search-through-committed-code-in-the-git-history)
 - [GitHub Webhook CI/CD: Step-by-step guide](https://dev.to/techlabma/github-webhook-cicd-step-by-step-guide-1j6g)
+- [A README editor by sections](http://readme.so/es/editor)
 
 #### CSS
 
