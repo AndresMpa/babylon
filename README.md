@@ -10,7 +10,7 @@
 
 This is Babylon, a collection or a library of courses I have took or I'm taking; basically those folders up there are my notes some code and personal thoughts about different technologies, from Frontend to AI/ML, you can (Or will) find almost anything here
 
-The aim of this repository is to have a set of tools for myself (Or you) to keep checking them, in order to remember of find topic. I'm also adding a reference list for tools I found useful
+The aim of this repository is to have a set of tools for myself (Or you) to keep checking them, in order to remember of find topic. I'm also adding a reference list for tools I found useful.
 
 ## References list
 
