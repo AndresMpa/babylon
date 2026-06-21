@@ -6,7 +6,7 @@
 </p>
 <h1 align="center">Babylon</h1>
 
-## What the hell is this?
+## What is this repository about?
 
 This is Babylon, a collection or a library of courses I have took or I'm taking; basically those folders up there are my notes some code and personal thoughts about different technologies, from Frontend to AI/ML, you can (Or will) find almost anything here.
 
